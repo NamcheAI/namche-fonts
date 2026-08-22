@@ -157,7 +157,10 @@ jobs:
       # from the committed fonts/ tree this job already validates. Without it the
       # generator has no faces to read and check:css dies on ENOENT.
       - name: Stage npm font files
-        run: make copy-npm-fonts
+        # PYTHON defaults to venv/bin/python, which this job does not build.
+        # The check dependencies installed above provide the same tooling to
+        # the system interpreter, which the metadata check below already uses.
+        run: make copy-npm-fonts PYTHON=python
 
       - name: Check generated webfont CSS
         working-directory: packages/next
