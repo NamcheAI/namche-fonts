@@ -430,12 +430,10 @@ jobs:
       - name: Generate CDN stylesheets at the release root
         run: >-
           node scripts/build-webfont-css.mjs --cdn
-          --tag "${GITHUB_REF_NAME}"
           --out "${ZIP_NAME}"
       - name: Verify CDN stylesheet URLs exist in the release archive
         run: >-
           node scripts/check-release-webfont-css.mjs
-          --tag "${GITHUB_REF_NAME}"
           --styles "${ZIP_NAME}"
           --fonts "${ZIP_NAME}/fonts"
       - name: Remove proof/test outputs from release

@@ -70,9 +70,11 @@ binaries and does not need an npm dependency:
 @import url("https://cdn.namche.ai/fonts/namche-shadow/v0.2.1/fonts.css");
 ```
 
-This is one import, uses immutable release URLs that survive downstream
-redeploys, and serves font files from the CDN edge. The version is explicit;
-upgrading means changing it in the import.
+This is one import, uses an immutable versioned stylesheet URL that survives
+downstream redeploys, and serves font files from the CDN edge. Its internal
+font URLs are relative to the version root, so the same stylesheet bytes work
+for every release tag while still resolving within the selected version. The
+version is explicit; upgrading means changing it in the import.
 
 ### npm with CDN delivery: one package update
 

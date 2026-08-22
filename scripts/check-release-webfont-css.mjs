@@ -5,13 +5,12 @@ import path from "node:path";
 import process from "node:process";
 
 const cssFiles = ["fonts.css", "sans.css", "mono.css", "pixel.css"];
-const cdnBaseUrl = "https://cdn.namche.ai/fonts/namche-shadow";
 
 function parseArguments(arguments_) {
   const options = {};
   for (let index = 0; index < arguments_.length; index += 1) {
     const argument = arguments_[index];
-    if (!["--tag", "--styles", "--fonts"].includes(argument)) {
+    if (!["--styles", "--fonts"].includes(argument)) {
       throw new Error(`Unknown argument: ${argument}`);
     }
     const value = arguments_[index + 1];
@@ -22,7 +21,7 @@ function parseArguments(arguments_) {
     index += 1;
   }
 
-  for (const required of ["tag", "styles", "fonts"]) {
+  for (const required of ["styles", "fonts"]) {
     if (!options[required]) throw new Error(`--${required} is required`);
   }
   return options;
@@ -38,7 +37,6 @@ try {
 
 const stylesRoot = path.resolve(options.styles);
 const fontsRoot = path.resolve(options.fonts);
-const expectedPrefix = `${cdnBaseUrl}/${options.tag}/`;
 
 for (const cssFilename of cssFiles) {
   const cssPath = path.join(stylesRoot, cssFilename);
@@ -55,13 +53,11 @@ for (const cssFilename of cssFiles) {
   }
 
   for (const url of urls) {
-    if (!url.startsWith(expectedPrefix)) {
-      throw new Error(
-        `${cssFilename} URL is not pinned to ${options.tag}: ${url}`,
-      );
+    if (!url.startsWith("./")) {
+      throw new Error(`${cssFilename} contains a non-relative URL: ${url}`);
     }
 
-    const releasePath = decodeURIComponent(url.slice(expectedPrefix.length));
+    const releasePath = decodeURIComponent(url.slice(2));
     const fontPath = path.resolve(fontsRoot, releasePath);
     const relativePath = path.relative(fontsRoot, fontPath);
     if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
@@ -75,6 +71,6 @@ for (const cssFilename of cssFiles) {
   }
 
   console.log(
-    `Verified ${cssFilename}: ${urls.length} CDN URLs exist in the release archive.`,
+    `Verified ${cssFilename}: ${urls.length} relative font URLs exist in the release archive.`,
   );
 }
