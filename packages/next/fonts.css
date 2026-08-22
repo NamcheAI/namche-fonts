@@ -3,12 +3,12 @@
  * Licensed under the SIL Open Font License 1.1; see LICENSE.txt or OFL.txt.
  * Variable faces are preferred per style; statics are emitted only when no
  * matching variable face exists, avoiding duplicate downloads for one axis.
- * URLs resolve relative to the release root for version-agnostic CDN deployment.
+ * URLs resolve to font binaries inside the npm package.
  */
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans[wght].woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-Variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-ThinItalic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-ThinItalic.woff2") format("woff2");
   font-style: italic;
   font-weight: 100;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-ExtraLightItalic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-UltraLightItalic.woff2") format("woff2");
   font-style: italic;
   font-weight: 200;
   font-display: swap;
@@ -32,7 +32,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-LightItalic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-LightItalic.woff2") format("woff2");
   font-style: italic;
   font-weight: 300;
   font-display: swap;
@@ -40,7 +40,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-Italic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-Italic.woff2") format("woff2");
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -48,7 +48,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-MediumItalic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-MediumItalic.woff2") format("woff2");
   font-style: italic;
   font-weight: 500;
   font-display: swap;
@@ -56,7 +56,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-SemiBoldItalic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-SemiBoldItalic.woff2") format("woff2");
   font-style: italic;
   font-weight: 600;
   font-display: swap;
@@ -64,7 +64,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-BoldItalic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-BoldItalic.woff2") format("woff2");
   font-style: italic;
   font-weight: 700;
   font-display: swap;
@@ -72,7 +72,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-ExtraBoldItalic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-BlackItalic.woff2") format("woff2");
   font-style: italic;
   font-weight: 800;
   font-display: swap;
@@ -80,7 +80,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("./NamcheShadowSans/webfonts/NamcheShadowSans-BlackItalic.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-sans/NamcheShadowSans-UltraBlackItalic.woff2") format("woff2");
   font-style: italic;
   font-weight: 900;
   font-display: swap;
@@ -88,7 +88,7 @@
 
 @font-face {
   font-family: "Namche Shadow Mono";
-  src: url("./NamcheShadowMono/webfonts/NamcheShadowMono[wght].woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-mono/NamcheShadowMono-Variable.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -96,7 +96,7 @@
 
 @font-face {
   font-family: "Namche Shadow Mono";
-  src: url("./NamcheShadowMono/webfonts/NamcheShadowMono-Italic[wght].woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-mono/NamcheShadowMono-Italic[wght].woff2") format("woff2");
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
@@ -104,7 +104,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Circle";
-  src: url("./NamcheShadowPixel/webfonts/NamcheShadowPixel-Circle.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Circle.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -112,7 +112,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Grid";
-  src: url("./NamcheShadowPixel/webfonts/NamcheShadowPixel-Grid.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Grid.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -120,7 +120,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Line";
-  src: url("./NamcheShadowPixel/webfonts/NamcheShadowPixel-Line.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Line.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -128,7 +128,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Square";
-  src: url("./NamcheShadowPixel/webfonts/NamcheShadowPixel-Square.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Square.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -136,7 +136,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Triangle";
-  src: url("./NamcheShadowPixel/webfonts/NamcheShadowPixel-Triangle.woff2") format("woff2");
+  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Triangle.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;

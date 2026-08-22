@@ -1,13 +1,15 @@
 {
   "name": "@namche/namche-shadow",
   "version": "0.2.1",
-  "description": "Namche Shadow Sans, Namche Shadow Mono, and Namche Shadow Pixel for Next.js.",
+  "description": "Namche Shadow Sans, Mono, and Pixel for Next.js and framework-agnostic CSS.",
   "main": "./dist/font.js",
   "type": "module",
   "module": "./dist/font.js",
   "types": "./font.d.ts",
   "scripts": {
-    "version": "changeset version",
+    "build:css": "node ../../scripts/build-webfont-css.mjs",
+    "check:css": "node ../../scripts/build-webfont-css.mjs --check",
+    "version": "changeset version && pnpm run build:css",
     "release": "changeset publish"
   },
   "bugs": {
@@ -25,6 +27,22 @@
     "namche shadow pixel",
     "next.js font",
     "geist derivative"
+  ],
+  "files": [
+    "dist/**/*",
+    "font.d.ts",
+    "font/**/*",
+    "fonts.css",
+    "sans.css",
+    "mono.css",
+    "pixel.css",
+    "fonts.cdn.css",
+    "sans.cdn.css",
+    "mono.cdn.css",
+    "pixel.cdn.css"
+  ],
+  "sideEffects": [
+    "**/*.css"
   ],
   "exports": {
     "./font": {
@@ -50,7 +68,16 @@
     "./font/pixel": {
       "types": "./dist/pixel.d.ts",
       "default": "./dist/pixel.js"
-    }
+    },
+    "./fonts.css": "./fonts.css",
+    "./sans.css": "./sans.css",
+    "./mono.css": "./mono.css",
+    "./pixel.css": "./pixel.css",
+    "./fonts.cdn.css": "./fonts.cdn.css",
+    "./sans.cdn.css": "./sans.cdn.css",
+    "./mono.cdn.css": "./mono.cdn.css",
+    "./pixel.cdn.css": "./pixel.cdn.css",
+    "./package.json": "./package.json"
   },
   "license": "OFL-1.1",
   "publishConfig": {
@@ -58,6 +85,11 @@
   },
   "peerDependencies": {
     "next": ">=13.2.0"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.0",

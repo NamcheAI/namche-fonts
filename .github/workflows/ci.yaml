@@ -131,6 +131,12 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
       - name: Set up Python 3.11
         uses: actions/setup-python@v6
         with:
@@ -147,8 +153,24 @@ jobs:
       - name: Check source copies
         run: python scripts/check_source_copies.py
 
+      # packages/next/dist/fonts is not committed; copy-npm-fonts populates it
+      # from the committed fonts/ tree this job already validates. Without it the
+      # generator has no faces to read and check:css dies on ENOENT.
+      - name: Stage npm font files
+        # PYTHON defaults to venv/bin/python, which this job does not build.
+        # The check dependencies installed above provide the same tooling to
+        # the system interpreter, which the metadata check below already uses.
+        run: make copy-npm-fonts PYTHON=python
+
+      - name: Check generated webfont CSS
+        working-directory: packages/next
+        run: npm run check:css
+
       - name: Assemble npm font fixtures
         run: make copy-npm-fonts PYTHON=python
+
+      - name: Smoke test packed webfont CSS
+        run: node scripts/check-packed-webfont-css.mjs
 
       - name: Check release metadata
         run: |
@@ -399,6 +421,11 @@ jobs:
       - uses: actions/checkout@v6
         with:
           persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
       - name: Use font artifacts from CI
         uses: actions/download-artifact@v5
         with:
@@ -409,8 +436,19 @@ jobs:
         continue-on-error: true
       - name: Copy OFL.txt to release directory
         run: cp OFL.txt ${{ env.ZIP_NAME }}/OFL.txt
-      - name: Copy CDN stylesheet to release directory
-        run: cp documentation/cdn/fonts.css ${{ env.ZIP_NAME }}/fonts/fonts.css
+      # Beside the family directories, not at the archive root: the stylesheet
+      # resolves ./<Family>/webfonts/... against its own location, so this is the
+      # only placement that works inside the downloaded archive. The CDN publisher
+      # promotes everything under fonts/ to the release root, so the served URL
+      # stays <TAG>/fonts.css.
+      - name: Generate release stylesheets beside the fonts
+        run: >-
+          node scripts/build-webfont-css.mjs --cdn
+          --out "${ZIP_NAME}/fonts"
+      - name: Verify CDN stylesheet URLs exist in the release archive
+        run: >-
+          node scripts/check-release-webfont-css.mjs
+          --release "${ZIP_NAME}/fonts"
       - name: Remove proof/test outputs from release
         run: rm -rf ${{ env.ZIP_NAME }}/out
       - name: Set release file name

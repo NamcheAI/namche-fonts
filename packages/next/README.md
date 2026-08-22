@@ -1,4 +1,4 @@
-# Namche Shadow Sans for Next.js
+# Namche Shadow fonts for npm
 
 The package exposes Namche Shadow Sans, Namche Shadow Mono, and the five Namche
 Shadow Pixel variants through `next/font/local`.
@@ -10,6 +10,50 @@ pnpm add @namche/namche-shadow
 ```
 
 ## Usage
+
+Framework-agnostic apps can use CDN-pinned CSS without serving font binaries
+from the app’s own origin:
+
+```css
+@import "@namche/namche-shadow/fonts.cdn.css";
+```
+
+The URLs are generated from this package’s version, so updating the package
+selects the matching immutable CDN release. Family-only entry points are
+`sans.cdn.css`, `mono.cdn.css`, and `pixel.cdn.css`.
+
+Projects that do not need the npm dependency can import the versioned CDN
+stylesheet directly:
+
+```css
+@import url("https://cdn.namche.ai/fonts/namche-shadow/v0.2.1/fonts.css");
+```
+
+Its internal font URLs are relative to that version root, making the
+stylesheet bytes reusable across release tags while each versioned import
+remains immutable. The `current/` alias is only a preview pointer and must
+never be pinned in production.
+
+For fully self-hosted deployments, import all three families from
+package-relative CSS:
+
+```css
+@import "@namche/namche-shadow/fonts.css";
+```
+
+Or import only the families they use:
+
+```css
+@import "@namche/namche-shadow/sans.css";
+@import "@namche/namche-shadow/mono.css";
+@import "@namche/namche-shadow/pixel.css";
+```
+
+This path includes the WOFF2 files in the application build and works offline
+or in air-gapped environments.
+
+Next.js apps should keep using the `next/font/local` entry points for automatic
+font optimisation:
 
 ```tsx
 import { NamcheShadowSans } from "@namche/namche-shadow/font/sans";
