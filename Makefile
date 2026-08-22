@@ -139,8 +139,8 @@ copy-npm-fonts:
 create-release-zip:
 	mkdir -p namche-shadow-font/fonts
 	cp -r fonts/* namche-shadow-font/fonts/
-	node scripts/build-webfont-css.mjs --cdn --out namche-shadow-font
-	node scripts/check-release-webfont-css.mjs --styles namche-shadow-font --fonts namche-shadow-font/fonts
+	node scripts/build-webfont-css.mjs --cdn --out namche-shadow-font/fonts
+	node scripts/check-release-webfont-css.mjs --release namche-shadow-font/fonts
 	cp documentation/DESCRIPTION.en_us.html namche-shadow-font/ || true
 	cp documentation/article/ARTICLE.en_us.html namche-shadow-font/ || true
 	cp OFL.txt namche-shadow-font/
