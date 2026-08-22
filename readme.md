@@ -57,19 +57,78 @@ The npm release workflow uses token-free OIDC publishing. Its configuration
 and recovery notes are documented in
 [`documentation/TRUSTED_PUBLISHING.md`](documentation/TRUSTED_PUBLISHING.md).
 
-### CDN
+## Using the fonts
 
-Published releases are mirrored to `https://cdn.namche.ai` through the
-infrastructure repository. Use an immutable version in production:
+Choose the delivery path that matches the project’s deployment model.
+
+### CDN URL: zero install
+
+Import a versioned stylesheet directly when the project should ship no font
+binaries and does not need an npm dependency:
 
 ```css
 @import url("https://cdn.namche.ai/fonts/namche-shadow/v0.2.1/fonts.css");
 ```
 
-The short-lived
+This is one import, uses immutable release URLs that survive downstream
+redeploys, and serves font files from the CDN edge. The version is explicit;
+upgrading means changing it in the import.
+
+### npm with CDN delivery: one package update
+
+Install `@namche/namche-shadow`, then import its CDN-pinned entry point:
+
+```css
+@import "@namche/namche-shadow/fonts.cdn.css";
+```
+
+The stylesheet is generated from the package’s own version, so `npm update`
+repoints all font URLs to that matching immutable CDN release. The build does
+not copy font binaries to the app’s own origin. Family-only alternatives are
+`sans.cdn.css`, `mono.cdn.css`, and `pixel.cdn.css`.
+
+### npm with self-hosting: offline and air-gapped
+
+Framework-agnostic apps—including Astro, Vite, and plain CSS builds—can instead
+load all three families from package-relative files:
+
+```css
+@import "@namche/namche-shadow/fonts.css";
+```
+
+Import only the families an app uses to avoid loading unnecessary faces:
+
+```css
+@import "@namche/namche-shadow/sans.css";
+@import "@namche/namche-shadow/mono.css";
+@import "@namche/namche-shadow/pixel.css";
+```
+
+This fully self-hosted path bundles the required WOFF2 files, works offline or
+in an air-gapped deployment, and makes the downstream origin responsible for
+serving them.
+
+All CSS entry points expose `Namche Shadow Sans`, `Namche Shadow Mono`, and the
+five Pixel variant families (`Namche Shadow Pixel Square`, `Grid`, `Circle`,
+`Triangle`, and `Line`). Next.js users should keep using the `next/font/local`
+entry points for automatic font optimisation:
+
+```tsx
+import { NamcheShadowSans } from "@namche/namche-shadow/font/sans";
+import { NamcheShadowMono } from "@namche/namche-shadow/font/mono";
+```
+
+Published releases are mirrored to `https://cdn.namche.ai` through the
+infrastructure repository. A versioned URL is immutable and safe to cache
+forever. The short-lived
 [`current` alias](https://cdn.namche.ai/fonts/namche-shadow/current/fonts.css)
-is intended for previews. Release files, their SHA-256 manifest, and the
-available-version index share the
+is only a preview pointer and must never be pinned in production.
+
+The CDN benefits are smaller downstream artifacts, one-version-bump
+propagation through npm, immutable asset URLs that survive redeploys, and edge
+latency. It does not provide cross-site font-cache reuse: modern browsers
+partition the HTTP cache by top-level site. Release files, their SHA-256
+manifest, and the available-version index share the
 `https://cdn.namche.ai/fonts/namche-shadow/` prefix. A successful tagged GitHub
 release dispatches the approved archive to the CDN origin automatically; the
 font repository never holds origin or SSH credentials.

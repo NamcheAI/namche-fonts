@@ -134,11 +134,13 @@ copy-npm-fonts:
 		mv 'NamcheShadowMono[wght].ttf' NamcheShadowMono-Variable.ttf && \
 		mv 'NamcheShadowMono[wght].woff2' NamcheShadowMono-Variable.woff2
 	$(PYTHON) scripts/rename_font_metadata.py --check packages/next/dist/fonts
+	node scripts/build-webfont-css.mjs
 
 create-release-zip:
 	mkdir -p namche-shadow-font/fonts
 	cp -r fonts/* namche-shadow-font/fonts/
-	cp documentation/cdn/fonts.css namche-shadow-font/fonts/fonts.css
+	node scripts/build-webfont-css.mjs --cdn --tag v$$(node -p "require('./packages/next/package.json').version") --out namche-shadow-font
+	node scripts/check-release-webfont-css.mjs --tag v$$(node -p "require('./packages/next/package.json').version") --styles namche-shadow-font --fonts namche-shadow-font/fonts
 	cp documentation/DESCRIPTION.en_us.html namche-shadow-font/ || true
 	cp documentation/article/ARTICLE.en_us.html namche-shadow-font/ || true
 	cp OFL.txt namche-shadow-font/
