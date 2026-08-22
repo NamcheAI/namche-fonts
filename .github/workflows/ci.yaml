@@ -153,6 +153,12 @@ jobs:
       - name: Check source copies
         run: python scripts/check_source_copies.py
 
+      # packages/next/dist/fonts is not committed; copy-npm-fonts populates it
+      # from the committed fonts/ tree this job already validates. Without it the
+      # generator has no faces to read and check:css dies on ENOENT.
+      - name: Stage npm font files
+        run: make copy-npm-fonts
+
       - name: Check generated webfont CSS
         working-directory: packages/next
         run: npm run check:css
