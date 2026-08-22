@@ -436,15 +436,19 @@ jobs:
         continue-on-error: true
       - name: Copy OFL.txt to release directory
         run: cp OFL.txt ${{ env.ZIP_NAME }}/OFL.txt
-      - name: Generate CDN stylesheets at the release root
+      # Beside the family directories, not at the archive root: the stylesheet
+      # resolves ./<Family>/webfonts/... against its own location, so this is the
+      # only placement that works inside the downloaded archive. The CDN publisher
+      # promotes everything under fonts/ to the release root, so the served URL
+      # stays <TAG>/fonts.css.
+      - name: Generate release stylesheets beside the fonts
         run: >-
           node scripts/build-webfont-css.mjs --cdn
-          --out "${ZIP_NAME}"
+          --out "${ZIP_NAME}/fonts"
       - name: Verify CDN stylesheet URLs exist in the release archive
         run: >-
           node scripts/check-release-webfont-css.mjs
-          --styles "${ZIP_NAME}"
-          --fonts "${ZIP_NAME}/fonts"
+          --release "${ZIP_NAME}/fonts"
       - name: Remove proof/test outputs from release
         run: rm -rf ${{ env.ZIP_NAME }}/out
       - name: Set release file name

@@ -6,24 +6,28 @@ import process from "node:process";
 
 const cssFiles = ["fonts.css", "sans.css", "mono.css", "pixel.css"];
 
+// One directory, deliberately. Separate --styles and --fonts roots let this
+// script validate a layout that was not the one being shipped: the stylesheets
+// sat at the archive root while the families sat under fonts/, and pointing the
+// two flags at different directories made a broken archive pass. The stylesheet
+// resolves its relative URLs against its own directory, so that is the only
+// directory this check may look in.
 function parseArguments(arguments_) {
   const options = {};
   for (let index = 0; index < arguments_.length; index += 1) {
     const argument = arguments_[index];
-    if (!["--styles", "--fonts"].includes(argument)) {
+    if (argument !== "--release") {
       throw new Error(`Unknown argument: ${argument}`);
     }
     const value = arguments_[index + 1];
     if (!value || value.startsWith("--")) {
       throw new Error(`${argument} requires a value`);
     }
-    options[argument.slice(2)] = value;
+    options.release = value;
     index += 1;
   }
 
-  for (const required of ["styles", "fonts"]) {
-    if (!options[required]) throw new Error(`--${required} is required`);
-  }
+  if (!options.release) throw new Error("--release is required");
   return options;
 }
 
@@ -35,8 +39,9 @@ try {
   process.exit(2);
 }
 
-const stylesRoot = path.resolve(options.styles);
-const fontsRoot = path.resolve(options.fonts);
+const releaseRoot = path.resolve(options.release);
+const stylesRoot = releaseRoot;
+const fontsRoot = releaseRoot;
 
 for (const cssFilename of cssFiles) {
   const cssPath = path.join(stylesRoot, cssFilename);
