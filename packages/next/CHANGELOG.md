@@ -1,5 +1,12 @@
 # @namche/namche-shadow
 
+## 0.3.0
+
+### Minor Changes
+
+- 9b78e4c: Add generated, framework-agnostic `@font-face` CSS entry points for all three families and each family individually. New `.cdn.css` entry points pin immutable CDN URLs to the npm package version, while the existing `.css` entry points remain fully self-hosted.
+- 4f5f6d2: Add generated Latin WOFF2 subsets with CSS, CDN, and Next.js entry points while preserving the complete existing font distributions.
+
 ## 0.2.1
 
 ### Patch Changes
