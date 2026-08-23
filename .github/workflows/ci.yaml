@@ -494,11 +494,11 @@ jobs:
           for attempt in $(seq 1 30); do
             current=$(curl --fail --silent --show-error \
               "$index_url?tag=$TAG&attempt=$attempt" | jq -er '.current' 2>/dev/null || true)
-            if [ "$current" = "$TAG" ]; then
+            if [ "$current" = "$TAG" ] && \
               curl --fail --silent --show-error --output /dev/null \
-                "$release_url/manifest.json"
+                "$release_url/manifest.json" && \
               curl --fail --silent --show-error --output /dev/null \
-                "$release_url/NamcheShadowSans/webfonts/NamcheShadowSans-Regular.woff2"
+                "$release_url/NamcheShadowSans/webfonts/NamcheShadowSans-Regular.woff2"; then
               echo "Verified CDN release $TAG"
               exit 0
             fi
