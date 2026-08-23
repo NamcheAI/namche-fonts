@@ -147,6 +147,9 @@ jobs:
       - name: Install check dependencies
         run: python -m pip install --disable-pip-version-check -r requirements-checks.txt
 
+      - name: Generate Latin webfont subsets
+        run: make subset-webfonts PYTHON=python
+
       - name: Test validation scripts
         run: python -m unittest discover -s tests -p 'test_*.py'
 
@@ -156,7 +159,7 @@ jobs:
       # packages/next/dist/fonts is not committed; copy-npm-fonts populates it
       # from the committed fonts/ tree this job already validates. Without it the
       # generator has no faces to read and check:css dies on ENOENT.
-      - name: Stage npm font files
+      - name: Generate and stage npm webfont subsets
         # PYTHON defaults to venv/bin/python, which this job does not build.
         # The check dependencies installed above provide the same tooling to
         # the system interpreter, which the metadata check below already uses.

@@ -4,7 +4,16 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
-const cssFiles = ["fonts.css", "sans.css", "mono.css", "pixel.css"];
+const cssFiles = [
+  "fonts.css",
+  "sans.css",
+  "mono.css",
+  "pixel.css",
+  "fonts-latin.css",
+  "sans-latin.css",
+  "mono-latin.css",
+  "pixel-latin.css",
+];
 
 // One directory, deliberately. Separate --styles and --fonts roots let this
 // script validate a layout that was not the one being shipped: the stylesheets
@@ -71,6 +80,16 @@ for (const cssFilename of cssFiles) {
     if (!existsSync(fontPath)) {
       throw new Error(
         `${cssFilename} URL has no matching file in the release archive: ${url}`,
+      );
+    }
+  }
+
+  if (cssFilename.includes("-latin")) {
+    const faces = [...css.matchAll(/@font-face\s*\{/g)].length;
+    const ranges = [...css.matchAll(/unicode-range:/g)].length;
+    if (faces !== ranges || urls.some((url) => !url.includes("-latin.woff2"))) {
+      throw new Error(
+        `${cssFilename} must map every face to a Latin subset and unicode-range`,
       );
     }
   }

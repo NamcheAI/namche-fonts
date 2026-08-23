@@ -22,16 +22,33 @@ const temporaryDirectory = mkdtempSync(
   path.join(tmpdir(), "namche-shadow-package-"),
 );
 
-const localCssFiles = ["fonts.css", "sans.css", "mono.css", "pixel.css"];
+const localCssFiles = [
+  "fonts.css",
+  "sans.css",
+  "mono.css",
+  "pixel.css",
+  "fonts-latin.css",
+  "sans-latin.css",
+  "mono-latin.css",
+  "pixel-latin.css",
+];
 const cdnCssFiles = [
   "fonts.cdn.css",
   "sans.cdn.css",
   "mono.cdn.css",
   "pixel.cdn.css",
+  "fonts-latin.cdn.css",
+  "sans-latin.cdn.css",
+  "mono-latin.cdn.css",
+  "pixel-latin.cdn.css",
 ];
 const existingExports = new Map([
   ["./font", { default: "./dist/font.js", types: "./dist/font.d.ts" }],
   ["./font/mono", { default: "./dist/mono.js", types: "./dist/mono.d.ts" }],
+  [
+    "./font/mono-latin",
+    { default: "./dist/mono-latin.js", types: "./dist/mono-latin.d.ts" },
+  ],
   [
     "./font/mono-non-variable",
     {
@@ -41,6 +58,10 @@ const existingExports = new Map([
   ],
   ["./font/sans", { default: "./dist/sans.js", types: "./dist/sans.d.ts" }],
   [
+    "./font/sans-latin",
+    { default: "./dist/sans-latin.js", types: "./dist/sans-latin.d.ts" },
+  ],
+  [
     "./font/sans-non-variable",
     {
       default: "./dist/sans-non-variable.js",
@@ -48,6 +69,10 @@ const existingExports = new Map([
     },
   ],
   ["./font/pixel", { default: "./dist/pixel.js", types: "./dist/pixel.d.ts" }],
+  [
+    "./font/pixel-latin",
+    { default: "./dist/pixel-latin.js", types: "./dist/pixel-latin.d.ts" },
+  ],
 ]);
 
 try {
@@ -107,6 +132,16 @@ try {
       }
     }
 
+    if (cssFilename.includes("-latin")) {
+      const faces = [...css.matchAll(/@font-face\s*\{/g)].length;
+      const ranges = [...css.matchAll(/unicode-range:/g)].length;
+      if (faces !== ranges || urls.some((url) => !url.includes("-latin.woff2"))) {
+        throw new Error(
+          `${cssFilename} must map every face to a Latin subset and unicode-range`,
+        );
+      }
+    }
+
     console.log(`Verified ${cssFilename}: ${urls.length} font URLs resolve.`);
   }
 
@@ -129,6 +164,16 @@ try {
       if (!url.startsWith(cdnPrefix)) {
         throw new Error(
           `${cssFilename} URL is not pinned to package version ${manifest.version}: ${url}`,
+        );
+      }
+    }
+
+    if (cssFilename.includes("-latin")) {
+      const faces = [...css.matchAll(/@font-face\s*\{/g)].length;
+      const ranges = [...css.matchAll(/unicode-range:/g)].length;
+      if (faces !== ranges || urls.some((url) => !url.includes("-latin.woff2"))) {
+        throw new Error(
+          `${cssFilename} must map every face to a Latin subset and unicode-range`,
         );
       }
     }

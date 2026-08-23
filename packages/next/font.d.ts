@@ -153,6 +153,21 @@ declare module "@namche/namche-shadow/font/sans" {
   export const NamcheShadowSans: NextFontWithVariable;
 }
 
+declare module "@namche/namche-shadow/font/sans-latin" {
+  /**
+   * Latin-only Namche Shadow Sans for controlled web properties.
+   *
+   * Uses the upright variable font and static italic weights. Text outside
+   * the documented Latin subset falls through to the configured fallback.
+   */
+  export const NamcheShadowSans: NextFontWithVariable;
+}
+
+declare module "@namche/namche-shadow/font/mono-latin" {
+  /** Latin-only Namche Shadow Mono variable font for controlled web properties. */
+  export const NamcheShadowMono: NextFontWithVariable;
+}
+
 declare module "@namche/namche-shadow/font/sans-non-variable" {
   /**
    * Namche Shadow Sans font, with `className` and `variable` properties,
@@ -224,5 +239,13 @@ declare module "@namche/namche-shadow/font/pixel" {
    *
    * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
    */
+  export const NamcheShadowPixelLine: NextFontWithVariable;
+}
+
+declare module "@namche/namche-shadow/font/pixel-latin" {
+  export const NamcheShadowPixelSquare: NextFontWithVariable;
+  export const NamcheShadowPixelGrid: NextFontWithVariable;
+  export const NamcheShadowPixelCircle: NextFontWithVariable;
+  export const NamcheShadowPixelTriangle: NextFontWithVariable;
   export const NamcheShadowPixelLine: NextFontWithVariable;
 }
