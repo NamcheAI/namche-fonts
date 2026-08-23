@@ -4,7 +4,47 @@ updates:
     directory: /packages/next
     schedule:
       interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: Europe/Vienna
     groups:
-      npm-development-dependencies:
-        dependency-type: development
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
+    open-pull-requests-limit: 2
 
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: Europe/Vienna
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
+    open-pull-requests-limit: 2
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: Europe/Vienna
+    groups:
+      actions:
+        patterns:
+          - "*"
+    open-pull-requests-limit: 2
