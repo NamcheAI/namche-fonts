@@ -33,13 +33,21 @@
     "font.d.ts",
     "font/**/*",
     "fonts.css",
+    "fonts-latin.css",
     "sans.css",
+    "sans-latin.css",
     "mono.css",
+    "mono-latin.css",
     "pixel.css",
+    "pixel-latin.css",
     "fonts.cdn.css",
+    "fonts-latin.cdn.css",
     "sans.cdn.css",
+    "sans-latin.cdn.css",
     "mono.cdn.css",
-    "pixel.cdn.css"
+    "mono-latin.cdn.css",
+    "pixel.cdn.css",
+    "pixel-latin.cdn.css"
   ],
   "sideEffects": [
     "**/*.css"
@@ -53,6 +61,10 @@
       "types": "./dist/mono.d.ts",
       "default": "./dist/mono.js"
     },
+    "./font/mono-latin": {
+      "types": "./dist/mono-latin.d.ts",
+      "default": "./dist/mono-latin.js"
+    },
     "./font/mono-non-variable": {
       "types": "./dist/mono-non-variable.d.ts",
       "default": "./dist/mono-non-variable.js"
@@ -60,6 +72,10 @@
     "./font/sans": {
       "types": "./dist/sans.d.ts",
       "default": "./dist/sans.js"
+    },
+    "./font/sans-latin": {
+      "types": "./dist/sans-latin.d.ts",
+      "default": "./dist/sans-latin.js"
     },
     "./font/sans-non-variable": {
       "types": "./dist/sans-non-variable.d.ts",
@@ -69,14 +85,26 @@
       "types": "./dist/pixel.d.ts",
       "default": "./dist/pixel.js"
     },
+    "./font/pixel-latin": {
+      "types": "./dist/pixel-latin.d.ts",
+      "default": "./dist/pixel-latin.js"
+    },
     "./fonts.css": "./fonts.css",
+    "./fonts-latin.css": "./fonts-latin.css",
     "./sans.css": "./sans.css",
+    "./sans-latin.css": "./sans-latin.css",
     "./mono.css": "./mono.css",
+    "./mono-latin.css": "./mono-latin.css",
     "./pixel.css": "./pixel.css",
+    "./pixel-latin.css": "./pixel-latin.css",
     "./fonts.cdn.css": "./fonts.cdn.css",
+    "./fonts-latin.cdn.css": "./fonts-latin.cdn.css",
     "./sans.cdn.css": "./sans.cdn.css",
+    "./sans-latin.cdn.css": "./sans-latin.cdn.css",
     "./mono.cdn.css": "./mono.cdn.css",
+    "./mono-latin.cdn.css": "./mono-latin.cdn.css",
     "./pixel.cdn.css": "./pixel.cdn.css",
+    "./pixel-latin.cdn.css": "./pixel-latin.cdn.css",
     "./package.json": "./package.json"
   },
   "license": "OFL-1.1",

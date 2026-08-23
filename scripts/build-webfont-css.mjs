@@ -13,6 +13,28 @@ const packageRoot = path.join(repositoryRoot, "packages", "next");
 const packageFontsRoot = path.join(packageRoot, "dist", "fonts");
 const releaseFontsRoot = path.join(repositoryRoot, "fonts");
 const cdnBaseUrl = "https://cdn.namche.ai/fonts/namche-shadow";
+const latinUnicodeFile = path.join(
+  repositoryRoot,
+  "sources",
+  "subsets",
+  "latin.txt",
+);
+const latinSubset = "latin";
+
+async function readUnicodeRange(file) {
+  const ranges = (await readFile(file, "utf8"))
+    .split(/\r?\n/)
+    .map((line) => line.split("#", 1)[0].trim())
+    .filter(Boolean);
+  if (ranges.length === 0 || ranges.some((range) =>
+    !/^U\+[0-9A-F]{1,6}(?:-[0-9A-F]{1,6})?$/i.test(range)
+  )) {
+    throw new Error(`${file} contains an invalid or empty Unicode range`);
+  }
+  return ranges.join(", ").toUpperCase();
+}
+
+const latinUnicodeRange = await readUnicodeRange(latinUnicodeFile);
 
 function parseArguments(arguments_) {
   const options = { cdn: false, check: false };
@@ -110,6 +132,19 @@ function releaseRelativeUrl(family, filename) {
   return `./${family.releaseDirectory}/webfonts/${filename}`;
 }
 
+function subsetFilename(filename, subset) {
+  return `${filename.slice(0, -".woff2".length)}-${subset}.woff2`;
+}
+
+function subsetSourceFilename(filename, subset) {
+  if (!subset || !filename.endsWith(".woff2")) return filename;
+  const suffix = `-${subset}.woff2`;
+  if (!filename.endsWith(suffix)) {
+    throw new Error(`Unexpected ${subset} subset filename: ${filename}`);
+  }
+  return `${filename.slice(0, -suffix.length)}.woff2`;
+}
+
 function parseFace(family, filename, allFilenames) {
   if (!filename.endsWith(".woff2")) return null;
 
@@ -183,10 +218,26 @@ function parseFace(family, filename, allFilenames) {
   };
 }
 
-async function collectFaces(family, directory, urlForFile) {
+async function collectFaces(family, directory, urlForFile, subset = null) {
   const filenames = (await readdir(directory)).sort();
+  const sourceFilenames = filenames.map((filename) =>
+    subsetSourceFilename(filename, subset)
+  );
   const faces = filenames
-    .map((filename) => parseFace(family, filename, filenames))
+    .map((filename, index) => {
+      const face = parseFace(
+        family,
+        sourceFilenames[index],
+        sourceFilenames,
+      );
+      if (!face) return null;
+      return {
+        ...face,
+        filename,
+        subset,
+        unicodeRange: subset ? latinUnicodeRange : null,
+      };
+    })
     .filter(Boolean);
 
   if (faces.length === 0) {
@@ -228,6 +279,40 @@ async function collectPackageFaces() {
   return facesByFamily;
 }
 
+async function collectPackageSubsetFaces(subset) {
+  const facesByFamily = new Map();
+  for (const family of families) {
+    const directory = path.join(
+      packageFontsRoot,
+      family.packageDirectory,
+      "subsets",
+    );
+    facesByFamily.set(
+      family.key,
+      await collectFaces(
+        family,
+        directory,
+        (filename) => packageRelativeUrl(path.join(directory, filename)),
+        subset,
+      ),
+    );
+  }
+  return facesByFamily;
+}
+
+function deriveSubsetFaces(faces, subset, urlForFile) {
+  return faces.map((face) => {
+    const filename = subsetFilename(face.filename, subset);
+    return {
+      ...face,
+      filename,
+      subset,
+      unicodeRange: latinUnicodeRange,
+      url: urlForFile(`subsets/${filename}`),
+    };
+  });
+}
+
 async function collectCdnFaces(tag) {
   const facesByFamily = new Map();
   for (const family of families) {
@@ -244,10 +329,22 @@ async function collectCdnFaces(tag) {
   return facesByFamily;
 }
 
-async function collectReleaseFaces() {
+async function collectCdnSubsetFaces(tag, subset) {
+  const fullFaces = await collectCdnFaces(tag);
+  return new Map(families.map((family) => [
+    family.key,
+    deriveSubsetFaces(
+      fullFaces.get(family.key),
+      subset,
+      (filename) => cdnUrl(tag, family, filename),
+    ),
+  ]));
+}
+
+async function collectReleaseFaces(root = releaseFontsRoot) {
   const facesByFamily = new Map();
   for (const family of families) {
-    const directory = path.join(releaseFontsRoot, family.releaseDirectory, "webfonts");
+    const directory = path.join(root, family.releaseDirectory, "webfonts");
     facesByFamily.set(
       family.key,
       await collectFaces(
@@ -258,6 +355,18 @@ async function collectReleaseFaces() {
     );
   }
   return facesByFamily;
+}
+
+async function collectReleaseSubsetFaces(root, subset) {
+  const fullFaces = await collectReleaseFaces(root);
+  return new Map(families.map((family) => [
+    family.key,
+    deriveSubsetFaces(
+      fullFaces.get(family.key),
+      subset,
+      (filename) => releaseRelativeUrl(family, filename),
+    ),
+  ]));
 }
 
 function faceDescriptors(facesByFamily) {
@@ -289,12 +398,15 @@ function renderStylesheet(selectedFamilies, faces, mode) {
     : mode === "release"
       ? "URLs resolve relative to the release root for version-agnostic CDN deployment."
       : "URLs resolve to font binaries inside the npm package.";
+  const subsetDescription = faces.every((face) => face.subset === latinSubset)
+    ? " This entry point contains the opt-in Latin web subset."
+    : "";
   const header = `/*
  * Generated by scripts/build-webfont-css.mjs for ${familyLabel}. Do not edit.
  * Licensed under the SIL Open Font License 1.1; see LICENSE.txt or OFL.txt.
  * Variable faces are preferred per style; statics are emitted only when no
  * matching variable face exists, avoiding duplicate downloads for one axis.
- * ${delivery}
+ * ${delivery}${subsetDescription}
  */`;
 
   const rules = faces.map(
@@ -303,7 +415,8 @@ function renderStylesheet(selectedFamilies, faces, mode) {
   src: url("${face.url}") format("woff2");
   font-style: ${face.style};
   font-weight: ${face.weight};
-  font-display: swap;
+  font-display: swap;${face.unicodeRange ? `
+  unicode-range: ${face.unicodeRange};` : ""}
 }`,
   );
 
@@ -354,10 +467,18 @@ async function writeOrCheck(outputs, destinationRoot, check) {
 
 let stale = false;
 if (options.cdn) {
-  const releaseFaces = await collectReleaseFaces();
+  const outputRoot = path.resolve(options.out);
+  const releaseFaces = await collectReleaseFaces(outputRoot);
+  const releaseLatinFaces = await collectReleaseSubsetFaces(
+    outputRoot,
+    latinSubset,
+  );
   stale = await writeOrCheck(
-    renderOutputs(releaseFaces, "release"),
-    path.resolve(options.out),
+    new Map([
+      ...renderOutputs(releaseFaces, "release"),
+      ...renderOutputs(releaseLatinFaces, "release", "-latin"),
+    ]),
+    outputRoot,
     options.check,
   );
 } else {
@@ -366,23 +487,42 @@ if (options.cdn) {
   );
   const tag = `v${manifest.version}`;
   const packageFaces = await collectPackageFaces();
+  const packageLatinFaces = await collectPackageSubsetFaces(latinSubset);
   const releaseFaces = await collectReleaseFaces();
+  const releaseLatinFaces = await collectReleaseSubsetFaces(
+    releaseFontsRoot,
+    latinSubset,
+  );
   const cdnFaces = await collectCdnFaces(tag);
+  const cdnLatinFaces = await collectCdnSubsetFaces(tag, latinSubset);
   assertMatchingFaces(packageFaces, releaseFaces, cdnFaces);
+  assertMatchingFaces(packageLatinFaces, releaseLatinFaces, cdnLatinFaces);
 
   stale = await writeOrCheck(
-    renderOutputs(packageFaces, "package"),
+    new Map([
+      ...renderOutputs(packageFaces, "package"),
+      ...renderOutputs(packageLatinFaces, "package", "-latin"),
+    ]),
     packageRoot,
     options.check,
   );
   stale = (await writeOrCheck(
-    renderOutputs(cdnFaces, "cdn", ".cdn"),
+    new Map([
+      ...renderOutputs(cdnFaces, "cdn", ".cdn"),
+      ...renderOutputs(cdnLatinFaces, "cdn", "-latin.cdn"),
+    ]),
     packageRoot,
     options.check,
   )) || stale;
 
   const documentationOutput = new Map([
     ["fonts.css", renderOutputs(releaseFaces, "release").get("fonts.css")],
+    [
+      "fonts-latin.css",
+      renderOutputs(releaseLatinFaces, "release", "-latin").get(
+        "fonts-latin.css",
+      ),
+    ],
   ]);
   stale = (await writeOrCheck(
     documentationOutput,

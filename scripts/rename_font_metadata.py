@@ -33,6 +33,7 @@ FAMILY_LANGUAGE_TAGS = {
     "Namche Shadow Mono": {"dlng": "Latn", "slng": "Latn,Cyrl"},
     "Namche Shadow Pixel": {"dlng": "Latn", "slng": "Latn"},
 }
+LATIN_SUBSET_LANGUAGE_TAGS = {"dlng": "Latn", "slng": "Latn"}
 VARIABLE_INSTANCE_NAME_ALIASES = {
     "Namche Shadow Mono": {
         "ExtraLight Italic": "XLight Italic",
@@ -184,6 +185,12 @@ def rewrite_opentype_metadata(font: TTFont, human: str) -> None:
         font["meta"].data.update(language_tags)
 
 
+def language_tags_for_path(path: Path, human: str) -> dict[str, str] | None:
+    if "subsets" in path.parts and path.stem.endswith("-latin"):
+        return LATIN_SUBSET_LANGUAGE_TAGS
+    return FAMILY_LANGUAGE_TAGS.get(human)
+
+
 def font_files(root: Path) -> list[Path]:
     if root.is_file():
         return [root]
@@ -196,6 +203,9 @@ def rewrite(path: Path) -> None:
     rewrite_name_table(font, human, compact)
     rewrite_cff(font, human, compact)
     rewrite_opentype_metadata(font, human)
+    language_tags = language_tags_for_path(path, human)
+    if language_tags:
+        font["meta"].data.update(language_tags)
     font.save(path, reorderTables=False)
     font.close()
 
@@ -321,7 +331,7 @@ def check(path: Path) -> list[str]:
                 f"{path}: WWS bit 8 is set, so name IDs 21/22 must be absent; "
                 f"found {wws_names!r}"
             )
-    expected_tags = FAMILY_LANGUAGE_TAGS.get(human)
+    expected_tags = language_tags_for_path(path, human)
     if expected_tags:
         actual_tags = font["meta"].data if "meta" in font else {}
         for tag, expected in expected_tags.items():

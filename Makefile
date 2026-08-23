@@ -14,6 +14,7 @@ help:
 	@echo "  make finalize-sans-statics GLYPHS_SANS_EXPORT=/path: merge native Glyphs OTF/TTF exports into the release files"
 	@echo "  make build-sans-variable GLYPHS_SANS_EXPORT=/path: build the rounded upright Sans VF from compatible Glyphs OTF exports"
 	@echo "  make refresh-sans-shaping COMPILED_SANS_BUILD=/path: refresh layout without changing approved outlines"
+	@echo "  make subset-webfonts: generate Latin WOFF2 subsets from the full release webfonts"
 	@echo "  make test:   Tests the fonts with fontspector"
 	@echo "  make proof:  Creates HTML proof documents in the proof/ directory"
 	@echo "  make images: Regenerates the README banners in .docs/img/"
@@ -97,7 +98,10 @@ refresh-sans-shaping: venv
 	. venv/bin/activate; python3 scripts/rename_font_metadata.py --check fonts/NamcheShadowSans
 	$(MAKE) copy-npm-fonts
 
-copy-npm-fonts:
+subset-webfonts:
+	$(PYTHON) scripts/subset_webfonts.py --root fonts --layout release
+
+copy-npm-fonts: subset-webfonts
 	# Clear any pre-existing build artifacts
 	rm -rf packages/next/dist/fonts
 	# Copy over the relevant font files
@@ -133,10 +137,11 @@ copy-npm-fonts:
 		mv NamcheShadowMono-ExtraBold.woff2 NamcheShadowMono-UltraBlack.woff2 && \
 		mv 'NamcheShadowMono[wght].ttf' NamcheShadowMono-Variable.ttf && \
 		mv 'NamcheShadowMono[wght].woff2' NamcheShadowMono-Variable.woff2
+	$(PYTHON) scripts/subset_webfonts.py --root packages/next/dist/fonts --layout package
 	$(PYTHON) scripts/rename_font_metadata.py --check packages/next/dist/fonts
 	node scripts/build-webfont-css.mjs
 
-create-release-zip:
+create-release-zip: subset-webfonts
 	mkdir -p namche-shadow-font/fonts
 	cp -r fonts/* namche-shadow-font/fonts/
 	node scripts/build-webfont-css.mjs --cdn --out namche-shadow-font/fonts
@@ -165,7 +170,7 @@ venv-pixel/touchfile: Makefile
 test: build.stamp fontspector-release check-language-shaping check-pixel-separators \
 	check-pixel-ligature-carets check-pixel-rupee check-pixel-shaping check-mono-hmetrics
 
-test-scripts: venv
+test-scripts: venv subset-webfonts
 	. venv/bin/activate; python3 -m unittest discover -s tests -p 'test_*.py'
 
 fontspector: build.stamp fontspector-release

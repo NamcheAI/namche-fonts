@@ -29,6 +29,21 @@ historical, transliteration, or auxiliary coverage. Adding any of these
 characters requires a separate design review rather than copying outlines from
 another font solely to silence a distributor profile.
 
+## Opt-in Latin web subset
+
+The npm package and release archive also expose `-latin` CSS and Next.js entry
+points for controlled web properties. This delivery subset does not change the
+families' full language-support contract: desktop fonts and unsuffixed WOFF2
+entry points retain the complete release coverage described above.
+
+[`sources/subsets/latin.txt`](../sources/subsets/latin.txt) is the source of
+truth for both physical WOFF2 subsetting and CSS `unicode-range` declarations.
+It is based on the `gfsubsets` 2025.11.4 Latin set and includes core Latin,
+Latin-1, combining marks needed by that set, typographic punctuation, the euro,
+and a small set of common symbols. Text outside that explicit contract uses the
+consumer's fallback font. Use the full or a future script-specific composite
+entry point for multilingual, user-generated, or terminal-like content.
+
 The upright Namche Shadow Sans variable font additionally parks `ѫ` until its
 rounded masters are interpolation-compatible. This exception does not apply to
 the Sans statics, which must continue to include the character in every weight.

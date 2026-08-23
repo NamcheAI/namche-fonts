@@ -22,6 +22,11 @@ The URLs are generated from this package’s version, so updating the package
 selects the matching immutable CDN release. Family-only entry points are
 `sans.cdn.css`, `mono.cdn.css`, and `pixel.cdn.css`.
 
+Controlled Namche properties that only need the maintained Latin web set can
+use `fonts-latin.cdn.css`, or one of `sans-latin.cdn.css`,
+`mono-latin.cdn.css`, and `pixel-latin.cdn.css`. These point to physically
+subsetted WOFF2 files and include matching `unicode-range` descriptors.
+
 Projects that do not need the npm dependency can import the versioned CDN
 stylesheet directly:
 
@@ -49,6 +54,11 @@ Or import only the families they use:
 @import "@namche/namche-shadow/pixel.css";
 ```
 
+The self-hosted Latin equivalents are `fonts-latin.css`, `sans-latin.css`,
+`mono-latin.css`, and `pixel-latin.css`. Use the unsuffixed entry points for
+user-generated or multilingual text and for Mono content that needs box
+drawing or technical symbols.
+
 This path includes the WOFF2 files in the application build and works offline
 or in air-gapped environments.
 
@@ -67,6 +77,17 @@ export default function Layout({ children }) {
   );
 }
 ```
+
+Latin-only Next.js entry points preserve the same named exports:
+
+```tsx
+import { NamcheShadowSans } from "@namche/namche-shadow/font/sans-latin";
+import { NamcheShadowMono } from "@namche/namche-shadow/font/mono-latin";
+```
+
+`font/pixel-latin` similarly exports all five Pixel variants. The subset files
+are generated from the full approved WOFF2 files during CI and release
+assembly; full desktop and webfont files remain available unchanged.
 
 The default export and `font/sans` use the rounded upright Namche Shadow Sans
 variable font with static italic weights. `font/sans-non-variable` keeps the

@@ -106,6 +106,21 @@ Import only the families an app uses to avoid loading unnecessary faces:
 @import "@namche/namche-shadow/pixel.css";
 ```
 
+Namche-controlled properties that only render the maintained Latin web set can
+use the smaller opt-in entry points:
+
+```css
+@import "@namche/namche-shadow/sans-latin.css";
+@import "@namche/namche-shadow/mono-latin.css";
+```
+
+CDN-backed equivalents end in `-latin.cdn.css`; direct releases expose
+`fonts-latin.css` and the corresponding family-only stylesheets. Keep the
+unsuffixed full entry points for user-generated text, multilingual content,
+font specimens, or Mono interfaces that need Cyrillic, box drawing, and
+technical symbols. Every Latin `@font-face` has a matching `unicode-range`,
+and its WOFF2 file is also physically subsetted.
+
 This fully self-hosted path bundles the required WOFF2 files, works offline or
 in an air-gapped deployment, and makes the downstream origin responsible for
 serving them.
@@ -119,6 +134,20 @@ entry points for automatic font optimisation:
 import { NamcheShadowSans } from "@namche/namche-shadow/font/sans";
 import { NamcheShadowMono } from "@namche/namche-shadow/font/mono";
 ```
+
+For controlled Latin-only Next.js routes, switch the import paths without
+renaming the exported font objects:
+
+```tsx
+import { NamcheShadowSans } from "@namche/namche-shadow/font/sans-latin";
+import { NamcheShadowMono } from "@namche/namche-shadow/font/mono-latin";
+```
+
+The complete desktop OTF/TTF files and existing full WOFF2 entry points remain
+unchanged. GitHub Actions generates the Latin WOFF2 files deterministically
+from those approved full webfonts for npm, release ZIP, and CDN artifacts; the
+subset binaries are build outputs rather than committed sources. The shared
+codepoint contract is [`sources/subsets/latin.txt`](sources/subsets/latin.txt).
 
 Published releases are mirrored to `https://cdn.namche.ai` through the
 infrastructure repository. A versioned URL is immutable and safe to cache
