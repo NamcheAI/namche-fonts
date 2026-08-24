@@ -87,7 +87,7 @@ Install `@namche/namche-shadow`, then import its CDN-pinned entry point:
 The stylesheet is generated from the package’s own version, so `npm update`
 repoints all font URLs to that matching immutable CDN release. The build does
 not copy font binaries to the app’s own origin. Family-only alternatives are
-`sans.cdn.css`, `mono.cdn.css`, and `pixel.cdn.css`.
+`sans.cdn.css`, `mono.cdn.css`, `pixel.cdn.css`, and `geist.cdn.css`.
 
 ### npm with self-hosting: offline and air-gapped
 
@@ -125,9 +125,32 @@ This fully self-hosted path bundles the required WOFF2 files, works offline or
 in an air-gapped deployment, and makes the downstream origin responsible for
 serving them.
 
-All CSS entry points expose `Namche Shadow Sans`, `Namche Shadow Mono`, and the
+All CSS entry points expose `Namche Shadow Sans`, `Namche Shadow Mono`, the
 five Pixel variant families (`Namche Shadow Pixel Square`, `Grid`, `Circle`,
-`Triangle`, and `Line`). Next.js users should keep using the `next/font/local`
+`Triangle`, and `Line`), and upstream `Geist`.
+
+### Upstream Geist for body text
+
+Namche applications use [Vercel's Geist](https://vercel.com/font) for body
+text, and Vercel publishes it on npm but not on a CDN. The release therefore
+bundles the upstream Geist Sans variable faces byte for byte and serves them
+from the same CDN release and npm package, so one `fonts.css` (or
+`fonts-latin.css`) import covers body text and the Namche Shadow families
+together. Family-only entry points are `geist.css`, `geist-latin.css`, and
+their `.cdn.css` equivalents.
+
+`fonts/Geist` is a verbatim copy of the binaries from the
+[`geist`](https://www.npmjs.com/package/geist) npm package pinned in
+[`sources/geist-upstream.json`](sources/geist-upstream.json); CI re-downloads
+the pinned tarball and byte-compares on every pull request. Update it with
+`make update-geist` after bumping the pin. Geist Mono and Geist Pixel are not
+bundled: Namche Shadow Mono and Pixel are outline-identical renamed
+derivatives of those same binaries. Geist is licensed under the same SIL Open
+Font License 1.1 with no Reserved Font Name; the upstream license ships as
+`Geist/LICENSE.txt` in every release. Next.js apps that want automatic font
+optimisation for Geist should keep using Vercel's own `geist` package.
+
+Next.js users should keep using the `next/font/local`
 entry points for automatic font optimisation:
 
 ```tsx

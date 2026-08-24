@@ -52,14 +52,12 @@ jobs:
             );
 
             const sharedQa = changed(
-              '.github/workflows/ci.yaml',
               'Makefile',
               'requirements-checks.txt',
               'scripts/check_language_shaping.py',
               'scripts/rename_font_metadata.py'
             );
             const sharedBuild = changed(
-              '.github/workflows/ci.yaml',
               'Makefile',
               'requirements.in',
               'requirements.txt',
@@ -147,6 +145,9 @@ jobs:
       - name: Install check dependencies
         run: python -m pip install --disable-pip-version-check -r requirements-checks.txt
 
+      - name: Check vendored Geist webfonts against the upstream pin
+        run: python scripts/vendor_geist.py --check
+
       - name: Generate Latin webfont subsets
         run: make subset-webfonts PYTHON=python
 
@@ -168,9 +169,6 @@ jobs:
       - name: Check generated webfont CSS
         working-directory: packages/next
         run: npm run check:css
-
-      - name: Assemble npm font fixtures
-        run: make copy-npm-fonts PYTHON=python
 
       - name: Smoke test packed webfont CSS
         run: node scripts/check-packed-webfont-css.mjs
@@ -390,9 +388,6 @@ jobs:
           path: |
             namche-shadow-font.zip
             packages/next/dist/fonts
-    outputs:
-      zip_name: ${{ env.ZIP_NAME }}
-
   deploy:
     name: Deploy results to GitHub Pages
     if: github.ref == 'refs/heads/main'
@@ -409,74 +404,6 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  release:
-    name: Release bundle
-    if: contains(github.ref, 'refs/tags/')
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    environment: production
-    env:
-      ZIP_NAME: ${{ needs.build.outputs.zip_name }}
-      GH_TOKEN: ${{ github.token }}
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: .nvmrc
-          package-manager-cache: false
-      - name: Use font artifacts from CI
-        uses: actions/download-artifact@v5
-        with:
-          name: ${{ env.ZIP_NAME }}
-          path: ${{ env.ZIP_NAME }}
-      - name: Copy ARTICLE.en_us.html to release directory
-        run: cp documentation/article/ARTICLE.en_us.html ${{ env.ZIP_NAME }}/ARTICLE.en_us.html
-        continue-on-error: true
-      - name: Copy OFL.txt to release directory
-        run: cp OFL.txt ${{ env.ZIP_NAME }}/OFL.txt
-      # Beside the family directories, not at the archive root: the stylesheet
-      # resolves ./<Family>/webfonts/... against its own location, so this is the
-      # only placement that works inside the downloaded archive. The CDN publisher
-      # promotes everything under fonts/ to the release root, so the served URL
-      # stays <TAG>/fonts.css.
-      - name: Generate release stylesheets beside the fonts
-        run: >-
-          node scripts/build-webfont-css.mjs --cdn
-          --out "${ZIP_NAME}/fonts"
-      - name: Verify CDN stylesheet URLs exist in the release archive
-        run: >-
-          node scripts/check-release-webfont-css.mjs
-          --release "${ZIP_NAME}/fonts"
-      - name: Remove proof/test outputs from release
-        run: rm -rf ${{ env.ZIP_NAME }}/out
-      - name: Set release file name
-        run: echo "RELEASE_ZIP_NAME=${GITHUB_REPOSITORY#*/}-${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
-      - name: Create release bundle
-        run: mv ${{ env.ZIP_NAME }} ${{ env.RELEASE_ZIP_NAME }}; zip -r ${{ env.RELEASE_ZIP_NAME }}.zip ${{ env.RELEASE_ZIP_NAME }}
-      - name: Check for release
-        run: |
-          if ! gh release view ${{ github.ref_name }}; then
-            git show -s --format=%B ${{ github.ref_name }} | tail -n +4 | gh release create ${{ github.ref_name }} -t ${{ github.ref_name }} -F -
-          fi
-      - name: Populate release
-        run: gh release upload ${{ github.ref_name }} ${{ env.RELEASE_ZIP_NAME }}.zip --clobber
-      - name: Set release live
-        run: gh release edit ${{ github.ref_name }} --draft=false
-      - name: Publish release to cdn.namche.ai
-        env:
-          GH_TOKEN: ${{ secrets.INFRA_DISPATCH_TOKEN }}
-          TAG: ${{ github.ref_name }}
-        run: |
-          gh workflow run publish-cdn-release.yml \
-            --repo NamcheAI/infra \
-            --field publisher=namche-shadow-font \
-            --field "tag=$TAG"
-
   release-npm:
     name: Release packages
     needs: build
@@ -486,6 +413,9 @@ jobs:
       contents: write
       pull-requests: write
       id-token: write
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}
+      tag: ${{ steps.release.outputs.tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -526,10 +456,58 @@ jobs:
           commit-message: 'Version Packages'
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload font zip to GitHub Release
+        id: release
         if: steps.changesets.outputs.published == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VERSION=$(jq -r '.version' packages/next/package.json)
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
           mv artifacts/namche-shadow-font.zip "namche-shadow-font-v$VERSION.zip"
           gh release upload "v$VERSION" "namche-shadow-font-v$VERSION.zip" --clobber
+
+  publish-cdn:
+    name: Publish release to CDN
+    # Changesets creates release tags with GITHUB_TOKEN, which cannot trigger
+    # another workflow run. Follow the publish result from the main run instead.
+    needs: release-npm
+    if: needs.release-npm.outputs.published == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: production
+    steps:
+      - name: Dispatch CDN publication
+        env:
+          GH_TOKEN: ${{ secrets.INFRA_DISPATCH_TOKEN }}
+          TAG: ${{ needs.release-npm.outputs.tag }}
+        run: |
+          gh workflow run publish-cdn-release.yml \
+            --repo NamcheAI/infra \
+            --field publisher=namche-shadow-font \
+            --field "tag=$TAG"
+
+      - name: Verify CDN publication
+        env:
+          TAG: ${{ needs.release-npm.outputs.tag }}
+        run: |
+          set -euo pipefail
+          index_url=https://cdn.namche.ai/fonts/namche-shadow/index.json
+          release_url="https://cdn.namche.ai/fonts/namche-shadow/$TAG"
+
+          for attempt in $(seq 1 30); do
+            current=$(curl --fail --silent --show-error \
+              "$index_url?tag=$TAG&attempt=$attempt" | jq -er '.current' 2>/dev/null || true)
+            if [ "$current" = "$TAG" ] && \
+              curl --fail --silent --show-error --output /dev/null \
+                "$release_url/manifest.json" && \
+              curl --fail --silent --show-error --output /dev/null \
+                "$release_url/NamcheShadowSans/webfonts/NamcheShadowSans-Regular.woff2"; then
+              echo "Verified CDN release $TAG"
+              exit 0
+            fi
+            sleep 5
+          done
+
+          echo "::error::CDN index did not advance to $TAG"
+          curl --fail --silent --show-error "$index_url?tag=$TAG&final=1" || true
+          exit 1
