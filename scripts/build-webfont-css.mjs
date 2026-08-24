@@ -99,6 +99,17 @@ const families = [
     familyName: "Namche Shadow Pixel",
     pixel: true,
   },
+  // Byte-faithful upstream Geist Sans variable faces, vendored by
+  // scripts/vendor_geist.py so applications can load their body font from
+  // the same release. Geist Mono and Pixel are not bundled: Namche Shadow
+  // Mono and Pixel are outline-identical renames of the same binaries.
+  {
+    key: "geist",
+    packageDirectory: "geist",
+    releaseDirectory: "Geist",
+    filenamePrefix: "Geist",
+    familyName: "Geist",
+  },
 ];
 
 const staticWeights = new Map([
@@ -391,7 +402,7 @@ function assertMatchingFaces(...faceSets) {
 function renderStylesheet(selectedFamilies, faces, mode) {
   const familyLabel =
     selectedFamilies.length === families.length
-      ? "all Namche Shadow families"
+      ? "all Namche Shadow families and Geist"
       : selectedFamilies[0].familyName;
   const delivery = mode === "cdn"
     ? "URLs are pinned to an immutable CDN release."

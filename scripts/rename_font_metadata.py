@@ -191,10 +191,20 @@ def language_tags_for_path(path: Path, human: str) -> dict[str, str] | None:
     return FAMILY_LANGUAGE_TAGS.get(human)
 
 
+# fonts/Geist and its npm copy are byte-faithful vendored upstream binaries
+# (scripts/vendor_geist.py); their Geist metadata must stay untouched.
+VENDORED_UPSTREAM_DIRECTORIES = {"Geist", "geist"}
+
+
 def font_files(root: Path) -> list[Path]:
     if root.is_file():
         return [root]
-    return sorted(path for path in root.rglob("*") if path.suffix.lower() in FONT_SUFFIXES)
+    return sorted(
+        path
+        for path in root.rglob("*")
+        if path.suffix.lower() in FONT_SUFFIXES
+        and VENDORED_UPSTREAM_DIRECTORIES.isdisjoint(path.parts)
+    )
 
 
 def rewrite(path: Path) -> None:
