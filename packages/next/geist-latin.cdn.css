@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Geist";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.3.0/Geist/webfonts/subsets/Geist-Variable-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/Geist/webfonts/subsets/Geist-Variable-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Geist";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.3.0/Geist/webfonts/subsets/Geist-Italic[wght]-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/Geist/webfonts/subsets/Geist-Italic[wght]-latin.woff2") format("woff2");
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
