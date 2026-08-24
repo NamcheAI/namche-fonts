@@ -91,9 +91,14 @@ def extract_vendored(tarball: bytes) -> dict[str, bytes]:
 
 def committed_files() -> set[str]:
     return {
-        str(path.relative_to(FAMILY_ROOT).as_posix())
+        str(relative.as_posix())
         for path in FAMILY_ROOT.rglob("*")
         if path.is_file()
+        # make subset-webfonts writes generated Latin subsets into
+        # webfonts/subsets/. They are gitignored build outputs derived from
+        # the vendored faces, not part of the upstream pin.
+        for relative in (path.relative_to(FAMILY_ROOT),)
+        if "subsets" not in relative.parts
     }
 
 
