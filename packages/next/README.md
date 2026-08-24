@@ -20,12 +20,19 @@ from the app’s own origin:
 
 The URLs are generated from this package’s version, so updating the package
 selects the matching immutable CDN release. Family-only entry points are
-`sans.cdn.css`, `mono.cdn.css`, and `pixel.cdn.css`.
+`sans.cdn.css`, `mono.cdn.css`, `pixel.cdn.css`, and `geist.cdn.css`.
 
 Controlled Namche properties that only need the maintained Latin web set can
 use `fonts-latin.cdn.css`, or one of `sans-latin.cdn.css`,
-`mono-latin.cdn.css`, and `pixel-latin.cdn.css`. These point to physically
-subsetted WOFF2 files and include matching `unicode-range` descriptors.
+`mono-latin.cdn.css`, `pixel-latin.cdn.css`, and `geist-latin.cdn.css`. These
+point to physically subsetted WOFF2 files and include matching
+`unicode-range` descriptors.
+
+The `geist` entry points expose upstream [Vercel Geist](https://vercel.com/font)
+Sans variable faces, bundled byte for byte so Namche applications can load
+their `Geist` body font from the same package or CDN release. Next.js apps
+that want automatic font optimisation for Geist should keep using Vercel's
+own [`geist`](https://www.npmjs.com/package/geist) package.
 
 Projects that do not need the npm dependency can import the versioned CDN
 stylesheet directly:

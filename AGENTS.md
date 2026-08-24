@@ -12,6 +12,15 @@ conventions.
   together with the source change that produced them.
 - `originals/geist/` is an immutable copy of the upstream Geist source. Never
   edit, rename, or regenerate files there.
+- `fonts/Geist/` is a committed byte-faithful copy of the upstream Geist Sans
+  variable webfonts from the npm package pinned in
+  `sources/geist-upstream.json`, bundled so applications can serve their Geist
+  body font from the same CDN release and npm package. Never rename its
+  metadata or edit its binaries; refresh it only with `make update-geist`
+  after bumping the pin, and rely on `scripts/vendor_geist.py --check` (CI)
+  to enforce the byte match. Geist Mono and Pixel are deliberately not
+  bundled: Namche Shadow Mono and Pixel are outline-identical renames of the
+  same binaries.
 - Preserve the SIL Open Font License, the original Geist/Vercel copyright and
   author credits, and the Namche attribution already present in source and
   binary metadata.
