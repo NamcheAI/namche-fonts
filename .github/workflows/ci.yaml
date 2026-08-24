@@ -481,8 +481,16 @@ jobs:
           GH_TOKEN: ${{ secrets.INFRA_DISPATCH_TOKEN }}
           TAG: ${{ needs.release-npm.outputs.tag }}
         run: |
+          # --ref is required, not cosmetic. Without it `gh` first resolves
+          # infra's default branch over GraphQL (repository.defaultBranchRef),
+          # which needs Contents: read. INFRA_DISPATCH_TOKEN is deliberately
+          # scoped to Actions read/write and nothing else, so that lookup fails
+          # with "Resource not accessible by personal access token" and the
+          # dispatch never happens. Naming the ref skips the lookup; widening
+          # the shared token would be the wrong fix.
           gh workflow run publish-cdn-release.yml \
             --repo NamcheAI/infra \
+            --ref main \
             --field publisher=namche-shadow-font \
             --field "tag=$TAG"
 
