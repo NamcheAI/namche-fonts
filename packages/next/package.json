@@ -1,6 +1,6 @@
 {
   "name": "@namche/namche-shadow",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Namche Shadow Sans, Mono, and Pixel for Next.js and framework-agnostic CSS.",
   "main": "./dist/font.js",
   "type": "module",
@@ -40,6 +40,8 @@
     "mono-latin.css",
     "pixel.css",
     "pixel-latin.css",
+    "geist.css",
+    "geist-latin.css",
     "fonts.cdn.css",
     "fonts-latin.cdn.css",
     "sans.cdn.css",
@@ -47,7 +49,9 @@
     "mono.cdn.css",
     "mono-latin.cdn.css",
     "pixel.cdn.css",
-    "pixel-latin.cdn.css"
+    "pixel-latin.cdn.css",
+    "geist.cdn.css",
+    "geist-latin.cdn.css"
   ],
   "sideEffects": [
     "**/*.css"
@@ -97,6 +101,8 @@
     "./mono-latin.css": "./mono-latin.css",
     "./pixel.css": "./pixel.css",
     "./pixel-latin.css": "./pixel-latin.css",
+    "./geist.css": "./geist.css",
+    "./geist-latin.css": "./geist-latin.css",
     "./fonts.cdn.css": "./fonts.cdn.css",
     "./fonts-latin.cdn.css": "./fonts-latin.cdn.css",
     "./sans.cdn.css": "./sans.cdn.css",
@@ -105,6 +111,8 @@
     "./mono-latin.cdn.css": "./mono-latin.cdn.css",
     "./pixel.cdn.css": "./pixel.cdn.css",
     "./pixel-latin.cdn.css": "./pixel-latin.cdn.css",
+    "./geist.cdn.css": "./geist.cdn.css",
+    "./geist-latin.cdn.css": "./geist-latin.cdn.css",
     "./package.json": "./package.json"
   },
   "license": "OFL-1.1",
