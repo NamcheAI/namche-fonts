@@ -79,7 +79,7 @@ commandlines==0.4.1
     # via ufolint
 compreffor==0.6.0
     # via ufo2ft
-cryptography==46.0.4
+cryptography==50.0.0
     # via pyjwt
 defcon[lxml,pens]==0.12.2
     # via
@@ -91,7 +91,7 @@ defcon[lxml,pens]==0.12.2
     #   ufoprocessor
 dehinter==4.0.0
     # via fontbakery
-diffenator2==0.4.9
+diffenator2==0.5.0
     # via
     #   -r requirements.in
     #   gftools
@@ -112,7 +112,7 @@ fontbakery[beautifulsoup4,googlefonts,googlefontsalwayslatest,shaperglot]==1.1.0
     # via gftools
 fontfeatures==1.9.0
     # via gftools
-fontmake[json]==3.11.1
+fontmake[json]==3.12.1
     # via
     #   -r requirements.in
     #   gftools
@@ -180,7 +180,7 @@ gfsubsets==2025.11.4
     # via
     #   fontbakery
     #   gftools
-gftools[qa]==0.9.99
+gftools[qa]==0.9.97
     # via -r requirements.in
 gitdb==4.0.12
     # via gitpython
@@ -301,13 +301,13 @@ pyclipper==1.4.0
     #   booleanoperations
 pycparser==3.0
     # via cffi
-pygit2==1.18.2
+pygit2==1.15.0
     # via gftools
 pygithub==2.8.1
     # via gftools
 pygments==2.19.2
     # via rich
-pyjwt[crypto]==2.10.1
+pyjwt[crypto]==2.13.0
     # via pygithub
 pynacl==1.6.2
     # via pygithub
@@ -347,7 +347,7 @@ ruamel-yaml==0.19.1
     # via gftools
 selenium==4.40.0
     # via diffenator2
-sh==2.2.2
+sh==2.4.0
     # via -r requirements.in
 shaperglot==1.2.0
     # via fontbakery
@@ -418,6 +418,7 @@ typing-extensions==4.15.0
     #   exceptiongroup
     #   fontbakery
     #   pygithub
+    #   pyjwt
     #   selenium
     #   trio-typing
 ufo2ft[cffsubr,compreffor]==3.6.9
