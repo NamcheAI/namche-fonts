@@ -27,20 +27,24 @@ const localCssFiles = [
   "sans.css",
   "mono.css",
   "pixel.css",
+  "geist.css",
   "fonts-latin.css",
   "sans-latin.css",
   "mono-latin.css",
   "pixel-latin.css",
+  "geist-latin.css",
 ];
 const cdnCssFiles = [
   "fonts.cdn.css",
   "sans.cdn.css",
   "mono.cdn.css",
   "pixel.cdn.css",
+  "geist.cdn.css",
   "fonts-latin.cdn.css",
   "sans-latin.cdn.css",
   "mono-latin.cdn.css",
   "pixel-latin.cdn.css",
+  "geist-latin.cdn.css",
 ];
 const existingExports = new Map([
   ["./font", { default: "./dist/font.js", types: "./dist/font.d.ts" }],

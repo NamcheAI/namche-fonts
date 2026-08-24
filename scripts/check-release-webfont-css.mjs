@@ -9,10 +9,12 @@ const cssFiles = [
   "sans.css",
   "mono.css",
   "pixel.css",
+  "geist.css",
   "fonts-latin.css",
   "sans-latin.css",
   "mono-latin.css",
   "pixel-latin.css",
+  "geist-latin.css",
 ];
 
 // One directory, deliberately. Separate --styles and --fonts roots let this

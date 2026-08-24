@@ -15,6 +15,7 @@ help:
 	@echo "  make build-sans-variable GLYPHS_SANS_EXPORT=/path: build the rounded upright Sans VF from compatible Glyphs OTF exports"
 	@echo "  make refresh-sans-shaping COMPILED_SANS_BUILD=/path: refresh layout without changing approved outlines"
 	@echo "  make subset-webfonts: generate Latin WOFF2 subsets from the full release webfonts"
+	@echo "  make update-geist: refresh the vendored upstream Geist webfonts from sources/geist-upstream.json"
 	@echo "  make test:   Tests the fonts with fontspector"
 	@echo "  make proof:  Creates HTML proof documents in the proof/ directory"
 	@echo "  make images: Regenerates the README banners in .docs/img/"
@@ -44,6 +45,9 @@ build.stamp: venv venv-pixel sources/config-NamcheShadowSans.yaml \
 	# to the repository. Restore them after the clean build so release and npm
 	# artifacts use the approved outlines.
 	git checkout -- fonts/NamcheShadowSans/otf fonts/NamcheShadowSans/ttf fonts/NamcheShadowSans/webfonts fonts/NamcheShadowSans/variable
+	# fonts/Geist is a committed byte-faithful copy of the upstream Vercel
+	# binaries (scripts/vendor_geist.py); restore it after the clean build.
+	git checkout -- fonts/Geist
 	. venv/bin/activate; python3 scripts/rename_font_metadata.py --check fonts
 	. venv/bin/activate; python3 scripts/check_sans_variable.py
 	$(MAKE) copy-npm-fonts
@@ -101,11 +105,21 @@ refresh-sans-shaping: venv
 subset-webfonts:
 	$(PYTHON) scripts/subset_webfonts.py --root fonts --layout release
 
+# fonts/Geist mirrors the npm package pinned in sources/geist-upstream.json.
+# update-geist refreshes the committed copy after a version bump; check-geist
+# re-downloads the pinned tarball and byte-compares the committed files.
+update-geist:
+	python3 scripts/vendor_geist.py
+	$(MAKE) copy-npm-fonts
+
+check-geist:
+	python3 scripts/vendor_geist.py --check
+
 copy-npm-fonts: subset-webfonts
 	# Clear any pre-existing build artifacts
 	rm -rf packages/next/dist/fonts
 	# Copy over the relevant font files
-	mkdir -p packages/next/dist/fonts/namche-shadow-sans packages/next/dist/fonts/namche-shadow-mono packages/next/dist/fonts/namche-shadow-pixel
+	mkdir -p packages/next/dist/fonts/namche-shadow-sans packages/next/dist/fonts/namche-shadow-mono packages/next/dist/fonts/namche-shadow-pixel packages/next/dist/fonts/geist
 	cp fonts/NamcheShadowSans/ttf/*.ttf packages/next/dist/fonts/namche-shadow-sans/
 	cp fonts/NamcheShadowSans/webfonts/*.woff2 packages/next/dist/fonts/namche-shadow-sans/
 	cp fonts/NamcheShadowSans/variable/*.ttf packages/next/dist/fonts/namche-shadow-sans/
@@ -113,6 +127,9 @@ copy-npm-fonts: subset-webfonts
 	cp fonts/NamcheShadowMono/webfonts/*.woff2 packages/next/dist/fonts/namche-shadow-mono/
 	cp fonts/NamcheShadowMono/variable/*.ttf packages/next/dist/fonts/namche-shadow-mono/
 	cp fonts/NamcheShadowPixel/webfonts/*.woff2 packages/next/dist/fonts/namche-shadow-pixel/
+	# Vendored upstream Geist keeps its exact file names and metadata.
+	cp fonts/Geist/webfonts/*.woff2 packages/next/dist/fonts/geist/
+	cp fonts/Geist/LICENSE.txt packages/next/dist/fonts/geist/
 	# Apparently there is a naming mismatch between the font files for npm distribution and the actual font files,
 	# so we need to rename them to the correct names.
 	cd packages/next/dist/fonts/namche-shadow-sans && \
