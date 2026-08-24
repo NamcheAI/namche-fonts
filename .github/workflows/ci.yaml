@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Classify changed files
         id: changes
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             let names = [];
@@ -125,18 +125,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           package-manager-cache: false
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: pip
@@ -246,10 +246,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: pip
@@ -280,10 +280,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: pip
@@ -336,11 +336,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Set up Python 3.11
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
           cache: pip
@@ -371,7 +371,7 @@ jobs:
         run: cp scripts/index.html out/index.html
       - name: Collect deployment assets
         if: github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./out
       - name: Archive artifacts
@@ -402,7 +402,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
   release-npm:
     name: Release packages
@@ -418,17 +418,17 @@ jobs:
       tag: ${{ steps.release.outputs.tag }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Download npm artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: namche-shadow-font-fonts-npm
           path: ./artifacts
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           package-manager-cache: false
@@ -447,7 +447,7 @@ jobs:
           mv artifacts/packages/next/dist/fonts packages/next/dist/fonts
       - name: Create Release Pull Request or Publish
         id: changesets
-        uses: changesets/action@v2.1.0
+        uses: changesets/action@v2.1.1
         with:
           publish-script: pnpm run release
           version-script: pnpm run version
