@@ -560,7 +560,7 @@ value = "BTLG Holding GmbH; based on work by Vercel, Andrés Briganti, and Guido
 },
 {
 key = manufacturerURL;
-value = "https://github.com/NamcheAI/namche-shadow-font";
+value = "https://github.com/NamcheAI/namche-fonts";
 },
 {
 key = vendorID;
