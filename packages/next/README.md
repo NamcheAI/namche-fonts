@@ -96,11 +96,12 @@ import { NamcheShadowMono } from "@namche/namche-shadow/font/mono-latin";
 are generated from the full approved WOFF2 files during CI and release
 assembly; full desktop and webfont files remain available unchanged.
 
-The default export and `font/sans` use the rounded upright Namche Shadow Sans
-variable font with static italic weights. `font/sans-non-variable` keeps the
-static upright and italic files. The upright Thin through Black statics remain
-Michael's approved multi-tier RoundCorner references. The Mono exports
-currently provide upright styles.
+The default export and `font/sans` use the rounded Namche Shadow Sans
+variable fonts — upright and italic — with static fallbacks, and
+`font/sans-latin` serves the two variable Latin subsets.
+`font/sans-non-variable` keeps the static upright and italic files. The Thin
+through Black statics remain Michael's approved multi-tier RoundCorner
+references. The Mono exports currently provide upright styles.
 
 Pixel variants are exported from `@namche/namche-shadow/font/pixel`:
 

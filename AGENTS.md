@@ -58,10 +58,19 @@ conventions.
 - Build the upright variable font only from native Glyphs OTF exports whose
   seven RoundCorner filters use the `compatible` option. Run
   `make build-sans-variable GLYPHS_SANS_EXPORT=/path/to/export`; the builder
-  preserves the post-rounding curves, makes the remaining segmentation
-  compatible, converts all masters to TrueType curves together, and verifies
-  every named instance against its rounded master. Never enable the sharp
-  gftools/Glyphs VF as a substitute.
+  preserves the post-rounding curves, restores per-weight contour
+  correspondence, makes the remaining segmentation compatible, converts all
+  masters to TrueType curves together, and verifies every named instance
+  against its rounded master. Never enable the sharp gftools/Glyphs VF as a
+  substitute.
+- Build the italic variable font with
+  `make build-sans-italic-variable GLYPHS_SANS_EXPORT=fonts/NamcheShadowSans`:
+  the committed italic OTF statics carry the release outlines, so they are the
+  canonical master input. The italic VF keeps the full STAT-matching instance
+  names for the Google Fonts submission; three combined names intentionally
+  exceed the 32-character Windows/Word limit (see
+  `documentation/FONTSPECTOR.md`). Rebuild the VF after any
+  `make refresh-sans-italic-outlines` run.
 - Keep `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` parked from the
   variable build until their rounded masters match. They must remain in every
   static.
