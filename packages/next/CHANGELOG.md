@@ -1,5 +1,29 @@
 # @namche/namche-shadow
 
+## 0.5.0
+
+### Minor Changes
+
+- 9b739dd: Add the Namche Shadow Sans italic variable font
+  (`NamcheShadowSans-Italic[wght]`, wght 100–900) to the bundled fonts and CSS;
+  variable faces are now preferred for both Sans styles, and `font/sans-latin`
+  serves the two variable Latin subsets.
+
+### Patch Changes
+
+- 9e8e959: Restore the capital `A` counter in every Namche Shadow Sans italic. A boolean
+  pass in the italic Shadow treatment mistook the letter's crossbar for a counter
+  and subtracted it, so the glyph shipped as a single contour and rendered as a
+  filled wedge with a hairline notch in all nine italic weights, in their
+  webfonts, and in the `Á À Â Ä Å Ã` composites built from it. The italic `A`
+  masters are rebuilt with the crossbar unioned and its four inner corners
+  rounded like the upright; no other glyph, metric, or metadata changes.
+- f710cc1: Follow the repository rename to `NamcheAI/namche-fonts`: package metadata,
+  documentation links, and the shipped `LICENSE.txt` now point at the new
+  repository, and the bundled fonts carry the canonical project-authors
+  copyright ("Copyright 2026 The Namche Shadow Project Authors" with the
+  original Geist statement retained).
+
 ## 0.4.0
 
 ### Minor Changes

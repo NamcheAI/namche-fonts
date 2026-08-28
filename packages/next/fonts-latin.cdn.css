@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowSans/webfonts/subsets/NamcheShadowSans[wght]-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowSans/webfonts/subsets/NamcheShadowSans[wght]-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Namche Shadow Sans";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowSans/webfonts/subsets/NamcheShadowSans-Italic[wght]-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowSans/webfonts/subsets/NamcheShadowSans-Italic[wght]-latin.woff2") format("woff2");
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
   font-family: "Namche Shadow Mono";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowMono/webfonts/subsets/NamcheShadowMono[wght]-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowMono/webfonts/subsets/NamcheShadowMono[wght]-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -35,7 +35,7 @@
 
 @font-face {
   font-family: "Namche Shadow Mono";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowMono/webfonts/subsets/NamcheShadowMono-Italic[wght]-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowMono/webfonts/subsets/NamcheShadowMono-Italic[wght]-latin.woff2") format("woff2");
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
@@ -44,7 +44,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Circle";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Circle-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Circle-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -53,7 +53,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Grid";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Grid-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Grid-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -62,7 +62,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Line";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Line-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Line-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -71,7 +71,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Square";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Square-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Square-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -80,7 +80,7 @@
 
 @font-face {
   font-family: "Namche Shadow Pixel Triangle";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Triangle-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShadowPixel/webfonts/subsets/NamcheShadowPixel-Triangle-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 500;
   font-display: swap;
@@ -89,7 +89,7 @@
 
 @font-face {
   font-family: "Geist";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/Geist/webfonts/subsets/Geist-Variable-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/Geist/webfonts/subsets/Geist-Variable-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
@@ -98,7 +98,7 @@
 
 @font-face {
   font-family: "Geist";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.4.0/Geist/webfonts/subsets/Geist-Italic[wght]-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/Geist/webfonts/subsets/Geist-Italic[wght]-latin.woff2") format("woff2");
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
