@@ -65,6 +65,18 @@ conventions.
 - Keep `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` parked from the
   variable build until their rounded masters match. They must remain in every
   static.
+- The italic package is the one Sans exception to the Glyphs-export rule: it
+  carries no RoundCorner filters, so its Shadow treatment lives in the masters
+  and `gftools builder sources/config-NamcheShadowSans-Italic.yaml` reproduces
+  the committed italic outlines exactly. Land an italic source correction with
+  `make refresh-sans-italic-outlines`; `scripts/refresh_sans_italic_outlines.py`
+  replaces only the glyph outlines that changed, refuses a metric change, and
+  leaves metadata, layout, and hinting byte-identical. Never rebuild the italic
+  release wholesale — that also rewrites metadata the release already carries.
+- `scripts/round_inner_corners.py` bakes those italic masters. Its defaults have
+  since been retuned for upright work; pass `--italic-recipe` to reproduce the
+  profile the shipped italics were baked with. `make check-sans-counters` blocks
+  the boolean-topology regression that collapsed the italic `A` counter (#78).
 - Namche Shadow Mono remains an outline-identical renamed Geist derivative.
   Pixel may diverge only through a focused issue and reviewed design proof;
   U+20B9 **₹** is the first approved addition and follows the inherited Geist
