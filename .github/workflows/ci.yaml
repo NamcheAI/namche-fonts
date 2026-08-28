@@ -77,6 +77,7 @@ jobs:
               'scripts/check_sans_counters.py',
               'scripts/check_sans_variable.py',
               'scripts/finalize_glyphs_statics.py',
+              'scripts/proof_sans_variable.py',
               'scripts/refresh_sans_italic_outlines.py',
               'scripts/refresh_shaping_tables.py'
             );

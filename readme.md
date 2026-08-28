@@ -189,12 +189,12 @@ font repository never holds origin or SSH credentials.
 
 ### Static and variable fonts
 
-Namche Shadow Sans ships static Thin through Black weights plus an upright
-`wght` variable font. The approved static exports remain the visual source of
-truth. The default and `font/sans` npm entry points use the rounded upright VF
-with static italics; `font/sans-non-variable` uses statics throughout. Five
-glyphs whose rounded masters still differ are parked only from the VF and
-remain present in every static.
+Namche Shadow Sans ships static Thin through Black weights plus a `wght`
+variable font pair, upright and italic. The approved static exports remain
+the visual source of truth. The default and `font/sans` npm entry points use
+both rounded VFs with static fallbacks; `font/sans-non-variable` uses statics
+throughout. Five glyphs whose rounded masters still differ are parked only
+from the VFs and remain present in every static.
 
 Namche Shadow Mono and Namche Shadow Pixel retain their upstream-derived
 variable builds.

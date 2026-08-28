@@ -24,10 +24,13 @@ listed in [`LANGUAGE_SUPPORT.md`](LANGUAGE_SUPPORT.md).
 | Sans and Mono statics | `repo/dirname_matches_nameid_1` | The Google Fonts profile interprets the distribution folder `ttf/` as a Google Fonts family directory. This repository deliberately uses the Geist-style `fonts/<Family>/ttf/` layout, so this is a profile/layout mismatch. |
 | Mono italic variable | `googlefonts/fvar_instances` | The three Word-compatible named-instance aliases intentionally differ from the full STAT weight labels. This satisfies the universal 32-character family-and-style limit while preserving the public typographic names, but it would block a Google Fonts submission. |
 | Pixel statics | `googlefonts/canonical_filename`, `googlefonts/font_names` | Correct WWS IDs 21/22 expose Circle, Grid, Line, Square, and Triangle to the Google Fonts profile as separate Regular-only families. That profile consequently expects filenames/full/PostScript names such as `NamcheShadowPixelCircle-Regular`, conflicting with the intentionally retained public typographic family/style model and release filenames. This is expected for the direct/npm distribution but would need a separate naming model for a Google Fonts submission. |
+| Sans italic variable | `name/family_and_style_max_length` | The full STAT-matching instance names `ExtraLight Italic`, `SemiBold Italic`, and `ExtraBold Italic` push the combined family-and-style names past 32 characters (see [Naming compatibility](#naming-compatibility)). This is the deliberate inverse of the Mono alias tradeoff: Google Fonts' `fvar_instances` requires the full names, so this FAIL is accepted and must be raised explicitly during the Google Fonts submission. |
 
-Namche Shadow Sans VF currently has **no Fontspector failures**. Its 26 warning
-results are the existing outline, glyph-reachability, language-shaping, WWS,
-vendor-ID, and sidebearing groups described below, plus:
+The Namche Shadow Sans **upright** VF has no Fontspector failures; the italic
+VF's single failure is the accepted naming tradeoff in the table above. The
+upright's 26 warning results are the existing outline, glyph-reachability,
+language-shaping, WWS, vendor-ID, and sidebearing groups described below,
+plus:
 
 - `file_size`: the unsubsetted 970-glyph TTF is 1.2 MB (the shipped WOFF2 is
   substantially smaller).
@@ -132,9 +135,17 @@ and npm files. The proof is maintained at
 For Sans, the release-specific acceptance checks are stronger than the generic
 profile: every static weight must contain the complete seven-tier RoundCorner
 result, `H` must retain the expected four rounded inner segments, the five
-tier-7 glyphs must remain in all statics and stay parked from the VF, and no
+tier-7 glyphs must remain in all statics and stay parked from the VFs, and no
 static may contain an `fvar` table. Run `scripts/check_sans_variable.py` and
-review `documentation/proofs/sans-variable-named-instances.png` for the VF.
+review `documentation/proofs/sans-variable-named-instances.png` and
+`documentation/proofs/sans-italic-variable-named-instances.png` for the VFs.
+The script validates both variable fonts — upright and
+`NamcheShadowSans-Italic[wght]` — against their static masters, verifies
+per-weight contour correspondence geometrically, and pins
+intermediate-weight digests. Outline distances sample the union'd OTF
+statics: the italic TTF statics keep overlapping composites, and sampling
+those directly would measure overlap depth rather than shape difference (the
+representations render identically).
 
 ## Naming compatibility
 
@@ -146,6 +157,16 @@ Google Fonts requires `fvar` instance names to match those STAT labels exactly,
 so its distributor-specific `googlefonts/fvar_instances` check necessarily
 fails for this compatibility choice. The universal name-length check and the
 Google Fonts family-name consistency check both pass.
+
+The Sans italic variable font makes the opposite choice: it keeps the full
+STAT-matching instance names (`Thin Italic` … `Black Italic`) because Namche
+Shadow Sans is prepared for a Google Fonts submission and
+`googlefonts/fvar_instances` must pass. Three combined names (`ExtraLight
+Italic`, `SemiBold Italic`, `ExtraBold Italic`) therefore exceed the
+32-character Windows/Word limit; `rename_font_metadata.py` exempts exactly
+those three combined names from its hard name-length check, and the resulting
+`name/family_and_style_max_length` FAIL is an accepted baseline recorded in
+the Current failures table above.
 
 Some Sans and Mono italic static PostScript names exceed Fontspector's
 recommended 27-character legacy guidance. They remain below the OpenType

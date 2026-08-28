@@ -41,6 +41,16 @@ VARIABLE_INSTANCE_NAME_ALIASES = {
         "ExtraBold Italic": "XBold Italic",
     },
 }
+# Google Fonts requires fvar instance names to match the STAT labels exactly,
+# so the Sans italic VF keeps its full style names and these three combined
+# names exceed the 32-character Windows/Word limit. Mono instead keeps the
+# aliases above for Word compatibility, which is why it is not submitted to
+# Google Fonts. Every other Sans name stays under the hard check.
+WORD_NAME_LIMIT_EXEMPT_NAMES = {
+    "Namche Shadow Sans ExtraLight Italic",
+    "Namche Shadow Sans SemiBold Italic",
+    "Namche Shadow Sans ExtraBold Italic",
+}
 PROJECT_URL = "https://github.com/NamcheAI/namche-fonts"
 NAMCHE_COPYRIGHT = f"Copyright 2026 The Namche Shadow Project Authors ({PROJECT_URL})"
 GEIST_COPYRIGHT = (
@@ -253,7 +263,7 @@ def check(path: Path) -> list[str]:
             style = font["name"].getDebugName(instance.subfamilyNameID) or ""
             instance_styles.add(style)
             combined = f"{family} {style}"
-            if len(combined) > 32:
+            if len(combined) > 32 and combined not in WORD_NAME_LIMIT_EXEMPT_NAMES:
                 errors.append(
                     f"{path}: variable instance name exceeds 32 characters: "
                     f"{combined!r}"
