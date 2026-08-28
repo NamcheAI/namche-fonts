@@ -13,12 +13,12 @@
     "release": "changeset publish"
   },
   "bugs": {
-    "url": "https://github.com/NamcheAI/namche-shadow-font/issues"
+    "url": "https://github.com/NamcheAI/namche-fonts/issues"
   },
-  "homepage": "https://github.com/NamcheAI/namche-shadow-font",
+  "homepage": "https://github.com/NamcheAI/namche-fonts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NamcheAI/namche-shadow-font.git",
+    "url": "git+https://github.com/NamcheAI/namche-fonts.git",
     "directory": "packages/next"
   },
   "keywords": [

@@ -27,8 +27,8 @@ ehthumbs.db
 Thumbs.db
 
 # Font build artifacts #
-namche-shadow-font/
-namche-shadow-font*.zip
+namche-fonts/
+namche-fonts*.zip
 fonts/*/webfonts/subsets/
 packages/next/dist/fonts/
 artifacts/

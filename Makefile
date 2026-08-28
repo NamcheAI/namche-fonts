@@ -34,7 +34,7 @@ build.stamp: venv venv-pixel sources/config-NamcheShadowSans.yaml \
 	sources/compile-NamcheShadowPixelStatics.yaml \
 	$(PIXEL_SOURCES) $(SOURCES)
 	$(MAKE) check-source-copies
-	rm -rf fonts namche-shadow-font namche-shadow-font.zip
+	rm -rf fonts namche-fonts namche-fonts.zip
 	$(MAKE) build-mono
 	$(MAKE) build-pixel
 	# Namche Shadow Sans statics are native Glyphs exports: gftools does not run
@@ -159,15 +159,15 @@ copy-npm-fonts: subset-webfonts
 	node scripts/build-webfont-css.mjs
 
 create-release-zip: subset-webfonts
-	mkdir -p namche-shadow-font/fonts
-	cp -r fonts/* namche-shadow-font/fonts/
-	node scripts/build-webfont-css.mjs --cdn --out namche-shadow-font/fonts
-	node scripts/check-release-webfont-css.mjs --release namche-shadow-font/fonts
-	cp documentation/DESCRIPTION.en_us.html namche-shadow-font/ || true
-	cp documentation/article/ARTICLE.en_us.html namche-shadow-font/ || true
-	cp OFL.txt namche-shadow-font/
-	zip -r namche-shadow-font.zip namche-shadow-font
-	rm -rf namche-shadow-font
+	mkdir -p namche-fonts/fonts
+	cp -r fonts/* namche-fonts/fonts/
+	node scripts/build-webfont-css.mjs --cdn --out namche-fonts/fonts
+	node scripts/check-release-webfont-css.mjs --release namche-fonts/fonts
+	cp documentation/DESCRIPTION.en_us.html namche-fonts/ || true
+	cp documentation/article/ARTICLE.en_us.html namche-fonts/ || true
+	cp OFL.txt namche-fonts/
+	zip -r namche-fonts.zip namche-fonts
+	rm -rf namche-fonts
 
 venv/touchfile: requirements.txt
 	test -d venv || python3 -m venv venv

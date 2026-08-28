@@ -1,7 +1,7 @@
 # Namche Shadow Font development rules
 
 This repository is the source, build, review, and release home for
-`NamcheAI/namche-shadow-font`. It follows the Vercel Geist repository layout,
+`NamcheAI/namche-fonts`. It follows the Vercel Geist repository layout,
 but Namche-specific source and release decisions take precedence over upstream
 conventions.
 

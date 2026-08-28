@@ -2336,7 +2336,7 @@ key = copyrights;
 values = (
 {
 language = dflt;
-value = "Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font.git). Copyright 2026 BTLG Holding GmbH, in collaboration with Ruhm GmbH. Namche Shadow Sans design by Michael Marte for Ruhm GmbH (https://ruhmetc.com).";
+value = "Copyright 2026 The Namche Shadow Project Authors (https://github.com/NamcheAI/namche-fonts). Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font)";
 }
 );
 },
