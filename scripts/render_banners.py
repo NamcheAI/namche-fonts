@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 import subprocess
 import tempfile
@@ -13,6 +14,12 @@ from PIL import Image, ImageDraw, ImageFont
 
 WIDTH = 2048
 HEIGHT = 2208
+
+
+def read_package_version() -> str:
+    repo_root = Path(__file__).resolve().parent.parent
+    package = json.loads((repo_root / "packages/next/package.json").read_text())
+    return package["version"]
 
 
 def fit_font(path: Path, text: str, max_width: int, size: int) -> ImageFont.FreeTypeFont:
@@ -37,7 +44,7 @@ def render_mark(mark_svg: Path, color: str, size: int) -> Image.Image:
         return Image.open(target).convert("RGBA")
 
 
-def draw_banner(font_dir: Path, mark_svg: Path, output: Path, dark: bool) -> None:
+def draw_banner(font_dir: Path, mark_svg: Path, output: Path, dark: bool, version: str) -> None:
     regular_path = font_dir / "NamcheShadowSans-Regular.ttf"
     black_path = font_dir / "NamcheShadowSans-Black.ttf"
     mono_path = Path("fonts/NamcheShadowMono/ttf/NamcheShadowMono-Medium.ttf")
@@ -92,7 +99,7 @@ def draw_banner(font_dir: Path, mark_svg: Path, output: Path, dark: bool) -> Non
     small = ImageFont.truetype(mono_path, 26)
     draw.text((96, 2040), "OWNED BY BTLG HOLDING GMBH", font=small, fill=colors["muted"])
     draw.text((96, 2085), "DESIGNED BY MICHAEL MARTE FOR RUHM ETC.", font=small, fill=colors["muted"])
-    draw.text((1475, 2085), "OFL-1.1 / v0.1.0", font=small, fill=colors["muted"])
+    draw.text((1475, 2085), f"OFL-1.1 / v{version}", font=small, fill=colors["muted"])
 
     output.parent.mkdir(parents=True, exist_ok=True)
     image.save(output, optimize=True)
@@ -102,10 +109,23 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", type=Path, default=Path(".docs/img"))
     args = parser.parse_args()
+    version = read_package_version()
     font_dir = Path("fonts/NamcheShadowSans/ttf")
     mark_svg = Path(".docs/img/namche-mark.svg")
-    draw_banner(font_dir, mark_svg, args.output_dir / "namche-shadow-banner--light.png", dark=False)
-    draw_banner(font_dir, mark_svg, args.output_dir / "namche-shadow-banner--dark.png", dark=True)
+    draw_banner(
+        font_dir,
+        mark_svg,
+        args.output_dir / "namche-shadow-banner--light.png",
+        dark=False,
+        version=version,
+    )
+    draw_banner(
+        font_dir,
+        mark_svg,
+        args.output_dir / "namche-shadow-banner--dark.png",
+        dark=True,
+        version=version,
+    )
 
 
 if __name__ == "__main__":
