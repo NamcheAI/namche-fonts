@@ -26,12 +26,14 @@ from __future__ import annotations
 import argparse
 import sys
 from pathlib import Path
-from typing import Dict, List, Sequence
+from typing import Dict, List, Sequence, Tuple
 
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.ttLib import TTFont
 
 ITALIC_SUFFIX = "Italic"
+# Font-level tables a ttfautohint glyph program depends on.
+HINTING_TABLES = ("cvt ", "fpgm", "prep")
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = REPO_ROOT / "fonts" / "NamcheShadowSans"
 
@@ -90,9 +92,33 @@ CFF_IDENTITY_KEYS = (
 )
 
 
-def charstrings(font: TTFont):
+def cff_bytecode(font: TTFont) -> Tuple[Dict[str, bytes], List[bytes], List[bytes]]:
+    """Raw CFF bytecode: charstrings, global subrs, local subrs.
+
+    This has to run before anything draws a glyph. Drawing decompiles the
+    charstring, and fontTools' ``setProgram`` clears ``bytecode`` on the way —
+    so a comparison made afterwards is ``None != None`` for every glyph and
+    silently passes. The explicit ``None`` check below keeps that from
+    happening again if the call order ever moves.
+    """
     cff = font["CFF "].cff
-    return cff[cff.fontNames[0]].CharStrings
+    top = cff[cff.fontNames[0]]
+
+    def raw(charstring, what: str) -> bytes:
+        if charstring.bytecode is None:
+            raise SystemExit(
+                f"{font.reader.file.name}: {what} was already decompiled; "
+                "capture CFF bytecode before drawing any glyph"
+            )
+        return charstring.bytecode
+
+    glyphs = {
+        name: raw(top.CharStrings[name], f"charstring {name}")
+        for name in font.getGlyphOrder()
+    }
+    global_subrs = [raw(s, "global subr") for s in cff.GlobalSubrs]
+    local_subrs = [raw(s, "local subr") for s in getattr(top.Private, "Subrs", [])]
+    return glyphs, global_subrs, local_subrs
 
 
 def preserve_cff_identity(release: TTFont, compiled: TTFont) -> List[str]:
@@ -122,32 +148,47 @@ def preserve_cff_identity(release: TTFont, compiled: TTFont) -> List[str]:
 
 
 def check_untouched_charstrings(
-    release: TTFont, compiled: TTFont, changed: Sequence[str]
+    release_bytecode, compiled_bytecode, changed: Sequence[str]
 ) -> None:
     """Every glyph outside ``changed`` must already be byte-identical.
 
     CFF charstrings share subroutines, so the table has to move as a unit
     rather than glyph by glyph. That is only as narrow as a per-glyph copy if
-    the build encodes the untouched glyphs exactly as the release does.
+    the build encodes the untouched glyphs — and the subrs they index — exactly
+    as the release does.
     """
-    rel, com = charstrings(release), charstrings(compiled)
+    rel_glyphs, rel_global, rel_local = release_bytecode
+    com_glyphs, com_global, com_local = compiled_bytecode
     moved = set(changed)
-    for name in release.getGlyphOrder():
+    for name, code in rel_glyphs.items():
         if name in moved:
             continue
-        if rel[name].bytecode != com[name].bytecode:
+        if code != com_glyphs.get(name):
             raise SystemExit(
                 f"{name}: charstring differs from the release without an outline "
                 "change; the build no longer matches and cannot be merged wholesale"
+            )
+    for label, rel_subrs, com_subrs in (
+        ("global", rel_global, com_global),
+        ("local", rel_local, com_local),
+    ):
+        if rel_subrs != com_subrs:
+            raise SystemExit(
+                f"{label} subrs differ between the release and the build; the "
+                "untouched charstrings that index them cannot be merged wholesale"
             )
 
 
 def merge_otf(release_path: Path, compiled_path: Path, write: bool) -> List[str]:
     release, compiled = open_font(release_path), open_font(compiled_path)
+    # Capture the raw bytecode first: changed_outlines() draws every glyph,
+    # which decompiles the charstrings and throws their bytecode away.
+    release_bytecode = cff_bytecode(release)
+    compiled_bytecode = cff_bytecode(compiled)
     changed = changed_outlines(release, compiled)
     if changed:
         check_metrics(release, compiled, changed)
-        check_untouched_charstrings(release, compiled, changed)
+        check_untouched_charstrings(release_bytecode, compiled_bytecode, changed)
         if write:
             preserved = preserve_cff_identity(release, compiled)
             if preserved:
@@ -159,11 +200,32 @@ def merge_otf(release_path: Path, compiled_path: Path, write: bool) -> List[str]
     return changed
 
 
+def check_hinting_environment(release: TTFont, compiled: TTFont) -> None:
+    """The transplanted glyph programs must land in the font they were written for.
+
+    A ttfautohint glyph program indexes ``cvt `` entries and calls ``fpgm``
+    functions, and only ``maxp.maxSizeOfInstructions`` is recalculated on save —
+    the stack and storage limits stay from the release. Moving a hinted glyph
+    between fonts whose hinting environment differs mis-hints it at small ppem
+    without changing a single outline, so refuse rather than transplant.
+    """
+    for tag in HINTING_TABLES:
+        rel = release.reader[tag] if tag in release.reader else None
+        com = compiled.reader[tag] if tag in compiled.reader else None
+        if rel != com:
+            raise SystemExit(
+                f"{tag!r} differs between the release and the build; the build's "
+                "glyph hinting was written for a different font and cannot be "
+                "transplanted (check the pinned ttfautohint-py version)"
+            )
+
+
 def merge_ttf(release_path: Path, compiled_path: Path, write: bool) -> List[str]:
     release, compiled = open_font(release_path), open_font(compiled_path)
     changed = changed_outlines(release, compiled)
     if changed:
         check_metrics(release, compiled, changed)
+        check_hinting_environment(release, compiled)
         if write:
             rel_glyf, com_glyf = release["glyf"], compiled["glyf"]
             for name in changed:
