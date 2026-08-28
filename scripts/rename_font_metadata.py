@@ -41,17 +41,15 @@ VARIABLE_INSTANCE_NAME_ALIASES = {
         "ExtraBold Italic": "XBold Italic",
     },
 }
-PROJECT_URL = "https://github.com/NamcheAI/namche-shadow-font"
-DERIVATIVE_CREDIT = (
-    "Copyright 2026 BTLG Holding GmbH, in collaboration with Ruhm GmbH. "
-    "Namche Shadow Sans design by Michael Marte for Ruhm GmbH (https://ruhmetc.com)."
+PROJECT_URL = "https://github.com/NamcheAI/namche-fonts"
+NAMCHE_COPYRIGHT = f"Copyright 2026 The Namche Shadow Project Authors ({PROJECT_URL})"
+GEIST_COPYRIGHT = (
+    "Copyright 2024 The Geist Project Authors "
+    "(https://github.com/vercel/geist-font)"
 )
-OLD_CREDITS = (
-    "Namche Shadow Sans suite design by Michael Marte for ruhm (https://ruhmetc.com).",
-    "Namche Shadow Sans design by Michael Marte for ruhm (https://ruhmetc.com).",
-    "Namche Shadow suite design by Michael Marte for ruhm (https://ruhmetc.com).",
-    "Namche Shadow design by Michael Marte for ruhm (https://ruhmetc.com).",
-)
+# Google Fonts expects the "Project Authors" form; legal parties are listed
+# in AUTHORS.txt, and the design credit lives in name ID 9.
+COPYRIGHT = f"{NAMCHE_COPYRIGHT}. {GEIST_COPYRIGHT}"
 
 
 def family_for(path: Path) -> tuple[str, str]:
@@ -99,9 +97,7 @@ def rewrite_name_table(font: TTFont, human: str, compact: str) -> None:
             continue
 
         if record.nameID == 0:
-            for old_credit in (*OLD_CREDITS, DERIVATIVE_CREDIT):
-                value = value.replace(old_credit, "")
-            value = f"{value.rstrip().rstrip('.')}. {DERIVATIVE_CREDIT}"
+            value = COPYRIGHT
         elif record.nameID == 8:
             value = value.replace("Namche AI; based on ", "")
             if not value.startswith("BTLG Holding GmbH; based on "):
@@ -145,6 +141,9 @@ def rewrite_cff(font: TTFont, human: str, compact: str) -> None:
             top_dict.FamilyName = replace_family_name(top_dict.FamilyName, human, compact)
         if hasattr(top_dict, "FullName"):
             top_dict.FullName = replace_family_name(top_dict.FullName, human, compact)
+        top_dict.Notice = COPYRIGHT
+        if hasattr(top_dict, "Copyright"):
+            top_dict.Copyright = COPYRIGHT
 
 
 def copy_legacy_names_to_wws(font: TTFont) -> None:
@@ -283,12 +282,25 @@ def check(path: Path) -> list[str]:
                     f"{path}: full public STAT style names are missing: {missing!r}"
                 )
     copyright_values = [value for name_id, value in values if name_id == 0]
-    if not any("Geist" in value and "Project Authors" in value for value in copyright_values):
+    if not any(NAMCHE_COPYRIGHT in value for value in copyright_values):
+        errors.append(f"{path}: Namche Shadow project copyright notice is missing")
+    if not any(GEIST_COPYRIGHT in value for value in copyright_values):
         errors.append(f"{path}: original Geist copyright notice is missing")
-    if not any("BTLG Holding GmbH" in value for value in copyright_values):
-        errors.append(f"{path}: BTLG Holding GmbH ownership notice is missing")
-    if not any("Michael Marte" in value and "Ruhm GmbH" in value for value in copyright_values):
-        errors.append(f"{path}: Namche Shadow Sans design credit is missing from copyright metadata")
+    if not any(
+        value.startswith("BTLG Holding GmbH; based on ")
+        for name_id, value in values
+        if name_id == 8
+    ):
+        errors.append(f"{path}: derivative-owner manufacturer record (name ID 8) is missing")
+    if "CFF " in font:
+        for top_dict in font["CFF "].cff.topDictIndex:
+            for attribute in ("Notice", "Copyright"):
+                stored = getattr(top_dict, attribute, None)
+                if stored is not None and stored != COPYRIGHT:
+                    errors.append(
+                        f"{path}: CFF {attribute} disagrees with the canonical "
+                        f"copyright: {stored!r}"
+                    )
     if "OS/2" not in font or font["OS/2"].achVendID != VENDOR_ID:
         actual_vendor = font["OS/2"].achVendID if "OS/2" in font else "<missing>"
         errors.append(
@@ -366,6 +378,14 @@ def main() -> int:
 
     if args.check:
         errors = [error for path in files for error in check(path)]
+        ofl = Path("OFL.txt")
+        if ofl.exists():
+            header = ofl.read_text(encoding="utf-8").splitlines()[:2]
+            if header != [NAMCHE_COPYRIGHT, GEIST_COPYRIGHT]:
+                errors.append(
+                    "OFL.txt: header must be the canonical Namche Shadow and "
+                    f"Geist copyright lines; found {header!r}"
+                )
         if errors:
             print("\n".join(errors), file=sys.stderr)
             return 1

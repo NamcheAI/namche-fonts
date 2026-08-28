@@ -19,7 +19,7 @@ declare module "@namche/namche-shadow/font" {
    *
    * * {@link https://www.npmjs.com/package/@namche/namche-shadow?activeTab=readme#pages-router View Pages Router Example}
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowSans: NextFontWithVariable;
 
@@ -41,7 +41,7 @@ declare module "@namche/namche-shadow/font" {
    *
    * * {@link https://www.npmjs.com/package/@namche/namche-shadow?activeTab=readme#pages-router View Pages Router Example}
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    * @deprecated Use `NamcheShadowSans` instead
    */
   export const NamcheShadowSansNonVariable: NextFontWithVariable;
@@ -63,7 +63,7 @@ declare module "@namche/namche-shadow/font" {
    *
    * * {@link https://www.npmjs.com/package/@namche/namche-shadow?activeTab=readme#pages-router View Pages Router Example}
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowMono: NextFontWithVariable;
 
@@ -84,7 +84,7 @@ declare module "@namche/namche-shadow/font" {
    *
    * * {@link https://www.npmjs.com/package/@namche/namche-shadow?activeTab=readme#pages-router View Pages Router Example}
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowMonoNonVariable: NextFontWithVariable;
 }
@@ -105,7 +105,7 @@ declare module "@namche/namche-shadow/font/mono" {
    *
    * * {@link https://www.npmjs.com/package/@namche/namche-shadow?activeTab=readme#pages-router View Pages Router Example}
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowMono: NextFontWithVariable;
 }
@@ -126,7 +126,7 @@ declare module "@namche/namche-shadow/font/mono-non-variable" {
    *
    * * {@link https://www.npmjs.com/package/@namche/namche-shadow?activeTab=readme#pages-router View Pages Router Example}
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowMonoNonVariable: NextFontWithVariable;
 }
@@ -148,7 +148,7 @@ declare module "@namche/namche-shadow/font/sans" {
    *
    * * {@link https://www.npmjs.com/package/@namche/namche-shadow?activeTab=readme#pages-router View Pages Router Example}
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowSans: NextFontWithVariable;
 }
@@ -185,7 +185,7 @@ declare module "@namche/namche-shadow/font/sans-non-variable" {
    *
    * * {@link https://www.npmjs.com/package/@namche/namche-shadow?activeTab=readme#pages-router View Pages Router Example}
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowSansNonVariable: NextFontWithVariable;
 }
@@ -197,7 +197,7 @@ declare module "@namche/namche-shadow/font/pixel" {
    *
    * A pixelated display font with square-shaped pixels.
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowPixelSquare: NextFontWithVariable;
 
@@ -207,7 +207,7 @@ declare module "@namche/namche-shadow/font/pixel" {
    *
    * A pixelated display font with grid-shaped pixels.
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowPixelGrid: NextFontWithVariable;
 
@@ -217,7 +217,7 @@ declare module "@namche/namche-shadow/font/pixel" {
    *
    * A pixelated display font with circle-shaped pixels.
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowPixelCircle: NextFontWithVariable;
 
@@ -227,7 +227,7 @@ declare module "@namche/namche-shadow/font/pixel" {
    *
    * A pixelated display font with triangle-shaped pixels.
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowPixelTriangle: NextFontWithVariable;
 
@@ -237,7 +237,7 @@ declare module "@namche/namche-shadow/font/pixel" {
    *
    * A pixelated display font with line-shaped pixels.
    *
-   * * {@link https://github.com/NamcheAI/namche-shadow-font/releases Download Font Files}
+   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
   export const NamcheShadowPixelLine: NextFontWithVariable;
 }

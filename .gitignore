@@ -27,6 +27,9 @@ ehthumbs.db
 Thumbs.db
 
 # Font build artifacts #
+namche-fonts/
+namche-fonts*.zip
+# Pre-rename artifact names, kept so stale worktrees stay ignored.
 namche-shadow-font/
 namche-shadow-font*.zip
 fonts/*/webfonts/subsets/
