@@ -59,6 +59,16 @@ guarded distance changes.
   `short_segments`, `contour_count`) identify shapes for visual inspection;
   they are not proof of a broken outline. Much of this baseline comes from
   upstream Geist and the intentional Pixel geometry.
+- `outline_short_segments` has a false-positive cutoff: a font with more than
+  100 short segments reports a blanket `PASS` ("probably by design") and lists
+  nothing. Removing short segments can therefore turn a `PASS` into a `WARN`
+  that enumerates pre-existing shapes. Fixing the italic `A` counter ([#78](https://github.com/NamcheAI/namche-fonts/issues/78))
+  did exactly that to `NamcheShadowSans-BlackItalic.ttf`: the collapsed
+  counter's hairline slot contributed eight short segments to `A` and to each
+  of its composites, and dropping them took the font under the cutoff. The 94
+  glyphs it now lists (`B`, `M`, `S`, `OE`, `Eng`, …) are untouched and
+  pre-existing — reverting only glyph `A` restores the blanket `PASS`. Compare
+  the enumerated glyphs, not the check's severity, when this one moves.
 - Glyph reachability and naming warnings flag encoded or substitution access,
   long legacy glyph names, dotted-circle behavior, and language-shaping
   coverage. Pixel retains inherited soft-dotted warnings; Sans and Mono now

@@ -19,6 +19,7 @@ vendor-ID registration.
 | [#35](https://github.com/NamcheAI/namche-fonts/issues/35) | [`issue-35-wws-metadata.png`](issue-35-wws-metadata.png) | Normalized family-specific WWS metadata. |
 | [#36](https://github.com/NamcheAI/namche-fonts/issues/36) | [`issue-36-pixel-shaping.png`](issue-36-pixel-shaping.png) | Completed Pixel dotted-circle and soft-dotted shaping. |
 | [#37](https://github.com/NamcheAI/namche-fonts/issues/37) | [`issue-37-pixel-ligature-carets.png`](issue-37-pixel-ligature-carets.png) | Preserved Pixel ligature caret positions. |
+| [#78](https://github.com/NamcheAI/namche-fonts/issues/78) | [`issue-78-italic-a-counter.png`](issue-78-italic-a-counter.png) | Restored the Sans italic `A` counter in every static weight. |
 
 Regenerate all panels with:
 

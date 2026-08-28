@@ -1,0 +1,17 @@
+# Italic-only build of the Namche Shadow Sans family.
+#
+# The italic package carries no RoundCorner instance filters — Michael Marte's
+# Shadow treatment is baked into its masters — so unlike the upright statics
+# these outlines are reproducible with gftools. `make refresh-sans-italic-outlines`
+# builds this config and merges only the changed glyph outlines into the
+# committed release binaries; see scripts/refresh_sans_italic_outlines.py.
+#
+# This config never replaces fonts/NamcheShadowSans: it writes to out/sans-italic.
+sources:
+  - NamcheShadowSans-Italic.glyphspackage
+outputDir: ../out/sans-italic
+familyName: "Namche Shadow Sans"
+cleanUp: true
+buildVariable: false
+buildStatic: true
+autohintOTF: true

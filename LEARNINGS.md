@@ -12,6 +12,49 @@ Operational notes from shipping **Namche-Shadow** (multi-tier) and **Namche-Shad
   the remaining rounded segmentation and build the VF.
 - Upstream/`originals/geist/` stays **Geist** and immutable. Delivery family names (`Namche-Shadow`, `Namche-Shadow-Simple`) are set at export / name-table rewrite.
 
+## The italics are the exception: baked, not filtered
+
+The Sans **italic** package carries **no** RoundCorner instance filters. Its Shadow
+treatment was baked straight into the three masters by `scripts/round_inner_corners.py`
+at `--radius 40` (issue #4, 2026-08-13). Two consequences that are easy to get wrong:
+
+- `gftools builder sources/config-NamcheShadowSans-Italic.yaml` reproduces the
+  committed italic outlines **exactly** — unlike the uprights, which need a Glyphs
+  GUI export. An italic source correction can therefore be merged into the
+  committed release with `make refresh-sans-italic-outlines`, which replaces only
+  the glyph outlines that changed and leaves metadata, layout and hinting alone.
+- The filter has been retuned since that bake (acute-angle radius reduction, mouth
+  cap, Black scale), so today's defaults do **not** reproduce the italics. Pass
+  `--italic-recipe` to get the profile that did: plain circular fillet, master
+  scales 0.55 / 1.00 / 1.35. It reproduces every straight-sided italic master
+  byte-for-byte; the curve-carrying glyphs (`fillet_mixed`) have drifted and are
+  not reproducible.
+
+### Boolean topology is the failure mode to watch (issue #78)
+
+`A` is drawn as a silhouette plus a separate crossbar that overlaps it. The
+resolver classified the crossbar as a counter — it tested only whether the
+crossbar's *first point* fell inside the silhouette — and subtracted it instead of
+unioning it. The counter stopped being a contour of its own, and every italic
+weight shipped an `A` that renders as a filled wedge with a hairline notch.
+
+Nesting is now decided by actual containment (`path_is_nested`), and pathops'
+repeated closing point is dropped before filleting — left in place it silently
+skipped the corner it sat on, which is why the counter's lower-left crotch came
+back sharp on the first attempt. `scripts/check_sans_counters.py` blocks the whole
+class: it asserts the contour count of twenty counter-bearing glyphs across every
+committed Sans binary and npm copy.
+
+To re-derive the corrected `A` from the pre-Shadow drawing:
+
+```sh
+mkdir -p /tmp/pkg/glyphs
+git show 54de7f6:sources/NamcheShadowSans-Italic.glyphspackage/glyphs/A_.glyph \
+  > /tmp/pkg/glyphs/A_.glyph
+venv/bin/python scripts/round_inner_corners.py \
+  --package /tmp/pkg --glyphs A --radius 40 --italic-recipe --write
+```
+
 ## Family naming (resolved 2026-08-11)
 
 | Family | Role | Recipe |

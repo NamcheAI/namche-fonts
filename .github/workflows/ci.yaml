@@ -72,9 +72,12 @@ jobs:
               'sources/NamcheShadowSans.glyphspackage/',
               'sources/NamcheShadowSans-Italic.glyphspackage/',
               'sources/config-NamcheShadowSans.yaml',
+              'sources/config-NamcheShadowSans-Italic.yaml',
               'scripts/build_sans_variable.py',
+              'scripts/check_sans_counters.py',
               'scripts/check_sans_variable.py',
               'scripts/finalize_glyphs_statics.py',
+              'scripts/refresh_sans_italic_outlines.py',
               'scripts/refresh_shaping_tables.py'
             );
             const monoQa = full || sharedQa || changed(
@@ -180,6 +183,9 @@ jobs:
 
       - name: Check Sans variable release
         run: python scripts/check_sans_variable.py
+
+      - name: Check Sans counters
+        run: python scripts/check_sans_counters.py
 
       - name: Check Mono horizontal metrics
         run: python scripts/check_mono_hmetrics.py

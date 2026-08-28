@@ -6,6 +6,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from fontTools.pens.boundsPen import BoundsPen
+from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
 from PIL import Image, ImageChops, ImageDraw, ImageFont, features
 
@@ -633,6 +634,84 @@ def render_issue_36() -> None:
     image.save(OUTPUT / "issue-36-pixel-shaping.png", optimize=True)
 
 
+SANS_WEIGHTS = (
+    "Thin",
+    "ExtraLight",
+    "Light",
+    "Regular",
+    "Medium",
+    "SemiBold",
+    "Bold",
+    "ExtraBold",
+    "Black",
+)
+
+
+def sans_static(weight: str, italic: bool) -> Path:
+    if not italic:
+        return SANS_DIR / f"NamcheShadowSans-{weight}.ttf"
+    if weight == "Regular":
+        return SANS_DIR / "NamcheShadowSans-Italic.ttf"
+    return SANS_DIR / f"NamcheShadowSans-{weight}Italic.ttf"
+
+
+def contour_count(font_file: Path, glyph_name: str) -> int:
+    ttfont = TTFont(font_file, lazy=True)
+    try:
+        glyph_set = ttfont.getGlyphSet()
+        pen = DecomposingRecordingPen(glyph_set)
+        glyph_set[glyph_name].draw(pen)
+        return sum(1 for operator, _ in pen.value if operator == "moveTo")
+    finally:
+        ttfont.close()
+
+
+def render_issue_78() -> None:
+    image, draw = canvas(
+        78,
+        "ITALIC A COUNTER",
+        "Every italic weight carries the A counter as its own contour, rounded like the upright.",
+        1230,
+    )
+    label = font(MONO_DIR / "NamcheShadowMono-Regular.ttf", 19)
+
+    section(draw, 340, "Sans italic · A · nine statics · 2 contours each")
+    for column, weight in enumerate(SANS_WEIGHTS):
+        path = sans_static(weight, italic=True)
+        x = 78 + column * 162
+        draw.text((x, 400), "A", font=font(path, 150), fill=TEXT)
+        draw.text((x, 570), weight.upper(), font=label, fill=MUTED)
+        contours = contour_count(path, "A")
+        draw.text(
+            (x, 598),
+            f"{contours} CONTOURS",
+            font=label,
+            fill=GREEN if contours == 2 else RED,
+        )
+
+    section(draw, 665, "Upright reference · unchanged")
+    for column, weight in enumerate(SANS_WEIGHTS):
+        path = sans_static(weight, italic=False)
+        x = 78 + column * 162
+        draw.text((x, 725), "A", font=font(path, 150), fill=TEXT)
+        draw.text((x, 895), weight.upper(), font=label, fill=MUTED)
+
+    section(draw, 950, "Specimen line that first exposed the collapsed counter")
+    draw.text(
+        (72, 1010),
+        "A change of pace",
+        font=font(sans_static("Medium", italic=True), 78),
+        fill=TEXT,
+    )
+
+    footer(
+        draw,
+        image.height,
+        "fonts/NamcheShadowSans/ttf · glyph A · scripts/check_sans_counters.py",
+    )
+    image.save(OUTPUT / "issue-78-italic-a-counter.png", optimize=True)
+
+
 def main() -> None:
     if not features.check_feature("raqm"):
         raise SystemExit(
@@ -652,6 +731,7 @@ def main() -> None:
     render_issue_35()
     render_issue_36()
     render_issue_37()
+    render_issue_78()
     for path in sorted(OUTPUT.glob("issue-*.png")):
         print(f"Wrote {path.relative_to(ROOT)}")
 

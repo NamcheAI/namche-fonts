@@ -13,6 +13,7 @@ help:
 	@echo "  make build:  Builds the fonts and places them in the fonts/ directory"
 	@echo "  make finalize-sans-statics GLYPHS_SANS_EXPORT=/path: merge native Glyphs OTF/TTF exports into the release files"
 	@echo "  make build-sans-variable GLYPHS_SANS_EXPORT=/path: build the rounded upright Sans VF from compatible Glyphs OTF exports"
+	@echo "  make refresh-sans-italic-outlines: merge an italic source correction into the committed release binaries"
 	@echo "  make refresh-sans-shaping COMPILED_SANS_BUILD=/path: refresh layout without changing approved outlines"
 	@echo "  make subset-webfonts: generate Latin WOFF2 subsets from the full release webfonts"
 	@echo "  make update-geist: refresh the vendored upstream Geist webfonts from sources/geist-upstream.json"
@@ -88,6 +89,24 @@ finalize-sans-statics: venv
 	. venv/bin/activate; python3 scripts/finalize_glyphs_statics.py --gftools fonts/NamcheShadowSans --glyphs "$(GLYPHS_SANS_EXPORT)" --output fonts/NamcheShadowSans
 	. venv/bin/activate; python3 scripts/rename_font_metadata.py --check fonts/NamcheShadowSans
 	$(MAKE) copy-npm-fonts
+
+# The italic package carries no RoundCorner instance filters — its Shadow
+# treatment is baked into the masters — so gftools reproduces the committed
+# italic outlines exactly. That makes an italic source correction mergeable
+# without a Glyphs re-export: build here, then merge only the changed outlines.
+build-sans-italic: venv sources/config-NamcheShadowSans-Italic.yaml \
+	sources/NamcheShadowSans-Italic.glyphspackage
+	rm -rf out/sans-italic
+	. venv/bin/activate; PATH="$(CURDIR)/venv/bin:$$PATH" gftools builder sources/config-NamcheShadowSans-Italic.yaml
+
+refresh-sans-italic-outlines: build-sans-italic
+	. venv/bin/activate; python3 scripts/refresh_sans_italic_outlines.py --compiled out/sans-italic
+	. venv/bin/activate; python3 scripts/rename_font_metadata.py --check fonts/NamcheShadowSans
+	$(MAKE) check-sans-counters
+	$(MAKE) copy-npm-fonts
+
+check-sans-italic-outlines: build-sans-italic
+	. venv/bin/activate; python3 scripts/refresh_sans_italic_outlines.py --compiled out/sans-italic --check
 
 build-sans-variable: venv
 	test -n "$(GLYPHS_SANS_EXPORT)" || (echo "Set GLYPHS_SANS_EXPORT to a directory containing compatible otf/ exports." && exit 1)
@@ -185,7 +204,8 @@ venv-pixel/touchfile: Makefile
 	touch venv-pixel/touchfile
 
 test: build.stamp fontspector-release check-language-shaping check-pixel-separators \
-	check-pixel-ligature-carets check-pixel-rupee check-pixel-shaping check-mono-hmetrics
+	check-pixel-ligature-carets check-pixel-rupee check-pixel-shaping check-mono-hmetrics \
+	check-sans-counters
 
 test-scripts: venv subset-webfonts
 	. venv/bin/activate; python3 -m unittest discover -s tests -p 'test_*.py'
@@ -243,6 +263,9 @@ check-pixel-shaping: venv
 
 check-mono-hmetrics: venv
 	. venv/bin/activate; python3 scripts/check_mono_hmetrics.py
+
+check-sans-counters: venv
+	. venv/bin/activate; python3 scripts/check_sans_counters.py
 
 proof: venv build.stamp
 	TOCHECK=$$(find fonts/NamcheShadowSans/variable -type f 2>/dev/null); if [ -z "$$TOCHECK" ]; then TOCHECK=$$(find fonts/NamcheShadowSans/ttf -type f 2>/dev/null); fi ; . venv/bin/activate; mkdir -p out/ out/proof; diffenator2 proof $$TOCHECK -o out/proof

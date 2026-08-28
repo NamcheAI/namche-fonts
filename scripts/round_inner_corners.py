@@ -14,6 +14,8 @@ Usage:
   python3 scripts/round_inner_corners.py --write --radius 40
   # Change radius after a previous pass (resets from background first):
   python3 scripts/round_inner_corners.py --write --restore-from-background --radius 40
+  # Reproduce the profile the shipped Sans italic masters were baked with:
+  python3 scripts/round_inner_corners.py --write --radius 40 --italic-recipe
 """
 
 from __future__ import annotations
@@ -57,6 +59,27 @@ MASTER_RADIUS_SCALE = {
     MASTER_IDS["Regular"]: 1.00,
     MASTER_IDS["Black"]: 1.00,
 }
+
+# The Sans italic masters were baked with the first revision of this filter:
+# a plain circular fillet (no acute-angle reduction, no mouth cap) and a
+# heavier Black scale. `--italic-recipe` restores it so the committed
+# NamcheShadowSans-Italic outlines stay reproducible from
+# sources/NamcheShadowSans-Italic.glyphspackage; the default profile is the
+# later upright tuning and does not reproduce them.
+ITALIC_RECIPE_MASTER_SCALE = {
+    MASTER_IDS["Thin"]: 0.55,
+    MASTER_IDS["Regular"]: 1.00,
+    MASTER_IDS["Black"]: 1.35,
+}
+
+# Set by --italic-recipe.
+ITALIC_RECIPE = False
+
+
+def master_radius_scale(layer_id: str) -> float:
+    table = ITALIC_RECIPE_MASTER_SCALE if ITALIC_RECIPE else MASTER_RADIUS_SCALE
+    return table.get(layer_id, 1.0)
+
 
 DIGIT_NAMES = {
     "0": "zero",
@@ -214,6 +237,8 @@ def angle_adjusted_radius(radius: float, phi: float) -> float:
     angle is ``pi - phi``. At 90° interior the radius is unchanged; sharper
     tips scale down proportionally (clamped by ``ACUTE_RADIUS_FLOOR``).
     """
+    if ITALIC_RECIPE:
+        return radius
     interior = math.pi - abs(phi)
     if interior >= ACUTE_REF_ANGLE - 1e-6:
         return radius
@@ -223,6 +248,8 @@ def angle_adjusted_radius(radius: float, phi: float) -> float:
 
 def acute_mouth_cap(radius: float, r_use: float) -> float:
     """Limit how far acute fillets cut back along each flank."""
+    if ITALIC_RECIPE:
+        return math.inf
     return max(r_use, min(radius * ACUTE_MOUTH_FACTOR, ACUTE_MOUTH_MAX))
 
 
@@ -1070,6 +1097,17 @@ def recording_to_node_paths(rec: RecordingPen) -> List[List[Node]]:
     def flush():
         nonlocal current
         if current:
+            # pathops closes contours by repeating the start point. Left in
+            # place it becomes a zero-length segment, and fillet_nodes then
+            # skips the corner it sits on (l1 < 1) — that is how the italic A
+            # counter lost the round on its lower-left crotch.
+            while (
+                len(current) > 1
+                and current[-1][2] == "l"
+                and abs(current[-1][0] - current[0][0]) < 1e-6
+                and abs(current[-1][1] - current[0][1]) < 1e-6
+            ):
+                current.pop()
             paths.append(current)
             current = []
 
@@ -1132,25 +1170,46 @@ def recording_to_node_paths(rec: RecordingPen) -> List[List[Node]]:
     return paths
 
 
+# Fraction of a path's own area that may stick out of a candidate parent and
+# still count as "nested". Boolean output is exact here, so this only absorbs
+# floating-point noise along shared edges.
+NESTED_LEAK_TOLERANCE = 1e-3
+
+
+def path_is_nested(inner: pathops.Path, outer: pathops.Path) -> bool:
+    """True when ``inner`` lies (essentially) completely inside ``outer``.
+
+    Testing a single point is not enough. A crossbar drawn as its own shape
+    (A, and any other letter built as silhouette + bar) starts inside the
+    letter body but reaches past it, so a point test reports it as a counter
+    and ``merge_paths`` subtracts it instead of unioning it — which is how the
+    Sans italic A lost its counter (issue #78).
+    """
+    inner_area = abs(inner.area)
+    if inner_area <= 1e-6:
+        return False
+    if abs(outer.area) <= inner_area + 1e-6:
+        return False
+    try:
+        rec = RecordingPen()
+        pathops.difference([inner], [outer], rec)
+        leftover = pathops.Path()
+        rec.replay(leftover.getPen())
+    except Exception:
+        return False
+    return abs(leftover.area) <= inner_area * NESTED_LEAK_TOLERANCE
+
+
 def path_depth_map(paths: Sequence[pathops.Path]) -> List[int]:
     n = len(paths)
     parent: List[Optional[int]] = [None] * n
     for i, p in enumerate(paths):
-        fps = list(p.firstPoints)
-        if not fps:
-            continue
-        pt = fps[0]
         candidates = []
         for j, q in enumerate(paths):
             if i == j:
                 continue
-            if abs(q.area) <= abs(p.area) + 1e-6:
-                continue
-            try:
-                if q.contains(pt):
-                    candidates.append(j)
-            except Exception:
-                continue
+            if path_is_nested(p, q):
+                candidates.append(j)
         if candidates:
             parent[i] = min(candidates, key=lambda j: abs(paths[j].area))
 
@@ -1591,7 +1650,7 @@ def process_glyph_file(
     any_geometry = False
     reports = list(reports_prefix)
     for layer_id, body_start, body_end, body in reversed(sections):
-        scale = MASTER_RADIUS_SCALE.get(layer_id, 1.0)
+        scale = master_radius_scale(layer_id)
         layer_radius = radius * scale
         new_body, fillets, npaths = process_layer_shapes(body, layer_radius)
         total_fillets += fillets
@@ -1655,7 +1714,7 @@ def apply_radius_to_glyph_text(text: str, radius: float) -> Tuple[str, int]:
     new_text = text
     total_fillets = 0
     for layer_id, body_start, body_end, body in reversed(sections):
-        scale = MASTER_RADIUS_SCALE.get(layer_id, 1.0)
+        scale = master_radius_scale(layer_id)
         layer_radius = radius * scale
         new_body, fillets, _npaths = process_layer_shapes(body, layer_radius)
         total_fillets += fillets
@@ -2201,6 +2260,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         default=None,
         help="Glyph names to process (default: proof set)",
     )
+    ap.add_argument(
+        "--italic-recipe",
+        action="store_true",
+        help=(
+            "Use the fillet profile that baked the Sans italic masters "
+            "(plain circular fillet, Black scale 1.35). Reproduces every "
+            "straight-sided italic master; the curve-carrying glyphs have "
+            "since drifted."
+        ),
+    )
     ap.add_argument("--write", action="store_true", help="Write changes to .glyph files")
     ap.add_argument(
         "--dry-run",
@@ -2225,6 +2294,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     )
     args = ap.parse_args(argv)
 
+    global ITALIC_RECIPE
+    ITALIC_RECIPE = bool(args.italic_recipe)
+
     if args.reset_sources:
         original = args.original or default_original_package()
         working = args.package
@@ -2244,7 +2316,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     names = args.glyphs if args.glyphs else list(PROOF_GLYPHS)
     print(
         f"{'WRITE' if write else 'DRY-RUN'}  package={args.package}  radius={args.radius}  "
-        f"restore={args.restore_from_background}  glyphs={len(names)}"
+        f"restore={args.restore_from_background}  "
+        f"profile={'italic' if ITALIC_RECIPE else 'upright'}  glyphs={len(names)}"
     )
 
     touched = 0
