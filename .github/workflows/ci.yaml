@@ -454,7 +454,7 @@ jobs:
           mv artifacts/packages/next/dist/fonts packages/next/dist/fonts
       - name: Create Release Pull Request or Publish
         id: changesets
-        uses: changesets/action@v2.1.1
+        uses: changesets/action@v2.1.2
         with:
           publish-script: pnpm run release
           version-script: pnpm run version
