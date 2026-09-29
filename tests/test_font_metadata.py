@@ -4,7 +4,7 @@ import unittest
 from fontTools.ttLib import TTFont
 
 from scripts.rename_font_metadata import (
-    PIXEL_FAMILY,
+    SHAPE_FAMILY,
     WWS_BIT,
     check,
     family_for,
@@ -33,9 +33,9 @@ class FontMetadataTest(unittest.TestCase):
                 "Namche Shadow Mono",
                 "Regular",
             ),
-            ROOT / "fonts" / "NamcheShadowPixel" / "ttf" / "NamcheShadowPixel-Circle.ttf": (
-                "Namche Shadow Pixel",
-                "Circle",
+            ROOT / "fonts" / "NamcheShape" / "ttf" / "NamcheShape-Metaball.ttf": (
+                "Namche Shape",
+                "Metaball",
             ),
         }
         for path, names in expected.items():
@@ -50,11 +50,11 @@ class FontMetadataTest(unittest.TestCase):
                     for record in font["name"].names
                     if record.nameID in {21, 22} and record.platformID == 3
                 }
-                if family == PIXEL_FAMILY:
+                if family == SHAPE_FAMILY:
                     self.assertFalse(has_wws_bit)
                     self.assertEqual(
                         wws_names,
-                        {21: "Namche Shadow Pixel Circle", 22: "Regular"},
+                        {21: "Namche Shape Metaball", 22: "Regular"},
                     )
                 else:
                     self.assertTrue(has_wws_bit)

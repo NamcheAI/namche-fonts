@@ -8,12 +8,12 @@ const cssFiles = [
   "fonts.css",
   "sans.css",
   "mono.css",
-  "pixel.css",
+  "shape.css",
   "geist.css",
   "fonts-latin.css",
   "sans-latin.css",
   "mono-latin.css",
-  "pixel-latin.css",
+  "shape-latin.css",
   "geist-latin.css",
 ];
 

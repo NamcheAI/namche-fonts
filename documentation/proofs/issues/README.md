@@ -27,6 +27,12 @@ Regenerate all panels with:
 venv/bin/python scripts/render_issue_proofs.py
 ```
 
+Namche Shadow Pixel was replaced by Namche Shape. The Pixel panels (#25, #32,
+#34, #36, #37) and the #23 and #35 panels that sample Pixel are kept as frozen
+records; the renderer skips them because the Pixel binaries are no longer in
+the repository. The invariants they document now live in
+`scripts/check_namche_shape.py`.
+
 The renderer depends on system text-rendering libraries and a reference font,
 so visual output can differ slightly between platforms. Review changes rather
 than treating byte identity as an automated test requirement.
