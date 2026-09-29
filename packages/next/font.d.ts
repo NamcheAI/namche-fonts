@@ -190,62 +190,40 @@ declare module "@namche/namche-shadow/font/sans-non-variable" {
   export const NamcheShadowSansNonVariable: NextFontWithVariable;
 }
 
-declare module "@namche/namche-shadow/font/pixel" {
+declare module "@namche/namche-shadow/font/shape" {
   /**
-   * Namche Shadow Pixel Square font, with `className` and `variable` properties,
+   * Namche Shape Metaball font, with `className` and `variable` properties,
    * meant to be attached to DOM elements via `className`
    *
-   * A pixelated display font with square-shaped pixels.
+   * Every pixel is a circle; some neighbouring pixels melt together through necks.
    *
    * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
-  export const NamcheShadowPixelSquare: NextFontWithVariable;
+  export const NamcheShapeMetaball: NextFontWithVariable;
 
   /**
-   * Namche Shadow Pixel Grid font, with `className` and `variable` properties,
+   * Namche Shape Origin font, with `className` and `variable` properties,
    * meant to be attached to DOM elements via `className`
    *
-   * A pixelated display font with grid-shaped pixels.
+   * Every pixel is a square, half-round, or quarter disc from the original Namche system.
    *
    * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
-  export const NamcheShadowPixelGrid: NextFontWithVariable;
+  export const NamcheShapeOrigin: NextFontWithVariable;
 
   /**
-   * Namche Shadow Pixel Circle font, with `className` and `variable` properties,
+   * Namche Shape Skeleton font, with `className` and `variable` properties,
    * meant to be attached to DOM elements via `className`
    *
-   * A pixelated display font with circle-shaped pixels.
+   * Only the connections between pixels remain, drawn as a rounded trace.
    *
    * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
    */
-  export const NamcheShadowPixelCircle: NextFontWithVariable;
-
-  /**
-   * Namche Shadow Pixel Triangle font, with `className` and `variable` properties,
-   * meant to be attached to DOM elements via `className`
-   *
-   * A pixelated display font with triangle-shaped pixels.
-   *
-   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
-   */
-  export const NamcheShadowPixelTriangle: NextFontWithVariable;
-
-  /**
-   * Namche Shadow Pixel Line font, with `className` and `variable` properties,
-   * meant to be attached to DOM elements via `className`
-   *
-   * A pixelated display font with line-shaped pixels.
-   *
-   * * {@link https://github.com/NamcheAI/namche-fonts/releases Download Font Files}
-   */
-  export const NamcheShadowPixelLine: NextFontWithVariable;
+  export const NamcheShapeSkeleton: NextFontWithVariable;
 }
 
-declare module "@namche/namche-shadow/font/pixel-latin" {
-  export const NamcheShadowPixelSquare: NextFontWithVariable;
-  export const NamcheShadowPixelGrid: NextFontWithVariable;
-  export const NamcheShadowPixelCircle: NextFontWithVariable;
-  export const NamcheShadowPixelTriangle: NextFontWithVariable;
-  export const NamcheShadowPixelLine: NextFontWithVariable;
+declare module "@namche/namche-shadow/font/shape-latin" {
+  export const NamcheShapeMetaball: NextFontWithVariable;
+  export const NamcheShapeOrigin: NextFontWithVariable;
+  export const NamcheShapeSkeleton: NextFontWithVariable;
 }

@@ -19,19 +19,19 @@ from fontTools.ttLib import TTFont
 FAMILIES = {
     "NamcheShadowSans": ("Namche Shadow Sans", "NamcheShadowSans"),
     "NamcheShadowMono": ("Namche Shadow Mono", "NamcheShadowMono"),
-    "NamcheShadowPixel": ("Namche Shadow Pixel", "NamcheShadowPixel"),
+    "NamcheShape": ("Namche Shape", "NamcheShape"),
     "namche-shadow-sans": ("Namche Shadow Sans", "NamcheShadowSans"),
     "namche-shadow-mono": ("Namche Shadow Mono", "NamcheShadowMono"),
-    "namche-shadow-pixel": ("Namche Shadow Pixel", "NamcheShadowPixel"),
+    "namche-shape": ("Namche Shape", "NamcheShape"),
 }
 FONT_SUFFIXES = {".otf", ".ttf", ".woff2"}
 VENDOR_ID = "NMCH"
 WWS_BIT = 1 << 8
-PIXEL_FAMILY = "Namche Shadow Pixel"
+SHAPE_FAMILY = "Namche Shape"
 FAMILY_LANGUAGE_TAGS = {
     "Namche Shadow Sans": {"dlng": "Latn", "slng": "Latn,Cyrl"},
     "Namche Shadow Mono": {"dlng": "Latn", "slng": "Latn,Cyrl"},
-    "Namche Shadow Pixel": {"dlng": "Latn", "slng": "Latn"},
+    "Namche Shape": {"dlng": "Latn", "slng": "Latn"},
 }
 LATIN_SUBSET_LANGUAGE_TAGS = {"dlng": "Latn", "slng": "Latn"}
 VARIABLE_INSTANCE_NAME_ALIASES = {
@@ -180,7 +180,7 @@ def rewrite_opentype_metadata(font: TTFont, human: str) -> None:
                 f"{human} requires OS/2 version 4 or later"
             )
         font["OS/2"].achVendID = VENDOR_ID
-        if human == PIXEL_FAMILY:
+        if human == SHAPE_FAMILY:
             font["OS/2"].fsSelection &= ~WWS_BIT
             copy_legacy_names_to_wws(font)
         else:
@@ -325,12 +325,12 @@ def check(path: Path) -> list[str]:
         {record.nameID for record in font["name"].names if record.nameID in {21, 22}}
     )
     has_wws_bit = "OS/2" in font and bool(font["OS/2"].fsSelection & WWS_BIT)
-    if human == PIXEL_FAMILY:
+    if human == SHAPE_FAMILY:
         if has_wws_bit:
-            errors.append(f"{path}: Pixel's custom shape styles require WWS bit 8 clear")
+            errors.append(f"{path}: Namche Shape's custom styles require WWS bit 8 clear")
         if wws_names != [21, 22]:
             errors.append(
-                f"{path}: Pixel requires WWS name IDs 21/22; found {wws_names!r}"
+                f"{path}: Namche Shape requires WWS name IDs 21/22; found {wws_names!r}"
             )
         for legacy_id, wws_id in ((1, 21), (2, 22)):
             legacy_records = {
@@ -345,7 +345,7 @@ def check(path: Path) -> list[str]:
             }
             if legacy_records != wws_records:
                 errors.append(
-                    f"{path}: Pixel name ID {wws_id} must match legacy name ID "
+                    f"{path}: Namche Shape name ID {wws_id} must match legacy name ID "
                     f"{legacy_id}; found {wws_records!r}, "
                     f"expected {legacy_records!r}"
                 )

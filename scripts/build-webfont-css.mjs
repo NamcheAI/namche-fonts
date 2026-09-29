@@ -92,17 +92,17 @@ const families = [
     familyName: "Namche Shadow Mono",
   },
   {
-    key: "pixel",
-    packageDirectory: "namche-shadow-pixel",
-    releaseDirectory: "NamcheShadowPixel",
-    filenamePrefix: "NamcheShadowPixel",
-    familyName: "Namche Shadow Pixel",
-    pixel: true,
+    key: "shape",
+    packageDirectory: "namche-shape",
+    releaseDirectory: "NamcheShape",
+    filenamePrefix: "NamcheShape",
+    familyName: "Namche Shape",
+    shape: true,
   },
   // Byte-faithful upstream Geist Sans variable faces, vendored by
   // scripts/vendor_geist.py so applications can load their body font from
-  // the same release. Geist Mono and Pixel are not bundled: Namche Shadow
-  // Mono and Pixel are outline-identical renames of the same binaries.
+  // the same release. Geist Mono is not bundled: Namche Shadow Mono is an
+  // outline-identical rename of the same binaries.
   {
     key: "geist",
     packageDirectory: "geist",
@@ -123,13 +123,8 @@ const staticWeights = new Map([
   ["Bold", 700],
   ["ExtraBold", 800],
 ]);
-const pixelVariants = new Set([
-  "Circle",
-  "Grid",
-  "Line",
-  "Square",
-  "Triangle",
-]);
+// Namche Shape styles are separate display families, not weights.
+const shapeVariants = new Set(["Metaball", "Origin", "Skeleton"]);
 
 function packageRelativeUrl(file) {
   return `./${path.relative(packageRoot, file).split(path.sep).join("/")}`;
@@ -170,17 +165,17 @@ function parseFace(family, filename, allFilenames) {
     .slice(family.filenamePrefix.length)
     .replace(/^-/, "");
 
-  if (family.pixel) {
-    if (!pixelVariants.has(suffix)) {
+  if (family.shape) {
+    if (!shapeVariants.has(suffix)) {
       throw new Error(
-        `Unknown Namche Shadow Pixel variant in ${family.key}/${filename}`,
+        `Unknown Namche Shape style in ${family.key}/${filename}`,
       );
     }
     return {
       familyName: `${family.familyName} ${suffix}`,
       filename,
       style: "normal",
-      weight: "500",
+      weight: "400",
       variable: false,
     };
   }

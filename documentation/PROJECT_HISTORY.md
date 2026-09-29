@@ -22,8 +22,17 @@ font until their rounded masters match.
 The upright Sans variable font was subsequently rebuilt from compatible native
 Glyphs OTF exports so it could retain the reviewed rounded outlines. Namche
 Shadow Mono remains an outline-identical renamed Geist derivative. Namche
-Shadow Pixel began the same way and now accepts only focused, reviewed glyph
-additions and shaping corrections.
+Shadow Pixel began the same way and accepted only focused, reviewed glyph
+additions and shaping corrections (U+20B9 **₹** and U+25CC **◌**) until it was
+replaced on 2026-09-29 (see below).
+
+On 2026-09-29, Namche Shadow Pixel was replaced by **Namche Shape**, a new
+family with three static styles (Metaball, Origin, and Skeleton) generated from
+the pixel grid of the Geist Pixel source by `scripts/namche_shape.py` and
+`scripts/build_namche_shape.py`. It keeps Geist Pixel's metrics, spacing,
+kerning, and OpenType features, and its source still carries the reviewed
+**₹** and **◌** additions. The suite is now Namche Shadow Sans, Namche Shadow
+Mono, and Namche Shape. The earlier Pixel releases remain in Git history.
 
 Current production instructions live in [`AGENTS.md`](../AGENTS.md),
 [`scripts/NAMCHE_SHADOW.md`](../scripts/NAMCHE_SHADOW.md), and

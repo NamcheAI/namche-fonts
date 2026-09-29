@@ -721,17 +721,20 @@ def main() -> None:
     render_issue_20()
     render_issue_21()
     render_issue_22()
-    render_issue_23()
-    render_issue_23_outlines()
     render_issue_24()
-    render_issue_25()
-    render_issue_32()
     render_issue_33()
-    render_issue_34()
-    render_issue_35()
-    render_issue_36()
-    render_issue_37()
     render_issue_78()
+    # Namche Shadow Pixel was replaced by Namche Shape; its panels (and the
+    # mixed #23 and #35 panels that sample it) are frozen historical records.
+    if PIXEL_DIR.is_dir():
+        render_issue_23()
+        render_issue_23_outlines()
+        render_issue_25()
+        render_issue_32()
+        render_issue_34()
+        render_issue_35()
+        render_issue_36()
+        render_issue_37()
     for path in sorted(OUTPUT.glob("issue-*.png")):
         print(f"Wrote {path.relative_to(ROOT)}")
 

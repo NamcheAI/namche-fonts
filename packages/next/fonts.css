@@ -39,42 +39,26 @@
 }
 
 @font-face {
-  font-family: "Namche Shadow Pixel Circle";
-  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Circle.woff2") format("woff2");
+  font-family: "Namche Shape Metaball";
+  src: url("./dist/fonts/namche-shape/NamcheShape-Metaball.woff2") format("woff2");
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Namche Shadow Pixel Grid";
-  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Grid.woff2") format("woff2");
+  font-family: "Namche Shape Origin";
+  src: url("./dist/fonts/namche-shape/NamcheShape-Origin.woff2") format("woff2");
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Namche Shadow Pixel Line";
-  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Line.woff2") format("woff2");
+  font-family: "Namche Shape Skeleton";
+  src: url("./dist/fonts/namche-shape/NamcheShape-Skeleton.woff2") format("woff2");
   font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Namche Shadow Pixel Square";
-  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Square.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Namche Shadow Pixel Triangle";
-  src: url("./dist/fonts/namche-shadow-pixel/NamcheShadowPixel-Triangle.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-display: swap;
 }
 

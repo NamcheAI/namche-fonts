@@ -13,7 +13,7 @@ Namche Shadow is a three-family type suite based on
 | --- | --- | --- |
 | **Namche Shadow Sans** | Geist Sans | Custom inner-corner treatment designed by Michael Marte |
 | **Namche Shadow Mono** | Geist Mono | Identical outlines and metrics; renamed for future Namche-specific work |
-| **Namche Shadow Pixel** | Geist Pixel | Geist-derived geometry with focused, reviewed additions |
+| **Namche Shape** | Pixel grid of Geist Pixel | New design in three static styles (Metaball, Origin, Skeleton), generated from the Geist Pixel grid |
 
 The repository follows the upstream Geist font-project layout: buildable
 sources are in `sources/`, generated releases are in `fonts/`, automation is
@@ -87,7 +87,7 @@ Install `@namche/namche-shadow`, then import its CDN-pinned entry point:
 The stylesheet is generated from the package’s own version, so `npm update`
 repoints all font URLs to that matching immutable CDN release. The build does
 not copy font binaries to the app’s own origin. Family-only alternatives are
-`sans.cdn.css`, `mono.cdn.css`, `pixel.cdn.css`, and `geist.cdn.css`.
+`sans.cdn.css`, `mono.cdn.css`, `shape.cdn.css`, and `geist.cdn.css`.
 
 ### npm with self-hosting: offline and air-gapped
 
@@ -103,7 +103,7 @@ Import only the families an app uses to avoid loading unnecessary faces:
 ```css
 @import "@namche/namche-shadow/sans.css";
 @import "@namche/namche-shadow/mono.css";
-@import "@namche/namche-shadow/pixel.css";
+@import "@namche/namche-shadow/shape.css";
 ```
 
 Namche-controlled properties that only render the maintained Latin web set can
@@ -126,8 +126,8 @@ in an air-gapped deployment, and makes the downstream origin responsible for
 serving them.
 
 All CSS entry points expose `Namche Shadow Sans`, `Namche Shadow Mono`, the
-five Pixel variant families (`Namche Shadow Pixel Square`, `Grid`, `Circle`,
-`Triangle`, and `Line`), and upstream `Geist`.
+three Namche Shape families (`Namche Shape Metaball`, `Namche Shape Origin`,
+and `Namche Shape Skeleton`, each at font-weight 400), and upstream `Geist`.
 
 ### Upstream Geist for body text
 
@@ -144,8 +144,9 @@ their `.cdn.css` equivalents.
 [`sources/geist-upstream.json`](sources/geist-upstream.json); CI re-downloads
 the pinned tarball and byte-compares on every pull request. Update it with
 `make update-geist` after bumping the pin. Geist Mono and Geist Pixel are not
-bundled: Namche Shadow Mono and Pixel are outline-identical renamed
-derivatives of those same binaries. Geist is licensed under the same SIL Open
+bundled: Namche Shadow Mono is an outline-identical renamed derivative of the
+Geist Mono binaries, and Namche Shape is a new design derived from the Geist
+Pixel grid rather than a rename. Geist is licensed under the same SIL Open
 Font License 1.1 with no Reserved Font Name; the upstream license ships as
 `Geist/LICENSE.txt` in every release. Next.js apps that want automatic font
 optimisation for Geist should keep using Vercel's own `geist` package.
@@ -196,8 +197,33 @@ both rounded VFs with static fallbacks; `font/sans-non-variable` uses statics
 throughout. Five glyphs whose rounded masters still differ are parked only
 from the VFs and remain present in every static.
 
-Namche Shadow Mono and Namche Shadow Pixel retain their upstream-derived
-variable builds.
+Namche Shadow Mono retains its upstream-derived variable build. Namche Shape
+ships three static styles (Metaball, Origin, and Skeleton) and has no variable
+font.
+
+### Namche Shape
+
+Namche Shape is generated from the pixel grid of the Geist Pixel source, kept
+as `sources/NamcheShape.glyphspackage` (which still carries the reviewed
+**₹** and **◌** additions), by `scripts/namche_shape.py` and
+`scripts/build_namche_shape.py` (`make build-shape`). It keeps Geist Pixel's
+metrics, spacing, kerning, and OpenType features.
+
+- **Metaball**: every pixel is a circle, and some neighbouring pixels melt
+  together through necks, inspired by the Namche metaball mark.
+- **Origin**: every pixel is one of three shapes from the original Namche
+  (Mycelium) system, a square, a half-round, or a quarter disc, placed at
+  random on the Geist Pixel Grid layout.
+- **Skeleton**: only the connections between pixel centres remain, drawn as a
+  rounded trace; the circles are removed.
+
+Random choices are seeded from the style and glyph name, so builds are
+reproducible. Hand refinements go in `sources/NamcheShape/overrides.yaml`.
+`make check-namche-shape` validates the release fonts, and
+`make check-namche-shape-reproducible` rebuilds them and requires the
+committed outlines to match the generator. The release files live in
+`fonts/NamcheShape` (`otf/`, `ttf/`, and `webfonts/`, for example
+`NamcheShape-Metaball.woff2`).
 
 ## Credits
 
@@ -208,10 +234,10 @@ The Namche Shadow Sans design direction and implementation is done by
 The suite is derived from Geist, created by Vercel in collaboration with
 Basement Studio, Andrés Briganti, Mateo Zaragoza, and the other contributors
 listed in [`AUTHORS.txt`](AUTHORS.txt) and [`CONTRIBUTORS.txt`](CONTRIBUTORS.txt).
-Namche Shadow Mono preserves its upstream outlines exactly. Namche Shadow Pixel
-retains Geist Pixel's geometry while accepting only focused, reviewed glyph
-additions and shaping corrections; its new name does not imply a wholesale
-redesign.
+Namche Shadow Mono preserves its upstream outlines exactly. Namche Shape is a
+new design derived from the pixel grid of Geist Pixel by Vercel (Andrés
+Briganti, Guido Ferreyra); it was designed by Michael Marte for
+[Ruhm etc.](https://ruhmetc.com/) like the rest of the suite.
 
 ## License
 
