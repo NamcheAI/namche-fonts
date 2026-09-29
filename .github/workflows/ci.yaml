@@ -286,6 +286,10 @@ jobs:
       - uses: fonttools/setup-fontspector@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install build toolset
+        run: |
+          sudo apt-get update
+          sudo apt-get install ttfautohint libcairo2-dev python3-cairo-dev pkg-config python3-dev
       # The committed fonts must equal a fresh generator build, so a changed
       # recipe, override, or source cannot land without regenerated binaries.
       - name: Check committed Namche Shape outlines are reproducible
