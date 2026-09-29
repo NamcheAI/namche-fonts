@@ -254,6 +254,7 @@ proof: venv build.stamp
 
 images: venv build.stamp
 	. venv/bin/activate; python3 scripts/render_banners.py
+	. venv/bin/activate; python3 scripts/render_shape_banner.py
 
 %.png: %.py build.stamp
 	. venv/bin/activate; python3 $< --output $@

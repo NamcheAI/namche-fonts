@@ -112,7 +112,12 @@ conventions.
   Alternates inherit width, anchors, carets, kerning groups, and production
   names from their default glyph.
 - Skeleton must stay connected: its trace is a randomized spanning tree of
-  each pixel component plus random extra links, so no stroke is lost.
+  each pixel component plus random extra links, so no stroke is lost. Links
+  along a stroke are always drawn (the rails stay whole); rungs across a
+  stroke are random; only 2x2 dots stay solid.
+- Origin turns its round shapes toward open stroke edges and corners
+  (`ORIGIN_MODE = "structure"`, inspired by Nigel Cottier's *Letterform
+  Variations*); Metaball melts along strokes more often than across them.
 - `make check-namche-shape` blocks regressions across release and npm
   binaries: glyph set, Unicode map, and widths match the source; U+2028/U+2029
   stay inkless at 600 units; the zero-width soft hyphen stays; all source

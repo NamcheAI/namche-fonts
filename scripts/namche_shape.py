@@ -42,22 +42,22 @@ STYLES = ("Metaball", "Origin", "Skeleton")
 # Style parameters. Keep them here so proofs and builds share one recipe.
 METABALL_NECK_HALF = R / 2  # neck half width at the waist
 METABALL_FILLET = R / 4  # fillet radius tangent to both circles
-METABALL_LINK_P = 0.45  # chance that an orthogonal neighbour pair melts
+METABALL_LINK_P = 0.55  # chance that neighbours along a stroke melt
 
 SKELETON_HALF = R / 2  # stroke half width
 SKELETON_INNER = R / 2  # radius of rounded inner corners
 SKELETON_LONE = R * 0.7  # radius of a pixel without neighbours
-SKELETON_SOLID_MAX = 16  # marks this small (dots, bullets) stay solid
-SKELETON_ALONG_P = 0.85  # links that continue a stroke
-SKELETON_ACROSS_P = 0.6  # rungs between parallel strokes
+SKELETON_SOLID_MAX = 4  # only 2x2 dots stay solid
+SKELETON_ALONG_P = 1.0  # links that continue a stroke (rails stay whole)
+SKELETON_ACROSS_P = 0.5  # rungs between parallel strokes
 
 ORIGIN_INSET = 4  # Geist Pixel Grid inset per side
 ORIGIN_WEIGHTS = (("square", 0.3), ("bullet", 0.4), ("quarter", 0.3))
 # "random": fixed orientation as in the briefing. "structure": round shapes
 # turn toward the open side (bullets at stroke edges and ends) or the open
 # outer corner (quarter discs), in the spirit of Letterform Variations.
-ORIGIN_MODE = "random"
-METABALL_ACROSS_P = None  # when set, necks across a stroke use this chance
+ORIGIN_MODE = "structure"
+METABALL_ACROSS_P = 0.2  # necks across a stroke (rungs between parallel columns)
 
 
 # --------------------------------------------------------------------------
@@ -317,7 +317,7 @@ def skeleton_links(name, cells, overrides):
     weighted = []
     for a, b in candidates:
         along = continues(cells, a, b) if (a, b) in ortho else True
-        weighted.append((rng.random() * (1.0 if along else 1.6), a, b))
+        weighted.append((rng.random() * (1.0 if along else 3.0), a, b))
     weighted.sort()
     parent = {c: c for c in cells}
 
@@ -460,7 +460,7 @@ def origin_options(cells, cell):
     open_ = {d for d, (dx, dy) in _SIDES.items() if (x + dx, y + dy) not in cells}
     opposite = {"N": "S", "S": "N", "E": "W", "W": "E"}
     options = [("square", 0, dict(ORIGIN_WEIGHTS)["square"])]
-    bullets = [d for d in open_ if opposite[d] not in open_]
+    bullets = [d for d in _SIDES if d in open_ and opposite[d] not in open_]
     quarters = [c for c in _QUARTER_TURNS if set(c) <= open_]
     for d in bullets:
         options.append(("bullet", _BULLET_TURNS[d], dict(ORIGIN_WEIGHTS)["bullet"] / len(bullets)))
