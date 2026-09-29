@@ -1,6 +1,6 @@
 {
   "name": "@namche/namche-shadow",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Namche Shadow Sans, Namche Shadow Mono, and Namche Shape for Next.js and framework-agnostic CSS.",
   "main": "./dist/font.js",
   "type": "module",
