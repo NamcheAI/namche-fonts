@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Namche Shape Metaball";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShape/webfonts/subsets/NamcheShape-Metaball-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.6.0/NamcheShape/webfonts/subsets/NamcheShape-Metaball-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Namche Shape Origin";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShape/webfonts/subsets/NamcheShape-Origin-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.6.0/NamcheShape/webfonts/subsets/NamcheShape-Origin-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -26,7 +26,7 @@
 
 @font-face {
   font-family: "Namche Shape Skeleton";
-  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.5.0/NamcheShape/webfonts/subsets/NamcheShape-Skeleton-latin.woff2") format("woff2");
+  src: url("https://cdn.namche.ai/fonts/namche-shadow/v0.6.0/NamcheShape/webfonts/subsets/NamcheShape-Skeleton-latin.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
