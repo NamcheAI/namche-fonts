@@ -42,17 +42,22 @@ STYLES = ("Metaball", "Origin", "Skeleton")
 # Style parameters. Keep them here so proofs and builds share one recipe.
 METABALL_NECK_HALF = R / 2  # neck half width at the waist
 METABALL_FILLET = R / 4  # fillet radius tangent to both circles
-METABALL_LINK_P = 0.45  # chance that an orthogonal neighbour pair melts
+METABALL_LINK_P = 0.55  # chance that neighbours along a stroke melt
 
 SKELETON_HALF = R / 2  # stroke half width
 SKELETON_INNER = R / 2  # radius of rounded inner corners
 SKELETON_LONE = R * 0.7  # radius of a pixel without neighbours
-SKELETON_SOLID_MAX = 16  # marks this small (dots, bullets) stay solid
-SKELETON_ALONG_P = 0.85  # links that continue a stroke
-SKELETON_ACROSS_P = 0.6  # rungs between parallel strokes
+SKELETON_SOLID_MAX = 4  # only 2x2 dots stay solid
+SKELETON_ALONG_P = 1.0  # links that continue a stroke (rails stay whole)
+SKELETON_ACROSS_P = 0.5  # rungs between parallel strokes
 
 ORIGIN_INSET = 4  # Geist Pixel Grid inset per side
 ORIGIN_WEIGHTS = (("square", 0.3), ("bullet", 0.4), ("quarter", 0.3))
+# "random": fixed orientation as in the briefing. "structure": round shapes
+# turn toward the open side (bullets at stroke edges and ends) or the open
+# outer corner (quarter discs), in the spirit of Letterform Variations.
+ORIGIN_MODE = "structure"
+METABALL_ACROSS_P = 0.2  # necks across a stroke (rungs between parallel columns)
 
 
 # --------------------------------------------------------------------------
@@ -85,6 +90,16 @@ def load_grids(source: Path = SOURCE) -> dict[str, GlyphGrid]:
                 grid.components.append((ref, tuple(shape.transform)))
         grids[glyph.name] = grid
     return grids
+
+
+def variant_name(name: str, variant: int = 0) -> str:
+    """Seed key of a contextual alternate; variant 0 is the default glyph."""
+    return name if variant == 0 else f"{name}#{variant}"
+
+
+def rule_name(name: str) -> str:
+    """Overrides apply to a glyph and all of its alternates."""
+    return name.split("#", 1)[0]
 
 
 def seeded(style: str, name: str, salt: str = "") -> random.Random:
@@ -226,7 +241,7 @@ def continues(cells, a, b) -> bool:
 def choose_links(style, name, cells, probability, overrides):
     """probability is a number or a callable (a, b) -> number."""
     rng = seeded(style, name, "links")
-    rules = overrides.get(style, {}).get(name, {})
+    rules = overrides.get(style, {}).get(rule_name(name), {})
     forced_on = set(rules.get("link", []))
     forced_off = set(rules.get("unlink", []))
     chosen = []
@@ -247,7 +262,12 @@ def draw_metaball(name, cells, overrides) -> pathops.Path:
     shapes = Shapes()
     for x, y in sorted(cells):
         circle(shapes.new(), x + R, y + R, R)
-    for a, b in choose_links("Metaball", name, cells, METABALL_LINK_P, overrides):
+    def probability(a, b):
+        if METABALL_ACROSS_P is not None and not continues(cells, a, b):
+            return METABALL_ACROSS_P
+        return METABALL_LINK_P
+
+    for a, b in choose_links("Metaball", name, cells, probability, overrides):
         metaball_neck(shapes.new(), a, b)
     return union(shapes)
 
@@ -282,7 +302,7 @@ def skeleton_links(name, cells, overrides):
     Diagonal links join cells that only touch at a corner.
     """
     rng = seeded("Skeleton", name, "links")
-    rules = overrides.get("Skeleton", {}).get(name, {})
+    rules = overrides.get("Skeleton", {}).get(rule_name(name), {})
     forced_on = set(rules.get("link", []))
     forced_off = set(rules.get("unlink", []))
     ortho = orthogonal_links(cells)
@@ -297,7 +317,7 @@ def skeleton_links(name, cells, overrides):
     weighted = []
     for a, b in candidates:
         along = continues(cells, a, b) if (a, b) in ortho else True
-        weighted.append((rng.random() * (1.0 if along else 1.6), a, b))
+        weighted.append((rng.random() * (1.0 if along else 3.0), a, b))
     weighted.sort()
     parent = {c: c for c in cells}
 
@@ -417,38 +437,79 @@ def origin_shape(path, kind, x, y) -> None:
         raise ValueError(kind)
 
 
+_SIDES = {"N": (0, P), "E": (P, 0), "S": (0, -P), "W": (-P, 0)}
+# Quarter turns (counter-clockwise) from the canonical orientation.
+_BULLET_TURNS = {"S": 0, "E": 1, "N": 2, "W": 3}  # direction of the round end
+_QUARTER_TURNS = {"NE": 0, "NW": 1, "SW": 2, "SE": 3}  # corner the arc faces
+
+
+def _rotated(path: pathops.Path, cell, turns: int) -> pathops.Path:
+    if turns % 4 == 0:
+        return path
+    cx, cy = cell[0] + R, cell[1] + R
+    angle = turns * math.pi / 2
+    c, s = round(math.cos(angle)), round(math.sin(angle))
+    out = pathops.Path()
+    path.draw(_TransformPen(out.getPen(), (c, s, -s, c, cx - c * cx + s * cy, cy - s * cx - c * cy)))
+    return out
+
+
+def origin_options(cells, cell):
+    """Structure-aware choices: (kind, turns, weight)."""
+    x, y = cell
+    open_ = {d for d, (dx, dy) in _SIDES.items() if (x + dx, y + dy) not in cells}
+    opposite = {"N": "S", "S": "N", "E": "W", "W": "E"}
+    options = [("square", 0, dict(ORIGIN_WEIGHTS)["square"])]
+    bullets = [d for d in _SIDES if d in open_ and opposite[d] not in open_]
+    quarters = [c for c in _QUARTER_TURNS if set(c) <= open_]
+    for d in bullets:
+        options.append(("bullet", _BULLET_TURNS[d], dict(ORIGIN_WEIGHTS)["bullet"] / len(bullets)))
+    for c in quarters:
+        options.append(("quarter", _QUARTER_TURNS[c], dict(ORIGIN_WEIGHTS)["quarter"] / len(quarters)))
+    return options
+
+
 def draw_origin(name, cells, overrides) -> pathops.Path:
     rng = seeded("Origin", name, "shapes")
-    rules = overrides.get("Origin", {}).get(name, {})
+    rules = overrides.get("Origin", {}).get(rule_name(name), {})
     fixed = rules.get("cells", {})
     kinds = [k for k, _ in ORIGIN_WEIGHTS]
     weights = [w for _, w in ORIGIN_WEIGHTS]
     shapes = Shapes()
     for cell in sorted(cells):
-        kind = rng.choices(kinds, weights)[0]
-        kind = fixed.get(cell_key(cell), kind)
-        origin_shape(shapes.new(), kind, *cell)
+        if ORIGIN_MODE == "structure":
+            options = origin_options(cells, cell)
+            kind, turns, _ = rng.choices(options, [o[2] for o in options])[0]
+        else:
+            kind, turns = rng.choices(kinds, weights)[0], 0
+        choice = fixed.get(cell_key(cell))
+        if choice:
+            kind, _, turn_name = str(choice).partition(":")
+            turns = {**_BULLET_TURNS, **_QUARTER_TURNS}.get(turn_name, 0)
+        shape = pathops.Path()
+        origin_shape(shape, kind, *cell)
+        shapes.append(_rotated(shape, cell, turns))
     return union(shapes)
 
 
 DRAW = {"Metaball": draw_metaball, "Origin": draw_origin, "Skeleton": draw_skeleton}
 
 
-def base_outline(style: str, grid: GlyphGrid, overrides: dict) -> pathops.Path:
+def base_outline(style: str, grid: GlyphGrid, overrides: dict, variant: int = 0) -> pathops.Path:
     if not grid.cells:
         return pathops.Path()
-    return DRAW[style](grid.name, grid.cells, overrides)
+    return DRAW[style](variant_name(grid.name, variant), grid.cells, overrides)
 
 
-def glyph_outline(style, name, grids, overrides, cache) -> pathops.Path:
+def glyph_outline(style, name, grids, overrides, cache, variant=0) -> pathops.Path:
     """Full outline of a glyph, decomposing components recursively."""
-    key = (style, name)
+    key = (style, name, variant)
     if key in cache:
         return cache[key]
     grid = grids[name]
-    parts = [base_outline(style, grid, overrides)]
+    parts = [base_outline(style, grid, overrides, variant)]
     for ref, transform in grid.components:
-        sub = glyph_outline(style, ref, grids, overrides, cache)
+        sub = glyph_outline(style, ref, grids, overrides, cache, variant)
         moved = pathops.Path()
         sub.draw(_TransformPen(moved.getPen(), tuple(transform)))
         parts.append(moved)
@@ -457,20 +518,20 @@ def glyph_outline(style, name, grids, overrides, cache) -> pathops.Path:
     return path
 
 
-def _part_outlines(style, name, grids, overrides, cache):
+def _part_outlines(style, name, grids, overrides, cache, variant=0):
     grid = grids[name]
-    parts = [base_outline(style, grid, overrides)] if grid.cells else []
+    parts = [base_outline(style, grid, overrides, variant)] if grid.cells else []
     for ref, transform in grid.components:
-        sub = glyph_outline(style, ref, grids, overrides, cache)
+        sub = glyph_outline(style, ref, grids, overrides, cache, variant)
         moved = pathops.Path()
         sub.draw(_TransformPen(moved.getPen(), tuple(transform)))
         parts.append(moved)
     return parts
 
 
-def parts_overlap(style, name, grids, overrides, cache) -> bool:
+def parts_overlap(style, name, grids, overrides, cache, variant=0) -> bool:
     """True when two parts of a composite glyph share any area."""
-    parts = _part_outlines(style, name, grids, overrides, cache)
+    parts = _part_outlines(style, name, grids, overrides, cache, variant)
     for i, a in enumerate(parts):
         for b in parts[i + 1 :]:
             common = pathops.Path()

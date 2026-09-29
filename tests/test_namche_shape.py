@@ -1,3 +1,5 @@
+import subprocess
+import sys
 import unittest
 
 from fontTools.pens.recordingPen import RecordingPen
@@ -22,6 +24,28 @@ class NamcheShapeGeneratorTest(unittest.TestCase):
             first = recording(ns.base_outline(style, grid, {}))
             second = recording(ns.base_outline(style, grid, {}))
             self.assertEqual(first, second, style)
+
+    def testOutlinesDoNotDependOnPythonHashSeed(self):
+        code = (
+            "from scripts import namche_shape as ns;"
+            "from fontTools.pens.recordingPen import RecordingPen;"
+            "g=ns.load_grids();out=[]\n"
+            "for s in ns.STYLES:\n"
+            "  for n in ('a','g','R','ampersand'):\n"
+            "    p=RecordingPen();ns.base_outline(s,g[n],{}).draw(p);out.append(repr(p.value))\n"
+            "import hashlib;print(hashlib.sha256(''.join(out).encode()).hexdigest())"
+        )
+        digests = {
+            subprocess.run(
+                [sys.executable, "-c", code],
+                env={"PYTHONHASHSEED": seed, "PATH": ""},
+                capture_output=True,
+                text=True,
+                check=True,
+            ).stdout
+            for seed in ("1", "2", "3")
+        }
+        self.assertEqual(len(digests), 1)
 
     def testEveryExportedGridGlyphHasInkInEveryStyle(self):
         names = [n for n, g in self.grids.items() if g.cells and not n.startswith("pixel")]

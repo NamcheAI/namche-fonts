@@ -9,6 +9,8 @@ Checks every committed release and npm binary against the grid source:
 - source-defined ligature carets (including fi and fl) survive
 - U+20B9 ₹ and U+25CC ◌ carry ink; every combining mark attaches to ◌ and
   į + a top mark shapes to dotless i + ogonek + mark
+- every glyph but marks has seeded `.shapeN` alternates with the same width,
+  and `calt` gives four repeated letters four different variants
 - with --reproducible, every outline equals a fresh generator build, so the
   committed fonts cannot drift from scripts/namche_shape.py and its overrides
 """
@@ -136,6 +138,37 @@ def validate_shaping(path: Path, font: TTFont) -> list[str]:
     return errors
 
 
+ALT_SUFFIX = ".shape"
+ALTERNATE_SAMPLES = ("aaaa", "llll", "0000", "ﬁﬁﬁﬁ", "ąąąą", "AAAA")
+
+
+def validate_alternates(path: Path, font: TTFont) -> list[str]:
+    """Every alternate keeps its default's width; calt rotates repeats."""
+    errors = []
+    order = font.getGlyphOrder()
+    names = set(order)
+    hmtx = font["hmtx"]
+    alternates = [n for n in order if ALT_SUFFIX in n]
+    if not alternates:
+        return [f"{path}: no {ALT_SUFFIX}N contextual alternates"]
+    for name in alternates:
+        base = name.rsplit(ALT_SUFFIX, 1)[0]
+        if base not in names:
+            errors.append(f"{path}: alternate {name} has no default glyph")
+        elif hmtx[name][0] != hmtx[base][0]:
+            errors.append(f"{path}: {name} width {hmtx[name][0]} != {base} {hmtx[base][0]}")
+    features = {r.FeatureTag for r in font["GSUB"].table.FeatureList.FeatureRecord}
+    if "calt" not in features:
+        errors.append(f"{path}: missing calt feature")
+        return errors
+    for text in ALTERNATE_SAMPLES:
+        infos, _ = shape(path, text)
+        glyphs = [order[i.codepoint] for i in infos]
+        if len(set(glyphs)) != len(glyphs):
+            errors.append(f"{path}: calt repeats a variant in {text!r}: {glyphs}")
+    return errors
+
+
 def validate_font(path: Path) -> list[str]:
     widths, cmap, carets, _ = source_expectations()
     errors: list[str] = []
@@ -193,6 +226,7 @@ def validate_font(path: Path) -> list[str]:
                 errors.append(f"{path}: U+{codepoint:04X} must be present with ink")
         if not errors:
             errors.extend(validate_shaping(path, font))
+            errors.extend(validate_alternates(path, font))
     finally:
         font.close()
     return errors
@@ -314,7 +348,10 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    print("Verified Namche Shape glyph set, metrics, separators, carets, ₹, ◌ and į shaping")
+    print(
+        "Verified Namche Shape glyph set, metrics, separators, carets, ₹, ◌, "
+        "į shaping, and calt alternates"
+    )
     return 0
 
 

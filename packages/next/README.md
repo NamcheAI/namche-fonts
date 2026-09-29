@@ -109,6 +109,10 @@ Namche Shape styles are exported from `@namche/namche-shadow/font/shape`:
 - `NamcheShapeOrigin`
 - `NamcheShapeSkeleton`
 
+Each Namche Shape glyph comes in four seeded variants, and the default-on
+`calt` feature rotates them so repeated letters differ. Use
+`font-feature-settings: "calt" 0` to pin every glyph to its default variant.
+
 The Namche Shadow Sans design direction and implementation is done by
 [Michael Marte](https://github.com/fizzybubbele) for
 [Ruhm etc.](https://ruhmetc.com/).

@@ -6,6 +6,12 @@
   <img alt="Namche Shadow Sans type specimen" src=".docs/img/namche-shadow-banner--light.png">
 </picture>
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".docs/img/namche-shape-banner--dark.png">
+  <source media="(prefers-color-scheme: light)" srcset=".docs/img/namche-shape-banner--light.png">
+  <img alt="Namche Shape Metaball, Origin, and Skeleton type specimen" src=".docs/img/namche-shape-banner--light.png">
+</picture>
+
 Namche Shadow is a three-family type suite based on
 [Vercel's Geist](https://github.com/vercel/geist-font):
 
@@ -13,7 +19,7 @@ Namche Shadow is a three-family type suite based on
 | --- | --- | --- |
 | **Namche Shadow Sans** | Geist Sans | Custom inner-corner treatment designed by Michael Marte |
 | **Namche Shadow Mono** | Geist Mono | Identical outlines and metrics; renamed for future Namche-specific work |
-| **Namche Shape** | Pixel grid of Geist Pixel | New design in three static styles (Metaball, Origin, Skeleton), generated from the Geist Pixel grid |
+| **Namche Shape** | Pixel grid of Geist Pixel | New design by Michael Marte in three static styles, [Metaball, Origin, and Skeleton](#namche-shape), with contextual alternates |
 
 The repository follows the upstream Geist font-project layout: buildable
 sources are in `sources/`, generated releases are in `fonts/`, automation is
@@ -212,13 +218,22 @@ metrics, spacing, kerning, and OpenType features.
 - **Metaball**: every pixel is a circle, and some neighbouring pixels melt
   together through necks, inspired by the Namche metaball mark.
 - **Origin**: every pixel is one of three shapes from the original Namche
-  (Mycelium) system, a square, a half-round, or a quarter disc, placed at
-  random on the Geist Pixel Grid layout.
+  (Mycelium) system, a square, a half-round, or a quarter disc, on the Geist
+  Pixel Grid layout. Round sides turn toward the open edges and corners of
+  each stroke, in the spirit of Nigel Cottier's *Letterform Variations*.
 - **Skeleton**: only the connections between pixel centres remain, drawn as a
-  rounded trace; the circles are removed.
+  rounded trace; the circles are removed. Rails along each stroke stay whole,
+  random rungs across it leave small round holes, and diagonals stay joined.
 
 Random choices are seeded from the style and glyph name, so builds are
 reproducible. Hand refinements go in `sources/NamcheShape/overrides.yaml`.
+
+Every glyph except combining marks ships in four seeded variants (the default
+plus `.shape1` to `.shape3`). The `calt` feature, on by default in browsers
+and most apps, picks the next variant from the previous one, so repeated
+letters such as the `ss` in "Mississippi" never look the same twice. Turn it
+off with `font-feature-settings: "calt" 0` when a fixed rendering is needed,
+for example in logos.
 `make check-namche-shape` validates the release fonts, and
 `make check-namche-shape-reproducible` rebuilds them and requires the
 committed outlines to match the generator. The release files live in

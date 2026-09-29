@@ -193,6 +193,12 @@ reports 280 PASS, 23 WARN, and 6 FAIL results:
 - WARN, expected from the Skeleton construction: `outline_colinear_vectors`
   where a diagonal link meets its round joint.
 
+With the `calt` alternates (four seeded variants of every non-mark glyph),
+the run reports 279 PASS, 24 WARN, and the same 6 FAIL results. The added
+warnings are `file_size` (the unsubsetted Metaball TTF is about 2.5 MB; its
+WOFF2 is about 200 KB) and a single `outline_short_segments` finding in one
+generated alternate.
+
 There are no `nested_components` or `overlapping_path_segments` findings:
 the build decomposes and unions every composite whose parts overlap (ogonek,
 cedilla) and flattens nested TrueType components.
