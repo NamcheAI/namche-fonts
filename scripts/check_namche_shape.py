@@ -19,7 +19,6 @@ import argparse
 import sys
 import tempfile
 from functools import lru_cache
-from hashlib import sha256
 from io import BytesIO
 from pathlib import Path
 
@@ -213,16 +212,47 @@ def validate_source() -> list[str]:
     return errors
 
 
-def outline_digests(path: Path) -> dict[str, str]:
+def outline_recordings(path: Path) -> dict[str, list]:
     font = TTFont(path, recalcTimestamp=False)
     glyphs = font.getGlyphSet()
     result = {}
     for name in font.getGlyphOrder():
         pen = DecomposingRecordingPen(glyphs)
         glyphs[name].draw(pen)
-        result[name] = sha256(repr(pen.value).encode()).hexdigest()
+        result[name] = pen.value
     font.close()
     return result
+
+
+# Boolean operations run in floating point. At exact tangencies (touching
+# circles, coincident stroke edges) x86 and Apple Silicon can return the same
+# shape with a different contour order or segmentation. Outlines therefore
+# match when the area where they disagree (their XOR) is negligible.
+XOR_AREA_TOLERANCE = 2.0  # square font units
+
+
+def _path(recording: list) -> "pathops.Path":
+    import pathops
+    from fontTools.pens.recordingPen import RecordingPen
+
+    path = pathops.Path()
+    pen = RecordingPen()
+    pen.value = recording
+    pen.replay(path.getPen())
+    return path
+
+
+def outline_difference(a: list, b: list) -> str | None:
+    import pathops
+
+    if not a and not b:
+        return None
+    result = pathops.Path()
+    pathops.xor([_path(a)], [_path(b)], result.getPen())
+    area = abs(result.area)
+    if area > XOR_AREA_TOLERANCE:
+        return f"outlines disagree over {area:.1f} square units"
+    return None
 
 
 def validate_reproducible(root: Path) -> list[str]:
@@ -240,12 +270,20 @@ def validate_reproducible(root: Path) -> list[str]:
                 fresh = out / sub / f"NamcheShape-{style}.{suffix}"
                 if not committed.is_file():
                     continue
-                a, b = outline_digests(committed), outline_digests(fresh)
-                changed = sorted(n for n in a.keys() | b.keys() if a.get(n) != b.get(n))
+                a, b = outline_recordings(committed), outline_recordings(fresh)
+                changed = {}
+                for name in sorted(a.keys() | b.keys()):
+                    if name not in a or name not in b:
+                        changed[name] = "glyph missing"
+                        continue
+                    problem = outline_difference(a[name], b[name])
+                    if problem:
+                        changed[name] = problem
                 if changed:
+                    sample = ", ".join(f"{n} ({why})" for n, why in list(changed.items())[:6])
                     errors.append(
-                        f"{committed}: {len(changed)} outlines differ from the generator "
-                        f"(e.g. {changed[:8]}); run make build-shape"
+                        f"{committed}: {len(changed)} outlines differ from the generator: "
+                        f"{sample}; run make build-shape"
                     )
     return errors
 

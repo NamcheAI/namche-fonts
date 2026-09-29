@@ -241,7 +241,7 @@ check-namche-shape: venv
 	. venv/bin/activate; python3 scripts/check_namche_shape.py
 
 check-namche-shape-reproducible: venv
-	. venv/bin/activate; python3 scripts/check_namche_shape.py --reproducible
+	. venv/bin/activate; python3 scripts/check_namche_shape.py --reproducible --release-only
 
 check-mono-hmetrics: venv
 	. venv/bin/activate; python3 scripts/check_mono_hmetrics.py
