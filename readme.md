@@ -219,6 +219,13 @@ metrics, spacing, kerning, and OpenType features.
 
 Random choices are seeded from the style and glyph name, so builds are
 reproducible. Hand refinements go in `sources/NamcheShape/overrides.yaml`.
+
+Every glyph except combining marks ships in four seeded variants (the default
+plus `.shape1` to `.shape3`). The `calt` feature, on by default in browsers
+and most apps, picks the next variant from the previous one, so repeated
+letters such as the `ss` in "Mississippi" never look the same twice. Turn it
+off with `font-feature-settings: "calt" 0` when a fixed rendering is needed,
+for example in logos.
 `make check-namche-shape` validates the release fonts, and
 `make check-namche-shape-reproducible` rebuilds them and requires the
 committed outlines to match the generator. The release files live in

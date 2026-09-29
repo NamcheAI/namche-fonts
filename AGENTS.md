@@ -106,6 +106,11 @@ conventions.
   never use unseeded randomness. Refine a glyph through
   `sources/NamcheShape/overrides.yaml`, not by editing binaries, and review
   the result with `scripts/proof_namche_shape.py`.
+- Every non-mark glyph has seeded `.shape1` to `.shape3` alternates
+  (variant seeds `name#N`); a single `calt` chaining lookup rotates them by a
+  step coprime with the variant count, so four repeats show four variants.
+  Alternates inherit width, anchors, carets, kerning groups, and production
+  names from their default glyph.
 - Skeleton must stay connected: its trace is a randomized spanning tree of
   each pixel component plus random extra links, so no stroke is lost.
 - `make check-namche-shape` blocks regressions across release and npm
