@@ -177,12 +177,11 @@ def draw_variant(ufo, glyph, style, grids, overrides, cache, variant, varying):
     else:
         if grid.cells:
             ns.base_outline(style, grid, overrides, variant).draw(pen)
-        for component in ufo[grid.name].components:
-            ref = component.baseGlyph
-            name = alternate_name(ref, variant) if ref in varying else ref
-            glyph.components.append(
-                type(component)(baseGlyph=name, transformation=component.transformation)
-            )
+        # Read the parts from the grid: the base glyph may have been
+        # decomposed because its own variant overlaps, leaving no components.
+        pen = glyph.getPen()
+        for ref, transform in grid.components:
+            pen.addComponent(alternate_name(ref, variant) if ref in varying else ref, tuple(transform))
 
 
 def add_contextual_alternates(ufo, style, grids, overrides, cache, skip_export) -> None:

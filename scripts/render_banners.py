@@ -94,10 +94,9 @@ def draw_banner(font_dir: Path, mark_svg: Path, output: Path, dark: bool, versio
     draw.text((96, 1625), "FUTURE IS A FORM", font=statement, fill=colors["text"])
     draw.text((96, 1785), "WE SHAPE TOGETHER.", font=statement, fill=colors["text"])
 
-    # Ownership and attribution remain legible inside the image wherever it is
-    # copied, without using the original authors to endorse the derivative.
+    # Attribution remains legible inside the image wherever it is copied,
+    # without using the original authors to endorse the derivative.
     small = ImageFont.truetype(mono_path, 26)
-    draw.text((96, 2040), "OWNED BY BTLG HOLDING GMBH", font=small, fill=colors["muted"])
     draw.text((96, 2085), "DESIGNED BY MICHAEL MARTE FOR RUHM ETC.", font=small, fill=colors["muted"])
     draw.text((1475, 2085), f"OFL-1.1 / v{version}", font=small, fill=colors["muted"])
 
