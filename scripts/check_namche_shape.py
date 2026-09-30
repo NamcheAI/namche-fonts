@@ -26,6 +26,7 @@ from pathlib import Path
 
 import glyphsLib
 import uharfbuzz as hb
+from fontTools.pens.areaPen import AreaPen
 from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
@@ -142,6 +143,12 @@ ALT_SUFFIX = ".shape"
 ALTERNATE_SAMPLES = ("aaaa", "llll", "0000", "ﬁﬁﬁﬁ", "ąąąą", "AAAA")
 
 
+def glyph_area(glyphs, name: str) -> float:
+    pen = AreaPen(glyphs)
+    glyphs[name].draw(pen)
+    return abs(pen.value)
+
+
 def validate_alternates(path: Path, font: TTFont) -> list[str]:
     """Every alternate keeps its default's width; calt rotates repeats."""
     errors = []
@@ -149,6 +156,7 @@ def validate_alternates(path: Path, font: TTFont) -> list[str]:
     names = set(order)
     hmtx = font["hmtx"]
     alternates = [n for n in order if ALT_SUFFIX in n]
+    glyphs = font.getGlyphSet()
     if not alternates:
         return [f"{path}: no {ALT_SUFFIX}N contextual alternates"]
     for name in alternates:
@@ -157,6 +165,12 @@ def validate_alternates(path: Path, font: TTFont) -> list[str]:
             errors.append(f"{path}: alternate {name} has no default glyph")
         elif hmtx[name][0] != hmtx[base][0]:
             errors.append(f"{path}: {name} width {hmtx[name][0]} != {base} {hmtx[base][0]}")
+        else:
+            # A variant redraws the same cells, so its ink stays close to the
+            # default's; a lost component drops most of the glyph.
+            ink, base_ink = glyph_area(glyphs, name), glyph_area(glyphs, base)
+            if base_ink and not 0.6 < ink / base_ink < 1.6:
+                errors.append(f"{path}: {name} ink {ink:.0f} is far from {base} {base_ink:.0f}")
     features = {r.FeatureTag for r in font["GSUB"].table.FeatureList.FeatureRecord}
     if "calt" not in features:
         errors.append(f"{path}: missing calt feature")
