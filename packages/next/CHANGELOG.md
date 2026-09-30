@@ -1,5 +1,11 @@
 # @namche/namche-shadow
 
+## 0.6.1
+
+### Patch Changes
+
+- a2ce55c: Fix Namche Shape contextual alternates that lost their components: Origin `h`, `ħ`, `đ`, `¥`, and `≠` alternates showed only a fragment of the glyph in running text.
+
 ## 0.6.0
 
 ### Minor Changes
