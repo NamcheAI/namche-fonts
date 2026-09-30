@@ -1,0 +1,21 @@
+# Hand refinements for the Namche Shape generator (scripts/namche_shape.py).
+#
+# The generator seeds every random choice from the style and glyph name, so a
+# build is reproducible. Entries here replace a random choice for one glyph.
+# Cells are addressed as "column,row" in 38-unit grid steps from the glyph
+# origin; a link joins two orthogonal (or, for Skeleton, diagonal) neighbours:
+#
+# Metaball:
+#   A:
+#     link: ["7,18-8,18"]      # always melt these two pixels together
+#     unlink: ["7,17-7,18"]    # never melt these two
+# Skeleton:
+#   a:
+#     link: ["3,5-4,5"]        # add this rung
+#     unlink: ["3,5-3,6"]      # keep this link out of the trace
+# Origin:
+#   e:
+#     cells: {"3,4": square}   # square | bullet | quarter
+#
+# After editing, run `make build-shape` and commit the regenerated fonts.
+{}

@@ -1,7 +1,7 @@
 {
   "name": "@namche/namche-shadow",
-  "version": "0.4.0",
-  "description": "Namche Shadow Sans, Mono, and Pixel for Next.js and framework-agnostic CSS.",
+  "version": "0.6.1",
+  "description": "Namche Shadow Sans, Namche Shadow Mono, and Namche Shape for Next.js and framework-agnostic CSS.",
   "main": "./dist/font.js",
   "type": "module",
   "module": "./dist/font.js",
@@ -13,18 +13,18 @@
     "release": "changeset publish"
   },
   "bugs": {
-    "url": "https://github.com/NamcheAI/namche-shadow-font/issues"
+    "url": "https://github.com/NamcheAI/namche-fonts/issues"
   },
-  "homepage": "https://github.com/NamcheAI/namche-shadow-font",
+  "homepage": "https://github.com/NamcheAI/namche-fonts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NamcheAI/namche-shadow-font.git",
+    "url": "git+https://github.com/NamcheAI/namche-fonts.git",
     "directory": "packages/next"
   },
   "keywords": [
     "namche shadow",
     "namche shadow mono",
-    "namche shadow pixel",
+    "namche shape",
     "next.js font",
     "geist derivative"
   ],
@@ -38,8 +38,8 @@
     "sans-latin.css",
     "mono.css",
     "mono-latin.css",
-    "pixel.css",
-    "pixel-latin.css",
+    "shape.css",
+    "shape-latin.css",
     "geist.css",
     "geist-latin.css",
     "fonts.cdn.css",
@@ -48,8 +48,8 @@
     "sans-latin.cdn.css",
     "mono.cdn.css",
     "mono-latin.cdn.css",
-    "pixel.cdn.css",
-    "pixel-latin.cdn.css",
+    "shape.cdn.css",
+    "shape-latin.cdn.css",
     "geist.cdn.css",
     "geist-latin.cdn.css"
   ],
@@ -85,13 +85,13 @@
       "types": "./dist/sans-non-variable.d.ts",
       "default": "./dist/sans-non-variable.js"
     },
-    "./font/pixel": {
-      "types": "./dist/pixel.d.ts",
-      "default": "./dist/pixel.js"
+    "./font/shape": {
+      "types": "./dist/shape.d.ts",
+      "default": "./dist/shape.js"
     },
-    "./font/pixel-latin": {
-      "types": "./dist/pixel-latin.d.ts",
-      "default": "./dist/pixel-latin.js"
+    "./font/shape-latin": {
+      "types": "./dist/shape-latin.d.ts",
+      "default": "./dist/shape-latin.js"
     },
     "./fonts.css": "./fonts.css",
     "./fonts-latin.css": "./fonts-latin.css",
@@ -99,8 +99,8 @@
     "./sans-latin.css": "./sans-latin.css",
     "./mono.css": "./mono.css",
     "./mono-latin.css": "./mono-latin.css",
-    "./pixel.css": "./pixel.css",
-    "./pixel-latin.css": "./pixel-latin.css",
+    "./shape.css": "./shape.css",
+    "./shape-latin.css": "./shape-latin.css",
     "./geist.css": "./geist.css",
     "./geist-latin.css": "./geist-latin.css",
     "./fonts.cdn.css": "./fonts.cdn.css",
@@ -109,8 +109,8 @@
     "./sans-latin.cdn.css": "./sans-latin.cdn.css",
     "./mono.cdn.css": "./mono.cdn.css",
     "./mono-latin.cdn.css": "./mono-latin.cdn.css",
-    "./pixel.cdn.css": "./pixel.cdn.css",
-    "./pixel-latin.cdn.css": "./pixel-latin.cdn.css",
+    "./shape.cdn.css": "./shape.cdn.css",
+    "./shape-latin.cdn.css": "./shape-latin.cdn.css",
     "./geist.cdn.css": "./geist.cdn.css",
     "./geist-latin.cdn.css": "./geist-latin.cdn.css",
     "./package.json": "./package.json"
@@ -129,7 +129,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.0",
-    "next": "16.3.2"
+    "next": "16.3.6"
   },
   "packageManager": "pnpm@10.34.5+sha512.a4ee05f2f73658255bd6a89859c065a45c28a57daefae2c893a168ee2b73168c37b91e83e57ea67654ad03f03031746430e8bce38e362e042605fb8abc80192e"
 }

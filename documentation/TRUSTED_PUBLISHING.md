@@ -8,7 +8,7 @@ an `NPM_TOKEN`.
 ## Current configuration
 
 The initial package bootstrap is complete. npm trusts the `release-npm` job in
-`NamcheAI/namche-shadow-font/.github/workflows/ci.yaml` to publish this package.
+`NamcheAI/namche-fonts/.github/workflows/ci.yaml` to publish this package.
 Keep that repository, workflow filename, and npm package name synchronized.
 
 The package should remain configured to require two-factor authentication and
@@ -20,7 +20,7 @@ the `namche` npm organization can run this with npm CLI 11.5.1 or newer:
 
 ```sh
 npm trust github @namche/namche-shadow \
-  --repo NamcheAI/namche-shadow-font \
+  --repo NamcheAI/namche-fonts \
   --file ci.yaml \
   --allow-publish \
   --yes
