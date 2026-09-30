@@ -53,6 +53,11 @@ export const NamcheShadowSans = localFont({
       style: "normal",
     },
     {
+      path: "./fonts/namche-shadow-sans/NamcheShadowSans-Italic[wght].woff2",
+      weight: "100 900",
+      style: "italic",
+    },
+    {
       path: "./fonts/namche-shadow-sans/NamcheShadowSans-ThinItalic.woff2",
       weight: "100",
       style: "italic",

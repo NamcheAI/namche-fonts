@@ -2,8 +2,8 @@
 
 Namche Shadow Sans and Namche Shadow Mono are designed for Latin text and ship
 the inherited Geist Cyrillic character set. Their OpenType metadata therefore
-declares `dlng=Latn` and `slng=Latn,Cyrl`. Namche Shadow Pixel currently
-declares Latin only.
+declares `dlng=Latn` and `slng=Latn,Cyrl`. Namche Shape currently
+declares Latin only (`dlng=Latn`, `slng=Latn`).
 
 The supported shaping contract for Sans and Mono includes:
 

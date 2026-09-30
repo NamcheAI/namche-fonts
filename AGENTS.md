@@ -1,7 +1,7 @@
-# Namche Shadow Font development rules
+# Namche font development rules
 
 This repository is the source, build, review, and release home for
-`NamcheAI/namche-shadow-font`. It follows the Vercel Geist repository layout,
+`NamcheAI/namche-fonts`. It follows the Vercel Geist repository layout,
 but Namche-specific source and release decisions take precedence over upstream
 conventions.
 
@@ -18,9 +18,9 @@ conventions.
   body font from the same CDN release and npm package. Never rename its
   metadata or edit its binaries; refresh it only with `make update-geist`
   after bumping the pin, and rely on `scripts/vendor_geist.py --check` (CI)
-  to enforce the byte match. Geist Mono and Pixel are deliberately not
-  bundled: Namche Shadow Mono and Pixel are outline-identical renames of the
-  same binaries.
+  to enforce the byte match. Geist Mono is deliberately not bundled: Namche
+  Shadow Mono is an outline-identical rename of the same binaries. Geist Pixel
+  is not bundled either; Namche Shape is a new design generated from its grid.
 - Preserve the SIL Open Font License, the original Geist/Vercel copyright and
   author credits, and the Namche attribution already present in source and
   binary metadata.
@@ -58,31 +58,80 @@ conventions.
 - Build the upright variable font only from native Glyphs OTF exports whose
   seven RoundCorner filters use the `compatible` option. Run
   `make build-sans-variable GLYPHS_SANS_EXPORT=/path/to/export`; the builder
-  preserves the post-rounding curves, makes the remaining segmentation
-  compatible, converts all masters to TrueType curves together, and verifies
-  every named instance against its rounded master. Never enable the sharp
-  gftools/Glyphs VF as a substitute.
+  preserves the post-rounding curves, restores per-weight contour
+  correspondence, makes the remaining segmentation compatible, converts all
+  masters to TrueType curves together, and verifies every named instance
+  against its rounded master. Never enable the sharp gftools/Glyphs VF as a
+  substitute.
+- Build the italic variable font with
+  `make build-sans-italic-variable GLYPHS_SANS_EXPORT=fonts/NamcheShadowSans`:
+  the committed italic OTF statics carry the release outlines, so they are the
+  canonical master input. The italic VF keeps the full STAT-matching instance
+  names for the Google Fonts submission; three combined names intentionally
+  exceed the 32-character Windows/Word limit (see
+  `documentation/FONTSPECTOR.md`). Rebuild the VF after any
+  `make refresh-sans-italic-outlines` run.
 - Keep `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` parked from the
   variable build until their rounded masters match. They must remain in every
   static.
+- The italic package is the one Sans exception to the Glyphs-export rule: it
+  carries no RoundCorner filters, so its Shadow treatment lives in the masters
+  and `gftools builder sources/config-NamcheShadowSans-Italic.yaml` reproduces
+  the committed italic outlines exactly. Land an italic source correction with
+  `make refresh-sans-italic-outlines`; `scripts/refresh_sans_italic_outlines.py`
+  replaces only the glyph outlines that changed, refuses a metric change, and
+  leaves metadata, layout, and hinting byte-identical. Never rebuild the italic
+  release wholesale — that also rewrites metadata the release already carries.
+- `scripts/round_inner_corners.py` bakes those italic masters. Its defaults have
+  since been retuned for upright work; pass `--italic-recipe` to reproduce the
+  profile the shipped italics were baked with. `make check-sans-counters` blocks
+  the boolean-topology regression that collapsed the italic `A` counter (#78).
 - Namche Shadow Mono remains an outline-identical renamed Geist derivative.
-  Pixel may diverge only through a focused issue and reviewed design proof;
-  U+20B9 **₹** is the first approved addition and follows the inherited Geist
-  rupee construction on Pixel's existing 38-unit component grid. U+25CC **◌**
-  is the second approved addition: a 16-component ring on the same grid with
-  `top`, `topright`, `center`, `bottom`, and `ogonek` anchors.
-- `scripts/finalize_pixel_statics.py` restores the source's inkless U+2028 and
-  U+2029 glyphs and all source-defined `caret_*` positions (including `fi` and
-  `fl`) after native Pixel statics are restored. It also merges reviewed new
-  Pixel glyphs from the reproducible gftools staging build without replacing
-  existing native outlines. It may refresh only `GDEF`, `GSUB`, and `GPOS`
-  from that same build. `make check-pixel-separators`,
-  `make check-pixel-ligature-carets`, `make check-pixel-rupee`, and
-  `make check-pixel-shaping` block regressions across release and npm binaries.
+
+## Namche Shape production rules
+
+- Namche Shape (Metaball, Origin, Skeleton; designed by Michael Marte for
+  Ruhm etc.) replaced Namche Shadow Pixel on 2026-09-29. Its grid source is
+  `sources/NamcheShape.glyphspackage`, the Geist Pixel package with the
+  reviewed U+20B9 **₹** and U+25CC **◌** additions. Every base glyph there is
+  a set of 38-unit `pixel` components; the grid may change only through a
+  focused issue and reviewed design proof, and `make check-source-copies`
+  keeps it byte-identical to `originals/geist/` apart from those additions.
+- `scripts/namche_shape.py` turns the grid into outlines and
+  `scripts/build_namche_shape.py` (`make build-shape`) compiles OTF, TTF, and
+  WOFF2 with ufo2ft, keeping the source's metrics, kerning, anchors, carets,
+  and OpenType features. Commit regenerated binaries with any change to the
+  recipe, the source, or `sources/NamcheShape/overrides.yaml`.
+- Random choices are seeded from style and glyph name. Keep them seeded;
+  never use unseeded randomness. Refine a glyph through
+  `sources/NamcheShape/overrides.yaml`, not by editing binaries, and review
+  the result with `scripts/proof_namche_shape.py`.
+- Every non-mark glyph has seeded `.shape1` to `.shape3` alternates
+  (variant seeds `name#N`); a single `calt` chaining lookup rotates them by a
+  step coprime with the variant count, so four repeats show four variants.
+  Alternates inherit width, anchors, carets, kerning groups, and production
+  names from their default glyph.
+- Skeleton must stay connected: its trace is a randomized spanning tree of
+  each pixel component plus random extra links, so no stroke is lost. Links
+  along a stroke are always drawn (the rails stay whole); rungs across a
+  stroke are random; only 2x2 dots stay solid.
+- Origin turns its round shapes toward open stroke edges and corners
+  (`ORIGIN_MODE = "structure"`, inspired by Nigel Cottier's *Letterform
+  Variations*); Metaball melts along strokes more often than across them.
+- `make check-namche-shape` blocks regressions across release and npm
+  binaries: glyph set, Unicode map, and widths match the source; U+2028/U+2029
+  stay inkless at 600 units; the zero-width soft hyphen stays; all source
+  `caret_*` positions (including `fi` and `fl`) survive; ₹ and ◌ carry ink;
+  every combining mark attaches to ◌; and į + a top mark shapes to dotless i +
+  ogonek + mark. `make check-namche-shape-reproducible` rebuilds and requires
+  every committed outline to equal the generator output.
+
+## Metadata and layout (all families)
+
 - Every release and npm binary uses OS/2 version 4 or later. Sans and Mono set
-  `fsSelection` WWS bit 8 and omit name IDs 21/22. Pixel keeps bit 8 clear and
-  mirrors its legacy family/subfamily names into WWS IDs 21/22 because the
-  Element Shape styles are not weight/width/slope qualifiers. Preserve the
+  `fsSelection` WWS bit 8 and omit name IDs 21/22. Namche Shape keeps bit 8
+  clear and mirrors its legacy family/subfamily names into WWS IDs 21/22
+  because its styles are not weight/width/slope qualifiers. Preserve the
   public typographic family/style names; `scripts/rename_font_metadata.py` is
   the maintained normalization and check.
 - For an OpenType-layout-only source change, build a temporary matching family
@@ -122,8 +171,8 @@ conventions.
   assembled from those binaries before the release checks run. The required
   `Build and test` check aggregates that result with every applicable family
   rebuild, so a source-build failure cannot be bypassed by the fast path.
-- Pull requests rebuild Mono or Pixel only when that family's source or a
-  shared build input changes. A Pixel-only change must not pay for a Mono
+- Pull requests rebuild Mono or Namche Shape only when that family's source or
+  a shared build input changes. A Namche Shape change must not pay for a Mono
   rebuild, and vice versa. Sans remains based on reviewed native Glyphs
   exports and is validated rather than rebuilt on Linux.
 - Fontspector runs only for families affected by the PR. Full proofs, release
