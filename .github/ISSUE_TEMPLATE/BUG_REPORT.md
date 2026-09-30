@@ -12,7 +12,7 @@ Which family, style, format, and version are affected?
 
 - [ ] Namche Shadow Sans
 - [ ] Namche Shadow Mono
-- [ ] Namche Shadow Pixel
+- [ ] Namche Shape
 - [ ] `@namche/namche-shadow`
 
 **Environment**
