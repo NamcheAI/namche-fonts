@@ -1,5 +1,5 @@
+Copyright 2026 The Namche Shadow Project Authors (https://github.com/NamcheAI/namche-fonts)
 Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font)
-Copyright 2026 BTLG Holding GmbH, in collaboration with Ruhm GmbH
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
