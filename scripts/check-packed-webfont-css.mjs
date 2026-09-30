@@ -26,24 +26,24 @@ const localCssFiles = [
   "fonts.css",
   "sans.css",
   "mono.css",
-  "pixel.css",
+  "shape.css",
   "geist.css",
   "fonts-latin.css",
   "sans-latin.css",
   "mono-latin.css",
-  "pixel-latin.css",
+  "shape-latin.css",
   "geist-latin.css",
 ];
 const cdnCssFiles = [
   "fonts.cdn.css",
   "sans.cdn.css",
   "mono.cdn.css",
-  "pixel.cdn.css",
+  "shape.cdn.css",
   "geist.cdn.css",
   "fonts-latin.cdn.css",
   "sans-latin.cdn.css",
   "mono-latin.cdn.css",
-  "pixel-latin.cdn.css",
+  "shape-latin.cdn.css",
   "geist-latin.cdn.css",
 ];
 const existingExports = new Map([
@@ -72,10 +72,10 @@ const existingExports = new Map([
       types: "./dist/sans-non-variable.d.ts",
     },
   ],
-  ["./font/pixel", { default: "./dist/pixel.js", types: "./dist/pixel.d.ts" }],
+  ["./font/shape", { default: "./dist/shape.js", types: "./dist/shape.d.ts" }],
   [
-    "./font/pixel-latin",
-    { default: "./dist/pixel-latin.js", types: "./dist/pixel-latin.d.ts" },
+    "./font/shape-latin",
+    { default: "./dist/shape-latin.js", types: "./dist/shape-latin.d.ts" },
   ],
 ]);
 

@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-PIXEL_PACKAGE = "NamcheShadowPixel.glyphspackage"
+PIXEL_PACKAGE = "NamcheShape.glyphspackage"
 APPROVED_EXTRA_FILES = {
     PIXEL_PACKAGE: {
         "glyphs/dottedC_ircle.glyph",
@@ -31,7 +31,7 @@ SOURCE_PAIRS = (
     ),
     (
         ROOT / "originals/geist/sources/GeistPixel.glyphspackage",
-        ROOT / "sources/NamcheShadowPixel.glyphspackage",
+        ROOT / "sources/NamcheShape.glyphspackage",
         set(),
     ),
 )
@@ -107,8 +107,8 @@ def main() -> int:
         print("\n".join(errors))
         return 1
     print(
-        "Verified Mono/Pixel source copies; approved differences are Mono anchors "
-        "and the reviewed Pixel rupee/dotted-circle additions"
+        "Verified Mono and Namche Shape grid source copies; approved differences are "
+        "Mono anchors and the reviewed rupee/dotted-circle additions"
     )
     return 0
 

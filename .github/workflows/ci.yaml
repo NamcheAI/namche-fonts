@@ -24,9 +24,9 @@ jobs:
     outputs:
       sans_qa: ${{ steps.changes.outputs.sans_qa }}
       mono_qa: ${{ steps.changes.outputs.mono_qa }}
-      pixel_qa: ${{ steps.changes.outputs.pixel_qa }}
+      shape_qa: ${{ steps.changes.outputs.shape_qa }}
       mono_build: ${{ steps.changes.outputs.mono_build }}
-      pixel_build: ${{ steps.changes.outputs.pixel_build }}
+      shape_build: ${{ steps.changes.outputs.shape_build }}
     steps:
       - name: Classify changed files
         id: changes
@@ -72,9 +72,13 @@ jobs:
               'sources/NamcheShadowSans.glyphspackage/',
               'sources/NamcheShadowSans-Italic.glyphspackage/',
               'sources/config-NamcheShadowSans.yaml',
+              'sources/config-NamcheShadowSans-Italic.yaml',
               'scripts/build_sans_variable.py',
+              'scripts/check_sans_counters.py',
               'scripts/check_sans_variable.py',
               'scripts/finalize_glyphs_statics.py',
+              'scripts/proof_sans_variable.py',
+              'scripts/refresh_sans_italic_outlines.py',
               'scripts/refresh_shaping_tables.py'
             );
             const monoQa = full || sharedQa || changed(
@@ -85,36 +89,34 @@ jobs:
               'sources/config-NamcheShadowMono.yaml',
               'scripts/check_mono_hmetrics.py'
             );
-            const pixelQa = full || sharedQa || changed(
-              'fonts/NamcheShadowPixel/',
-              'packages/next/dist/fonts/namche-shadow-pixel/',
-              'sources/NamcheShadowPixel.glyphspackage/',
-              'sources/config-NamcheShadowPixel.yaml',
-              'sources/compile-NamcheShadowPixelStatics.yaml',
-              'scripts/check_pixel_ligature_carets.py',
-              'scripts/check_pixel_rupee.py',
-              'scripts/check_pixel_shaping.py',
-              'scripts/check_pixel_separators.py',
-              'scripts/finalize_pixel_statics.py'
+            const shapeQa = full || sharedQa || changed(
+              'fonts/NamcheShape/',
+              'packages/next/dist/fonts/namche-shape/',
+              'sources/NamcheShape.glyphspackage/',
+              'sources/NamcheShape/',
+              'scripts/namche_shape.py',
+              'scripts/build_namche_shape.py',
+              'scripts/check_namche_shape.py'
             );
             const monoBuild = full || sharedBuild || changed(
               'sources/NamcheShadowMono.glyphspackage/',
               'sources/NamcheShadowMono-Italic.glyphspackage/',
               'sources/config-NamcheShadowMono.yaml'
             );
-            const pixelBuild = full || sharedBuild || changed(
-              'sources/NamcheShadowPixel.glyphspackage/',
-              'sources/config-NamcheShadowPixel.yaml',
-              'sources/compile-NamcheShadowPixelStatics.yaml',
-              'scripts/finalize_pixel_statics.py'
+            const shapeBuild = full || sharedBuild || changed(
+              'sources/NamcheShape.glyphspackage/',
+              'sources/NamcheShape/',
+              'scripts/namche_shape.py',
+              'scripts/build_namche_shape.py',
+              'scripts/check_namche_shape.py'
             );
 
             for (const [key, value] of Object.entries({
               sans_qa: sansQa,
               mono_qa: monoQa,
-              pixel_qa: pixelQa,
+              shape_qa: shapeQa,
               mono_build: monoBuild,
-              pixel_build: pixelBuild,
+              shape_build: shapeBuild,
             })) {
               core.setOutput(key, value ? 'true' : 'false');
             }
@@ -181,22 +183,21 @@ jobs:
       - name: Check Sans variable release
         run: python scripts/check_sans_variable.py
 
+      - name: Check Sans counters
+        run: python scripts/check_sans_counters.py
+
       - name: Check Mono horizontal metrics
         run: python scripts/check_mono_hmetrics.py
 
-      - name: Check Pixel release invariants
-        run: |
-          python scripts/check_pixel_separators.py
-          python scripts/check_pixel_ligature_carets.py
-          python scripts/check_pixel_rupee.py
-          python scripts/check_pixel_shaping.py
+      - name: Check Namche Shape release invariants
+        run: python scripts/check_namche_shape.py
 
       - name: Set up Fontspector
         if: >-
           github.event_name == 'pull_request' &&
           (needs.changes.outputs.sans_qa == 'true' ||
           needs.changes.outputs.mono_qa == 'true' ||
-          needs.changes.outputs.pixel_qa == 'true')
+          needs.changes.outputs.shape_qa == 'true')
         uses: fonttools/setup-fontspector@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -225,17 +226,11 @@ jobs:
           needs.changes.outputs.mono_qa == 'true'
         run: make check-language-shaping-mono
 
-      - name: Run Pixel Fontspector baseline
+      - name: Run Namche Shape Fontspector baseline
         if: >-
           github.event_name == 'pull_request' &&
-          needs.changes.outputs.pixel_qa == 'true'
-        run: make fontspector-pixel
-
-      - name: Check Pixel mark shaping
-        if: >-
-          github.event_name == 'pull_request' &&
-          needs.changes.outputs.pixel_qa == 'true'
-        run: python scripts/check_pixel_shaping.py --fontspector-report out/fontspector/NamcheShadowPixel-fontspector-report.json
+          needs.changes.outputs.shape_qa == 'true'
+        run: make fontspector-shape
 
   rebuild-mono:
     name: Rebuild changed Mono source
@@ -271,11 +266,11 @@ jobs:
           make fontspector-mono
           make check-language-shaping-mono
 
-  rebuild-pixel:
-    name: Rebuild changed Pixel source
+  rebuild-shape:
+    name: Rebuild changed Namche Shape source
     if: >-
       github.event_name == 'pull_request' &&
-      needs.changes.outputs.pixel_build == 'true'
+      needs.changes.outputs.shape_build == 'true'
     needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -287,9 +282,7 @@ jobs:
         with:
           python-version: '3.11'
           cache: pip
-          cache-dependency-path: |
-            requirements.txt
-            Makefile
+          cache-dependency-path: requirements.txt
       - uses: fonttools/setup-fontspector@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -297,17 +290,18 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install ttfautohint libcairo2-dev python3-cairo-dev pkg-config python3-dev
-      - name: Build Pixel
-        run: make build-pixel
-      - name: Validate rebuilt Pixel
+      # The committed fonts must equal a fresh generator build, so a changed
+      # recipe, override, or source cannot land without regenerated binaries.
+      - name: Check committed Namche Shape outlines are reproducible
+        run: make check-namche-shape-reproducible
+      - name: Build Namche Shape
+        run: make build-shape
+      - name: Validate rebuilt Namche Shape
         run: |
           make copy-npm-fonts
-          venv/bin/python scripts/rename_font_metadata.py --check fonts/NamcheShadowPixel
-          venv/bin/python scripts/check_pixel_separators.py
-          venv/bin/python scripts/check_pixel_ligature_carets.py
-          venv/bin/python scripts/check_pixel_rupee.py
-          make fontspector-pixel
-          venv/bin/python scripts/check_pixel_shaping.py --fontspector-report out/fontspector/NamcheShadowPixel-fontspector-report.json
+          venv/bin/python scripts/rename_font_metadata.py --check fonts/NamcheShape
+          venv/bin/python scripts/check_namche_shape.py
+          make fontspector-shape
 
   required:
     name: Build and test
@@ -315,7 +309,7 @@ jobs:
     needs:
       - validate
       - rebuild-mono
-      - rebuild-pixel
+      - rebuild-shape
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -323,11 +317,11 @@ jobs:
         env:
           VALIDATE_RESULT: ${{ needs.validate.result }}
           MONO_RESULT: ${{ needs.rebuild-mono.result }}
-          PIXEL_RESULT: ${{ needs.rebuild-pixel.result }}
+          SHAPE_RESULT: ${{ needs.rebuild-shape.result }}
         run: |
           test "$VALIDATE_RESULT" = success
           case "$MONO_RESULT" in success|skipped) ;; *) exit 1 ;; esac
-          case "$PIXEL_RESULT" in success|skipped) ;; *) exit 1 ;; esac
+          case "$SHAPE_RESULT" in success|skipped) ;; *) exit 1 ;; esac
 
   build:
     name: Build release artifacts
@@ -384,9 +378,9 @@ jobs:
       - name: Archive npm release artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: namche-shadow-font-fonts-npm
+          name: namche-fonts-fonts-npm
           path: |
-            namche-shadow-font.zip
+            namche-fonts.zip
             packages/next/dist/fonts
   deploy:
     name: Deploy results to GitHub Pages
@@ -425,7 +419,7 @@ jobs:
       - name: Download npm artifacts
         uses: actions/download-artifact@v8
         with:
-          name: namche-shadow-font-fonts-npm
+          name: namche-fonts-fonts-npm
           path: ./artifacts
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -447,7 +441,7 @@ jobs:
           mv artifacts/packages/next/dist/fonts packages/next/dist/fonts
       - name: Create Release Pull Request or Publish
         id: changesets
-        uses: changesets/action@v2.1.1
+        uses: changesets/action@v2.1.2
         with:
           publish-script: pnpm run release
           version-script: pnpm run version
@@ -463,8 +457,8 @@ jobs:
         run: |
           VERSION=$(jq -r '.version' packages/next/package.json)
           echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
-          mv artifacts/namche-shadow-font.zip "namche-shadow-font-v$VERSION.zip"
-          gh release upload "v$VERSION" "namche-shadow-font-v$VERSION.zip" --clobber
+          mv artifacts/namche-fonts.zip "namche-fonts-v$VERSION.zip"
+          gh release upload "v$VERSION" "namche-fonts-v$VERSION.zip" --clobber
 
   publish-cdn:
     name: Publish release to CDN
@@ -481,9 +475,17 @@ jobs:
           GH_TOKEN: ${{ secrets.INFRA_DISPATCH_TOKEN }}
           TAG: ${{ needs.release-npm.outputs.tag }}
         run: |
+          # --ref is required, not cosmetic. Without it `gh` first resolves
+          # infra's default branch over GraphQL (repository.defaultBranchRef),
+          # which needs Contents: read. INFRA_DISPATCH_TOKEN is deliberately
+          # scoped to Actions read/write and nothing else, so that lookup fails
+          # with "Resource not accessible by personal access token" and the
+          # dispatch never happens. Naming the ref skips the lookup; widening
+          # the shared token would be the wrong fix.
           gh workflow run publish-cdn-release.yml \
             --repo NamcheAI/infra \
-            --field publisher=namche-shadow-font \
+            --ref main \
+            --field publisher=namche-fonts \
             --field "tag=$TAG"
 
       - name: Verify CDN publication

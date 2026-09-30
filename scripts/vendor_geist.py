@@ -10,8 +10,9 @@ sources/geist-upstream.json and rerunning this script; verify it with
 --check, which re-downloads the pinned tarball and byte-compares.
 
 Geist Mono and Geist Pixel are deliberately not vendored: Namche Shadow
-Mono and Pixel are outline-identical renamed derivatives of the same
-binaries and already ship in this release.
+Mono is an outline-identical renamed derivative of Geist Mono, and Namche
+Shape is a new design derived from the Geist Pixel grid, and both already
+ship in this release.
 
 Only the Python standard library is required.
 """
