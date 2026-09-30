@@ -1,5 +1,71 @@
 # @namche/namche-shadow
 
+## 0.6.1
+
+### Patch Changes
+
+- a2ce55c: Fix Namche Shape contextual alternates that lost their components: Origin `h`, `ħ`, `đ`, `¥`, and `≠` alternates showed only a fragment of the glyph in running text.
+
+## 0.6.0
+
+### Minor Changes
+
+- 5153ed4: Namche Shape now varies as you type: every glyph except combining marks ships
+  in four seeded variants, and the default-on `calt` feature rotates them so
+  repeated letters never look the same twice. Set
+  `font-feature-settings: "calt" 0` to pin the default variant. The larger
+  glyph set grows the WOFF2 files to about 200 KB (Metaball), 112 KB (Origin),
+  and 95 KB (Skeleton).
+  
+  The same release refines the three styles: Origin turns its half-rounds and
+  quarter discs toward the open edges and corners of each stroke, Metaball melts
+  along strokes more often than across them, and Skeleton keeps every rail of a
+  stroke whole with random rungs, so every glyph reads more deliberately.
+- dd6e49b: **Breaking:** replace Namche Shadow Pixel with Namche Shape, a new display
+  family generated from the Geist Pixel grid in three static styles designed by
+  Michael Marte for Ruhm etc.:
+  
+  - **Namche Shape Metaball**: every pixel is a circle, and some neighbouring
+    pixels melt together through necks.
+  - **Namche Shape Origin**: every pixel is a square, half-round, or quarter disc
+    from the original Namche system.
+  - **Namche Shape Skeleton**: only the connections between pixels remain, as a
+    rounded trace.
+  
+  Namche Shape keeps the Pixel metrics, spacing, kerning, OpenType features, ₹,
+  ◌, separators, and ligature carets. Migrate `pixel.css`, `pixel-latin.css`,
+  `pixel.cdn.css`, and `pixel-latin.cdn.css` to the matching `shape*.css` entry
+  points, the `font/pixel` and `font/pixel-latin` Next.js exports to
+  `font/shape` and `font/shape-latin` (`NamcheShapeMetaball`,
+  `NamcheShapeOrigin`, `NamcheShapeSkeleton`), and the CSS families
+  `Namche Shadow Pixel *` to `Namche Shape Metaball`, `Namche Shape Origin`, and
+  `Namche Shape Skeleton`. The Square, Grid, Circle, Triangle, and Line styles
+  and the Pixel variable font are removed.
+
+## 0.5.0
+
+### Minor Changes
+
+- 9b739dd: Add the Namche Shadow Sans italic variable font
+  (`NamcheShadowSans-Italic[wght]`, wght 100–900) to the bundled fonts and CSS;
+  variable faces are now preferred for both Sans styles, and `font/sans-latin`
+  serves the two variable Latin subsets.
+
+### Patch Changes
+
+- 9e8e959: Restore the capital `A` counter in every Namche Shadow Sans italic. A boolean
+  pass in the italic Shadow treatment mistook the letter's crossbar for a counter
+  and subtracted it, so the glyph shipped as a single contour and rendered as a
+  filled wedge with a hairline notch in all nine italic weights, in their
+  webfonts, and in the `Á À Â Ä Å Ã` composites built from it. The italic `A`
+  masters are rebuilt with the crossbar unioned and its four inner corners
+  rounded like the upright; no other glyph, metric, or metadata changes.
+- f710cc1: Follow the repository rename to `NamcheAI/namche-fonts`: package metadata,
+  documentation links, and the shipped `LICENSE.txt` now point at the new
+  repository, and the bundled fonts carry the canonical project-authors
+  copyright ("Copyright 2026 The Namche Shadow Project Authors" with the
+  original Geist statement retained).
+
 ## 0.4.0
 
 ### Minor Changes

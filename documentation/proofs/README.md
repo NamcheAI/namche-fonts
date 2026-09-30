@@ -7,6 +7,10 @@ release. They complement automated checks; they do not replace them.
   compares the rounded Sans variable font with the approved static instances.
   Regenerate it with `venv/bin/python scripts/proof_sans_variable.py` after a
   reviewed Sans variable-font change.
+- [`sans-italic-variable-named-instances.png`](sans-italic-variable-named-instances.png)
+  is the italic counterpart. Regenerate it with
+  `venv/bin/python scripts/proof_sans_variable.py --italic`, which selects the
+  italic VF and this output path on its own.
 - [`issues/`](issues/README.md) contains the proof panels used to resolve or
   maintain specific Fontspector issues.
 

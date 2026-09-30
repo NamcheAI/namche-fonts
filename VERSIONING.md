@@ -28,9 +28,14 @@ changes require a major version.
 
 ## Attribution requirements
 
-Every release must include `OFL.txt`, retain the Geist copyright and author
-records, credit Vercel and the original Geist contributors, identify BTLG
-Holding GmbH as derivative owner, and credit Michael Marte as the Namche Shadow
-Sans designer for Ruhm GmbH. Development tools and AI tools
-may be acknowledged as contributors or commit co-authors, but are not font
-designers or copyright authors.
+Every release must include `OFL.txt` and carry the canonical two-statement
+copyright in name ID 0 and the CFF Notice: the Namche Shadow project-authors
+statement first, the original Geist statement second (the Google Fonts
+"Project Authors" form; `scripts/rename_font_metadata.py` holds the canonical
+strings and `--check` enforces them, including the `OFL.txt` header). The
+legal parties are recorded in `AUTHORS.txt`; BTLG Holding GmbH remains
+identified as derivative owner through the manufacturer record (name ID 8),
+and Michael Marte remains credited as the Namche Shadow Sans designer for
+Ruhm GmbH through the designer record (name ID 9) — both are enforced by
+`--check`. Development tools and AI tools may be acknowledged as contributors
+or commit co-authors, but are not font designers or copyright authors.

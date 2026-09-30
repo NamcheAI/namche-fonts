@@ -1,7 +1,7 @@
 # Namche Shadow fonts for npm
 
 The package exposes Namche Shadow Sans, Namche Shadow Mono, and the five Namche
-Shadow Pixel variants through `next/font/local`.
+Shape styles through `next/font/local`.
 
 ## Installation
 
@@ -20,11 +20,11 @@ from the app’s own origin:
 
 The URLs are generated from this package’s version, so updating the package
 selects the matching immutable CDN release. Family-only entry points are
-`sans.cdn.css`, `mono.cdn.css`, `pixel.cdn.css`, and `geist.cdn.css`.
+`sans.cdn.css`, `mono.cdn.css`, `shape.cdn.css`, and `geist.cdn.css`.
 
 Controlled Namche properties that only need the maintained Latin web set can
 use `fonts-latin.cdn.css`, or one of `sans-latin.cdn.css`,
-`mono-latin.cdn.css`, `pixel-latin.cdn.css`, and `geist-latin.cdn.css`. These
+`mono-latin.cdn.css`, `shape-latin.cdn.css`, and `geist-latin.cdn.css`. These
 point to physically subsetted WOFF2 files and include matching
 `unicode-range` descriptors.
 
@@ -58,11 +58,11 @@ Or import only the families they use:
 ```css
 @import "@namche/namche-shadow/sans.css";
 @import "@namche/namche-shadow/mono.css";
-@import "@namche/namche-shadow/pixel.css";
+@import "@namche/namche-shadow/shape.css";
 ```
 
 The self-hosted Latin equivalents are `fonts-latin.css`, `sans-latin.css`,
-`mono-latin.css`, and `pixel-latin.css`. Use the unsuffixed entry points for
+`mono-latin.css`, and `shape-latin.css`. Use the unsuffixed entry points for
 user-generated or multilingual text and for Mono content that needs box
 drawing or technical symbols.
 
@@ -92,23 +92,26 @@ import { NamcheShadowSans } from "@namche/namche-shadow/font/sans-latin";
 import { NamcheShadowMono } from "@namche/namche-shadow/font/mono-latin";
 ```
 
-`font/pixel-latin` similarly exports all five Pixel variants. The subset files
+`font/shape-latin` similarly exports all three Namche Shape styles. The subset files
 are generated from the full approved WOFF2 files during CI and release
 assembly; full desktop and webfont files remain available unchanged.
 
-The default export and `font/sans` use the rounded upright Namche Shadow Sans
-variable font with static italic weights. `font/sans-non-variable` keeps the
-static upright and italic files. The upright Thin through Black statics remain
-Michael's approved multi-tier RoundCorner references. The Mono exports
-currently provide upright styles.
+The default export and `font/sans` use the rounded Namche Shadow Sans
+variable fonts — upright and italic — with static fallbacks, and
+`font/sans-latin` serves the two variable Latin subsets.
+`font/sans-non-variable` keeps the static upright and italic files. The Thin
+through Black statics remain Michael's approved multi-tier RoundCorner
+references. The Mono exports currently provide upright styles.
 
-Pixel variants are exported from `@namche/namche-shadow/font/pixel`:
+Namche Shape styles are exported from `@namche/namche-shadow/font/shape`:
 
-- `NamcheShadowPixelSquare`
-- `NamcheShadowPixelGrid`
-- `NamcheShadowPixelCircle`
-- `NamcheShadowPixelTriangle`
-- `NamcheShadowPixelLine`
+- `NamcheShapeMetaball`
+- `NamcheShapeOrigin`
+- `NamcheShapeSkeleton`
+
+Each Namche Shape glyph comes in four seeded variants, and the default-on
+`calt` feature rotates them so repeated letters differ. Use
+`font-feature-settings: "calt" 0` to pin every glyph to its default variant.
 
 The Namche Shadow Sans design direction and implementation is done by
 [Michael Marte](https://github.com/fizzybubbele) for

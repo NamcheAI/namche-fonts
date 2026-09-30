@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Build the upright rounded Namche Shadow Sans variable font.
+"""Build the rounded Namche Shadow Sans variable fonts (upright and italic).
 
 The input is a native Glyphs 4 OTF export whose seven RoundCorner filters use
-the ``compatible`` option.  The OTF outlines are the visual source of truth.
+the ``compatible`` option.  The committed release OTF statics preserve those
+export outlines, so they are an equivalent input; ``--italic`` selects the
+italic masters and produces ``NamcheShadowSans-Italic[wght]``.  The OTF outlines are the visual source of truth.
 Where the filter still emits different cubic segmentation at named weights,
 this script splits the existing Bezier curves at common arc-length positions.
 Splitting a Bezier does not change its shape.  All masters are then converted
@@ -15,6 +17,7 @@ deliberately excluded from the variable font; they remain in every static.
 from __future__ import annotations
 
 import argparse
+import itertools
 import math
 import tempfile
 from dataclasses import dataclass
@@ -49,6 +52,21 @@ PARKED_GLYPHS = frozenset({"uni046A", "uni046B", "uni03BC", "uni0E3F", "uni20B1"
 CANONICAL_START_GLYPHS = frozenset({"Scedilla", "Uogonek", "uni0163", "uni01E4"})
 FAMILY = "Namche Shadow Sans"
 FAMILY_PS = "NamcheShadowSans"
+
+
+def display_style(base: str, italic: bool) -> str:
+    """Public style name for a weight ("Regular", "Thin Italic", "Italic")."""
+    if not italic:
+        return base
+    return "Italic" if base == "Regular" else f"{base} Italic"
+
+
+def file_style(base: str, italic: bool) -> str:
+    """Style component of static filenames and PostScript names."""
+    if not italic:
+        return base
+    return "Italic" if base == "Regular" else f"{base}Italic"
+
 
 Point = tuple[float, float]
 
@@ -276,7 +294,108 @@ def _normalize_recordings(recordings: Sequence[Sequence[tuple[str, tuple]]], gly
     return normalized
 
 
+def _op_contours(recording: Sequence[tuple[str, tuple]]) -> list[list[tuple[str, tuple]]]:
+    chunks: list[list[tuple[str, tuple]]] = []
+    current: list[tuple[str, tuple]] = []
+    for operation in recording:
+        current.append(operation)
+        if operation[0] == "closePath":
+            chunks.append(current)
+            current = []
+    if current:
+        chunks.append(current)
+    return chunks
+
+
+ContourKey = tuple[float, Point]
+
+
+def _points_key(points: Sequence[Point]) -> ContourKey:
+    """Signed shoelace area plus centroid; area separates outers from counters."""
+    area = 0.5 * sum(
+        x1 * y2 - x2 * y1
+        for (x1, y1), (x2, y2) in zip(points, [*points[1:], points[0]])
+    )
+    centroid = (
+        sum(x for x, _ in points) / len(points),
+        sum(y for _, y in points) / len(points),
+    )
+    return area, centroid
+
+
+def _chunk_key(chunk: Sequence[tuple[str, tuple]]) -> ContourKey:
+    return _points_key([point for _, arguments in chunk for point in arguments])
+
+
+def _assignment_cost(first: ContourKey, second: ContourKey) -> float:
+    (area_a, centroid_a), (area_b, centroid_b) = first, second
+    if (area_a >= 0) != (area_b >= 0):
+        return math.inf
+    return math.dist(centroid_a, centroid_b) + abs(
+        abs(area_a) ** 0.5 - abs(area_b) ** 0.5
+    )
+
+
+def _best_permutation(
+    reference: Sequence[ContourKey], candidates: Sequence[ContourKey]
+) -> tuple[int, ...]:
+    count = len(reference)
+    if count <= 6:
+        return min(
+            itertools.permutations(range(count)),
+            key=lambda perm: sum(
+                _assignment_cost(reference[index], candidates[perm[index]])
+                for index in range(count)
+            ),
+        )
+    used: set[int] = set()
+    order: list[int] = []
+    for target in reference:
+        best = min(
+            (index for index in range(count) if index not in used),
+            key=lambda index: _assignment_cost(target, candidates[index]),
+        )
+        used.add(best)
+        order.append(best)
+    return tuple(order)
+
+
+def _match_contour_order(
+    recordings: Sequence[Sequence[tuple[str, tuple]]],
+) -> list[Sequence[tuple[str, tuple]]]:
+    """Reorder every master's contours to correspond with the first master's.
+
+    Glyphs exports can list a glyph's contours in a different order per weight
+    (the italic ``fi``, ``oe``, ``infinity``, and ``uni0424`` did).  Pairing
+    contours by list index then interpolates one contour into another, which
+    destroys the glyph at every non-master weight while all masters render
+    correctly.  Centroid matching restores the correspondence before any
+    structural comparison happens.
+    """
+    base_chunks = _op_contours(recordings[0])
+    count = len(base_chunks)
+    if count < 2:
+        return list(recordings)
+    # Match each master against its reordered predecessor: adjacent weights
+    # drift far less than Thin-to-Black, keeping the assignment unambiguous.
+    reference = [_chunk_key(chunk) for chunk in base_chunks]
+    matched: list[Sequence[tuple[str, tuple]]] = [recordings[0]]
+    for recording in recordings[1:]:
+        chunks = _op_contours(recording)
+        if len(chunks) != count:
+            # Let the structural checks report the mismatch.
+            return list(recordings)
+        keys = [_chunk_key(chunk) for chunk in chunks]
+        order = _best_permutation(reference, keys)
+        matched.append(
+            [operation for index in order for operation in chunks[index]]
+        )
+        reference = [keys[index] for index in order]
+    return matched
+
+
 def _draw_compatible(recordings: Sequence[Sequence[tuple[str, tuple]]], glyph_name: str) -> list:
+    recordings = _match_contour_order(recordings)
     def convert(compatible: Sequence[Sequence[tuple[str, tuple]]]) -> list:
         # Drop a closing point that coincides with the start. This also removes
         # the explicit closing line that ReverseContourPen emits when reversing
@@ -339,9 +458,10 @@ def _subset_parked(font: TTFont) -> None:
         font["meta"] = meta
 
 
-def _master_paths(export_dir: Path, static_dir: Path) -> tuple[list[Path], list[Path]]:
+def _master_paths(export_dir: Path, static_dir: Path, italic: bool) -> tuple[list[Path], list[Path]]:
     otfs, ttfs = [], []
-    for style, _ in WEIGHTS:
+    for base, _ in WEIGHTS:
+        style = file_style(base, italic)
         otf = export_dir / "otf" / f"{FAMILY_PS}-{style}.otf"
         ttf = static_dir / "ttf" / f"{FAMILY_PS}-{style}.ttf"
         if not otf.is_file():
@@ -353,8 +473,8 @@ def _master_paths(export_dir: Path, static_dir: Path) -> tuple[list[Path], list[
     return otfs, ttfs
 
 
-def _build_masters(export_dir: Path, static_dir: Path, work_dir: Path) -> list[Path]:
-    otf_paths, template_paths = _master_paths(export_dir, static_dir)
+def _build_masters(export_dir: Path, static_dir: Path, work_dir: Path, italic: bool) -> list[Path]:
+    otf_paths, template_paths = _master_paths(export_dir, static_dir, italic)
     outlines = [TTFont(path, recalcTimestamp=False) for path in otf_paths]
     templates = [TTFont(path, recalcTimestamp=False) for path in template_paths]
     orders = [font.getGlyphOrder() for font in outlines]
@@ -372,18 +492,18 @@ def _build_masters(export_dir: Path, static_dir: Path, work_dir: Path) -> list[P
             templates[index]["hmtx"][glyph_name] = outlines[index]["hmtx"][glyph_name]
 
     output_paths = []
-    for (style, _), font in zip(WEIGHTS, templates):
+    for (base, _), font in zip(WEIGHTS, templates):
         for tag in ("fpgm", "prep", "cvt "):
             if tag in font:
                 del font[tag]
         _subset_parked(font)
-        path = work_dir / f"{FAMILY_PS}-{style}.ttf"
+        path = work_dir / f"{FAMILY_PS}-{file_style(base, italic)}.ttf"
         font.save(path, reorderTables=False)
         output_paths.append(path)
     return output_paths
 
 
-def _designspace(master_paths: Sequence[Path]) -> DesignSpaceDocument:
+def _designspace(master_paths: Sequence[Path], italic: bool) -> DesignSpaceDocument:
     document = DesignSpaceDocument()
     axis = AxisDescriptor()
     axis.name = "Weight"
@@ -392,7 +512,8 @@ def _designspace(master_paths: Sequence[Path]) -> DesignSpaceDocument:
     axis.default = 400
     axis.maximum = 900
     document.addAxis(axis)
-    for (style, weight), path in zip(WEIGHTS, master_paths):
+    for (base, weight), path in zip(WEIGHTS, master_paths):
+        style = display_style(base, italic)
         source = SourceDescriptor()
         source.name = style
         source.path = str(path.resolve())
@@ -414,23 +535,33 @@ def _designspace(master_paths: Sequence[Path]) -> DesignSpaceDocument:
     return document
 
 
-def _set_variable_metadata(font: TTFont) -> None:
+def _set_variable_metadata(font: TTFont, italic: bool) -> None:
     names = font["name"]
+    subfamily = "Italic" if italic else "Regular"
+    postscript = f"{FAMILY_PS}-{subfamily}"
+    variations_prefix = f"{FAMILY_PS}Italic" if italic else FAMILY_PS
     for platform_id, encoding_id, language_id in ((3, 1, 0x409), (1, 0, 0)):
         names.setName(FAMILY, 1, platform_id, encoding_id, language_id)
-        names.setName("Regular", 2, platform_id, encoding_id, language_id)
-        names.setName(f"{FAMILY} Regular", 4, platform_id, encoding_id, language_id)
-        names.setName(f"{FAMILY_PS}-Regular", 6, platform_id, encoding_id, language_id)
-        names.setName(FAMILY_PS, 25, platform_id, encoding_id, language_id)
+        names.setName(subfamily, 2, platform_id, encoding_id, language_id)
+        names.setName(f"{FAMILY} {subfamily}", 4, platform_id, encoding_id, language_id)
+        names.setName(postscript, 6, platform_id, encoding_id, language_id)
+        names.setName(variations_prefix, 25, platform_id, encoding_id, language_id)
     names.removeNames(nameID=16)
     names.removeNames(nameID=17)
-    for instance, (style, _) in zip(font["fvar"].instances, WEIGHTS):
+    for instance, (base, _) in zip(font["fvar"].instances, WEIGHTS):
         instance.postscriptNameID = names.addMultilingualName(
-            {"en": f"{FAMILY_PS}-{style}"},
+            {"en": f"{FAMILY_PS}-{file_style(base, italic)}"},
             windows=True,
             mac=True,
             minNameID=256,
         )
+    # The wght values carry the bare weight names and the ital axis carries the
+    # Roman/Italic value, matching the Geist variable pair on Google Fonts.
+    ital_values = (
+        [{"name": "Italic", "value": 1}]
+        if italic
+        else [{"name": "Roman", "value": 0, "flags": 2, "linkedValue": 1}]
+    )
     buildStatTable(
         font,
         [
@@ -446,12 +577,59 @@ def _set_variable_metadata(font: TTFont) -> None:
                     for style, weight in WEIGHTS
                 ],
             },
-            {"tag": "ital", "name": "Italic", "values": [{"name": "Roman", "value": 0, "flags": 2}]},
+            {"tag": "ital", "name": "Italic", "values": ital_values},
         ],
     )
 
 
+def _glyf_contour_keys(font: TTFont, glyph_name: str) -> list[ContourKey]:
+    glyph = font["glyf"][glyph_name]
+    if glyph.numberOfContours <= 0:
+        return []
+    coordinates, ends, _ = glyph.getCoordinates(font["glyf"])
+    keys: list[ContourKey] = []
+    start = 0
+    for end in ends:
+        keys.append(_points_key(list(coordinates[start : end + 1])))
+        start = end + 1
+    return keys
+
+
+def assert_contour_correspondence(first: TTFont, second: TTFont, context: str) -> None:
+    """Reject master pairs whose same-index contours are not the same contour.
+
+    Interpolating contour i of one master into contour j of the next renders
+    correctly at every master and destroys the glyph in between, so this is
+    checked geometrically: pairing by index must cost no more than the best
+    area/centroid assignment.
+    """
+    for glyph_name in first.getGlyphOrder():
+        a = _glyf_contour_keys(first, glyph_name)
+        b = _glyf_contour_keys(second, glyph_name)
+        if len(a) < 2 or len(a) != len(b):
+            continue
+        identity = sum(
+            _assignment_cost(a[index], b[index]) for index in range(len(a))
+        )
+        order = _best_permutation(a, b)
+        best = sum(
+            _assignment_cost(a[index], b[order[index]]) for index in range(len(a))
+        )
+        if identity > best + 1.0:
+            raise ValueError(
+                f"{context}: contour order of {glyph_name} does not correspond "
+                f"between adjacent masters (index pairing costs {identity:.1f}, "
+                f"best assignment {best:.1f})"
+            )
+
+
 def _validate(font: TTFont, master_paths: Sequence[Path]) -> None:
+    previous: TTFont | None = None
+    for master_path in master_paths:
+        master = TTFont(master_path, recalcTimestamp=False)
+        if previous is not None:
+            assert_contour_correspondence(previous, master, str(master_path))
+        previous = master
     if set(font.getGlyphOrder()) & PARKED_GLYPHS:
         raise ValueError("parked glyphs leaked into the variable font")
     axes = {axis.axisTag: axis for axis in font["fvar"].axes}
@@ -483,18 +661,19 @@ def _validate(font: TTFont, master_paths: Sequence[Path]) -> None:
                 raise ValueError(f"outline mismatch for {glyph_name} at wght={value}")
 
 
-def build(export_dir: Path, static_dir: Path, output_dir: Path) -> tuple[Path, Path]:
+def build(export_dir: Path, static_dir: Path, output_dir: Path, italic: bool = False) -> tuple[Path, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="namche-shadow-vf-") as temporary:
-        master_paths = _build_masters(export_dir, static_dir, Path(temporary))
-        variable, _, _ = build_variable(_designspace(master_paths), optimize=True)
-        _set_variable_metadata(variable)
+        master_paths = _build_masters(export_dir, static_dir, Path(temporary), italic)
+        variable, _, _ = build_variable(_designspace(master_paths, italic), optimize=True)
+        _set_variable_metadata(variable, italic)
         _validate(variable, master_paths)
         # Preserve the default master's source timestamp so repeated builds are
         # byte-for-byte reproducible instead of recording the wall-clock time.
         variable.recalcTimestamp = False
-        ttf_path = output_dir / "variable" / f"{FAMILY_PS}[wght].ttf"
-        woff2_path = output_dir / "webfonts" / f"{FAMILY_PS}[wght].woff2"
+        stem = f"{FAMILY_PS}-Italic[wght]" if italic else f"{FAMILY_PS}[wght]"
+        ttf_path = output_dir / "variable" / f"{stem}.ttf"
+        woff2_path = output_dir / "webfonts" / f"{stem}.woff2"
         ttf_path.parent.mkdir(parents=True, exist_ok=True)
         woff2_path.parent.mkdir(parents=True, exist_ok=True)
         variable.save(ttf_path, reorderTables=False)
@@ -509,8 +688,9 @@ def main() -> None:
     parser.add_argument("--glyphs-export", type=Path, required=True, help="directory containing compatible otf/ exports")
     parser.add_argument("--statics", type=Path, default=Path("fonts/NamcheShadowSans"))
     parser.add_argument("--output", type=Path, default=Path("fonts/NamcheShadowSans"))
+    parser.add_argument("--italic", action="store_true", help="build the italic variable font from the italic masters")
     args = parser.parse_args()
-    ttf, woff2 = build(args.glyphs_export, args.statics, args.output)
+    ttf, woff2 = build(args.glyphs_export, args.statics, args.output, italic=args.italic)
     print(f"Built {ttf}")
     print(f"Built {woff2}")
 
