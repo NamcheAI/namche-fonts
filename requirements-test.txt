@@ -104,7 +104,7 @@ fontbakery[beautifulsoup4,googlefonts,googlefontsalwayslatest,shaperglot]==1.1.0
     #   gftools
 fontfeatures==1.9.0
     # via gftools
-fontmake[json]==3.12.1
+fontmake[json]==3.12.2
     # via gftools
 fontmath==0.9.4
     # via
