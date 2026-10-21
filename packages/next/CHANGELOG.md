@@ -1,5 +1,11 @@
 # @namche/namche-shadow
 
+## 0.6.2
+
+### Patch Changes
+
+- 5264ba8: Make the upright Namche Shadow Sans variable font reproducible from open production sources, with mandatory CI checks for byte-identical TTF and WOFF2 outputs. Published font appearance, shaping, and interpolation remain unchanged.
+
 ## 0.6.1
 
 ### Patch Changes
