@@ -1,0 +1,6 @@
+# Exact production-source serializer/compressor versions. Changes must pass
+# check-sans-open on Linux and preserve the approved release hashes.
+fonttools==4.60.1
+ufoLib2==0.18.1
+attrs==25.3.0
+brotli==1.2.0

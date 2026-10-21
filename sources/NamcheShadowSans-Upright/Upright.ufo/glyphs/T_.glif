@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="T" format="2">
+  <advance width="552"/>
+  <unicode hex="0054"/>
+  <outline>
+    <contour>
+      <point x="233" y="0" type="line"/>
+      <point x="233" y="546" type="line"/>
+      <point x="233" y="626"/>
+      <point x="153" y="626" type="qcurve"/>
+      <point x="12" y="626" type="line"/>
+      <point x="12" y="710" type="line"/>
+      <point x="540" y="710" type="line"/>
+      <point x="540" y="626" type="line"/>
+      <point x="399" y="626" type="line"/>
+      <point x="319" y="626"/>
+      <point x="319" y="546" type="qcurve"/>
+      <point x="319" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

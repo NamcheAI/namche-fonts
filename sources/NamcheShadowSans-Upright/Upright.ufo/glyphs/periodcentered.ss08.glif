@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="periodcentered.ss08" format="2">
+  <advance width="216"/>
+  <outline>
+    <contour>
+      <point x="108" y="243" type="qcurve"/>
+      <point x="78" y="243"/>
+      <point x="44" y="278"/>
+      <point x="44" y="305" type="qcurve"/>
+      <point x="44" y="332"/>
+      <point x="78" y="367"/>
+      <point x="108" y="367" type="qcurve"/>
+      <point x="138" y="367"/>
+      <point x="172" y="332"/>
+      <point x="172" y="305" type="qcurve"/>
+      <point x="172" y="278"/>
+      <point x="138" y="243"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

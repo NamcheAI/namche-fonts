@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="ij.ss08" format="2">
+  <advance width="494"/>
+  <outline>
+    <contour>
+      <point x="80" y="0" type="line"/>
+      <point x="80" y="530" type="line"/>
+      <point x="164" y="530" type="line"/>
+      <point x="164" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point x="123" y="610" type="qcurve"/>
+      <point x="102" y="610"/>
+      <point x="75" y="637"/>
+      <point x="75" y="660" type="qcurve"/>
+      <point x="75" y="682"/>
+      <point x="102" y="710"/>
+      <point x="123" y="710" type="qcurve"/>
+      <point x="144" y="710"/>
+      <point x="171" y="682"/>
+      <point x="171" y="660" type="qcurve"/>
+      <point x="171" y="637"/>
+      <point x="144" y="610"/>
+    </contour>
+    <contour>
+      <point x="229" y="-150" type="line"/>
+      <point x="229" y="-76" type="line"/>
+      <point x="272" y="-76" type="line"/>
+      <point x="298" y="-76"/>
+      <point x="330" y="-51"/>
+      <point x="330" y="-18" type="qcurve"/>
+      <point x="330" y="530" type="line"/>
+      <point x="414" y="530" type="line"/>
+      <point x="414" y="-22" type="line"/>
+      <point x="414" y="-92"/>
+      <point x="352" y="-150"/>
+      <point x="280" y="-150" type="qcurve"/>
+    </contour>
+    <contour>
+      <point x="373" y="610" type="qcurve"/>
+      <point x="352" y="610"/>
+      <point x="325" y="637"/>
+      <point x="325" y="660" type="qcurve"/>
+      <point x="325" y="682"/>
+      <point x="352" y="710"/>
+      <point x="373" y="710" type="qcurve"/>
+      <point x="394" y="710"/>
+      <point x="421" y="682"/>
+      <point x="421" y="660" type="qcurve"/>
+      <point x="421" y="637"/>
+      <point x="394" y="610"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

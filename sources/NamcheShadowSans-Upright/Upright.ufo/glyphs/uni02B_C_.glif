@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni02BC" format="2">
+  <advance width="206"/>
+  <unicode hex="02BC"/>
+  <outline>
+    <contour>
+      <point x="51" y="468" type="line"/>
+      <point x="81" y="710" type="line"/>
+      <point x="164" y="710" type="line"/>
+      <point x="112" y="468" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

@@ -259,3 +259,10 @@ Briganti, Guido Ferreyra); it was designed by Michael Marte for
 The fonts, sources, and derivative font work are licensed under the
 [SIL Open Font License 1.1](OFL.txt). Original Geist copyright notices and
 author credits are retained in the sources and binary font metadata.
+
+### Reproducible upright variable build
+
+`make build-sans-variable` compiles the approved upright TTF and WOFF2 from
+open UFO/TTX production sources without Glyphs. `make check-sans-open` enforces
+byte-identical repeated builds and published files in CI. See
+[provenance and source maintenance](documentation/OPEN_BUILD.md).

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni2198.ss07" format="2">
+  <advance width="597"/>
+  <outline>
+    <contour>
+      <point x="302" y="30" type="line"/>
+      <point x="344" y="72" type="line"/>
+      <point x="386" y="114"/>
+      <point x="344" y="156" type="qcurve"/>
+      <point x="45" y="455" type="line"/>
+      <point x="103" y="513" type="line"/>
+      <point x="402" y="214" type="line"/>
+      <point x="445" y="172"/>
+      <point x="486" y="213" type="qcurve"/>
+      <point x="529" y="256" type="line"/>
+      <point x="552" y="6" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

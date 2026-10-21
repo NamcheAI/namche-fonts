@@ -2,9 +2,10 @@
 """Build the rounded Namche Shadow Sans variable fonts (upright and italic).
 
 The input is a native Glyphs 4 OTF export whose seven RoundCorner filters use
-the ``compatible`` option.  The committed release OTF statics preserve those
-export outlines, so they are an equivalent input; ``--italic`` selects the
-italic masters and produces ``NamcheShadowSans-Italic[wght]``.  The OTF outlines are the visual source of truth.
+the ``compatible`` option. These historical upright exports were not committed;
+the ordinary static OTFs are NOT equivalent upright VF inputs. Use
+``build_sans_open.py`` for the published upright. ``--italic`` uses the committed
+italic OTF masters and produces ``NamcheShadowSans-Italic[wght]``.
 Where the filter still emits different cubic segmentation at named weights,
 this script splits the existing Bezier curves at common arc-length positions.
 Splitting a Bezier does not change its shape.  All masters are then converted

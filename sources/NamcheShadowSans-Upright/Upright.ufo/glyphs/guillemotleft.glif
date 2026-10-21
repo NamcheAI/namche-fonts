@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="guillemotleft" format="2">
+  <advance width="533"/>
+  <unicode hex="00AB"/>
+  <outline>
+    <contour>
+      <point x="287" y="76" type="line"/>
+      <point x="184" y="76" type="line"/>
+      <point x="44" y="239" type="line"/>
+      <point x="44" y="313" type="line"/>
+      <point x="184" y="476" type="line"/>
+      <point x="287" y="476" type="line"/>
+      <point x="151" y="318" type="line"/>
+      <point x="115" y="276"/>
+      <point x="151" y="234" type="qcurve"/>
+    </contour>
+    <contour>
+      <point x="489" y="76" type="line"/>
+      <point x="386" y="76" type="line"/>
+      <point x="246" y="239" type="line"/>
+      <point x="246" y="313" type="line"/>
+      <point x="386" y="476" type="line"/>
+      <point x="489" y="476" type="line"/>
+      <point x="353" y="318" type="line"/>
+      <point x="317" y="276"/>
+      <point x="353" y="234" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

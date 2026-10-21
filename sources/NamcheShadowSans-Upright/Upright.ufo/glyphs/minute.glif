@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="minute" format="2">
+  <advance width="211"/>
+  <unicode hex="2032"/>
+  <outline>
+    <contour>
+      <point x="40" y="482" type="line"/>
+      <point x="86" y="710" type="line"/>
+      <point x="171" y="710" type="line"/>
+      <point x="116" y="482" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

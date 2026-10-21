@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="lessequal" format="2">
+  <advance width="544"/>
+  <unicode hex="2264"/>
+  <outline>
+    <contour>
+      <point x="494" y="0" type="line"/>
+      <point x="40" y="0" type="line"/>
+      <point x="40" y="74" type="line"/>
+      <point x="494" y="74" type="line"/>
+    </contour>
+    <contour>
+      <point x="494" y="112" type="line"/>
+      <point x="40" y="276" type="line"/>
+      <point x="40" y="382" type="line"/>
+      <point x="494" y="546" type="line"/>
+      <point x="494" y="462" type="line"/>
+      <point x="223" y="368" type="line"/>
+      <point x="197" y="359"/>
+      <point x="179" y="329"/>
+      <point x="197" y="299"/>
+      <point x="223" y="290" type="qcurve"/>
+      <point x="494" y="196" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Lambda" format="2">
+  <advance width="668"/>
+  <unicode hex="039B"/>
+  <outline>
+    <contour>
+      <point x="20" y="0" type="line"/>
+      <point x="276" y="710" type="line"/>
+      <point x="392" y="710" type="line"/>
+      <point x="648" y="0" type="line"/>
+      <point x="554" y="0" type="line"/>
+      <point x="386" y="485" type="line"/>
+      <point x="374" y="521"/>
+      <point x="334" y="545"/>
+      <point x="295" y="521"/>
+      <point x="282" y="485" type="qcurve"/>
+      <point x="114" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

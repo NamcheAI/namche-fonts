@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni044A" format="2">
+  <advance width="610"/>
+  <unicode hex="044A"/>
+  <outline>
+    <contour>
+      <point x="180" y="0" type="line"/>
+      <point x="180" y="396" type="line"/>
+      <point x="180" y="456"/>
+      <point x="120" y="456" type="qcurve"/>
+      <point x="60" y="456" type="line"/>
+      <point x="60" y="530" type="line"/>
+      <point x="264" y="530" type="line"/>
+      <point x="264" y="392" type="line"/>
+      <point x="264" y="332"/>
+      <point x="324" y="332" type="qcurve"/>
+      <point x="364" y="332" type="line"/>
+      <point x="429" y="332"/>
+      <point x="519" y="291"/>
+      <point x="566" y="217"/>
+      <point x="566" y="166" type="qcurve"/>
+      <point x="566" y="116"/>
+      <point x="519" y="41"/>
+      <point x="429" y="0"/>
+      <point x="364" y="0" type="qcurve"/>
+    </contour>
+    <contour>
+      <point x="364" y="74" type="line"/>
+      <point x="429" y="74"/>
+      <point x="478" y="123"/>
+      <point x="478" y="166" type="qcurve"/>
+      <point x="478" y="209"/>
+      <point x="429" y="258"/>
+      <point x="364" y="258" type="qcurve"/>
+      <point x="324" y="258" type="line"/>
+      <point x="264" y="258"/>
+      <point x="264" y="198" type="qcurve"/>
+      <point x="264" y="134" type="line"/>
+      <point x="264" y="74"/>
+      <point x="324" y="74" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

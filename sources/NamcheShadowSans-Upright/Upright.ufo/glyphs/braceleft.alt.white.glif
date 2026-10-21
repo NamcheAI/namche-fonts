@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="braceleft.alt.white" format="2">
+  <advance width="391"/>
+  <outline>
+    <contour>
+      <point x="44" y="233" type="line"/>
+      <point x="44" y="826" type="line"/>
+      <point x="347" y="826" type="line"/>
+      <point x="347" y="666" type="line"/>
+      <point x="264" y="666" type="line"/>
+      <point x="204" y="666"/>
+      <point x="204" y="606" type="qcurve"/>
+      <point x="204" y="233" type="line"/>
+    </contour>
+    <contour>
+      <point x="84" y="333" type="line"/>
+      <point x="84" y="273"/>
+      <point x="124" y="273" type="qcurve"/>
+      <point x="124" y="273" type="line"/>
+      <point x="164" y="273"/>
+      <point x="164" y="333" type="qcurve"/>
+      <point x="164" y="706" type="line"/>
+      <point x="247" y="706" type="line"/>
+      <point x="307" y="706"/>
+      <point x="307" y="746" type="qcurve"/>
+      <point x="307" y="746" type="line"/>
+      <point x="307" y="786"/>
+      <point x="247" y="786" type="qcurve"/>
+      <point x="144" y="786" type="line"/>
+      <point x="84" y="786"/>
+      <point x="84" y="726" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

@@ -55,14 +55,15 @@ conventions.
   serialize spaces after commas).
 - `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` must export in every
   static. Do not add `Remove Glyphs` to static instances.
-- Build the upright variable font only from native Glyphs OTF exports whose
-  seven RoundCorner filters use the `compatible` option. Run
-  `make build-sans-variable GLYPHS_SANS_EXPORT=/path/to/export`; the builder
-  preserves the post-rounding curves, restores per-weight contour
-  correspondence, makes the remaining segmentation compatible, converts all
-  masters to TrueType curves together, and verifies every named instance
-  against its rounded master. Never enable the sharp gftools/Glyphs VF as a
-  substitute.
+- Build the upright variable font with `make build-sans-variable` from the
+  recovered quadratic UFO and indexed variation/layout XML in
+  `sources/NamcheShadowSans-Upright/`. `make check-sans-open` builds twice and
+  requires exact equality to the approved hashes and committed TTF/WOFF2.
+  The historical compatible Glyphs exports were not committed; the ordinary
+  static OTFs are not equivalent VF inputs. Do not use them to rebuild upright.
+  Point-count/order edits require matching variation-delta changes. Preserve
+  the pinned hashes unless an intentional release change is reviewed. See
+  `documentation/OPEN_BUILD.md` for provenance and maintenance requirements.
 - Build the italic variable font with
   `make build-sans-italic-variable GLYPHS_SANS_EXPORT=fonts/NamcheShadowSans`:
   the committed italic OTF statics carry the release outlines, so they are the
@@ -173,8 +174,8 @@ conventions.
   rebuild, so a source-build failure cannot be bypassed by the fast path.
 - Pull requests rebuild Mono or Namche Shape only when that family's source or
   a shared build input changes. A Namche Shape change must not pay for a Mono
-  rebuild, and vice versa. Sans remains based on reviewed native Glyphs
-  exports and is validated rather than rebuilt on Linux.
+  rebuild, and vice versa. Sans statics remain native Glyphs exports. The upright VF is rebuilt from
+  open sources on Linux on every PR, and its byte-equality gate is mandatory.
 - Fontspector runs only for families affected by the PR. Full proofs, release
   ZIPs, npm artifacts, Pages assets, and the complete cross-family build run on
   `main`, tags, or manual dispatches.
