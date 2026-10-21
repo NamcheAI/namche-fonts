@@ -28,6 +28,8 @@ def build(source: Path, output: Path) -> None:
     manifest = json.loads((source / 'provenance.json').read_text())
     ufo = Font.open(source / 'Upright.ufo')
     font = TTFont(recalcTimestamp=False)
+    # Require the production layout serializer; never silently switch backends.
+    font.cfg['fontTools.ttLib.tables.otBase:USE_HARFBUZZ_REPACKER'] = True
     font.importXML(source / 'variation-and-layout.ttx')
     if font.getGlyphOrder() != ufo.glyphOrder:
         raise ValueError('UFO glyph order must match the indexed variation/layout sources')

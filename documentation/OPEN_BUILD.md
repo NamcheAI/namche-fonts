@@ -53,6 +53,8 @@ incompatible static OTFs.
 ## Repository workflow
 
 Install `requirements-open-build.txt` in an isolated Python 3.11 environment.
+HarfBuzz 0.53.3 is pinned alongside FontTools: its layout repacker is explicitly
+required, since the pure-Python fallback serializes different bytes.
 Run `make check-sans-open PYTHON=python` for two clean builds, SHA-256 validation
 and comparison to the committed release. `make build-sans-variable` writes the
 release artifacts using the full repository build environment. The complete

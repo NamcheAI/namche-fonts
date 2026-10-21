@@ -4,3 +4,4 @@ fonttools==4.60.1
 ufoLib2==0.18.1
 attrs==25.3.0
 brotli==1.2.0
+uharfbuzz==0.53.3
