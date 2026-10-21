@@ -4,28 +4,28 @@
   <unicode hex="25CA"/>
   <outline>
     <contour>
-      <point x="214" y="0" type="line"/>
-      <point x="45" y="322" type="line"/>
-      <point x="214" y="644" type="line"/>
-      <point x="317" y="644" type="line"/>
-      <point x="486" y="322" type="line"/>
-      <point x="317" y="0" type="line"/>
+      <point identifier="p0" x="214" y="0" type="line"/>
+      <point identifier="p1" x="45" y="322" type="line"/>
+      <point identifier="p2" x="214" y="644" type="line"/>
+      <point identifier="p3" x="317" y="644" type="line"/>
+      <point identifier="p4" x="486" y="322" type="line"/>
+      <point identifier="p5" x="317" y="0" type="line"/>
     </contour>
     <contour>
-      <point x="153" y="363" type="line"/>
-      <point x="131" y="322"/>
-      <point x="153" y="281" type="qcurve"/>
-      <point x="225" y="145" type="line"/>
-      <point x="242" y="113"/>
-      <point x="290" y="113"/>
-      <point x="307" y="145" type="qcurve"/>
-      <point x="378" y="281" type="line"/>
-      <point x="400" y="322"/>
-      <point x="378" y="363" type="qcurve"/>
-      <point x="307" y="499" type="line"/>
-      <point x="290" y="532"/>
-      <point x="242" y="531"/>
-      <point x="225" y="499" type="qcurve"/>
+      <point identifier="p6" x="153" y="363" type="line"/>
+      <point identifier="p7" x="131" y="322"/>
+      <point identifier="p8" x="153" y="281" type="qcurve"/>
+      <point identifier="p9" x="225" y="145" type="line"/>
+      <point identifier="p10" x="242" y="113"/>
+      <point identifier="p11" x="290" y="113"/>
+      <point identifier="p12" x="307" y="145" type="qcurve"/>
+      <point identifier="p13" x="378" y="281" type="line"/>
+      <point identifier="p14" x="400" y="322"/>
+      <point identifier="p15" x="378" y="363" type="qcurve"/>
+      <point identifier="p16" x="307" y="499" type="line"/>
+      <point identifier="p17" x="290" y="532"/>
+      <point identifier="p18" x="242" y="531"/>
+      <point identifier="p19" x="225" y="499" type="qcurve"/>
     </contour>
   </outline>
   <lib>

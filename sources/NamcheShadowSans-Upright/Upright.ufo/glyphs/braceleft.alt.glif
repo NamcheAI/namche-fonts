@@ -3,14 +3,14 @@
   <advance width="390"/>
   <outline>
     <contour>
-      <point x="44" y="235" type="line"/>
-      <point x="44" y="826" type="line"/>
-      <point x="346" y="826" type="line"/>
-      <point x="346" y="748" type="line"/>
-      <point x="184" y="748" type="line"/>
-      <point x="124" y="748"/>
-      <point x="124" y="688" type="qcurve"/>
-      <point x="124" y="235" type="line"/>
+      <point identifier="p0" x="44" y="235" type="line"/>
+      <point identifier="p1" x="44" y="826" type="line"/>
+      <point identifier="p2" x="346" y="826" type="line"/>
+      <point identifier="p3" x="346" y="748" type="line"/>
+      <point identifier="p4" x="184" y="748" type="line"/>
+      <point identifier="p5" x="124" y="748"/>
+      <point identifier="p6" x="124" y="688" type="qcurve"/>
+      <point identifier="p7" x="124" y="235" type="line"/>
     </contour>
   </outline>
   <lib>

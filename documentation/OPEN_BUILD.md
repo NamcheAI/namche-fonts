@@ -43,7 +43,9 @@ every glyph, every position on the weight axis, metrics, shaping and metadata.
 ## Maintenance boundary
 
 The recovered source exposes fixed point-index topology plus variation deltas.
-Editing point counts/order requires migrating the deltas too; it is not a set of
+Stable UFO point identifiers and `point-order.json` guard point order and contour
+boundaries before applying the indexed deltas. Preserve identifiers when editing
+coordinates; changing counts/order requires migrating the deltas and this map too; it is not a set of
 ordinary cubic Glyphs design masters. Changing a RoundCorner parameter is no
 longer an automatic operation. Google Fonts acceptance of this source layout
 has not been established. A future ergonomic designspace migration must preserve

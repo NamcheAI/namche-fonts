@@ -6,6 +6,10 @@ and instance filters. Project naming and attribution stay in the repository's
 existing fontinfo.plist. The five temporarily incompatible variable-font
 glyphs remain parked only on the variable instance and are exported by every
 static instance.
+
+This updates the Glyphs design/static source only. The production upright VF
+is rebuilt separately from sources/NamcheShadowSans-Upright; changes imported
+here require an explicit migration of that quadratic source and its deltas.
 """
 
 from __future__ import annotations

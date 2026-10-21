@@ -2,16 +2,16 @@
 <glyph name="uni0308.narrow" format="2">
   <outline>
     <contour>
-      <point x="44" y="613" type="line"/>
-      <point x="44" y="711" type="line"/>
-      <point x="132" y="711" type="line"/>
-      <point x="132" y="613" type="line"/>
+      <point identifier="p0" x="44" y="613" type="line"/>
+      <point identifier="p1" x="44" y="711" type="line"/>
+      <point identifier="p2" x="132" y="711" type="line"/>
+      <point identifier="p3" x="132" y="613" type="line"/>
     </contour>
     <contour>
-      <point x="172" y="613" type="line"/>
-      <point x="172" y="711" type="line"/>
-      <point x="260" y="711" type="line"/>
-      <point x="260" y="613" type="line"/>
+      <point identifier="p4" x="172" y="613" type="line"/>
+      <point identifier="p5" x="172" y="711" type="line"/>
+      <point identifier="p6" x="260" y="711" type="line"/>
+      <point identifier="p7" x="260" y="613" type="line"/>
     </contour>
   </outline>
   <lib>

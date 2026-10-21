@@ -4,17 +4,17 @@
   <unicode hex="039B"/>
   <outline>
     <contour>
-      <point x="20" y="0" type="line"/>
-      <point x="276" y="710" type="line"/>
-      <point x="392" y="710" type="line"/>
-      <point x="648" y="0" type="line"/>
-      <point x="554" y="0" type="line"/>
-      <point x="386" y="485" type="line"/>
-      <point x="374" y="521"/>
-      <point x="334" y="545"/>
-      <point x="295" y="521"/>
-      <point x="282" y="485" type="qcurve"/>
-      <point x="114" y="0" type="line"/>
+      <point identifier="p0" x="20" y="0" type="line"/>
+      <point identifier="p1" x="276" y="710" type="line"/>
+      <point identifier="p2" x="392" y="710" type="line"/>
+      <point identifier="p3" x="648" y="0" type="line"/>
+      <point identifier="p4" x="554" y="0" type="line"/>
+      <point identifier="p5" x="386" y="485" type="line"/>
+      <point identifier="p6" x="374" y="521"/>
+      <point identifier="p7" x="334" y="545"/>
+      <point identifier="p8" x="295" y="521"/>
+      <point identifier="p9" x="282" y="485" type="qcurve"/>
+      <point identifier="p10" x="114" y="0" type="line"/>
     </contour>
   </outline>
   <lib>

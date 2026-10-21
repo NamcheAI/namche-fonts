@@ -27,6 +27,7 @@ FILES = ('variable/NamcheShadowSans[wght].ttf', 'webfonts/NamcheShadowSans[wght]
 def build(source: Path, output: Path) -> None:
     manifest = json.loads((source / 'provenance.json').read_text())
     ufo = Font.open(source / 'Upright.ufo')
+    point_order = json.loads((source / 'point-order.json').read_text())
     font = TTFont(recalcTimestamp=False)
     # Require the production layout serializer; never silently switch backends.
     font.cfg['fontTools.ttLib.tables.otBase:USE_HARFBUZZ_REPACKER'] = True
@@ -38,6 +39,10 @@ def build(source: Path, output: Path) -> None:
     font['glyf'].glyphOrder = ufo.glyphOrder
     font['loca'] = newTable('loca')
     for name in ufo.glyphOrder:
+        actual_order = [[point.identifier for point in contour.points]
+                        for contour in ufo[name].contours]
+        if actual_order != point_order[name]:
+            raise ValueError(f'{name}: point order or contour boundaries changed; migrate variation deltas before rebuilding')
         pen = TTGlyphPointPen(ufo)
         ufo[name].drawPoints(pen)
         glyph = pen.glyph()

@@ -3,17 +3,17 @@
   <advance width="766"/>
   <outline>
     <contour>
-      <point x="239" y="210" type="line"/>
-      <point x="45" y="370" type="line"/>
-      <point x="238" y="531" type="line"/>
-      <point x="238" y="471" type="line"/>
-      <point x="238" y="411"/>
-      <point x="298" y="411" type="qcurve"/>
-      <point x="721" y="411" type="line"/>
-      <point x="721" y="329" type="line"/>
-      <point x="299" y="329" type="line"/>
-      <point x="239" y="329"/>
-      <point x="239" y="269" type="qcurve"/>
+      <point identifier="p0" x="239" y="210" type="line"/>
+      <point identifier="p1" x="45" y="370" type="line"/>
+      <point identifier="p2" x="238" y="531" type="line"/>
+      <point identifier="p3" x="238" y="471" type="line"/>
+      <point identifier="p4" x="238" y="411"/>
+      <point identifier="p5" x="298" y="411" type="qcurve"/>
+      <point identifier="p6" x="721" y="411" type="line"/>
+      <point identifier="p7" x="721" y="329" type="line"/>
+      <point identifier="p8" x="299" y="329" type="line"/>
+      <point identifier="p9" x="239" y="329"/>
+      <point identifier="p10" x="239" y="269" type="qcurve"/>
     </contour>
   </outline>
   <lib>

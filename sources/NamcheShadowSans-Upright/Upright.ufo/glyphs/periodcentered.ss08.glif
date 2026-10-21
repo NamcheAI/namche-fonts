@@ -3,18 +3,18 @@
   <advance width="216"/>
   <outline>
     <contour>
-      <point x="108" y="243" type="qcurve"/>
-      <point x="78" y="243"/>
-      <point x="44" y="278"/>
-      <point x="44" y="305" type="qcurve"/>
-      <point x="44" y="332"/>
-      <point x="78" y="367"/>
-      <point x="108" y="367" type="qcurve"/>
-      <point x="138" y="367"/>
-      <point x="172" y="332"/>
-      <point x="172" y="305" type="qcurve"/>
-      <point x="172" y="278"/>
-      <point x="138" y="243"/>
+      <point identifier="p0" x="108" y="243" type="qcurve"/>
+      <point identifier="p1" x="78" y="243"/>
+      <point identifier="p2" x="44" y="278"/>
+      <point identifier="p3" x="44" y="305" type="qcurve"/>
+      <point identifier="p4" x="44" y="332"/>
+      <point identifier="p5" x="78" y="367"/>
+      <point identifier="p6" x="108" y="367" type="qcurve"/>
+      <point identifier="p7" x="138" y="367"/>
+      <point identifier="p8" x="172" y="332"/>
+      <point identifier="p9" x="172" y="305" type="qcurve"/>
+      <point identifier="p10" x="172" y="278"/>
+      <point identifier="p11" x="138" y="243"/>
     </contour>
   </outline>
   <lib>

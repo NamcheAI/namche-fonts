@@ -2,10 +2,10 @@
 <glyph name="uni0338.case" format="2">
   <outline>
     <contour>
-      <point x="40" y="-16" type="line"/>
-      <point x="545" y="726" type="line"/>
-      <point x="629" y="726" type="line"/>
-      <point x="124" y="-16" type="line"/>
+      <point identifier="p0" x="40" y="-16" type="line"/>
+      <point identifier="p1" x="545" y="726" type="line"/>
+      <point identifier="p2" x="629" y="726" type="line"/>
+      <point identifier="p3" x="124" y="-16" type="line"/>
     </contour>
   </outline>
   <lib>
