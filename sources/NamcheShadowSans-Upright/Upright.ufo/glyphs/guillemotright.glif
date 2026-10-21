@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="guillemotright" format="2">
+  <advance width="537"/>
+  <unicode hex="00BB"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="241" y="76" type="line"/>
+      <point identifier="p1" x="377" y="234" type="line"/>
+      <point identifier="p2" x="413" y="276"/>
+      <point identifier="p3" x="377" y="318" type="qcurve"/>
+      <point identifier="p4" x="241" y="476" type="line"/>
+      <point identifier="p5" x="344" y="476" type="line"/>
+      <point identifier="p6" x="484" y="313" type="line"/>
+      <point identifier="p7" x="484" y="239" type="line"/>
+      <point identifier="p8" x="344" y="76" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p9" x="39" y="76" type="line"/>
+      <point identifier="p10" x="175" y="234" type="line"/>
+      <point identifier="p11" x="211" y="276"/>
+      <point identifier="p12" x="175" y="318" type="qcurve"/>
+      <point identifier="p13" x="39" y="476" type="line"/>
+      <point identifier="p14" x="142" y="476" type="line"/>
+      <point identifier="p15" x="282" y="313" type="line"/>
+      <point identifier="p16" x="282" y="239" type="line"/>
+      <point identifier="p17" x="142" y="76" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

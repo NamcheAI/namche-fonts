@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="seven.tf" format="2">
+  <advance width="600"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="206" y="0" type="line"/>
+      <point identifier="p1" x="206" y="92"/>
+      <point identifier="p2" x="248" y="274"/>
+      <point identifier="p3" x="327" y="449"/>
+      <point identifier="p4" x="383" y="530" type="qcurve"/>
+      <point identifier="p5" x="412" y="571"/>
+      <point identifier="p6" x="387" y="626"/>
+      <point identifier="p7" x="337" y="626" type="qcurve"/>
+      <point identifier="p8" x="48" y="626" type="line"/>
+      <point identifier="p9" x="48" y="710" type="line"/>
+      <point identifier="p10" x="552" y="710" type="line"/>
+      <point identifier="p11" x="552" y="632" type="line"/>
+      <point identifier="p12" x="463" y="530"/>
+      <point identifier="p13" x="348" y="331"/>
+      <point identifier="p14" x="294" y="120"/>
+      <point identifier="p15" x="294" y="0" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

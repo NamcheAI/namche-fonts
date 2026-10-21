@@ -1,6 +1,7 @@
 SOURCES=$(shell python3 scripts/read-config.py --sources )
 SHAPE_SOURCES=$(shell find sources/NamcheShape.glyphspackage sources/NamcheShape -type f 2>/dev/null) scripts/namche_shape.py scripts/build_namche_shape.py
 FAMILY=$(shell python3 scripts/read-config.py --family )
+OPEN_SANS_SOURCES=$(shell find sources/NamcheShadowSans-Upright -type f) scripts/build_sans_open.py
 PYTHON?=venv/bin/python
 SHAPING_REPORTS=out/fontspector/NamcheShadowSansVF-fontspector-report.json out/fontspector/NamcheShadowSans-fontspector-report.json out/fontspector/NamcheShadowMonoVF-fontspector-report.json out/fontspector/NamcheShadowMono-fontspector-report.json
 SHAPING_FONT_DIRS=fonts/NamcheShadowSans/variable fonts/NamcheShadowSans/ttf fonts/NamcheShadowMono/variable fonts/NamcheShadowMono/ttf
@@ -12,7 +13,7 @@ help:
 	@echo
 	@echo "  make build:  Builds the fonts and places them in the fonts/ directory"
 	@echo "  make finalize-sans-statics GLYPHS_SANS_EXPORT=/path: merge native Glyphs OTF/TTF exports into the release files"
-	@echo "  make build-sans-variable GLYPHS_SANS_EXPORT=/path: build the rounded upright Sans VF from compatible Glyphs OTF exports"
+	@echo "  make build-sans-variable: rebuild the byte-identical upright Sans VF from open sources"
 	@echo "  make build-sans-italic-variable GLYPHS_SANS_EXPORT=/path: build the italic Sans VF (the committed fonts/NamcheShadowSans works as input)"
 	@echo "  make refresh-sans-italic-outlines: merge an italic source correction into the committed release binaries"
 	@echo "  make refresh-sans-shaping COMPILED_SANS_BUILD=/path: refresh layout without changing approved outlines"
@@ -32,7 +33,7 @@ customize: venv
 	. venv/bin/activate; python3 scripts/customize.py
 
 build.stamp: venv sources/config-NamcheShadowSans.yaml \
-	$(SHAPE_SOURCES) $(SOURCES)
+	$(SHAPE_SOURCES) $(SOURCES) $(OPEN_SANS_SOURCES)
 	$(MAKE) check-source-copies
 	rm -rf fonts namche-fonts namche-fonts.zip
 	$(MAKE) build-mono
@@ -45,6 +46,8 @@ build.stamp: venv sources/config-NamcheShadowSans.yaml \
 	# Restore them after the clean build so release and npm artifacts use the
 	# approved outlines.
 	git checkout -- fonts/NamcheShadowSans/otf fonts/NamcheShadowSans/ttf fonts/NamcheShadowSans/webfonts fonts/NamcheShadowSans/variable
+	$(PYTHON) scripts/build_sans_open.py
+	$(MAKE) check-sans-open
 	# fonts/Geist is a committed byte-faithful copy of the upstream Vercel
 	# binaries (scripts/vendor_geist.py); restore it after the clean build.
 	git checkout -- fonts/Geist
@@ -103,10 +106,13 @@ check-sans-italic-outlines: build-sans-italic
 	. venv/bin/activate; python3 scripts/refresh_sans_italic_outlines.py --compiled out/sans-italic --check
 
 build-sans-variable: venv
-	test -n "$(GLYPHS_SANS_EXPORT)" || (echo "Set GLYPHS_SANS_EXPORT to a directory containing compatible otf/ exports." && exit 1)
-	. venv/bin/activate; python3 scripts/build_sans_variable.py --glyphs-export "$(GLYPHS_SANS_EXPORT)" --statics fonts/NamcheShadowSans --output fonts/NamcheShadowSans
-	. venv/bin/activate; python3 scripts/rename_font_metadata.py --check fonts/NamcheShadowSans
+	$(PYTHON) scripts/build_sans_open.py
+	$(PYTHON) scripts/build_sans_open.py --check
 	$(MAKE) copy-npm-fonts
+
+.PHONY: check-sans-open
+check-sans-open:
+	$(PYTHON) scripts/build_sans_open.py --check
 
 build-sans-italic-variable: venv
 	test -n "$(GLYPHS_SANS_EXPORT)" || (echo "Set GLYPHS_SANS_EXPORT to a directory containing italic otf/ builds; the committed fonts/NamcheShadowSans works because its OTFs carry the release outlines." && exit 1)

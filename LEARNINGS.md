@@ -2,7 +2,14 @@
 
 Operational notes from shipping **Namche-Shadow** (multi-tier) and **Namche-Shadow-Simple** (−40/−25) via Glyphs RoundCorner. Recipe details live in [`scripts/NAMCHE_SHADOW.md`](scripts/NAMCHE_SHADOW.md). Research on CLI / RoboFont / interactive apps: [`scripts/ROUNDCORNER_OUTSIDE_GLYPHS.md`](scripts/ROUNDCORNER_OUTSIDE_GLYPHS.md).
 
-## Production path
+## Reproducible upright variable release
+
+The published upright now rebuilds from recovered quadratic UFO/TTX sources.
+Run `make build-sans-variable` and `make check-sans-open`. The historical
+compatible Glyphs exports were not committed and are not interchangeable with
+the release static OTFs. See [open-build provenance](documentation/OPEN_BUILD.md).
+
+## Historical production path
 
 - **Ship with Glyphs RoundCorner export filters**, not the experimental Python inner-fillet engine (`scripts/round_inner_corners.py`).
 - Filters are the production mechanism for **static instances** and for the

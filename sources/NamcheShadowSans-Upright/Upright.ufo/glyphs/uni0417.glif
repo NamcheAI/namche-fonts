@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni0417" format="2">
+  <advance width="614"/>
+  <unicode hex="0417"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="306" y="-16" type="qcurve"/>
+      <point identifier="p1" x="223" y="-16"/>
+      <point identifier="p2" x="106" y="36"/>
+      <point identifier="p3" x="43" y="126"/>
+      <point identifier="p4" x="40" y="183" type="qcurve"/>
+      <point identifier="p5" x="130" y="189" type="line"/>
+      <point identifier="p6" x="135" y="134"/>
+      <point identifier="p7" x="217" y="68"/>
+      <point identifier="p8" x="306" y="68" type="qcurve"/>
+      <point identifier="p9" x="385" y="68"/>
+      <point identifier="p10" x="474" y="131"/>
+      <point identifier="p11" x="474" y="194" type="qcurve"/>
+      <point identifier="p12" x="474" y="256"/>
+      <point identifier="p13" x="395" y="318"/>
+      <point identifier="p14" x="326" y="318" type="qcurve"/>
+      <point identifier="p15" x="202" y="318" type="line"/>
+      <point identifier="p16" x="202" y="402" type="line"/>
+      <point identifier="p17" x="326" y="402" type="line"/>
+      <point identifier="p18" x="397" y="402"/>
+      <point identifier="p19" x="472" y="450"/>
+      <point identifier="p20" x="472" y="517" type="qcurve"/>
+      <point identifier="p21" x="472" y="571"/>
+      <point identifier="p22" x="390" y="642"/>
+      <point identifier="p23" x="306" y="642" type="qcurve"/>
+      <point identifier="p24" x="215" y="642"/>
+      <point identifier="p25" x="137" y="577"/>
+      <point identifier="p26" x="130" y="519" type="qcurve"/>
+      <point identifier="p27" x="40" y="525" type="line"/>
+      <point identifier="p28" x="46" y="580"/>
+      <point identifier="p29" x="106" y="671"/>
+      <point identifier="p30" x="220" y="726"/>
+      <point identifier="p31" x="306" y="726" type="qcurve"/>
+      <point identifier="p32" x="385" y="726"/>
+      <point identifier="p33" x="500" y="671"/>
+      <point identifier="p34" x="562" y="578"/>
+      <point identifier="p35" x="562" y="520" type="qcurve"/>
+      <point identifier="p36" x="562" y="474"/>
+      <point identifier="p37" x="531" y="407"/>
+      <point identifier="p38" x="499" y="386" type="qcurve"/>
+      <point identifier="p39" x="468" y="366"/>
+      <point identifier="p40" x="468" y="348"/>
+      <point identifier="p41" x="497" y="328" type="qcurve"/>
+      <point identifier="p42" x="531" y="305"/>
+      <point identifier="p43" x="564" y="237"/>
+      <point identifier="p44" x="564" y="190" type="qcurve"/>
+      <point identifier="p45" x="564" y="134"/>
+      <point identifier="p46" x="508" y="40"/>
+      <point identifier="p47" x="394" y="-16"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

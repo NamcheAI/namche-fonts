@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="greater.alt" format="2">
+  <advance width="352"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="125" y="-114" type="line"/>
+      <point identifier="p1" x="44" y="-114" type="line"/>
+      <point identifier="p2" x="211" y="314" type="line"/>
+      <point identifier="p3" x="219" y="336"/>
+      <point identifier="p4" x="219" y="372"/>
+      <point identifier="p5" x="211" y="394" type="qcurve"/>
+      <point identifier="p6" x="44" y="821" type="line"/>
+      <point identifier="p7" x="125" y="821" type="line"/>
+      <point identifier="p8" x="308" y="354" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

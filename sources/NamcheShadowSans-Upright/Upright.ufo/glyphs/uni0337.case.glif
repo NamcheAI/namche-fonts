@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni0337.case" format="2">
+  <outline>
+    <contour>
+      <point identifier="p0" x="40" y="279" type="line"/>
+      <point identifier="p1" x="40" y="355" type="line"/>
+      <point identifier="p2" x="348" y="515" type="line"/>
+      <point identifier="p3" x="348" y="439" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

@@ -28,12 +28,12 @@ On every **static** instance (Thin → Black) — **2026-08-11d**:
 The five glyphs in tier 7 export in every static instance; `Remove Glyphs`
 must not be present on statics.
 
-**Variable font:** Glyphs export filters do not run on Glyphs' own VF export.
-Export compatible OTF statics first, then run `make build-sans-variable`; that
-builder preserves the post-rounding curves, normalizes the remaining cubic
-segmentation, converts the masters together, and builds the upright VF.
-`Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` remain removed from the VF
-until their rounded masters match.
+**Upright variable font:** `make build-sans-variable` rebuilds the approved VF
+from `sources/NamcheShadowSans-Upright/`, the recovered quadratic UFO and indexed
+TTX production sources. It does not consume Glyphs exports. The historical
+compatible OTF masters are missing; the checked-in static OTFs are not equivalent.
+See [open-build provenance and maintenance](../documentation/OPEN_BUILD.md).
+`Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` remain absent from the VF.
 
 ### Namche-Shadow-Simple
 
@@ -78,11 +78,16 @@ python3 scripts/apply_roundcorner_filters.py --strong -40 --mild -25
    ```sh
    make finalize-sans-statics GLYPHS_SANS_EXPORT=/path/to/NamcheShadowSans
    ```
-5. Build the upright VF from the same compatible OTF export:
+5. Rebuild the unchanged approved upright VF from its open production sources:
 
    ```sh
-   make build-sans-variable GLYPHS_SANS_EXPORT=/path/to/NamcheShadowSans
+   make build-sans-variable
    ```
+
+An edited Glyphs export updates statics only. To change the upright VF, migrate
+its open quadratic source and indexed deltas together, review the resulting
+proofs, then update the approved hashes and binaries. Exporting new statics does
+not update these recovered VF sources automatically.
 
 ## Local specimen (static files)
 

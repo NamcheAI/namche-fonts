@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="lcaron.ss03" format="2">
+  <advance width="320"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="92" y="0" type="line"/>
+      <point identifier="p1" x="92" y="710" type="line"/>
+      <point identifier="p2" x="176" y="710" type="line"/>
+      <point identifier="p3" x="176" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p4" x="226" y="455" type="line"/>
+      <point identifier="p5" x="256" y="710" type="line"/>
+      <point identifier="p6" x="340" y="710" type="line"/>
+      <point identifier="p7" x="288" y="455" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

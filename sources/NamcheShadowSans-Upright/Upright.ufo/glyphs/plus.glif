@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="plus" format="2">
+  <advance width="558"/>
+  <unicode hex="002B"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="240" y="56" type="line"/>
+      <point identifier="p1" x="240" y="196" type="line"/>
+      <point identifier="p2" x="240" y="256"/>
+      <point identifier="p3" x="180" y="256" type="qcurve"/>
+      <point identifier="p4" x="40" y="256" type="line"/>
+      <point identifier="p5" x="40" y="334" type="line"/>
+      <point identifier="p6" x="180" y="334" type="line"/>
+      <point identifier="p7" x="240" y="334"/>
+      <point identifier="p8" x="240" y="394" type="qcurve"/>
+      <point identifier="p9" x="240" y="534" type="line"/>
+      <point identifier="p10" x="318" y="534" type="line"/>
+      <point identifier="p11" x="318" y="394" type="line"/>
+      <point identifier="p12" x="318" y="334"/>
+      <point identifier="p13" x="378" y="334" type="qcurve"/>
+      <point identifier="p14" x="518" y="334" type="line"/>
+      <point identifier="p15" x="518" y="256" type="line"/>
+      <point identifier="p16" x="378" y="256" type="line"/>
+      <point identifier="p17" x="318" y="256"/>
+      <point identifier="p18" x="318" y="196" type="qcurve"/>
+      <point identifier="p19" x="318" y="56" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

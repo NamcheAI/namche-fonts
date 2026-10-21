@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni0437" format="2">
+  <advance width="516"/>
+  <unicode hex="0437"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="258" y="-12" type="qcurve"/>
+      <point identifier="p1" x="161" y="-12"/>
+      <point identifier="p2" x="51" y="79"/>
+      <point identifier="p3" x="40" y="154" type="qcurve"/>
+      <point identifier="p4" x="128" y="158" type="line"/>
+      <point identifier="p5" x="134" y="115"/>
+      <point identifier="p6" x="189" y="66"/>
+      <point identifier="p7" x="258" y="66" type="qcurve"/>
+      <point identifier="p8" x="326" y="66"/>
+      <point identifier="p9" x="388" y="109"/>
+      <point identifier="p10" x="388" y="152" type="qcurve"/>
+      <point identifier="p11" x="388" y="190"/>
+      <point identifier="p12" x="338" y="234"/>
+      <point identifier="p13" x="284" y="234" type="qcurve"/>
+      <point identifier="p14" x="188" y="234" type="line"/>
+      <point identifier="p15" x="188" y="308" type="line"/>
+      <point identifier="p16" x="286" y="308" type="line"/>
+      <point identifier="p17" x="336" y="308"/>
+      <point identifier="p18" x="380" y="345"/>
+      <point identifier="p19" x="380" y="380" type="qcurve"/>
+      <point identifier="p20" x="380" y="418"/>
+      <point identifier="p21" x="326" y="464"/>
+      <point identifier="p22" x="258" y="464" type="qcurve"/>
+      <point identifier="p23" x="192" y="464"/>
+      <point identifier="p24" x="137" y="424"/>
+      <point identifier="p25" x="130" y="392" type="qcurve"/>
+      <point identifier="p26" x="42" y="398" type="line"/>
+      <point identifier="p27" x="53" y="464"/>
+      <point identifier="p28" x="164" y="542"/>
+      <point identifier="p29" x="260" y="542" type="qcurve"/>
+      <point identifier="p30" x="326" y="542"/>
+      <point identifier="p31" x="419" y="500"/>
+      <point identifier="p32" x="468" y="428"/>
+      <point identifier="p33" x="468" y="383" type="qcurve"/>
+      <point identifier="p34" x="468" y="352"/>
+      <point identifier="p35" x="446" y="308"/>
+      <point identifier="p36" x="425" y="294" type="qcurve"/>
+      <point identifier="p37" x="403" y="279"/>
+      <point identifier="p38" x="403" y="265"/>
+      <point identifier="p39" x="425" y="249" type="qcurve"/>
+      <point identifier="p40" x="449" y="233"/>
+      <point identifier="p41" x="476" y="181"/>
+      <point identifier="p42" x="476" y="148" type="qcurve"/>
+      <point identifier="p43" x="476" y="78"/>
+      <point identifier="p44" x="362" y="-12"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

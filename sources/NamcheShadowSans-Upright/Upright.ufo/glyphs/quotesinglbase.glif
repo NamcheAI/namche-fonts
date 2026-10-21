@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="quotesinglbase" format="2">
+  <advance width="201"/>
+  <unicode hex="201A"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="47" y="-156" type="line"/>
+      <point identifier="p1" x="74" y="-68" type="line"/>
+      <point identifier="p2" x="84" y="-37"/>
+      <point identifier="p3" x="67" y="0"/>
+      <point identifier="p4" x="44" y="0" type="qcurve"/>
+      <point identifier="p5" x="44" y="0" type="line"/>
+      <point identifier="p6" x="44" y="113" type="line"/>
+      <point identifier="p7" x="157" y="113" type="line"/>
+      <point identifier="p8" x="157" y="14" type="line"/>
+      <point identifier="p9" x="97" y="-156" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="seven.dnom" format="2">
+  <advance width="300"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="90" y="0" type="line"/>
+      <point identifier="p1" x="90" y="63"/>
+      <point identifier="p2" x="119" y="182"/>
+      <point identifier="p3" x="146" y="237" type="qcurve"/>
+      <point identifier="p4" x="167" y="279"/>
+      <point identifier="p5" x="142" y="330"/>
+      <point identifier="p6" x="95" y="330" type="qcurve"/>
+      <point identifier="p7" x="20" y="330" type="line"/>
+      <point identifier="p8" x="20" y="388" type="line"/>
+      <point identifier="p9" x="280" y="388" type="line"/>
+      <point identifier="p10" x="280" y="344" type="line"/>
+      <point identifier="p11" x="241" y="294"/>
+      <point identifier="p12" x="185" y="188"/>
+      <point identifier="p13" x="154" y="69"/>
+      <point identifier="p14" x="154" y="0" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

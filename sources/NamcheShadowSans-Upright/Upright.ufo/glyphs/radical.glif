@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="radical" format="2">
+  <advance width="660"/>
+  <unicode hex="221A"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="153" y="-150" type="line"/>
+      <point identifier="p1" x="22" y="336" type="line"/>
+      <point identifier="p2" x="102" y="336" type="line"/>
+      <point identifier="p3" x="159" y="124" type="line"/>
+      <point identifier="p4" x="167" y="95"/>
+      <point identifier="p5" x="196" y="76"/>
+      <point identifier="p6" x="226" y="96"/>
+      <point identifier="p7" x="232" y="125" type="qcurve"/>
+      <point identifier="p8" x="358" y="710" type="line"/>
+      <point identifier="p9" x="638" y="710" type="line"/>
+      <point identifier="p10" x="638" y="636" type="line"/>
+      <point identifier="p11" x="476" y="636" type="line"/>
+      <point identifier="p12" x="423" y="636"/>
+      <point identifier="p13" x="411" y="583" type="qcurve"/>
+      <point identifier="p14" x="252" y="-150" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

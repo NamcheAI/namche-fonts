@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="arrowupdn.ss07" format="2">
+  <advance width="412"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="367" y="172" type="line"/>
+      <point identifier="p1" x="206" y="-21" type="line"/>
+      <point identifier="p2" x="45" y="173" type="line"/>
+      <point identifier="p3" x="105" y="173" type="line"/>
+      <point identifier="p4" x="165" y="173"/>
+      <point identifier="p5" x="165" y="233" type="qcurve"/>
+      <point identifier="p6" x="165" y="469" type="line"/>
+      <point identifier="p7" x="165" y="529"/>
+      <point identifier="p8" x="105" y="529" type="qcurve"/>
+      <point identifier="p9" x="45" y="529" type="line"/>
+      <point identifier="p10" x="206" y="723" type="line"/>
+      <point identifier="p11" x="367" y="530" type="line"/>
+      <point identifier="p12" x="307" y="530" type="line"/>
+      <point identifier="p13" x="247" y="530"/>
+      <point identifier="p14" x="247" y="470" type="qcurve"/>
+      <point identifier="p15" x="247" y="232" type="line"/>
+      <point identifier="p16" x="247" y="172"/>
+      <point identifier="p17" x="307" y="172" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

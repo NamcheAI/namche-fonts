@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="arrowdown.ss07" format="2">
+  <advance width="411"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="366" y="212" type="line"/>
+      <point identifier="p1" x="206" y="18" type="line"/>
+      <point identifier="p2" x="45" y="211" type="line"/>
+      <point identifier="p3" x="105" y="211" type="line"/>
+      <point identifier="p4" x="165" y="211"/>
+      <point identifier="p5" x="165" y="271" type="qcurve"/>
+      <point identifier="p6" x="165" y="694" type="line"/>
+      <point identifier="p7" x="247" y="694" type="line"/>
+      <point identifier="p8" x="247" y="272" type="line"/>
+      <point identifier="p9" x="247" y="212"/>
+      <point identifier="p10" x="307" y="212" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="arrowboth.ss07" format="2">
+  <advance width="834"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="238" y="181" type="line"/>
+      <point identifier="p1" x="45" y="342" type="line"/>
+      <point identifier="p2" x="239" y="503" type="line"/>
+      <point identifier="p3" x="239" y="443" type="line"/>
+      <point identifier="p4" x="239" y="383"/>
+      <point identifier="p5" x="299" y="383" type="qcurve"/>
+      <point identifier="p6" x="535" y="383" type="line"/>
+      <point identifier="p7" x="595" y="383"/>
+      <point identifier="p8" x="595" y="443" type="qcurve"/>
+      <point identifier="p9" x="595" y="503" type="line"/>
+      <point identifier="p10" x="789" y="342" type="line"/>
+      <point identifier="p11" x="596" y="181" type="line"/>
+      <point identifier="p12" x="596" y="241" type="line"/>
+      <point identifier="p13" x="596" y="301"/>
+      <point identifier="p14" x="536" y="301" type="qcurve"/>
+      <point identifier="p15" x="298" y="301" type="line"/>
+      <point identifier="p16" x="238" y="301"/>
+      <point identifier="p17" x="238" y="241" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

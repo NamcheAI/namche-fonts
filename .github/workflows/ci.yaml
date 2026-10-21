@@ -303,6 +303,26 @@ jobs:
           venv/bin/python scripts/check_namche_shape.py
           make fontspector-shape
 
+  rebuild-sans-open:
+    name: Rebuild upright Sans from open sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements-open-build.txt
+      - name: Install pinned open build tools
+        run: python -m pip install -r requirements-open-build.txt
+      - name: Test release and source corruption guards
+        run: python -m unittest discover -s tests/open_build
+      - name: Verify repeated builds and exact published bytes
+        run: make check-sans-open PYTHON=python
+
   required:
     name: Build and test
     if: always()
@@ -310,23 +330,26 @@ jobs:
       - validate
       - rebuild-mono
       - rebuild-shape
+      - rebuild-sans-open
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
       - name: Verify required CI results
         env:
+          SANS_OPEN_RESULT: ${{ needs.rebuild-sans-open.result }}
           VALIDATE_RESULT: ${{ needs.validate.result }}
           MONO_RESULT: ${{ needs.rebuild-mono.result }}
           SHAPE_RESULT: ${{ needs.rebuild-shape.result }}
         run: |
           test "$VALIDATE_RESULT" = success
+          test "$SANS_OPEN_RESULT" = success
           case "$MONO_RESULT" in success|skipped) ;; *) exit 1 ;; esac
           case "$SHAPE_RESULT" in success|skipped) ;; *) exit 1 ;; esac
 
   build:
     name: Build release artifacts
     if: github.event_name != 'pull_request'
-    needs: validate
+    needs: [validate, rebuild-sans-open]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
