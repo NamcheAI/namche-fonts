@@ -12,7 +12,7 @@ from urllib.parse import urlsplit
 from fontTools.ttLib import TTFont
 from build_googlefonts import REPOSITORY
 
-CREDITS = {'https://github.com/fizzybubbele', 'https://ruhmetc.com'}
+CREDITS = {'https://github.com/fizzybubbele': 'Michael Marte', 'https://ruhmetc.com': 'Ruhm etc.'}
 UPSTREAM = 'https://github.com/vercel/geist-font'
 
 
@@ -29,20 +29,47 @@ def canonical(url):
 class Links(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.urls = []
+        self.links = []
+        self.anchor = None
+        self.text = []
 
     def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
+        # This GF description is plain prose. Do not allow styling/hidden
+        # containers to turn a required credit into a non-user-facing token.
+        if (tag in {'script', 'style', 'template'}
+                or any(key in attributes for key in ('hidden', 'style', 'class'))
+                or attributes.get('aria-hidden', '').lower() == 'true'):
+            raise ValueError('Description credits must be visible plain HTML')
         if tag == 'a':
-            href = dict(attrs).get('href')
-            if not href:
-                raise ValueError('Description anchor is missing href')
-            self.urls.append(canonical(href))
+            href = attributes.get('href')
+            if not href or self.anchor is not None:
+                raise ValueError('Description anchor is missing href or nested')
+            self.anchor = canonical(href)
+            self.text = []
+
+    def handle_data(self, data):
+        if self.anchor is not None:
+            self.text.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'a' and self.anchor is not None:
+            label = ' '.join(''.join(self.text).split())
+            if not label:
+                raise ValueError('Description anchor must have visible text')
+            self.links.append((self.anchor, label))
+            self.anchor = None
 
 
 def validate_description(text, repository=REPOSITORY):
     parser = Links()
     parser.feed(text)
-    urls = set(parser.urls)
+    if parser.anchor is not None:
+        raise ValueError("Description anchor must be closed")
+    urls = {url for url, _ in parser.links}
+    for url, label in parser.links:
+        if url in CREDITS and label != CREDITS[url]:
+            raise ValueError(f"Credit link must name {CREDITS[url]} visibly")
     required = {canonical(repository), *CREDITS}
     if missing := required - urls:
         raise ValueError(f'Missing repository or designer credit links: {sorted(missing)}')

@@ -30,3 +30,17 @@ class CandidateLinksTests(unittest.TestCase):
         text = self.description.replace('https://github.com/NamcheAI/namche-fonts',
                                         'https://github.com/NamcheAI/namche-fonts.git/')
         self.assertTrue(validate_description(text))
+
+    def test_empty_or_unrelated_credit_labels_are_rejected(self):
+        for label in ('', 'Unrelated Name'):
+            with self.subTest(label=label), self.assertRaises(ValueError):
+                validate_description(self.description.replace('>Michael Marte</a>', f'>{label}</a>'))
+
+    def test_hidden_credit_containers_are_rejected(self):
+        for attributes in ('hidden', 'style="display:none"', 'class="hidden-credit"', 'aria-hidden="true"'):
+            with self.subTest(attributes=attributes), self.assertRaises(ValueError):
+                validate_description(f'<div {attributes}>' + self.description + '</div>')
+
+    def test_inline_emphasis_in_visible_credit_is_accepted(self):
+        self.assertTrue(validate_description(self.description.replace('>Michael Marte</a>',
+                                                                       '><strong>Michael</strong> Marte</a>')))
