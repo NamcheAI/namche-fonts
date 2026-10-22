@@ -95,6 +95,13 @@ profile names and credit representation must be confirmed during onboarding.
 
 ## Complete candidate QA: open findings
 
+The [follow-up investigation](googlefonts-intake/README.md) now identifies each
+root cause and quantifies the consequences of removing subsets. The
+[Google Fonts intake issue draft](googlefonts-intake/ISSUE.md) is prepared but
+not submitted. A mandatory semantic HTML/link check protects correct URLs and
+credits while preserving the official checker failure unchanged. Both font
+binaries and the exact raw QA baseline remain unchanged.
+
 Fontspector 1.9.0 reports **264 PASS, 112 WARN, 5 FAIL, 72 SKIP, 17 INFO messages**
 with the full package. No ERROR/FATAL. Name lengths, fvar/STAT naming, minimum
 coverage, axes, family names, metadata/font consistency and license checks pass.
