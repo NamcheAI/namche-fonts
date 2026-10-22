@@ -24,10 +24,24 @@ subsets. They describe the pinned checker data, not a promise about future GF
 production serving. Examples lost without latin-ext include Ā, Ł, Ő, Š and ẞ;
 without cyrillic-ext they include Ғ, Қ, Ң, Ө and Ӯ. Both VFs give identical counts.
 
-An independent 2026-10-22 Google Fonts CSS query for Geist (`wght=400`, Chrome UA)
+An independent [2026-10-22 Google Fonts CSS query for Geist](geist-serving-2026-10-22.css) (`wght=400`, Chrome UA)
 listed the same five subsets and no unicode-range covering U+0302. This is a
 supporting observation from another served family, not an acceptance decision for
 Namche or a substitute for inspecting the future Namche serving result.
+
+## Freshness check against upstream main
+
+On 2026-10-22, nam-files main was
+[`2a68014b16056e965c18fd47de1f3fde9a5b0095`](https://github.com/googlefonts/nam-files/commit/2a68014b16056e965c18fd47de1f3fde9a5b0095).
+Four of the five relevant data files were byte-identical to the pinned crate.
+The current latin-ext file adds U+20C1–20C4, U+A7CE, U+A7CF, U+A7D2, U+A7D4,
+U+A7DD, U+A7E2 and U+A7F1; it still does not include U+0302 or U+0331.
+All four examined language records are byte-identical at current lang main
+[`eb4c076b6ebf5f9c461e62cdf941d71845feb97e`](https://github.com/googlefonts/lang/commit/eb4c076b6ebf5f9c461e62cdf941d71845feb97e).
+Updating these data alone therefore does not resolve the reported failures.
+The HTML whitespace-token logic also remains in Fontspector main at the time
+of investigation. The evidence JSON intentionally describes the released tool,
+not an unpinned mixture of newer data.
 
 ## What was fixed locally
 
