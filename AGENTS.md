@@ -55,23 +55,24 @@ conventions.
   serialize spaces after commas).
 - `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` must export in every
   static. Do not add `Remove Glyphs` to static instances.
-- Build the upright variable font with `make build-sans-variable` from the
-  recovered quadratic UFO and indexed variation/layout XML in
-  `sources/NamcheShadowSans-Upright/`. `make check-sans-open` builds twice and
+- Build both variable fonts with `make build-sans-variable` from the recovered
+  quadratic UFO and indexed variation/layout XML in
+  `sources/NamcheShadowSans-Upright/` and `sources/NamcheShadowSans-Italic/`.
+  `make build-sans-italic-variable` rebuilds only italic. Neither command needs
+  compiled font inputs or Glyphs. `make check-sans-open` builds each twice and
   requires exact equality to the approved hashes and committed TTF/WOFF2.
-  The historical compatible Glyphs exports were not committed; the ordinary
-  static OTFs are not equivalent VF inputs. Do not use them to rebuild upright.
-  Point-count/order edits require matching variation-delta changes. Preserve
-  the pinned hashes unless an intentional release change is reviewed. See
-  `documentation/OPEN_BUILD.md` for provenance and maintenance requirements.
-- Build the italic variable font with
-  `make build-sans-italic-variable GLYPHS_SANS_EXPORT=fonts/NamcheShadowSans`:
-  the committed italic OTF statics carry the release outlines, so they are the
-  canonical master input. The italic VF keeps the full STAT-matching instance
-  names for the Google Fonts submission; three combined names intentionally
-  exceed the 32-character Windows/Word limit (see
-  `documentation/FONTSPECTOR.md`). Rebuild the VF after any
-  `make refresh-sans-italic-outlines` run.
+  Point-count/order edits require matching variation-delta changes. Update
+  manifests and binaries together only for intentional reviewed changes.
+  See `documentation/OPEN_BUILD.md` for provenance and maintenance.
+- Glyphs design sources and recovered production sources are not automatically
+  synchronized. After an intentional italic outline refresh, migrate the open
+  production source and its manifest too. The historical upright compatible
+  Glyphs exports were not committed; ordinary upright static OTFs are not
+  equivalent VF inputs. Do not use them to rebuild the upright VF.
+- `make build-googlefonts` creates a separate **Namche Shadow** candidate family
+  with complete STAT-matching style names, all within 32 characters. Existing
+  release/npm names remain **Namche Shadow Sans**. Package renaming may change
+  only the name table and checksum adjustment; preserve every other table.
 - Keep `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` parked from the
   variable build until their rounded masters match. They must remain in every
   static.
@@ -174,8 +175,10 @@ conventions.
   rebuild, so a source-build failure cannot be bypassed by the fast path.
 - Pull requests rebuild Mono or Namche Shape only when that family's source or
   a shared build input changes. A Namche Shape change must not pay for a Mono
-  rebuild, and vice versa. Sans statics remain native Glyphs exports. The upright VF is rebuilt from
-  open sources on Linux on every PR, and its byte-equality gate is mandatory.
+  rebuild, and vice versa. Sans statics remain native Glyphs exports. Both VFs and Google Fonts candidate packages are rebuilt from
+  open sources on Linux on every PR. Byte equality, package reproducibility and
+  the candidate QA regression gate are mandatory. Known open submission findings
+  remain visible in QA_STATUS.json; a green candidate build is not GF acceptance.
 - Fontspector runs only for families affected by the PR. Full proofs, release
   ZIPs, npm artifacts, Pages assets, and the complete cross-family build run on
   `main`, tags, or manual dispatches.

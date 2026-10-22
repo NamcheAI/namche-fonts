@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="parenright.alt" format="2">
+  <advance width="540"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="206" y="-146" type="line"/>
+      <point identifier="p1" x="154" y="-89" type="line"/>
+      <point identifier="p2" x="377" y="112" type="line"/>
+      <point identifier="p3" x="377" y="595" type="line"/>
+      <point identifier="p4" x="156" y="793" type="line"/>
+      <point identifier="p5" x="208" y="850" type="line"/>
+      <point identifier="p6" x="457" y="627" type="line"/>
+      <point identifier="p7" x="457" y="80" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

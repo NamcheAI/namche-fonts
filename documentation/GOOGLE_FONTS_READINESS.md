@@ -4,9 +4,12 @@ Checked 2026-10-22 against **v0.6.2**, commit
 `039e0efdd5c404df38491ef4d676af5331e02da9`.
 
 **Ready for an initial Google Fonts onboarding discussion, not yet ready for a
-production submission PR.** The upright reproducibility blocker is resolved.
-Acceptance of its recovered source representation, the complete italic source
-build, naming, submission metadata, and administrative evidence remain open.
+production submission PR.** Both VFs now build entirely from open text sources,
+byte-identical to 0.6.2. The separate **Namche Shadow** candidate fits the name
+limit and includes generated metadata. Source-format acceptance, five complete
+package QA failures, subset/other warning decisions and administrative evidence
+remain open. This update describes the candidate implementation after 0.6.2;
+the historical 0.6.2 audit JSON remains unchanged.
 
 Scope: the two full Sans variable TTFs, upright and italic, weight 100–900 with
 400 as default. Do not submit npm-renamed files, Latin subsets, Mono, Shape, or
@@ -43,17 +46,88 @@ statics: the existing geometric comparison documents small differences.
 
 | Gate | Evidence at 0.6.2 | Work needed before production onboarding |
 | --- | --- | --- |
-| **Acceptance of recovered upright sources** | The open build is reproducible, but its original cubic masters were not recovered. Quadratic UFO plus indexed TTX is a production representation with point-topology constraints. No GF acceptance is recorded. | Present the sources, build command and maintenance contract to GF. Obtain agreement on this representation, or migrate to an accepted maintainable source/designspace while preserving reviewed rendering and interpolation. Do not describe this as a proven rejection or assume that using UFO alone establishes acceptance. |
-| **Complete italic source build** | `config-NamcheShadowSans-Italic.yaml` builds static outlines openly. `build-sans-italic-variable` still consumes compiled OTFs plus release statics, and the outline-refresh workflow preserves tables from committed binaries. The release job restores the italic VF. #105's mandatory byte check covers upright only. | Provide a documented clean command that builds both submission VFs entirely from text sources with pinned tools. Include italic layout/metadata/hinting inputs and variation compilation; remove committed binaries as required build inputs. Run twice in Linux CI and validate geometry, shaping and the intended outputs. Open italic outline feasibility is not yet this integrated full-build proof. |
-| **Italic instance-name length** | Current QA fails `name/family_and_style_max_length`: `ExtraLight Italic` gives 36 characters, `SemiBold Italic` 34, `ExtraBold Italic` 35 including family and separator. `googlefonts/fvar_instances` passes. | Obtain an explicit GF exception or agree a compliant naming plan. Abbreviating only the instance names would reintroduce the fvar/STAT mismatch. A shorter GF family name changes public naming and needs an explicit decision. The repository's local exemption is not GF approval. |
-| **Google Fonts family package and complete QA** | No `METADATA.pb`, `upstream.yaml`, or complete `ofl/namcheshadowsans` submission package is committed. Metadata checks currently SKIP. Existing description also discusses companion families. | Assemble the two TTFs, OFL, Sans-focused description/article and designer attribution; generate and review METADATA.pb and upstream.yaml with source commit/build mapping. Confirm subsets, axes, designer record and repository links. Run the current googlefonts profile on all package inputs, not only TTFs. Fix FAILs or record GF-approved exceptions; classify every remaining warning. |
-| **CLA, rights representation and curator intake** | OFL and credits exist, but no project-specific CLA confirmation or GF source/naming decision is recorded. A search for Namche in `google/fonts` issues found no existing intake issue on 2026-10-22. This does not establish that individual contributors have never signed a CLA. | Confirm applicable corporate/individual CLA coverage and authorized contribution for the derivative, with GF handling the inherited Geist attribution appropriately. Prepare the designer entry/credits for Michael Marte and Ruhm etc. Open the initial new-family issue, explain the Geist derivation and distinctive design, and obtain curator feedback before a submission PR. Inclusion is curated, not guaranteed by passing CI. |
+| **Acceptance of recovered sources** | Both VFs compile without binary inputs from quadratic UFO plus indexed TTX. The historical upright cubic masters were not recovered. | Obtain GF agreement on the production representation and maintenance contract, or migrate to accepted maintainable sources without changing the reviewed fonts. Reproducibility alone is not source-format acceptance. |
+| **Complete italic source build: implemented** | The default open build and italic-only target use `sources/NamcheShadowSans-Italic/`, including all layout/metadata. Both TTF and WOFF2 match 0.6.2 exactly. CI checks two builds for both styles. | Retain the topology guards, pinned tools and approved hashes. No further binary input is required for either VF. |
+| **Instance-name length: implemented for candidate** | Candidate family **Namche Shadow** gives ExtraLight Italic 31, SemiBold Italic 29 and ExtraBold Italic 30 characters. Full style names, STAT and fvar stay consistent. Name-length, font-name and instance checks pass. | Confirm the candidate family name with GF during intake. Production/npm names remain Namche Shadow Sans; no public API rename is included. |
+| **Family package: implemented; QA still open** | Two TTFs, OFL, Sans description, METADATA.pb and upstream.yaml are generated and zipped reproducibly. Complete Fontspector 1.9.0 QA runs in CI. | Resolve five FAIL messages plus subset warnings below. Review designer records, date, subsets, proofs and remaining warnings before submission. Local exact finding baselines are not GF waivers. |
+| **CLA, rights representation and curator intake** | OFL and credits exist, but no project-specific CLA confirmation or GF source/naming decision is recorded. A search for Namche in `google/fonts` issues found no existing intake issue on 2026-10-22. This does not establish that individual contributors have never signed a CLA. | Confirm applicable corporate/individual CLA coverage and authorized contribution for the derivative, with GF handling the inherited Geist attribution appropriately. Prepare the designer entry/credits for [Michael Marte](https://github.com/fizzybubbele) and [Ruhm etc.](https://ruhmetc.com/). Open the initial new-family issue, explain the Geist derivation and distinctive design, and obtain curator feedback before a submission PR. Inclusion is curated, not guaranteed by passing CI. |
 
 The initial issue can be opened before these production gates are all closed;
 its purpose is to resolve source acceptance and naming early. This audit does
-not contact Google, submit a CLA, rename the family, or change font binaries.
+not contact Google or submit a CLA. Candidate names change only in the separate
+package; shipped font binaries remain unchanged.
 
-## Fresh QA evidence
+## Candidate package and CI
+
+With Python 3.11 and `requirements-open-build.txt` installed:
+
+```sh
+make check-sans-open PYTHON=python
+make build-googlefonts PYTHON=python
+fontspector --profile googlefonts --full-lists \
+  --json out/googlefonts/fontspector.json out/googlefonts/ofl/namcheshadow/*
+# Fontspector currently exits 1; inspect its full report, then run:
+python scripts/check_googlefonts_qa.py out/googlefonts/fontspector.json
+```
+
+`out/googlefonts/` contains two byte-reproducible ZIPs:
+
+- `namche-shadow-open-fonts.zip`: both complete production VFs in TTF/WOFF2,
+  preserving released names and bytes, plus OFL.
+- `namche-shadow-googlefonts.zip`: `ofl/namcheshadow/` with the two renamed TTFs,
+  metadata, license, description, upstream build mapping and a root `BUILD.json`.
+  The report records the base checkout commit, exact build-input hashes and
+  output hashes. Uncommitted local edits are identified by their input hashes;
+  only a clean committed CI build is suitable for submission provenance.
+
+`make build-googlefonts` compares two clean ZIP builds. Name rewriting compares
+all raw font tables and permits changes only to `name` and `head` checksum
+adjustment. Therefore outlines, variations, hinting, metrics and shaping are
+byte-identical, not merely visually similar. Existing styles are not abbreviated.
+
+The unconditional Linux job uploads `namche-shadow-googlefonts-candidate` with
+both ZIPs, expanded package, full raw QA JSON and `QA_STATUS.json` on PRs, main
+pushes and tags. It gates the required `Build and test` aggregate and release
+build. The full release build also produces a separate package artifact. The
+candidate ZIP itself is a build artifact; consult the sibling QA report before
+using it. The proposed `date_added` is a draft, not an acceptance date. Designer
+profile names and credit representation must be confirmed during onboarding.
+
+## Complete candidate QA: open findings
+
+Fontspector 1.9.0 reports **264 PASS, 112 WARN, 5 FAIL, 72 SKIP, 17 INFO messages**
+with the full package. No ERROR/FATAL. Name lengths, fvar/STAT naming, minimum
+coverage, axes, family names, metadata/font consistency and license checks pass.
+The normalized candidate OFL combines both copyright notices on one line;
+all attribution and the complete license body remain intact.
+
+- **One repository-URL FAIL:** 1.9.0 compares whitespace tokens containing
+  `github.com` to the repository path. This rejects HTML `href` markup and the
+  required Michael Marte profile link. Preserve both credits and repository
+  link; resolve the check with GF/tool maintainers rather than removing credits.
+- **One subset/tofu FAIL:** Aleut's sample needs U+0302. The glyph exists, but the
+  tested GF subset definitions do not serve it through the declared subsets.
+- **Three sample-text FAILs:** Amarakaeri, Otomi (Mezquital) and Secoya samples
+  require U+0331, absent in these fonts. Resolve the coverage/sample expectation
+  with GF, or review a glyph addition separately. A new glyph is not part of a
+  byte-identical build migration.
+- **Two subset WARNs:** the tested `latin-ext` and `cyrillic-ext` definitions each
+  have under 20% coverage. Removing them also drops supported served characters;
+  agree the appropriate subset declarations instead of silently reducing support.
+- **Other warnings:** existing interpolation/geometry findings still apply.
+  Metadata additionally exposes missing designer catalog entries (Michael Marte,
+  Ruhm etc. and Basement Studio), unreachable subset characters and sample
+  validation skipped because explicit metadata languages have not been agreed.
+  These remain review items, not acceptance implied by a green CI run.
+
+`sources/googlefonts/qa-open-findings.json` records exact messages and counts for
+these five FAILs and two subset WARNs. CI allows only those known candidate
+findings, rejects new FAIL/ERROR/FATAL results and missing required PASS checks,
+and emits `submission_ready: false` while any recorded issue remains. All other
+warnings remain visible in the raw report and must be reviewed before submission.
+This is a regression gate, not a claim that a failing GF profile passes.
+
+## Historical 0.6.2 QA evidence
 
 Used the latest released **Fontspector 1.9.0**, commit `d9d0f7b0` (release
 2026-10-09), with `googlefonts`, full result lists and no exception configuration.
@@ -103,7 +177,7 @@ explicitly. Raw transient reports belong in `out/`.
   registration request was already submitted on 2026-08-14. Follow up for
   confirmation; do not list “send first request” as remaining work. Current QA
   reports WARN, not FAIL.
-- **License formatting:** OFL is present and the license checks pass when it is
+- **Historical license formatting (resolved in candidate):** OFL is present and the license checks pass when it is
   supplied as input. `googlefonts/license/OFL_body_text` warns because the second
   copyright line retains the Geist notice. Agree template-compatible notice
   formatting with GF while preserving all required upstream attribution. Do not
@@ -121,20 +195,18 @@ explicitly. Raw transient reports belong in `out/`.
   waiver. Derive supported subsets from real coverage; do not add every auxiliary
   glyph or change visible outlines just to reduce warning counts.
 - **Preferred source maintenance:** the public Glyphs design source and recovered
-  upright production source are not automatically synchronized. The onboarding
+  production sources are not automatically synchronized. The onboarding
   build/maintenance documentation must explain which source is changed for which
   output and how point/delta changes are reviewed.
 
 ## Recommended sequence
 
-1. Prepare an intake issue with 0.6.2, the exact open-build proof, source-format
-   question, naming exception request/alternative, and designer attribution.
-2. Resolve CLA coverage and the source/naming decisions with GF before spending
-   effort on a source conversion or public family rename.
-3. Complete the italic source-only build and mandatory two-VF CI gate.
-4. Assemble the family package, resolve license formatting, generate metadata,
-   review warnings and run the complete current QA/proof workflow.
-5. Submit the reviewed package PR to `google/fonts`, referencing the intake issue.
+1. Present the complete candidate build and source-maintenance contract in the
+   intake issue; confirm **Namche Shadow**, source-format acceptance and CLA.
+2. Resolve subset/sample failures and the repository-link checker issue with GF;
+   finalize designer profiles, metadata and warning/proof decisions.
+3. Rebuild the exact reviewed commit, inspect the uploaded raw QA and package
+   hashes, then submit the package PR referencing the intake decision.
 
 ## Requirements consulted
 

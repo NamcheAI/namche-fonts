@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="periodcentered.loclCAT.case.ss08" format="2">
+  <advance width="253"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="199" y="303" type="qcurve"/>
+      <point identifier="p1" x="175" y="303"/>
+      <point identifier="p2" x="147" y="327"/>
+      <point identifier="p3" x="147" y="351" type="qcurve"/>
+      <point identifier="p4" x="147" y="374"/>
+      <point identifier="p5" x="168" y="408"/>
+      <point identifier="p6" x="203" y="427"/>
+      <point identifier="p7" x="225" y="427" type="qcurve"/>
+      <point identifier="p8" x="249" y="427"/>
+      <point identifier="p9" x="277" y="403"/>
+      <point identifier="p10" x="277" y="379" type="qcurve"/>
+      <point identifier="p11" x="277" y="355"/>
+      <point identifier="p12" x="256" y="321"/>
+      <point identifier="p13" x="221" y="303"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

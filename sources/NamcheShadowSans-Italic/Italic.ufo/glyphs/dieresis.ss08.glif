@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="dieresis.ss08" format="2">
+  <advance width="364"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="166" y="610" type="qcurve"/>
+      <point identifier="p1" x="127" y="610"/>
+      <point identifier="p2" x="127" y="646" type="qcurve"/>
+      <point identifier="p3" x="127" y="673"/>
+      <point identifier="p4" x="161" y="710"/>
+      <point identifier="p5" x="188" y="710" type="qcurve"/>
+      <point identifier="p6" x="226" y="710"/>
+      <point identifier="p7" x="226" y="672" type="qcurve"/>
+      <point identifier="p8" x="226" y="645"/>
+      <point identifier="p9" x="193" y="610"/>
+    </contour>
+    <contour>
+      <point identifier="p10" x="345" y="610" type="qcurve"/>
+      <point identifier="p11" x="306" y="610"/>
+      <point identifier="p12" x="306" y="646" type="qcurve"/>
+      <point identifier="p13" x="306" y="673"/>
+      <point identifier="p14" x="340" y="710"/>
+      <point identifier="p15" x="367" y="710" type="qcurve"/>
+      <point identifier="p16" x="405" y="710"/>
+      <point identifier="p17" x="405" y="672" type="qcurve"/>
+      <point identifier="p18" x="405" y="645"/>
+      <point identifier="p19" x="372" y="610"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

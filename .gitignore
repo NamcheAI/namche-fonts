@@ -60,3 +60,7 @@ out/sans-italic/
 .venv-inner-round/
 exports/
 ots_gf_results.txt
+
+# Reproducible Google Fonts candidates and local readiness reports
+out/googlefonts/
+out/readiness-062/

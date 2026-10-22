@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Ycircumflex" format="2">
+  <advance width="568"/>
+  <unicode hex="0176"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="250" y="778" type="line"/>
+      <point identifier="p1" x="368" y="911" type="line"/>
+      <point identifier="p2" x="462" y="911" type="line"/>
+      <point identifier="p3" x="524" y="778" type="line"/>
+      <point identifier="p4" x="456" y="778" type="line"/>
+      <point identifier="p5" x="408" y="867" type="line"/>
+      <point identifier="p6" x="322" y="778" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p7" x="186" y="0" type="line"/>
+      <point identifier="p8" x="245" y="279" type="line"/>
+      <point identifier="p9" x="246" y="284"/>
+      <point identifier="p10" x="245" y="296"/>
+      <point identifier="p11" x="243" y="301" type="qcurve"/>
+      <point identifier="p12" x="89" y="710" type="line"/>
+      <point identifier="p13" x="187" y="710" type="line"/>
+      <point identifier="p14" x="279" y="447" type="line"/>
+      <point identifier="p15" x="284" y="432"/>
+      <point identifier="p16" x="310" y="419"/>
+      <point identifier="p17" x="339" y="423"/>
+      <point identifier="p18" x="348" y="435" type="qcurve"/>
+      <point identifier="p19" x="564" y="710" type="line"/>
+      <point identifier="p20" x="669" y="710" type="line"/>
+      <point identifier="p21" x="339" y="297" type="line"/>
+      <point identifier="p22" x="336" y="294"/>
+      <point identifier="p23" x="332" y="286"/>
+      <point identifier="p24" x="331" y="281" type="qcurve"/>
+      <point identifier="p25" x="272" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

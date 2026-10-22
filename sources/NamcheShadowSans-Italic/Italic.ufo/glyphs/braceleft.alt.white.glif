@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="braceleft.alt.white" format="2">
+  <advance width="425"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="163" y="233" type="line"/>
+      <point identifier="p1" x="163" y="826" type="line"/>
+      <point identifier="p2" x="466" y="826" type="line"/>
+      <point identifier="p3" x="466" y="666" type="line"/>
+      <point identifier="p4" x="323" y="666" type="line"/>
+      <point identifier="p5" x="323" y="233" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p6" x="203" y="273" type="line"/>
+      <point identifier="p7" x="283" y="273" type="line"/>
+      <point identifier="p8" x="283" y="706" type="line"/>
+      <point identifier="p9" x="426" y="706" type="line"/>
+      <point identifier="p10" x="426" y="786" type="line"/>
+      <point identifier="p11" x="203" y="786" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

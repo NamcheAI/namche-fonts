@@ -1,0 +1,1006 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="Uogonek" format="2">
+  <advance width="691"/>
+  <unicode hex="0172"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="173" y="710" type="qcurve"/>
+      <point identifier="p1" x="181" y="710"/>
+      <point identifier="p2" x="197" y="710"/>
+      <point identifier="p3" x="205" y="710" type="qcurve"/>
+      <point identifier="p4" x="209" y="710"/>
+      <point identifier="p5" x="218" y="710"/>
+      <point identifier="p6" x="223" y="710" type="qcurve"/>
+      <point identifier="p7" x="227" y="710"/>
+      <point identifier="p8" x="236" y="710"/>
+      <point identifier="p9" x="241" y="710" type="qcurve"/>
+      <point identifier="p10" x="245" y="710"/>
+      <point identifier="p11" x="254" y="710"/>
+      <point identifier="p12" x="259" y="710" type="qcurve"/>
+      <point identifier="p13" x="258" y="705"/>
+      <point identifier="p14" x="256" y="694"/>
+      <point identifier="p15" x="254" y="689" type="qcurve"/>
+      <point identifier="p16" x="253" y="683"/>
+      <point identifier="p17" x="251" y="673"/>
+      <point identifier="p18" x="250" y="667" type="qcurve"/>
+      <point identifier="p19" x="249" y="662"/>
+      <point identifier="p20" x="246" y="651"/>
+      <point identifier="p21" x="245" y="646" type="qcurve"/>
+      <point identifier="p22" x="244" y="641"/>
+      <point identifier="p23" x="242" y="630"/>
+      <point identifier="p24" x="241" y="625" type="qcurve"/>
+      <point identifier="p25" x="240" y="620"/>
+      <point identifier="p26" x="237" y="609"/>
+      <point identifier="p27" x="236" y="604" type="qcurve"/>
+      <point identifier="p28" x="222" y="536"/>
+      <point identifier="p29" x="193" y="399"/>
+      <point identifier="p30" x="178" y="331" type="qcurve"/>
+      <point identifier="p31" x="177" y="327"/>
+      <point identifier="p32" x="176" y="319"/>
+      <point identifier="p33" x="175" y="315" type="qcurve"/>
+      <point identifier="p34" x="174" y="311"/>
+      <point identifier="p35" x="172" y="303"/>
+      <point identifier="p36" x="171" y="299" type="qcurve"/>
+      <point identifier="p37" x="170" y="295"/>
+      <point identifier="p38" x="169" y="288"/>
+      <point identifier="p39" x="168" y="284" type="qcurve"/>
+      <point identifier="p40" x="167" y="281"/>
+      <point identifier="p41" x="166" y="274"/>
+      <point identifier="p42" x="165" y="271" type="qcurve"/>
+      <point identifier="p43" x="165" y="268"/>
+      <point identifier="p44" x="163" y="262"/>
+      <point identifier="p45" x="163" y="258" type="qcurve"/>
+      <point identifier="p46" x="162" y="255"/>
+      <point identifier="p47" x="161" y="249"/>
+      <point identifier="p48" x="161" y="245" type="qcurve"/>
+      <point identifier="p49" x="160" y="242"/>
+      <point identifier="p50" x="159" y="236"/>
+      <point identifier="p51" x="159" y="233" type="qcurve"/>
+      <point identifier="p52" x="158" y="231"/>
+      <point identifier="p53" x="158" y="228"/>
+      <point identifier="p54" x="158" y="226" type="qcurve"/>
+      <point identifier="p55" x="158" y="225"/>
+      <point identifier="p56" x="157" y="222"/>
+      <point identifier="p57" x="157" y="221" type="qcurve"/>
+      <point identifier="p58" x="157" y="217"/>
+      <point identifier="p59" x="156" y="213" type="qcurve"/>
+      <point identifier="p60" x="156" y="206"/>
+      <point identifier="p61" x="155" y="200" type="qcurve"/>
+      <point identifier="p62" x="155" y="194"/>
+      <point identifier="p63" x="155" y="188" type="qcurve"/>
+      <point identifier="p64" x="155" y="180"/>
+      <point identifier="p65" x="156" y="173" type="qcurve"/>
+      <point identifier="p66" x="156" y="165"/>
+      <point identifier="p67" x="158" y="157" type="qcurve"/>
+      <point identifier="p68" x="160" y="150"/>
+      <point identifier="p69" x="162" y="142" type="qcurve"/>
+      <point identifier="p70" x="165" y="135"/>
+      <point identifier="p71" x="168" y="128" type="qcurve"/>
+      <point identifier="p72" x="172" y="122"/>
+      <point identifier="p73" x="176" y="116" type="qcurve"/>
+      <point identifier="p74" x="210" y="70"/>
+      <point identifier="p75" x="292" y="68" type="qcurve"/>
+      <point identifier="p76" x="293" y="68"/>
+      <point identifier="p77" x="294" y="68" type="qcurve"/>
+      <point identifier="p78" x="295" y="68"/>
+      <point identifier="p79" x="296" y="68" type="qcurve"/>
+      <point identifier="p80" x="297" y="68"/>
+      <point identifier="p81" x="297" y="68" type="qcurve"/>
+      <point identifier="p82" x="298" y="68"/>
+      <point identifier="p83" x="299" y="68" type="qcurve"/>
+      <point identifier="p84" x="300" y="68"/>
+      <point identifier="p85" x="300" y="68" type="qcurve"/>
+      <point identifier="p86" x="303" y="68"/>
+      <point identifier="p87" x="306" y="68" type="qcurve"/>
+      <point identifier="p88" x="307" y="68"/>
+      <point identifier="p89" x="309" y="68" type="qcurve"/>
+      <point identifier="p90" x="312" y="68"/>
+      <point identifier="p91" x="314" y="68" type="qcurve"/>
+      <point identifier="p92" x="368" y="70"/>
+      <point identifier="p93" x="454" y="111"/>
+      <point identifier="p94" x="483" y="153" type="qcurve"/>
+      <point identifier="p95" x="486" y="157"/>
+      <point identifier="p96" x="492" y="167"/>
+      <point identifier="p97" x="495" y="172" type="qcurve"/>
+      <point identifier="p98" x="498" y="177"/>
+      <point identifier="p99" x="503" y="187"/>
+      <point identifier="p100" x="505" y="193" type="qcurve"/>
+      <point identifier="p101" x="507" y="198"/>
+      <point identifier="p102" x="511" y="208"/>
+      <point identifier="p103" x="513" y="213" type="qcurve"/>
+      <point identifier="p104" x="515" y="218"/>
+      <point identifier="p105" x="518" y="229"/>
+      <point identifier="p106" x="520" y="235" type="qcurve"/>
+      <point identifier="p107" x="521" y="240"/>
+      <point identifier="p108" x="524" y="250"/>
+      <point identifier="p109" x="525" y="256" type="qcurve"/>
+      <point identifier="p110" x="526" y="263"/>
+      <point identifier="p111" x="529" y="276"/>
+      <point identifier="p112" x="531" y="282" type="qcurve"/>
+      <point identifier="p113" x="532" y="289"/>
+      <point identifier="p114" x="535" y="302"/>
+      <point identifier="p115" x="536" y="308" type="qcurve"/>
+      <point identifier="p116" x="537" y="314"/>
+      <point identifier="p117" x="540" y="327"/>
+      <point identifier="p118" x="541" y="333" type="qcurve"/>
+      <point identifier="p119" x="555" y="394"/>
+      <point identifier="p120" x="581" y="517"/>
+      <point identifier="p121" x="594" y="579" type="qcurve"/>
+      <point identifier="p122" x="595" y="585"/>
+      <point identifier="p123" x="598" y="599"/>
+      <point identifier="p124" x="600" y="606" type="qcurve"/>
+      <point identifier="p125" x="601" y="613"/>
+      <point identifier="p126" x="604" y="626"/>
+      <point identifier="p127" x="605" y="632" type="qcurve"/>
+      <point identifier="p128" x="607" y="639"/>
+      <point identifier="p129" x="609" y="651"/>
+      <point identifier="p130" x="611" y="658" type="qcurve"/>
+      <point identifier="p131" x="612" y="664"/>
+      <point identifier="p132" x="615" y="677"/>
+      <point identifier="p133" x="616" y="684" type="qcurve"/>
+      <point identifier="p134" x="618" y="690"/>
+      <point identifier="p135" x="621" y="703"/>
+      <point identifier="p136" x="622" y="710" type="qcurve"/>
+      <point identifier="p137" x="629" y="710"/>
+      <point identifier="p138" x="644" y="710"/>
+      <point identifier="p139" x="651" y="710" type="qcurve"/>
+      <point identifier="p140" x="658" y="710"/>
+      <point identifier="p141" x="672" y="710"/>
+      <point identifier="p142" x="679" y="710" type="qcurve"/>
+      <point identifier="p143" x="680" y="710"/>
+      <point identifier="p144" x="681" y="710"/>
+      <point identifier="p145" x="682" y="710" type="qcurve"/>
+      <point identifier="p146" x="684" y="710"/>
+      <point identifier="p147" x="687" y="710"/>
+      <point identifier="p148" x="689" y="710" type="qcurve"/>
+      <point identifier="p149" x="690" y="710"/>
+      <point identifier="p150" x="693" y="710"/>
+      <point identifier="p151" x="694" y="710" type="qcurve"/>
+      <point identifier="p152" x="695" y="710"/>
+      <point identifier="p153" x="697" y="710"/>
+      <point identifier="p154" x="698" y="710" type="qcurve"/>
+      <point identifier="p155" x="699" y="710"/>
+      <point identifier="p156" x="702" y="710"/>
+      <point identifier="p157" x="703" y="710" type="qcurve"/>
+      <point identifier="p158" x="704" y="710"/>
+      <point identifier="p159" x="706" y="710"/>
+      <point identifier="p160" x="707" y="710" type="qcurve"/>
+      <point identifier="p161" x="707" y="710"/>
+      <point identifier="p162" x="708" y="710"/>
+      <point identifier="p163" x="708" y="710" type="qcurve"/>
+      <point identifier="p164" x="707" y="707"/>
+      <point identifier="p165" x="706" y="702"/>
+      <point identifier="p166" x="706" y="699" type="qcurve"/>
+      <point identifier="p167" x="705" y="696"/>
+      <point identifier="p168" x="704" y="692"/>
+      <point identifier="p169" x="704" y="689" type="qcurve"/>
+      <point identifier="p170" x="703" y="687"/>
+      <point identifier="p171" x="702" y="682"/>
+      <point identifier="p172" x="702" y="680" type="qcurve"/>
+      <point identifier="p173" x="681" y="582"/>
+      <point identifier="p174" x="639" y="385"/>
+      <point identifier="p175" x="618" y="287" type="qcurve"/>
+      <point identifier="p176" x="618" y="285"/>
+      <point identifier="p177" x="617" y="280"/>
+      <point identifier="p178" x="616" y="277" type="qcurve"/>
+      <point identifier="p179" x="616" y="275"/>
+      <point identifier="p180" x="615" y="271"/>
+      <point identifier="p181" x="615" y="269" type="qcurve"/>
+      <point identifier="p182" x="614" y="268"/>
+      <point identifier="p183" x="614" y="265"/>
+      <point identifier="p184" x="613" y="263" type="qcurve"/>
+      <point identifier="p185" x="613" y="261"/>
+      <point identifier="p186" x="612" y="257"/>
+      <point identifier="p187" x="612" y="256" type="qcurve"/>
+      <point identifier="p188" x="611" y="254"/>
+      <point identifier="p189" x="610" y="250"/>
+      <point identifier="p190" x="610" y="248" type="qcurve"/>
+      <point identifier="p191" x="609" y="245"/>
+      <point identifier="p192" x="608" y="240"/>
+      <point identifier="p193" x="608" y="237" type="qcurve"/>
+      <point identifier="p194" x="607" y="235"/>
+      <point identifier="p195" x="606" y="231"/>
+      <point identifier="p196" x="605" y="228" type="qcurve"/>
+      <point identifier="p197" x="605" y="226"/>
+      <point identifier="p198" x="604" y="222"/>
+      <point identifier="p199" x="603" y="220" type="qcurve"/>
+      <point identifier="p200" x="581" y="139"/>
+      <point identifier="p201" x="486" y="31"/>
+      <point identifier="p202" x="417" y="6" type="qcurve"/>
+      <point identifier="p203" x="416" y="5"/>
+      <point identifier="p204" x="413" y="4"/>
+      <point identifier="p205" x="412" y="4" type="qcurve"/>
+      <point identifier="p206" x="412" y="4"/>
+      <point identifier="p207" x="411" y="4"/>
+      <point identifier="p208" x="410" y="3" type="qcurve"/>
+      <point identifier="p209" x="410" y="3"/>
+      <point identifier="p210" x="409" y="3"/>
+      <point identifier="p211" x="409" y="3" type="qcurve"/>
+      <point identifier="p212" x="409" y="3"/>
+      <point identifier="p213" x="408" y="3"/>
+      <point identifier="p214" x="407" y="2" type="qcurve"/>
+      <point identifier="p215" x="407" y="2"/>
+      <point identifier="p216" x="406" y="2"/>
+      <point identifier="p217" x="406" y="2" type="qcurve"/>
+      <point identifier="p218" x="404" y="0"/>
+      <point identifier="p219" x="401" y="-3"/>
+      <point identifier="p220" x="399" y="-5" type="qcurve"/>
+      <point identifier="p221" x="398" y="-6"/>
+      <point identifier="p222" x="396" y="-9"/>
+      <point identifier="p223" x="395" y="-10" type="qcurve"/>
+      <point identifier="p224" x="394" y="-11"/>
+      <point identifier="p225" x="392" y="-13"/>
+      <point identifier="p226" x="391" y="-14" type="qcurve"/>
+      <point identifier="p227" x="388" y="-18"/>
+      <point identifier="p228" x="381" y="-25"/>
+      <point identifier="p229" x="377" y="-29" type="qcurve"/>
+      <point identifier="p230" x="376" y="-31"/>
+      <point identifier="p231" x="372" y="-35"/>
+      <point identifier="p232" x="370" y="-37" type="qcurve"/>
+      <point identifier="p233" x="369" y="-38"/>
+      <point identifier="p234" x="367" y="-41"/>
+      <point identifier="p235" x="365" y="-42" type="qcurve"/>
+      <point identifier="p236" x="364" y="-43"/>
+      <point identifier="p237" x="362" y="-46"/>
+      <point identifier="p238" x="361" y="-47" type="qcurve"/>
+      <point identifier="p239" x="360" y="-48"/>
+      <point identifier="p240" x="357" y="-51"/>
+      <point identifier="p241" x="356" y="-52" type="qcurve"/>
+      <point identifier="p242" x="356" y="-52"/>
+      <point identifier="p243" x="356" y="-52"/>
+      <point identifier="p244" x="356" y="-52" type="qcurve"/>
+      <point identifier="p245" x="356" y="-53"/>
+      <point identifier="p246" x="354" y="-54"/>
+      <point identifier="p247" x="354" y="-55" type="qcurve"/>
+      <point identifier="p248" x="353" y="-56"/>
+      <point identifier="p249" x="352" y="-57"/>
+      <point identifier="p250" x="352" y="-57" type="qcurve"/>
+      <point identifier="p251" x="351" y="-58"/>
+      <point identifier="p252" x="351" y="-58"/>
+      <point identifier="p253" x="351" y="-58" type="qcurve"/>
+      <point identifier="p254" x="335" y="-75"/>
+      <point identifier="p255" x="327" y="-86" type="qcurve"/>
+      <point identifier="p256" x="324" y="-91"/>
+      <point identifier="p257" x="321" y="-95" type="qcurve"/>
+      <point identifier="p258" x="319" y="-98"/>
+      <point identifier="p259" x="318" y="-101" type="qcurve"/>
+      <point identifier="p260" x="317" y="-104"/>
+      <point identifier="p261" x="316" y="-106" type="qcurve"/>
+      <point identifier="p262" x="314" y="-109"/>
+      <point identifier="p263" x="314" y="-113" type="qcurve"/>
+      <point identifier="p264" x="313" y="-114"/>
+      <point identifier="p265" x="313" y="-116" type="qcurve"/>
+      <point identifier="p266" x="313" y="-118"/>
+      <point identifier="p267" x="313" y="-120" type="qcurve"/>
+      <point identifier="p268" x="313" y="-123"/>
+      <point identifier="p269" x="314" y="-126" type="qcurve"/>
+      <point identifier="p270" x="315" y="-129"/>
+      <point identifier="p271" x="317" y="-132" type="qcurve"/>
+      <point identifier="p272" x="317" y="-133"/>
+      <point identifier="p273" x="317" y="-133" type="qcurve"/>
+      <point identifier="p274" x="319" y="-135"/>
+      <point identifier="p275" x="322" y="-137" type="qcurve"/>
+      <point identifier="p276" x="324" y="-138"/>
+      <point identifier="p277" x="326" y="-139" type="qcurve"/>
+      <point identifier="p278" x="328" y="-139"/>
+      <point identifier="p279" x="330" y="-139" type="qcurve"/>
+      <point identifier="p280" x="333" y="-140"/>
+      <point identifier="p281" x="336" y="-140" type="qcurve"/>
+      <point identifier="p282" x="336" y="-140"/>
+      <point identifier="p283" x="337" y="-140" type="qcurve"/>
+      <point identifier="p284" x="339" y="-140"/>
+      <point identifier="p285" x="340" y="-140" type="qcurve"/>
+      <point identifier="p286" x="343" y="-140"/>
+      <point identifier="p287" x="349" y="-139"/>
+      <point identifier="p288" x="352" y="-139" type="qcurve"/>
+      <point identifier="p289" x="353" y="-139"/>
+      <point identifier="p290" x="353" y="-139"/>
+      <point identifier="p291" x="353" y="-139" type="qcurve"/>
+      <point identifier="p292" x="356" y="-138"/>
+      <point identifier="p293" x="361" y="-137"/>
+      <point identifier="p294" x="364" y="-137" type="qcurve"/>
+      <point identifier="p295" x="365" y="-136"/>
+      <point identifier="p296" x="367" y="-136"/>
+      <point identifier="p297" x="368" y="-136" type="qcurve"/>
+      <point identifier="p298" x="369" y="-135"/>
+      <point identifier="p299" x="371" y="-135"/>
+      <point identifier="p300" x="372" y="-134" type="qcurve"/>
+      <point identifier="p301" x="374" y="-134"/>
+      <point identifier="p302" x="378" y="-132"/>
+      <point identifier="p303" x="380" y="-131" type="qcurve"/>
+      <point identifier="p304" x="381" y="-131"/>
+      <point identifier="p305" x="381" y="-131"/>
+      <point identifier="p306" x="382" y="-130" type="qcurve"/>
+      <point identifier="p307" x="384" y="-129"/>
+      <point identifier="p308" x="388" y="-127"/>
+      <point identifier="p309" x="390" y="-126" type="qcurve"/>
+      <point identifier="p310" x="391" y="-130"/>
+      <point identifier="p311" x="393" y="-139"/>
+      <point identifier="p312" x="394" y="-143" type="qcurve"/>
+      <point identifier="p313" x="395" y="-147"/>
+      <point identifier="p314" x="396" y="-156"/>
+      <point identifier="p315" x="397" y="-160" type="qcurve"/>
+      <point identifier="p316" x="397" y="-161"/>
+      <point identifier="p317" x="398" y="-162"/>
+      <point identifier="p318" x="398" y="-163" type="qcurve"/>
+      <point identifier="p319" x="398" y="-164"/>
+      <point identifier="p320" x="399" y="-167"/>
+      <point identifier="p321" x="399" y="-168" type="qcurve"/>
+      <point identifier="p322" x="399" y="-169"/>
+      <point identifier="p323" x="400" y="-172"/>
+      <point identifier="p324" x="400" y="-173" type="qcurve"/>
+      <point identifier="p325" x="400" y="-173"/>
+      <point identifier="p326" x="400" y="-173"/>
+      <point identifier="p327" x="400" y="-173" type="qcurve"/>
+      <point identifier="p328" x="400" y="-174"/>
+      <point identifier="p329" x="400" y="-175"/>
+      <point identifier="p330" x="401" y="-175" type="qcurve"/>
+      <point identifier="p331" x="401" y="-176"/>
+      <point identifier="p332" x="401" y="-178"/>
+      <point identifier="p333" x="401" y="-179" type="qcurve"/>
+      <point identifier="p334" x="402" y="-180"/>
+      <point identifier="p335" x="402" y="-181"/>
+      <point identifier="p336" x="402" y="-182" type="qcurve"/>
+      <point identifier="p337" x="401" y="-183"/>
+      <point identifier="p338" x="398" y="-185"/>
+      <point identifier="p339" x="397" y="-186" type="qcurve"/>
+      <point identifier="p340" x="396" y="-187"/>
+      <point identifier="p341" x="393" y="-188"/>
+      <point identifier="p342" x="392" y="-189" type="qcurve"/>
+      <point identifier="p343" x="391" y="-189"/>
+      <point identifier="p344" x="390" y="-190"/>
+      <point identifier="p345" x="389" y="-190" type="qcurve"/>
+      <point identifier="p346" x="376" y="-197"/>
+      <point identifier="p347" x="340" y="-207"/>
+      <point identifier="p348" x="319" y="-208" type="qcurve"/>
+      <point identifier="p349" x="316" y="-208"/>
+      <point identifier="p350" x="313" y="-208" type="qcurve"/>
+      <point identifier="p351" x="312" y="-208"/>
+      <point identifier="p352" x="312" y="-208" type="qcurve"/>
+      <point identifier="p353" x="310" y="-208"/>
+      <point identifier="p354" x="309" y="-208" type="qcurve"/>
+      <point identifier="p355" x="308" y="-208"/>
+      <point identifier="p356" x="306" y="-208" type="qcurve"/>
+      <point identifier="p357" x="305" y="-208"/>
+      <point identifier="p358" x="304" y="-208" type="qcurve"/>
+      <point identifier="p359" x="302" y="-208"/>
+      <point identifier="p360" x="300" y="-208" type="qcurve"/>
+      <point identifier="p361" x="299" y="-208"/>
+      <point identifier="p362" x="298" y="-208" type="qcurve"/>
+      <point identifier="p363" x="298" y="-208"/>
+      <point identifier="p364" x="298" y="-208" type="qcurve"/>
+      <point identifier="p365" x="279" y="-206"/>
+      <point identifier="p366" x="250" y="-195"/>
+      <point identifier="p367" x="241" y="-183" type="qcurve"/>
+      <point identifier="p368" x="237" y="-178"/>
+      <point identifier="p369" x="234" y="-170" type="qcurve"/>
+      <point identifier="p370" x="233" y="-165"/>
+      <point identifier="p371" x="232" y="-160" type="qcurve"/>
+      <point identifier="p372" x="231" y="-154"/>
+      <point identifier="p373" x="231" y="-148" type="qcurve"/>
+      <point identifier="p374" x="231" y="-142"/>
+      <point identifier="p375" x="232" y="-136" type="qcurve"/>
+      <point identifier="p376" x="232" y="-131"/>
+      <point identifier="p377" x="233" y="-125" type="qcurve"/>
+      <point identifier="p378" x="234" y="-120"/>
+      <point identifier="p379" x="236" y="-115" type="qcurve"/>
+      <point identifier="p380" x="238" y="-110"/>
+      <point identifier="p381" x="240" y="-105" type="qcurve"/>
+      <point identifier="p382" x="241" y="-101"/>
+      <point identifier="p383" x="243" y="-97" type="qcurve"/>
+      <point identifier="p384" x="252" y="-79"/>
+      <point identifier="p385" x="270" y="-59" type="qcurve"/>
+      <point identifier="p386" x="273" y="-55"/>
+      <point identifier="p387" x="280" y="-48"/>
+      <point identifier="p388" x="284" y="-44" type="qcurve"/>
+      <point identifier="p389" x="285" y="-43"/>
+      <point identifier="p390" x="287" y="-41"/>
+      <point identifier="p391" x="288" y="-40" type="qcurve"/>
+      <point identifier="p392" x="290" y="-38"/>
+      <point identifier="p393" x="294" y="-34"/>
+      <point identifier="p394" x="296" y="-32" type="qcurve"/>
+      <point identifier="p395" x="296" y="-32"/>
+      <point identifier="p396" x="297" y="-31"/>
+      <point identifier="p397" x="297" y="-31" type="qcurve"/>
+      <point identifier="p398" x="301" y="-27"/>
+      <point identifier="p399" x="305" y="-24" type="qcurve"/>
+      <point identifier="p400" x="307" y="-22"/>
+      <point identifier="p401" x="309" y="-20" type="qcurve"/>
+      <point identifier="p402" x="310" y="-19"/>
+      <point identifier="p403" x="313" y="-16"/>
+      <point identifier="p404" x="314" y="-15" type="qcurve"/>
+      <point identifier="p405" x="313" y="-15"/>
+      <point identifier="p406" x="311" y="-15" type="qcurve"/>
+      <point identifier="p407" x="310" y="-15"/>
+      <point identifier="p408" x="307" y="-16"/>
+      <point identifier="p409" x="306" y="-16" type="qcurve"/>
+      <point identifier="p410" x="305" y="-16"/>
+      <point identifier="p411" x="303" y="-16"/>
+      <point identifier="p412" x="302" y="-16" type="qcurve"/>
+      <point identifier="p413" x="300" y="-16"/>
+      <point identifier="p414" x="298" y="-16"/>
+      <point identifier="p415" x="297" y="-16" type="qcurve"/>
+      <point identifier="p416" x="296" y="-16"/>
+      <point identifier="p417" x="295" y="-16"/>
+      <point identifier="p418" x="295" y="-16" type="qcurve"/>
+      <point identifier="p419" x="294" y="-16"/>
+      <point identifier="p420" x="294" y="-16"/>
+      <point identifier="p421" x="293" y="-16" type="qcurve"/>
+      <point identifier="p422" x="293" y="-16"/>
+      <point identifier="p423" x="292" y="-16"/>
+      <point identifier="p424" x="292" y="-16" type="qcurve"/>
+      <point identifier="p425" x="291" y="-16"/>
+      <point identifier="p426" x="290" y="-16"/>
+      <point identifier="p427" x="289" y="-16" type="qcurve"/>
+      <point identifier="p428" x="288" y="-16"/>
+      <point identifier="p429" x="287" y="-16" type="qcurve"/>
+      <point identifier="p430" x="286" y="-16"/>
+      <point identifier="p431" x="284" y="-16" type="qcurve"/>
+      <point identifier="p432" x="284" y="-16"/>
+      <point identifier="p433" x="283" y="-16"/>
+      <point identifier="p434" x="283" y="-16" type="qcurve"/>
+      <point identifier="p435" x="281" y="-16"/>
+      <point identifier="p436" x="280" y="-16" type="qcurve"/>
+      <point identifier="p437" x="279" y="-16"/>
+      <point identifier="p438" x="277" y="-16" type="qcurve"/>
+      <point identifier="p439" x="277" y="-16"/>
+      <point identifier="p440" x="277" y="-16"/>
+      <point identifier="p441" x="277" y="-16" type="qcurve"/>
+      <point identifier="p442" x="276" y="-16"/>
+      <point identifier="p443" x="274" y="-16"/>
+      <point identifier="p444" x="272" y="-16" type="qcurve"/>
+      <point identifier="p445" x="272" y="-16"/>
+      <point identifier="p446" x="272" y="-16" type="qcurve"/>
+      <point identifier="p447" x="176" y="-12"/>
+      <point identifier="p448" x="69" y="84"/>
+      <point identifier="p449" x="67" y="168" type="qcurve"/>
+      <point identifier="p450" x="67" y="169"/>
+      <point identifier="p451" x="67" y="170" type="qcurve"/>
+      <point identifier="p452" x="67" y="172"/>
+      <point identifier="p453" x="67" y="173" type="qcurve"/>
+      <point identifier="p454" x="67" y="175"/>
+      <point identifier="p455" x="67" y="176" type="qcurve"/>
+      <point identifier="p456" x="67" y="178"/>
+      <point identifier="p457" x="67" y="180" type="qcurve"/>
+      <point identifier="p458" x="67" y="182"/>
+      <point identifier="p459" x="67" y="184" type="qcurve"/>
+      <point identifier="p460" x="67" y="186"/>
+      <point identifier="p461" x="67" y="188" type="qcurve"/>
+      <point identifier="p462" x="68" y="190"/>
+      <point identifier="p463" x="68" y="193" type="qcurve"/>
+      <point identifier="p464" x="68" y="195"/>
+      <point identifier="p465" x="68" y="197" type="qcurve"/>
+      <point identifier="p466" x="70" y="219"/>
+      <point identifier="p467" x="78" y="269"/>
+      <point identifier="p468" x="81" y="286" type="qcurve"/>
+      <point identifier="p469" x="82" y="287"/>
+      <point identifier="p470" x="82" y="288"/>
+      <point identifier="p471" x="82" y="288" type="qcurve"/>
+      <point identifier="p472" x="82" y="289"/>
+      <point identifier="p473" x="82" y="291"/>
+      <point identifier="p474" x="82" y="291" type="qcurve"/>
+      <point identifier="p475" x="83" y="292"/>
+      <point identifier="p476" x="83" y="293"/>
+      <point identifier="p477" x="83" y="294" type="qcurve"/>
+      <point identifier="p478" x="84" y="296"/>
+      <point identifier="p479" x="85" y="301"/>
+      <point identifier="p480" x="85" y="304" type="qcurve"/>
+      <point identifier="p481" x="86" y="306"/>
+      <point identifier="p482" x="87" y="311"/>
+      <point identifier="p483" x="87" y="313" type="qcurve"/>
+      <point identifier="p484" x="88" y="316"/>
+      <point identifier="p485" x="89" y="321"/>
+      <point identifier="p486" x="89" y="323" type="qcurve"/>
+      <point identifier="p487" x="90" y="326"/>
+      <point identifier="p488" x="91" y="331"/>
+      <point identifier="p489" x="92" y="333" type="qcurve"/>
+      <point identifier="p490" x="92" y="336"/>
+      <point identifier="p491" x="93" y="341"/>
+      <point identifier="p492" x="94" y="343" type="qcurve"/>
+      <point identifier="p493" x="113" y="435"/>
+      <point identifier="p494" x="153" y="618"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

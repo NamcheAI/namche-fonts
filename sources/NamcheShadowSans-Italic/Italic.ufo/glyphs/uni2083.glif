@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni2083" format="2">
+  <advance width="334"/>
+  <unicode hex="2083"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="82" y="-108" type="qcurve"/>
+      <point identifier="p1" x="20" y="-108"/>
+      <point identifier="p2" x="-36" y="-64"/>
+      <point identifier="p3" x="-36" y="1" type="qcurve"/>
+      <point identifier="p4" x="28" y="4" type="line"/>
+      <point identifier="p5" x="28" y="-30"/>
+      <point identifier="p6" x="54" y="-50"/>
+      <point identifier="p7" x="90" y="-50" type="qcurve"/>
+      <point identifier="p8" x="132" y="-50"/>
+      <point identifier="p9" x="184" y="-14"/>
+      <point identifier="p10" x="184" y="23" type="qcurve"/>
+      <point identifier="p11" x="184" y="44"/>
+      <point identifier="p12" x="152" y="75"/>
+      <point identifier="p13" x="116" y="75" type="qcurve"/>
+      <point identifier="p14" x="91" y="75" type="line"/>
+      <point identifier="p15" x="103" y="132" type="line"/>
+      <point identifier="p16" x="128" y="132" type="line"/>
+      <point identifier="p17" x="160" y="132"/>
+      <point identifier="p18" x="204" y="162"/>
+      <point identifier="p19" x="204" y="193" type="qcurve"/>
+      <point identifier="p20" x="204" y="213"/>
+      <point identifier="p21" x="179" y="236"/>
+      <point identifier="p22" x="150" y="236" type="qcurve"/>
+      <point identifier="p23" x="113" y="236"/>
+      <point identifier="p24" x="77" y="207"/>
+      <point identifier="p25" x="70" y="187" type="qcurve"/>
+      <point identifier="p26" x="6" y="191" type="line"/>
+      <point identifier="p27" x="21" y="236"/>
+      <point identifier="p28" x="90" y="295"/>
+      <point identifier="p29" x="160" y="295" type="qcurve"/>
+      <point identifier="p30" x="219" y="295"/>
+      <point identifier="p31" x="270" y="241"/>
+      <point identifier="p32" x="270" y="203" type="qcurve"/>
+      <point identifier="p33" x="270" y="165"/>
+      <point identifier="p34" x="229" y="114"/>
+      <point identifier="p35" x="184" y="105" type="qcurve"/>
+      <point identifier="p36" x="222" y="96"/>
+      <point identifier="p37" x="250" y="56"/>
+      <point identifier="p38" x="250" y="27" type="qcurve"/>
+      <point identifier="p39" x="250" y="-37"/>
+      <point identifier="p40" x="154" y="-108"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="parenleft" format="2">
+  <advance width="315"/>
+  <unicode hex="0028"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="120" y="-110" type="line"/>
+      <point identifier="p1" x="89" y="-41"/>
+      <point identifier="p2" x="57" y="101"/>
+      <point identifier="p3" x="57" y="176" type="qcurve"/>
+      <point identifier="p4" x="57" y="332"/>
+      <point identifier="p5" x="185" y="617"/>
+      <point identifier="p6" x="302" y="750" type="qcurve"/>
+      <point identifier="p7" x="377" y="750" type="line"/>
+      <point identifier="p8" x="265" y="610"/>
+      <point identifier="p9" x="143" y="325"/>
+      <point identifier="p10" x="143" y="167" type="qcurve"/>
+      <point identifier="p11" x="143" y="97"/>
+      <point identifier="p12" x="169" y="-40"/>
+      <point identifier="p13" x="195" y="-110" type="qcurve"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="bracketright.alt" format="2">
+  <advance width="551"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="163" y="-63" type="line"/>
+      <point identifier="p1" x="231" y="45"/>
+      <point identifier="p2" x="298" y="269"/>
+      <point identifier="p3" x="298" y="381" type="qcurve"/>
+      <point identifier="p4" x="298" y="494"/>
+      <point identifier="p5" x="231" y="718"/>
+      <point identifier="p6" x="163" y="825" type="qcurve"/>
+      <point identifier="p7" x="437" y="825" type="line"/>
+      <point identifier="p8" x="437" y="-63" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

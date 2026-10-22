@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="i.ss08" format="2">
+  <advance width="244"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="196" y="610" type="qcurve"/>
+      <point identifier="p1" x="178" y="610"/>
+      <point identifier="p2" x="157" y="628"/>
+      <point identifier="p3" x="157" y="646" type="qcurve"/>
+      <point identifier="p4" x="157" y="673"/>
+      <point identifier="p5" x="191" y="710"/>
+      <point identifier="p6" x="218" y="710" type="qcurve"/>
+      <point identifier="p7" x="236" y="710"/>
+      <point identifier="p8" x="256" y="690"/>
+      <point identifier="p9" x="256" y="672" type="qcurve"/>
+      <point identifier="p10" x="256" y="645"/>
+      <point identifier="p11" x="223" y="610"/>
+    </contour>
+    <contour>
+      <point identifier="p12" x="24" y="0" type="line"/>
+      <point identifier="p13" x="136" y="530" type="line"/>
+      <point identifier="p14" x="220" y="530" type="line"/>
+      <point identifier="p15" x="108" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>
