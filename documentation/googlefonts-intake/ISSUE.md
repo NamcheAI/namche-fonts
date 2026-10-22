@@ -10,9 +10,9 @@ https://github.com/NamcheAI/namche-fonts
 
 **Super short description of the Font Family:**
 
-Namche Shadow is a display-oriented Geist Sans derivative with rounded inner
-corners and crisp outer forms. [Michael Marte](https://github.com/fizzybubbele)
-designed the treatment for [Ruhm etc.](https://ruhmetc.com/). The candidate contains
+Namche Shadow is a display sans-serif defined by rounded inner corners and
+crisp outer forms. [Michael Marte](https://github.com/fizzybubbele) designed its
+distinctive treatment for [Ruhm etc.](https://ruhmetc.com/). The candidate contains
 two variable TTFs, upright and italic, both with `wght` 100–900 and default 400.
 The proposed menu family is **Namche Shadow**. Its longest full instance name is
 31 characters. The existing npm distribution is named **Namche Shadow Sans**;
@@ -27,7 +27,7 @@ on the recovered production-source format and the coverage decisions below.
 The evidence below is available now. Boxes representing maintainer commitments
 or external acceptance remain unchecked deliberately.
 
-- [x] Font sources and binaries are public in the repository under OFL 1.1, with Namche and inherited Geist notices retained.
+- [x] Font sources and binaries are public in the repository under OFL 1.1, with all original copyright notices retained.
 - [ ] Confirm that no larger proprietary/retail variant exists outside this repository.
 - [x] Source files are available: both Glyphs design packages and quadratic UFO/indexed TTX production sources, with pinned open build tools.
 - [ ] Maintainer to confirm authority to contribute and applicable CLA coverage for BTLG Holding GmbH and the inherited work.
@@ -37,11 +37,13 @@ or external acceptance remain unchecked deliberately.
 - [ ] Obtain agreement on the source/build structure and resolve remaining QA findings.
 - [ ] Maintainer to confirm the full Google Fonts contributing requirements and ongoing maintenance commitment.
 
-AI-assisted coding tools were used for build recovery, automation and QA
-investigation. The typeface treatment is credited to Michael Marte, not to an AI
-system. Geist attribution includes Vercel, Basement Studio, Andrés Briganti,
-Mateo Zaragoza and contributors. No CLA coverage or legal clearance is asserted
-by this draft.
+Namche Shadow builds on Geist Sans. Original credits to Vercel, Basement Studio,
+Andrés Briganti, Mateo Zaragoza and contributors are retained in the sources,
+font metadata and license notices.
+
+AI-assisted coding tools supported build recovery, automation and QA
+investigation. The Namche design treatment is credited to Michael Marte.
+No CLA coverage or legal clearance is asserted by this draft.
 
 **Image:**
 
@@ -155,7 +157,7 @@ parsing case, not this remaining HTML/profile-link case.
 ### 6. Attribution, CLA and final metadata
 
 Please advise on the designer catalog entries for Michael Marte/Ruhm etc. and
-inherited Geist attribution, the appropriate CLA process for this derivative,
+retained upstream credits, the applicable CLA process for the project,
 and final metadata language declarations. The generated `date_added` is a draft.
 Other interpolation/geometry warnings and proofs remain listed in the readiness
 document for review; this issue does not request blanket approval of them.
