@@ -78,7 +78,7 @@ python3 scripts/apply_roundcorner_filters.py --strong -40 --mild -25
    ```sh
    make finalize-sans-statics GLYPHS_SANS_EXPORT=/path/to/NamcheShadowSans
    ```
-5. Rebuild the unchanged approved upright VF from its open production sources:
+5. Rebuild both unchanged approved VFs from their open production sources:
 
    ```sh
    make build-sans-variable
@@ -128,3 +128,9 @@ Archives live under each family’s `_received/` (formerly also under a `Namche-
 ## Future idea (not implemented)
 
 Interactive radius sliders in the specimen would only swap pre-exported static packs (or rewrite plist + require Glyphs re-export). Browser cannot run Glyphs RoundCorner live.
+
+The italic-only command is `make build-sans-italic-variable`; it also consumes
+only recovered UFO/TTX sources. After a reviewed design change, migrate those
+production sources explicitly, as described in `documentation/OPEN_BUILD.md`.
+`make build-googlefonts` creates the separately named Namche Shadow submission
+candidate without changing release/npm bytes.

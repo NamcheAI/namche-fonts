@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni043A" format="2">
+  <advance width="555"/>
+  <unicode hex="043A"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="24" y="0" type="line"/>
+      <point identifier="p1" x="136" y="530" type="line"/>
+      <point identifier="p2" x="222" y="530" type="line"/>
+      <point identifier="p3" x="170" y="283" type="line"/>
+      <point identifier="p4" x="461" y="530" type="line"/>
+      <point identifier="p5" x="567" y="530" type="line"/>
+      <point identifier="p6" x="252" y="264" type="line"/>
+      <point identifier="p7" x="467" y="0" type="line"/>
+      <point identifier="p8" x="369" y="0" type="line"/>
+      <point identifier="p9" x="164" y="257" type="line"/>
+      <point identifier="p10" x="110" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

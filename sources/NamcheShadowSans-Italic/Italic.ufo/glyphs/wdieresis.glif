@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="wdieresis" format="2">
+  <advance width="794"/>
+  <unicode hex="1E85"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="342" y="613" type="line"/>
+      <point identifier="p1" x="362" y="711" type="line"/>
+      <point identifier="p2" x="450" y="711" type="line"/>
+      <point identifier="p3" x="430" y="613" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p4" x="516" y="613" type="line"/>
+      <point identifier="p5" x="536" y="711" type="line"/>
+      <point identifier="p6" x="624" y="711" type="line"/>
+      <point identifier="p7" x="604" y="613" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p8" x="133" y="0" type="line"/>
+      <point identifier="p9" x="78" y="530" type="line"/>
+      <point identifier="p10" x="170" y="530" type="line"/>
+      <point identifier="p11" x="192" y="241" type="line"/>
+      <point identifier="p12" x="194" y="221"/>
+      <point identifier="p13" x="224" y="202"/>
+      <point identifier="p14" x="259" y="209"/>
+      <point identifier="p15" x="268" y="227" type="qcurve"/>
+      <point identifier="p16" x="409" y="530" type="line"/>
+      <point identifier="p17" x="499" y="530" type="line"/>
+      <point identifier="p18" x="516" y="243" type="line"/>
+      <point identifier="p19" x="517" y="223"/>
+      <point identifier="p20" x="547" y="203"/>
+      <point identifier="p21" x="583" y="210"/>
+      <point identifier="p22" x="592" y="228" type="qcurve"/>
+      <point identifier="p23" x="736" y="530" type="line"/>
+      <point identifier="p24" x="828" y="530" type="line"/>
+      <point identifier="p25" x="564" y="0" type="line"/>
+      <point identifier="p26" x="458" y="0" type="line"/>
+      <point identifier="p27" x="439" y="252" type="line"/>
+      <point identifier="p28" x="437" y="273"/>
+      <point identifier="p29" x="406" y="292"/>
+      <point identifier="p30" x="372" y="285"/>
+      <point identifier="p31" x="363" y="266" type="qcurve"/>
+      <point identifier="p32" x="238" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

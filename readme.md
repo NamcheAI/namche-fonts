@@ -260,9 +260,17 @@ The fonts, sources, and derivative font work are licensed under the
 [SIL Open Font License 1.1](OFL.txt). Original Geist copyright notices and
 author credits are retained in the sources and binary font metadata.
 
-### Reproducible upright variable build
+### Reproducible Sans variable builds
 
-`make build-sans-variable` compiles the approved upright TTF and WOFF2 from
+`make build-sans-variable` compiles the approved upright and italic TTF/WOFF2 pairs from
 open UFO/TTX production sources without Glyphs. `make check-sans-open` enforces
 byte-identical repeated builds and published files in CI. See
 [provenance and source maintenance](documentation/OPEN_BUILD.md).
+
+`make build-googlefonts` produces reproducible production and Google Fonts
+candidate ZIPs in `out/googlefonts/`. The separate candidate family is named
+**Namche Shadow**, retaining complete style names within 32 characters. Release
+and npm fonts keep their current names and bytes. CI builds and uploads the
+packages on every PR, main push and tag. See the
+[readiness check](documentation/GOOGLE_FONTS_READINESS.md) for unresolved submission
+gates; a successful package build is not Google Fonts approval.

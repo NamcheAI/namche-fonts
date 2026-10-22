@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="arrowright.ss07" format="2">
+  <advance width="766"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="47" y="276" type="line"/>
+      <point identifier="p1" x="65" y="358" type="line"/>
+      <point identifier="p2" x="547" y="358" type="line"/>
+      <point identifier="p3" x="573" y="478" type="line"/>
+      <point identifier="p4" x="732" y="317" type="line"/>
+      <point identifier="p5" x="504" y="157" type="line"/>
+      <point identifier="p6" x="530" y="276" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

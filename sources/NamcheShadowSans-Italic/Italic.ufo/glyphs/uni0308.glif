@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni0308" format="2">
+  <unicode hex="0308"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="119" y="613" type="line"/>
+      <point identifier="p1" x="139" y="711" type="line"/>
+      <point identifier="p2" x="227" y="711" type="line"/>
+      <point identifier="p3" x="207" y="613" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p4" x="293" y="613" type="line"/>
+      <point identifier="p5" x="313" y="711" type="line"/>
+      <point identifier="p6" x="401" y="711" type="line"/>
+      <point identifier="p7" x="381" y="613" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

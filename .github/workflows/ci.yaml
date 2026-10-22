@@ -304,9 +304,9 @@ jobs:
           make fontspector-shape
 
   rebuild-sans-open:
-    name: Rebuild upright Sans from open sources
+    name: Rebuild Sans and Google Fonts packages
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
         with:
@@ -322,6 +322,28 @@ jobs:
         run: python -m unittest discover -s tests/open_build
       - name: Verify repeated builds and exact published bytes
         run: make check-sans-open PYTHON=python
+      - name: Build both reproducible submission archives
+        run: make build-googlefonts PYTHON=python
+      - uses: fonttools/setup-fontspector@main
+        with:
+          version: '1.9.0'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate complete Google Fonts candidate
+        run: |
+          status=0
+          fontspector --profile googlefonts --full-lists --json out/googlefonts/fontspector.json out/googlefonts/ofl/namcheshadow/* || status=$?
+          # 1 can represent the explicitly recorded open candidate findings.
+          # Crashes and unexpected errors must never be treated as a baseline.
+          test "$status" -le 1
+          python scripts/check_googlefonts_qa.py out/googlefonts/fontspector.json
+      - name: Upload submission packages and QA
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: namche-shadow-googlefonts-candidate
+          path: out/googlefonts
+          if-no-files-found: error
 
   required:
     name: Build and test
@@ -405,6 +427,11 @@ jobs:
           path: |
             namche-fonts.zip
             packages/next/dist/fonts
+      - name: Archive Google Fonts submission packages
+        uses: actions/upload-artifact@v7
+        with:
+          name: namche-shadow-googlefonts-release-candidate
+          path: out/googlefonts
   deploy:
     name: Deploy results to GitHub Pages
     if: github.ref == 'refs/heads/main'

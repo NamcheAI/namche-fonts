@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="hyphen_greater.liga" format="2">
+  <advance width="1200"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="73" y="316" type="line"/>
+      <point identifier="p1" x="89" y="394" type="line"/>
+      <point identifier="p2" x="1020" y="394" type="line"/>
+      <point identifier="p3" x="802" y="666" type="line"/>
+      <point identifier="p4" x="913" y="666" type="line"/>
+      <point identifier="p5" x="1157" y="355" type="line"/>
+      <point identifier="p6" x="780" y="44" type="line"/>
+      <point identifier="p7" x="669" y="44" type="line"/>
+      <point identifier="p8" x="991" y="316" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

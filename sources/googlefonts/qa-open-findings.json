@@ -1,0 +1,53 @@
+{
+  "tool": "Fontspector 1.9.0",
+  "status": "Open candidate findings, not Google Fonts waivers",
+  "explanations": {
+    "googlefonts/metadata/consistent_repo_urls": "1.9.0 compares whitespace tokens containing github.com with the repository path, including href markup and the required designer profile. Retain credits; resolve with GF/tool maintainers.",
+    "googlefonts/tofu": "Aleut U+0302 is present but excluded by the checked subset definitions; Amarakaeri, Otomi Mezquital and Secoya samples require absent U+0331. Resolve subset/sample coverage with GF or review a separately designed glyph addition.",
+    "googlefonts/metadata/subsets_correct": "The checked extended subsets have under 20% coverage. Removing them also removes served supported characters. Resolve the exact subset declarations with Google Fonts; do not silently drop coverage."
+  },
+  "findings": [
+    {
+      "check": "googlefonts/metadata/consistent_repo_urls",
+      "code": "mismatch",
+      "severity": "FAIL",
+      "message": "Repository URL is https://github.com/NamcheAI/namche-fonts. But:\n\n* HTML description has 'href=\"https://github.com/fizzybubbele\">Michael'\n* HTML description has 'href=\"https://github.com/NamcheAI/namche-fonts\">the'"
+    },
+    {
+      "check": "googlefonts/metadata/subsets_correct",
+      "code": "unsupported-subset",
+      "severity": "WARN",
+      "message": "Please remove 'cyrillic-ext' from METADATA.pb since less than 20% of its glyphs are supported by this font file."
+    },
+    {
+      "check": "googlefonts/metadata/subsets_correct",
+      "code": "unsupported-subset",
+      "severity": "WARN",
+      "message": "Please remove 'latin-ext' from METADATA.pb since less than 20% of its glyphs are supported by this font file."
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "missing-subsetted",
+      "severity": "FAIL",
+      "message": "The font has the following codepoints needed to render the specimen 16 sample text for language Aleut, but although the font contained all the base exemplars for the language, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̂ (U+0302)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Amarakaeri language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Otomi, Mezquital language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Secoya language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
+    }
+  ]
+}

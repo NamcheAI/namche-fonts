@@ -1,4 +1,4 @@
-# Upright VF provenance and corrected open build
+# Sans VF provenance and open build
 
 Examined release: NamcheAI/namche-fonts 26f8807f8b23a91374057c919f6a2144fe170599.
 
@@ -55,12 +55,12 @@ incompatible static OTFs.
 ## Repository workflow
 
 Install `requirements-open-build.txt` in an isolated Python 3.11 environment.
-HarfBuzz 0.53.3 is pinned alongside FontTools: its layout repacker is explicitly
-required, since the pure-Python fallback serializes different bytes.
+HarfBuzz 0.53.3 is pinned alongside FontTools: upright explicitly uses its layout
+repacker; italic explicitly disables it to retain the original FontTools packing.
 Run `make check-sans-open PYTHON=python` for two clean builds, SHA-256 validation
 and comparison to the committed release. `make build-sans-variable` writes the
-release artifacts using the full repository build environment. The complete
-release build also regenerates and verifies upright before creating artifacts.
+both pairs of release artifacts using the full repository build environment. The
+complete release build regenerates and verifies both VFs before creating artifacts.
 
 The unconditional Linux CI job is included in the mandatory `Build and test`
 aggregate and gates release artifact creation. The source contains no input font
@@ -74,7 +74,27 @@ committed binaries together. In particular, binary-only metadata/layout refreshe
 will fail CI until the XML sources and approved hashes are updated. Do not bypass
 the gate or reconstruct upright from the incompatible static OTFs.
 
-This adds the byte-preserving upright production build only. Italic and static
-production paths retain their existing sources and checks. The preserved
-quadratic/TTX representation is not a reconstructed cubic designspace, and
-Google Fonts acceptance of this source organization remains unverified.
+## Italic production source
+
+`sources/NamcheShadowSans-Italic/` recovers the complete approved 0.6.2 italic VF
+(commit `039e0efdd5c404df38491ef4d676af5331e02da9`) into 970 quadratic UFO glyphs,
+point identifiers and readable variation/layout TTX. This is an open production
+representation, not a recovered cubic designspace. Unlike the former OTF-based
+command, the normal build consumes no compiled fonts, including for metadata or
+layout. The same point-order guards and two-build hash checks apply to italic.
+
+- TTF SHA-256: `a79f21b2c31ead8e6296be8a12b46c870d0e394840df2cb7eed3d0773e69c439`
+- WOFF2 SHA-256: `8400debbacde1fa7b8228cd4d9d085bb3eb188340a2301107871fe8391ce8d9a`
+
+The serializer distinction is intentional: upright uses HarfBuzz repacking;
+italic uses pure FontTools layout packing. Both are pinned and produce the
+approved complete binary bytes, including all interpolated outlines, shaping,
+metrics and public names. No visual approximation is involved.
+
+`scripts/recover_sans_production_source.py` documents the one-time extraction
+for provenance or a reviewed future migration. It is not called by normal builds
+or CI. It refuses composite/hinted glyph inputs that this representation does
+not support. The existing Glyphs packages remain the separate design source;
+editing them does not automatically regenerate the recovered production source.
+Static production is unchanged. GF acceptance of this source organization remains
+unverified. See [candidate packages and remaining gates](GOOGLE_FONTS_READINESS.md).

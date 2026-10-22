@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="minus" format="2">
+  <advance width="520"/>
+  <unicode hex="2212"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="38" y="256" type="line"/>
+      <point identifier="p1" x="55" y="334" type="line"/>
+      <point identifier="p2" x="495" y="334" type="line"/>
+      <point identifier="p3" x="478" y="256" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

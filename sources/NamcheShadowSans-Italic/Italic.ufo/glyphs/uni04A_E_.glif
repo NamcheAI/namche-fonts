@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni04AE" format="2">
+  <advance width="568"/>
+  <unicode hex="04AE"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="186" y="0" type="line"/>
+      <point identifier="p1" x="245" y="279" type="line"/>
+      <point identifier="p2" x="246" y="284"/>
+      <point identifier="p3" x="245" y="296"/>
+      <point identifier="p4" x="243" y="301" type="qcurve"/>
+      <point identifier="p5" x="89" y="710" type="line"/>
+      <point identifier="p6" x="187" y="710" type="line"/>
+      <point identifier="p7" x="279" y="447" type="line"/>
+      <point identifier="p8" x="284" y="432"/>
+      <point identifier="p9" x="310" y="419"/>
+      <point identifier="p10" x="339" y="423"/>
+      <point identifier="p11" x="348" y="435" type="qcurve"/>
+      <point identifier="p12" x="564" y="710" type="line"/>
+      <point identifier="p13" x="669" y="710" type="line"/>
+      <point identifier="p14" x="339" y="297" type="line"/>
+      <point identifier="p15" x="336" y="294"/>
+      <point identifier="p16" x="332" y="286"/>
+      <point identifier="p17" x="331" y="281" type="qcurve"/>
+      <point identifier="p18" x="272" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

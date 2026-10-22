@@ -6,6 +6,9 @@ design experiments belong in an issue or pull request rather than here.
 
 ## Maintained documents
 
+- [`GOOGLE_FONTS_READINESS.md`](GOOGLE_FONTS_READINESS.md) records the 0.6.2
+  submission blockers, open-build evidence and current Google Fonts QA.
+
 - [`FONTSPECTOR.md`](FONTSPECTOR.md) records the accepted Fontspector baseline
   and explains which warnings are regressions.
 - [`LANGUAGE_SUPPORT.md`](LANGUAGE_SUPPORT.md) defines the supported shaping

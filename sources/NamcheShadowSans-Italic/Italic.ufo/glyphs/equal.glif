@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="equal" format="2">
+  <advance width="540"/>
+  <unicode hex="003D"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="61" y="363" type="line"/>
+      <point identifier="p1" x="77" y="441" type="line"/>
+      <point identifier="p2" x="537" y="441" type="line"/>
+      <point identifier="p3" x="521" y="363" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p4" x="17" y="157" type="line"/>
+      <point identifier="p5" x="34" y="235" type="line"/>
+      <point identifier="p6" x="494" y="235" type="line"/>
+      <point identifier="p7" x="477" y="157" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

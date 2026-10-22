@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="V" format="2">
+  <advance width="667"/>
+  <unicode hex="0056"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="222" y="0" type="line"/>
+      <point identifier="p1" x="115" y="710" type="line"/>
+      <point identifier="p2" x="207" y="710" type="line"/>
+      <point identifier="p3" x="280" y="209" type="line"/>
+      <point identifier="p4" x="283" y="191"/>
+      <point identifier="p5" x="312" y="173"/>
+      <point identifier="p6" x="346" y="179"/>
+      <point identifier="p7" x="355" y="196" type="qcurve"/>
+      <point identifier="p8" x="646" y="710" type="line"/>
+      <point identifier="p9" x="742" y="710" type="line"/>
+      <point identifier="p10" x="335" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

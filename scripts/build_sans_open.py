@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild the approved upright VF from open quadratic UFO/TTX sources.
+"""Rebuild the approved Sans VFs from open quadratic UFO/TTX sources.
 
 --check builds twice in isolation and requires byte equality with the pinned
 release hashes and committed TTF/WOFF2. No release binaries are build inputs.
@@ -20,17 +20,18 @@ from ufoLib2 import Font
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'sources/NamcheShadowSans-Upright'
+ITALIC_SOURCE = ROOT / 'sources/NamcheShadowSans-Italic'
 RELEASE = ROOT / 'fonts/NamcheShadowSans'
 FILES = ('variable/NamcheShadowSans[wght].ttf', 'webfonts/NamcheShadowSans[wght].woff2')
 
 
 def build(source: Path, output: Path) -> None:
     manifest = json.loads((source / 'provenance.json').read_text())
-    ufo = Font.open(source / 'Upright.ufo')
+    ufo = Font.open(source / manifest.get('ufo', 'Upright.ufo'))
     point_order = json.loads((source / 'point-order.json').read_text())
     font = TTFont(recalcTimestamp=False)
     # Require the production layout serializer; never silently switch backends.
-    font.cfg['fontTools.ttLib.tables.otBase:USE_HARFBUZZ_REPACKER'] = True
+    font.cfg['fontTools.ttLib.tables.otBase:USE_HARFBUZZ_REPACKER'] = manifest.get('harfbuzz_repacker', True)
     font.importXML(source / 'variation-and-layout.ttx')
     if font.getGlyphOrder() != ufo.glyphOrder:
         raise ValueError('UFO glyph order must match the indexed variation/layout sources')
@@ -58,7 +59,7 @@ def build(source: Path, output: Path) -> None:
     # gvar XML needs the completed glyf table to resolve indexed deltas.
     font.importXML(source / 'variations.ttx')
     font.recalcTimestamp = False
-    ttf_path, woff_path = (output / p for p in FILES)
+    ttf_path, woff_path = (output / p for p in manifest['outputs'])
     ttf_path.parent.mkdir(parents=True, exist_ok=True)
     woff_path.parent.mkdir(parents=True, exist_ok=True)
     raw, ordered = BytesIO(), BytesIO()
@@ -77,7 +78,7 @@ def check(source: Path, release: Path) -> None:
         first, second = Path(tmp) / 'first', Path(tmp) / 'second'
         build(source, first)
         build(source, second)
-        for relative in FILES:
+        for relative in expected:
             data = (first / relative).read_bytes()
             digest = sha256(data).hexdigest()
             if digest != expected[relative]:
@@ -91,15 +92,16 @@ def check(source: Path, release: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--source', type=Path, default=SOURCE)
+    parser.add_argument('--source', type=Path, help='Build only the specified production source; default: both styles')
     parser.add_argument('--output', type=Path, default=RELEASE)
     parser.add_argument('--release', type=Path, default=RELEASE, help='committed reference directory for --check')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
-    if args.check:
-        check(args.source, args.release)
-    else:
-        build(args.source, args.output)
+    for source in ([args.source] if args.source else [SOURCE, ITALIC_SOURCE]):
+        if args.check:
+            check(source, args.release)
+        else:
+            build(source, args.output)
 
 
 if __name__ == '__main__':

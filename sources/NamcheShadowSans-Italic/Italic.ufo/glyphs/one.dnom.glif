@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="one.dnom" format="2">
+  <advance width="243"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="60" y="0" type="line"/>
+      <point identifier="p1" x="114" y="254" type="line"/>
+      <point identifier="p2" x="18" y="253" type="line"/>
+      <point identifier="p3" x="28" y="303" type="line"/>
+      <point identifier="p4" x="53" y="303" type="line"/>
+      <point identifier="p5" x="98" y="303"/>
+      <point identifier="p6" x="151" y="348"/>
+      <point identifier="p7" x="159" y="388" type="qcurve"/>
+      <point identifier="p8" x="208" y="388" type="line"/>
+      <point identifier="p9" x="126" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

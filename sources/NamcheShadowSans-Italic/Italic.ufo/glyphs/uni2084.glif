@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="uni2084" format="2">
+  <advance width="330"/>
+  <unicode hex="2084"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="112" y="-100" type="line"/>
+      <point identifier="p1" x="131" y="-10" type="line"/>
+      <point identifier="p2" x="-49" y="-10" type="line"/>
+      <point identifier="p3" x="-38" y="41" type="line"/>
+      <point identifier="p4" x="196" y="287" type="line"/>
+      <point identifier="p5" x="260" y="287" type="line"/>
+      <point identifier="p6" x="209" y="48" type="line"/>
+      <point identifier="p7" x="263" y="48" type="line"/>
+      <point identifier="p8" x="251" y="-10" type="line"/>
+      <point identifier="p9" x="197" y="-10" type="line"/>
+      <point identifier="p10" x="178" y="-100" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p11" x="36" y="48" type="line"/>
+      <point identifier="p12" x="143" y="48" type="line"/>
+      <point identifier="p13" x="174" y="189" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>

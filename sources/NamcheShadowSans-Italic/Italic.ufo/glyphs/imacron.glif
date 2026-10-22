@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="imacron" format="2">
+  <advance width="244"/>
+  <unicode hex="012B"/>
+  <outline>
+    <contour>
+      <point identifier="p0" x="64" y="625" type="line"/>
+      <point identifier="p1" x="80" y="697" type="line"/>
+      <point identifier="p2" x="348" y="697" type="line"/>
+      <point identifier="p3" x="332" y="625" type="line"/>
+    </contour>
+    <contour>
+      <point identifier="p4" x="24" y="0" type="line"/>
+      <point identifier="p5" x="136" y="530" type="line"/>
+      <point identifier="p6" x="220" y="530" type="line"/>
+      <point identifier="p7" x="108" y="0" type="line"/>
+    </contour>
+  </outline>
+  <lib>
+    <dict>
+      <key>org.namche.originalFlags</key>
+      <array>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+      </array>
+    </dict>
+  </lib>
+</glyph>
