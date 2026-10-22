@@ -1,5 +1,10 @@
 # Fontspector baseline
 
+For the current Google Fonts submission assessment of Sans 0.6.2, including a
+fresh Fontspector 1.9.0 run, see [Google Fonts readiness](GOOGLE_FONTS_READINESS.md).
+The baseline below records repository maintenance decisions, not Google Fonts
+acceptance of exceptions.
+
 Run `make test` after `make build`. The command writes machine-readable JSON
 reports to `out/fontspector/`. CI uploads that directory with the other proof
 artifacts. JSON is used because the crates.io build of Fontspector 1.7.4 does
