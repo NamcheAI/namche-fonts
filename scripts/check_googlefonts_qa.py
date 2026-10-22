@@ -48,6 +48,11 @@ def validate(report: dict, baseline: dict) -> dict:
                      for c in checks if c['check_id'] == 'googlefonts/metadata/subsets_correct']
     if not subset_checks or any(c['worst_status'] not in ('PASS', 'WARN') for c in subset_checks):
         raise ValueError('Required subset check did not run successfully')
+    for check in {f["check"] for f in baseline["findings"]}:
+        executed = [c for sections in report["results"].values() for checks in sections.values()
+                    for c in checks if c["check_id"] == check]
+        if not executed or any(c["worst_status"] == "SKIP" for c in executed):
+            raise ValueError(f"Known open check was skipped or missing: {check}")
     remaining = findings(report)
     allowed = Counter(json.dumps(f, sort_keys=True) for f in baseline['findings'])
     for finding in remaining:

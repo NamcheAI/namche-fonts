@@ -46,6 +46,12 @@ class CandidateQATests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Unexpected'):
             validate(self.report, self.baseline)
 
+    def test_skipped_known_failure_is_blocking(self):
+        self.checks.append(dict(check_id="googlefonts/tofu", worst_status="SKIP",
+                               subresults=[dict(severity="SKIP", code="network-error")]))
+        with self.assertRaisesRegex(ValueError, "skipped or missing"):
+            validate(self.report, self.baseline)
+
     def test_subset_order_is_normalized_but_message_is_preserved(self):
         self.assertEqual(normalize('any of the subsets latin, cyrillic:\nU+0302'),
                          'any of the subsets cyrillic, latin:\nU+0302')
