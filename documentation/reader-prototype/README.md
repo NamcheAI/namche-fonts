@@ -1,6 +1,6 @@
 # Reader prototype — proposal for Jodok
 
-Related: #112. Design direction and font design: [Michael Marte](https://github.com/fizzybubbele), [Ruhm etc.](https://ruhmetc.com/). Existing Geist/Vercel and Namche attribution and root OFL.txt remain applicable.
+Related: #112. Design direction and font design: [Michael Marte](https://github.com/fizzybubbele). Existing Geist/Vercel and Namche attribution and root OFL.txt remain applicable.
 
 For Inkling long-form reading, compare the current Medium 500 at 18/24 px with Reader Regular 400 at 18/28 px. Reader keeps the seven RoundCorner tiers and include/exclude lists, with radii -60/-80/-60/-50/-40/-50/-10 changed to -30/-40/-30/-25/-20/-25/-5. No metrics or spacing changes were requested.
 
