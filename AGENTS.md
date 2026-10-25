@@ -73,6 +73,10 @@ conventions.
   with complete STAT-matching style names, all within 32 characters. Existing
   release/npm names remain **Namche Shadow Sans**. Package renaming may change
   only the name table and checksum adjustment; preserve every other table.
+  A separate candidate-only recipe in `scripts/googlefonts_marks.py` adds
+  U+0331 with below-mark attachment and stacking. Preserve every existing
+  glyph's outline, variations and metrics and verify existing text shaping.
+  This candidate addition does not change the approved production VFs or statics.
 - Keep `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` parked from the
   variable build until their rounded masters match. They must remain in every
   static.
