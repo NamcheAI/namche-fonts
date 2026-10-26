@@ -51,6 +51,9 @@ venv/bin/python scripts/reconstruct_sans_masters.py \
 
 Point-order changes and edits that cannot be represented by the saved explicit
 point structure are rejected rather than silently discarded.
+Components are not supported in these flattened quadratic masters. Advance
+widths must match the recorded phantom metrics; ordinary width edits require
+a separate metric-variation migration and are rejected before compilation.
 
 ## Candidate-only U+0331
 

@@ -50,6 +50,11 @@ def build_reconstructed(source, output, verify=False):
         if master.glyphOrder != default.glyphOrder:
             raise ValueError('Reconstructed master glyph order changed')
         for name in default.glyphOrder:
+            if master[name].components:
+                raise ValueError(f'{name}: reconstructed masters cannot contain components')
+            phantom = master[name].lib['org.namche.phantomPoints']
+            if abs(master[name].width - (phantom[1][0] - phantom[0][0])) > 1e-6:
+                raise ValueError(f'{name}: edited width needs a metric variation migration')
             actual = [[point.identifier for point in contour.points] for contour in master[name].contours]
             if actual != point_order[name]:
                 raise ValueError(f'{name}: reconstructed master point topology changed')
