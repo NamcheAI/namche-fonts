@@ -16,8 +16,9 @@ distinctive treatment for [Ruhm etc.](https://ruhmetc.com/). The candidate conta
 two variable TTFs, upright and italic, both with `wght` 100–900 and default 400.
 The proposed menu family is **Namche Shadow**. Its longest full instance name is
 31 characters. The existing npm distribution is named **Namche Shadow Sans**;
-the candidate changes names only, preserving all outlines, variations, shaping
-and metrics.
+the candidate preserves the existing glyph outlines, variations and metrics,
+and additionally supplies U+0331 combining macron below with mark attachment
+and stacking. Existing text shaping is regression-tested unchanged.
 
 We would like curator feedback before opening a font submission PR, especially
 on the recovered production-source format and the coverage decisions below.
@@ -76,10 +77,13 @@ QA report as `namche-shadow-googlefonts-candidate`.
 - [Readiness and build instructions](https://github.com/NamcheAI/namche-fonts/blob/main/documentation/GOOGLE_FONTS_READINESS.md)
 - [Production-source maintenance contract](https://github.com/NamcheAI/namche-fonts/blob/main/documentation/OPEN_BUILD.md)
 - [Detailed investigation and reproduction](https://github.com/NamcheAI/namche-fonts/blob/main/documentation/googlefonts-intake/README.md)
+- [Exact master reconstruction and candidate mark correction](https://github.com/NamcheAI/namche-fonts/blob/main/documentation/googlefonts-intake/SOURCE_QA_FOLLOWUP.md)
 - [Exact coverage, missing characters and input/output hashes](https://github.com/NamcheAI/namche-fonts/blob/main/documentation/googlefonts-intake/evidence.json)
 
-Official Fontspector 1.9.0 remains at **five FAIL messages and two relevant subset
-WARN messages**. The complete report also retains other existing warnings; we
+Official Fontspector 1.9.0 now reports **ten FAIL messages and two relevant subset
+WARN messages**. Nine failures concern subset serving and one the HTML link check.
+The three original missing-glyph/sample failures have been repaired in the fonts.
+The complete report also retains other existing warnings; we
 are not presenting a green local regression gate as GF approval. The independent
 HTML/link check passes, while the raw upstream link failure remains unchanged.
 
@@ -87,12 +91,16 @@ HTML/link check passes, while the raw upstream link failure remains unchanged.
 
 ### 1. Recovered source representation and candidate name
 
-Are editable quadratic UFO default masters plus readable indexed gvar/layout TTX,
-with stable point identifiers and a documented maintenance contract, acceptable
-for this initial onboarding? The original upright compatible cubic export masters
-were not recovered. The separate Glyphs design sources do not automatically
-regenerate this production snapshot. If a conventional interpolating designspace
-is required, please confirm that before we migrate the exact reviewed geometry.
+The normal build uses editable quadratic UFO default masters plus readable indexed
+gvar/layout TTX, with stable point identifiers and a documented maintenance
+contract. We now also reconstruct nine editable quadratic UFO masters and a
+designspace for each style. Reloading the saved masters and deriving the deltas
+reproduces both approved TTF/WOFF2 pairs byte-for-byte. The structure map stores
+only supports and explicit point indices, not variation delta values.
+
+The original compatible cubic Glyphs exports were not recovered. Does this exact
+quadratic master representation meet your source-maintenance requirements, and
+should it replace the current production-source layout for onboarding?
 
 Is **Namche Shadow** acceptable as the definitive GF menu family, distinct from
 the existing Namche Shadow Sans package naming?
@@ -119,22 +127,20 @@ subsetting. U+0302 is absent from the union of the declared `latin`, `latin-ext`
 `missing-subsetted` failure. Can the Latin serving definition preserve U+0302,
 or can you specify the correct serving arrangement for this family?
 
-### 4. Three inferred languages require an absent combining macron below
+### 4. Serve the newly supplied combining macron below
 
-U+0331 is absent in both VFs and is not present as an unencoded reusable glyph.
-The checker infers language support from base exemplars alone:
+The candidate now supplies U+0331, derived from the family's existing macron,
+with zero advance, variable below-mark positioning and stacking. A nine-weight
+upright/italic proof and shaping regression tests accompany the recipe. All
+three original missing-glyph/sample failures are gone.
 
-| Language | U+0331 occurrences in specimen_16 | Language-data observation |
-| --- | ---: | --- |
-| Amarakaeri (`amr_Latn`) | 39 | No marks exemplar; base exemplars omit U+0331. |
-| Otomi, Mezquital (`ote_Latn`) | 10 | Marks exemplar explicitly includes U+0331, but support inference ignores it. |
-| Secoya (`sey_Latn`) | 4 | No marks exemplar; base exemplars omit U+0331. |
-
-We do not claim complete support for those languages or that the samples are
-linguistically incorrect. Can language-support inference/data be corrected so
-these fonts are not advertised for unsupported samples, or is an independently
-reviewed U+0331 addition required before onboarding? We have not aliased another
-mark or altered these samples to hide the failures.
+The subset union still excludes U+0331. This produces seven sample-serving
+failures: Amarakaeri, Chickasaw, Central Mazahua, Otomi (Mezquital), Secoya, Siona
+and Ticuna. A further Central Mazahua sample needs already-present U+0338, which
+is also excluded. Together with Aleut U+0302, these are nine serving failures.
+Can the Latin extended subset retain U+0302, U+0331 and U+0338? A concrete patch
+against the pinned subset data is provided in the follow-up. We have not changed
+the sample text or added unrelated scripts to bypass the check.
 
 ### 5. HTML/profile-link false positive in consistent_repo_urls
 

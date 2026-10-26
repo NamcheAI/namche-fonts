@@ -1,5 +1,20 @@
 # Google Fonts readiness: Namche Shadow Sans
 
+## Follow-up, 2026-10-25
+
+[Source reconstruction and mark correction](googlefonts-intake/SOURCE_QA_FOLLOWUP.md)
+supersedes the candidate-specific counts and missing-glyph status below. Eighteen
+editable quadratic UFO masters now round-trip to the exact approved production
+fonts. The candidate alone adds U+0331 with positioning and stacking, while all
+existing glyph geometry and metrics remain unchanged. Raw Fontspector 1.9.0 now
+reports 264 PASS, 112 WARN, 10 FAIL, 72 SKIP and 17 INFO: nine subset-serving
+messages and the existing link-check message. There are no remaining missing
+glyph/sample-text failures. The extended-subset warnings persist. Both candidate
+ZIPs reproduce, and `submission_ready` remains false. Production sources and
+release binaries retain their approved hashes.
+
+The remaining sections record the October 22 assessment and historical evidence.
+
 Checked 2026-10-22 against **v0.6.2**, commit
 `039e0efdd5c404df38491ef4d676af5331e02da9`.
 

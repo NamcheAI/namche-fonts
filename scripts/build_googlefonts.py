@@ -12,6 +12,7 @@ import tempfile
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 from fontTools.ttLib import TTFont
 from build_sans_open import ROOT, SOURCE, ITALIC_SOURCE, build
+from googlefonts_marks import extend_candidate
 
 CONFIG = ROOT / 'sources/googlefonts'
 REPOSITORY = 'https://github.com/NamcheAI/namche-fonts'
@@ -86,6 +87,7 @@ def build_package(output: Path, commit: str, config_dir: Path = CONFIG) -> None:
             filename = f'{compact}{"-Italic" if italic else ""}[wght].ttf'
             source_font = production / next(p for p in manifest['outputs'] if p.endswith('.ttf'))
             names = rename_font(source_font, dest / filename, family)
+            extend_candidate(dest / filename)
             entries.append(dict(name=family, style='italic' if italic else 'normal',
                                 weight=400, filename=filename, **names))
         license_text = (ROOT / 'OFL.txt').read_text()
@@ -119,12 +121,13 @@ def build_package(output: Path, commit: str, config_dir: Path = CONFIG) -> None:
         # JSON is a strict YAML subset, accepted by gftools' YAML reader.
         (dest / 'upstream.yaml').write_text(json.dumps(upstream, indent=2) + '\n')
         inputs = [ROOT / 'requirements-open-build.txt', ROOT / 'OFL.txt',
-                  Path(__file__), ROOT / 'scripts/build_sans_open.py']
+                  Path(__file__), ROOT / 'scripts/build_sans_open.py', ROOT / 'scripts/googlefonts_marks.py']
         inputs += [p for directory in (SOURCE, ITALIC_SOURCE, config_dir)
                    for p in directory.rglob('*') if p.is_file()]
         report = {'source_commit': commit,
                   'source_sha256': {p.relative_to(ROOT).as_posix(): sha256(p.read_bytes()).hexdigest()
                                     for p in sorted(inputs)}, 'family': family, 'status': 'candidate, not accepted by Google Fonts',
+                  'candidate_additions': ['U+0331 combining macron below; existing glyph outlines, variations and metrics preserved'],
                   'production_sha256': hashes, 'submission_sha256': {
                       p.relative_to(staging).as_posix(): sha256(p.read_bytes()).hexdigest()
                       for p in sorted(dest.iterdir())}}
