@@ -5,9 +5,8 @@ Checks every committed release and npm binary against the grid source:
 
 - all three styles ship as OTF, TTF, and WOFF2, plus the npm WOFF2 copies
 - glyph set, Unicode map, and advance widths match the source
-- U+2028/U+2029 stay inkless at 600 units; the zero-width soft hyphen stays
 - source-defined ligature carets (including fi and fl) survive
-- U+20B9 ₹ and U+25CC ◌ carry ink; every combining mark attaches to ◌ and
+- every retained combining mark attaches to a base and
   į + a top mark shapes to dotless i + ogonek + mark
 - every glyph but marks has seeded `.shapeN` alternates with the same width,
   and `calt` gives four repeated letters four different variants
@@ -33,15 +32,11 @@ from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import namche_shape as ns  # noqa: E402
+from latin_core import CODEPOINTS
 
 STYLES = ns.STYLES
-SEPARATORS = (0x2028, 0x2029)
-SEPARATOR_WIDTH = 600
-RUPEE = 0x20B9
-DOTTED_CIRCLE = 0x25CC
 REQUIRED_MARKS = (0x0301, 0x0302, 0x030C, 0x0304, 0x0303, 0x0300)
 OPTIONAL_MARKS = (0x030B, 0x0307, 0x0306, 0x0308, 0x0312, 0x030A)
-IOGONEK_RULE = "sub iogonek' @CombiningTopAccents by idotless ogonekcomb;"
 
 
 def expected_fonts(root: Path) -> list[Path]:
@@ -119,18 +114,25 @@ def validate_shaping(path: Path, font: TTFont) -> list[str]:
     errors = []
     order = font.getGlyphOrder()
     cmap = font.getBestCmap() or {}
-    dotted = order.index(cmap[DOTTED_CIRCLE])
+    base = order.index(cmap[ord("x")])
     idotless = order.index(cmap[0x0131])
     ogonek = order.index(cmap[0x0328])
     for mark in sorted(c for c in cmap if 0x0300 <= c <= 0x036F):
-        infos, positions = shape(path, chr(DOTTED_CIRCLE) + chr(mark))
-        if len(infos) != 2 or infos[0].codepoint != dotted:
-            errors.append(f"{path}: U+25CC failed to retain U+{mark:04X}")
+        if mark == 0x0328:
+            # Ogonek attaches to its supported vowel bases, not arbitrary x.
+            decomposed, _ = shape(path, 'a\u0328')
+            composed, _ = shape(path, '\u0105')
+            if [i.codepoint for i in decomposed] != [i.codepoint for i in composed]:
+                errors.append(f'{path}: decomposed a-ogonek differs from precomposed form')
+            continue
+        infos, positions = shape(path, "x" + chr(mark))
+        if len(infos) != 2 or infos[0].codepoint != base:
+            errors.append(f"{path}: base x failed to retain U+{mark:04X}")
         elif positions[1].x_advance != 0 or (
             positions[1].x_offset == 0 and positions[1].y_offset == 0
         ):
-            errors.append(f"{path}: U+{mark:04X} did not attach to U+25CC")
-    for mark in REQUIRED_MARKS + OPTIONAL_MARKS:
+            errors.append(f"{path}: U+{mark:04X} did not attach to base x")
+    for mark in (m for m in REQUIRED_MARKS + OPTIONAL_MARKS if m in cmap):
         infos, _ = shape(path, "į" + chr(mark))
         got = [i.codepoint for i in infos]
         want = [idotless, ogonek, order.index(cmap[mark])]
@@ -140,7 +142,7 @@ def validate_shaping(path: Path, font: TTFont) -> list[str]:
 
 
 ALT_SUFFIX = ".shape"
-ALTERNATE_SAMPLES = ("aaaa", "llll", "0000", "ﬁﬁﬁﬁ", "ąąąą", "AAAA")
+ALTERNATE_SAMPLES = ("aaaa", "llll", "0000", "ąąąą", "AAAA")
 
 
 def glyph_area(glyphs, name: str) -> float:
@@ -192,7 +194,6 @@ def validate_font(path: Path) -> list[str]:
             errors.append(f"{path}: Namche Shape statics must not contain fvar")
         actual_cmap = font.getBestCmap() or {}
         expected_cmap = dict(cmap)
-        expected_cmap[0x00AD] = "uni00AD"
         if set(actual_cmap) != set(expected_cmap):
             missing = sorted(set(expected_cmap) - set(actual_cmap))
             extra = sorted(set(actual_cmap) - set(expected_cmap))
@@ -214,18 +215,6 @@ def validate_font(path: Path) -> list[str]:
                 errors.append(
                     f"{path}: U+{codepoint:04X} width {width}, source {widths[source_name]}"
                 )
-        soft = actual_cmap.get(0x00AD)
-        if soft is None or font["hmtx"][soft][0] != 0 or has_ink(font, soft):
-            errors.append(f"{path}: U+00AD must be an inkless zero-width glyph")
-        for codepoint in SEPARATORS:
-            glyph_name = actual_cmap.get(codepoint)
-            if glyph_name is None:
-                errors.append(f"{path}: missing U+{codepoint:04X}")
-                continue
-            if font["hmtx"][glyph_name] != (SEPARATOR_WIDTH, 0):
-                errors.append(f"{path}: U+{codepoint:04X} metrics {font['hmtx'][glyph_name]}")
-            if has_ink(font, glyph_name):
-                errors.append(f"{path}: U+{codepoint:04X} must remain inkless")
         for glyph_name, coordinates in carets.items():
             if glyph_name not in font.getGlyphOrder():
                 errors.append(f"{path}: missing {glyph_name} ligature glyph")
@@ -234,10 +223,6 @@ def validate_font(path: Path) -> list[str]:
                     f"{path}: {glyph_name} carets {ligature_carets(font, glyph_name)!r}, "
                     f"expected {coordinates!r}"
                 )
-        for codepoint in (RUPEE, DOTTED_CIRCLE):
-            glyph_name = actual_cmap.get(codepoint)
-            if glyph_name is None or not has_ink(font, glyph_name):
-                errors.append(f"{path}: U+{codepoint:04X} must be present with ink")
         if not errors:
             errors.extend(validate_shaping(path, font))
             errors.extend(validate_alternates(path, font))
@@ -249,14 +234,11 @@ def validate_font(path: Path) -> list[str]:
 def validate_source() -> list[str]:
     _, cmap, carets, fontinfo = source_expectations()
     errors = []
-    for codepoint in (RUPEE, DOTTED_CIRCLE):
-        if codepoint not in cmap:
-            errors.append(f"{ns.SOURCE}: missing U+{codepoint:04X}")
+    if set(cmap) != CODEPOINTS:
+        errors.append(f"{ns.SOURCE}: character map differs from GF Latin Core")
     for required in ("fi", "fl"):
         if required not in carets:
             errors.append(f"{ns.SOURCE}: missing {required} caret anchors")
-    if IOGONEK_RULE not in fontinfo:
-        errors.append(f"{ns.SOURCE}: missing reviewed iogonek ccmp rule")
     return errors
 
 
@@ -363,7 +345,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
     print(
-        "Verified Namche Shape glyph set, metrics, separators, carets, ₹, ◌, "
+        "Verified Namche Shape Latin Core glyph set, metrics, carets, marks, "
         "į shaping, and calt alternates"
     )
     return 0

@@ -26,13 +26,7 @@ from build_sans_variable import (
 
 
 
-INTERPOLATION_REVIEW_GLYPHS = (
-    "uni0163",
-    "ordfeminine",
-    "uni0472",
-    "uni04E9",
-    "ampersand",
-)
+INTERPOLATION_REVIEW_GLYPHS = ("ordfeminine", "ampersand")
 REPRESENTATIVE_GLYPHS = (
     "H",
     "E",
@@ -51,26 +45,8 @@ REPRESENTATIVE_GLYPHS = (
 )
 OUTLINE_SAMPLE_LENGTH = 4
 STATIC_OUTLINE_TOLERANCE = 7
-INTERMEDIATE_OUTLINE_DIGESTS = {
-    150: "158bfe31f4ded1b8585d9453223dbda3468428af886455c41d44b9e84a6c2d66",
-    250: "fe61899d9e46d201b010655deb1d4f5c51bbf04520f5605e44de2ed0e5a2fc78",
-    350: "068258cb28e1db0c7bc63848090bd2870a30e67ff87f1bc927a19bd934e8dc4c",
-    450: "816f2942427fee10256ad222ba915e42635a0ee210fdd38d0be09a2bef2b18f6",
-    550: "d30a74651bb77777b97edd774fcc3cbf1a21d64bf1278d9c641c450100ee59ff",
-    650: "9db82c5dc2e95a36e012b66d9ae1576c258df5415559c5a9827715ab938920ec",
-    750: "5ed9e91d3e243b4d3c7644fc5c2b7adbbd3b2ecbfeeed9a883ce9579cd7535c6",
-    850: "d5690b1d3906d9be354f1ad14c1ee000e1db8919f62d7bf42dfcfdf64853618e",
-}
-ITALIC_INTERMEDIATE_OUTLINE_DIGESTS = {
-    150: "c095880c313270af04fd593ebb838017cdfaa28ced310ec3a4f81ea22f8578a0",
-    250: "2373622b8c9e88b560bc26087412afeaa224f3f2a9681f670e12b75c3966104d",
-    350: "da96b5a335657c9308efe9a4961feaee8b59715251a926c4564338f16052939c",
-    450: "05722529b9e558494db11b92bf6075b56b6041dc91dcface3caa49a5e59754b7",
-    550: "0d81a736d5db3cd78a45cd54d38be65b2dfc801388b66dc07af6a2c15e2fc750",
-    650: "de74cbce1d069785735ce5cc3595a1e5a108ecb13d839bf0949a99e8bde42190",
-    750: "dce939878d43a2629cffa3f24ac4ae744e39cfdbfd7b9e4c234acc6ba5592704",
-    850: "d473f6ea96ba11018db1e2c5f4c2ff909c65cf8a28990ea159c4cf34c237f4c3",
-}
+INTERMEDIATE_OUTLINE_DIGESTS = {150: '83079286cbc6dc27c1c028c6c8e4353df33e6bdc4d60a209c71b2fea8639c2f0', 250: '9dd353d00519bca4f754ac9d1898ef4cb0a198ae43844cd0e5bb835737b9b77e', 350: 'dd996ea0ee8570379e0a05965328e75c5e6b4945f59a12fee9f5b6cdfab2ca20', 450: '3ee6d3b40d4b8fec6102471ebf545fca2fe5e6da6ef93a17c25e58023b7271cb', 550: 'bc472c5845f54c6655ea1d9a515b883b70f1cff17e9cd003faabdce82c59e019', 650: 'bab599e3aefff4e72d396eef568d2b0e11c4045e310643c5e67cccda67f34100', 750: '8c48db63db484d68a766fbdd4cfbee69095521b06f7533a93d8e9d7aaa4de568', 850: '4bb927331ea1afc30fe4982d20cca133290e326e95c47de18289e665194f3bf5'}
+ITALIC_INTERMEDIATE_OUTLINE_DIGESTS = {150: '140a24db70e775789a4c19ae56c4b79b92588e184fbfb148f6bb9028dbbe78a4', 250: 'cb59ec354875ad542da7676fabec6353456c88ad1d51bd9fbd785a3af3e4113b', 350: 'cd7e3627c5aa325c8c7e02db276d64cd7c258dc8fa68d161b8f37bcb1d3dd019', 450: 'a899b57ba30d42461da4b68811c1ae672257ef82312efccf1290d109e6a64fae', 550: '062883f434fe7c17a408edeafa02dc07b24cfb7ec9bae841f718d6de58398f1c', 650: 'e795a536e7fcb4bb34f7483fc46f418c64d757c4351cff721cd59d5af8ef3fdc', 750: '85df63d88f097fd712a26f4b235995f3cda9c85edd678bb28472683e0d0669e6', 850: '0bf9771e8025a0f9dc77c8257a206de95a5bc2ebbddba65bf6828c81e35f263f'}
 NPM_ENTRYPOINTS = ("font.js", "sans.js")
 NPM_UPRIGHT_STYLES = (
     "Thin",
@@ -210,9 +186,8 @@ def check_variable(root: Path, italic: bool, digests: dict[int, str]) -> tuple[P
         otf_static = TTFont(root / "otf" / f"NamcheShadowSans-{style}.otf", recalcTimestamp=False)
         if "fvar" in static:
             raise ValueError(f"static unexpectedly contains fvar: {style}")
-        missing = PARKED_GLYPHS - set(static.getGlyphOrder())
-        if missing:
-            raise ValueError(f"{style} static is missing parked VF glyphs: {sorted(missing)}")
+        if PARKED_GLYPHS & set(static.getGlyphOrder()):
+            raise ValueError(f"{style} static contains out-of-scope parked glyphs")
         instance = instantiateVariableFont(variable, {"wght": weight}, inplace=False, optimize=False)
         if previous_instance is not None:
             assert_contour_correspondence(

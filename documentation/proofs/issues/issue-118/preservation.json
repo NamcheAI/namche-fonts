@@ -1,0 +1,752 @@
+[
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-Black.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-BlackItalic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-Bold.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-BoldItalic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-ExtraBold.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-ExtraBoldItalic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-ExtraLight.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-ExtraLightItalic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-Italic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-Light.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-LightItalic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-Medium.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-MediumItalic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-Regular.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-SemiBold.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-SemiBoldItalic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-Thin.otf",
+    "retained_glyphs": 535,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/otf/NamcheShadowMono-ThinItalic.otf",
+    "retained_glyphs": 529,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-Black.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-BlackItalic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-Bold.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-BoldItalic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-ExtraBold.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-ExtraBoldItalic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-ExtraLight.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-ExtraLightItalic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-Italic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-Light.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-LightItalic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-Medium.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-MediumItalic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-Regular.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-SemiBold.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-SemiBoldItalic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-Thin.ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/ttf/NamcheShadowMono-ThinItalic.ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/variable/NamcheShadowMono-Italic[wght].ttf",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/variable/NamcheShadowMono[wght].ttf",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-Black.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-BlackItalic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-Bold.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-BoldItalic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-ExtraBold.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-ExtraBoldItalic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-ExtraLight.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-ExtraLightItalic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-Italic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-Italic[wght].woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-Light.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-LightItalic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-Medium.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-MediumItalic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-Regular.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-SemiBold.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-SemiBoldItalic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-Thin.woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono-ThinItalic.woff2",
+    "retained_glyphs": 538,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowMono/webfonts/NamcheShadowMono[wght].woff2",
+    "retained_glyphs": 544,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-Black.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-BlackItalic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-Bold.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-BoldItalic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-ExtraBold.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-ExtraBoldItalic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-ExtraLight.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-ExtraLightItalic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-Italic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-Light.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-LightItalic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-Medium.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-MediumItalic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-Regular.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-SemiBold.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-SemiBoldItalic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-Thin.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/otf/NamcheShadowSans-ThinItalic.otf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-Black.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-BlackItalic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-Bold.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-BoldItalic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-ExtraBold.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-ExtraBoldItalic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-ExtraLight.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-ExtraLightItalic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-Italic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-Light.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-LightItalic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-Medium.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-MediumItalic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-Regular.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-SemiBold.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-SemiBoldItalic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-Thin.ttf",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/ttf/NamcheShadowSans-ThinItalic.ttf",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/variable/NamcheShadowSans-Italic[wght].ttf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/variable/NamcheShadowSans[wght].ttf",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-Black.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-BlackItalic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-Bold.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-BoldItalic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-ExtraBold.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-ExtraBoldItalic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-ExtraLight.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-ExtraLightItalic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-Italic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-Italic[wght].woff2",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-Light.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-LightItalic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-Medium.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-MediumItalic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-Regular.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-SemiBold.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-SemiBoldItalic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-Thin.woff2",
+    "retained_glyphs": 507,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans-ThinItalic.woff2",
+    "retained_glyphs": 513,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShadowSans/webfonts/NamcheShadowSans[wght].woff2",
+    "retained_glyphs": 504,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/otf/NamcheShape-Metaball.otf",
+    "retained_glyphs": 1485,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/otf/NamcheShape-Origin.otf",
+    "retained_glyphs": 1485,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/otf/NamcheShape-Skeleton.otf",
+    "retained_glyphs": 1485,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/ttf/NamcheShape-Metaball.ttf",
+    "retained_glyphs": 1491,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/ttf/NamcheShape-Origin.ttf",
+    "retained_glyphs": 1491,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/ttf/NamcheShape-Skeleton.ttf",
+    "retained_glyphs": 1491,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/webfonts/NamcheShape-Metaball.woff2",
+    "retained_glyphs": 1491,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/webfonts/NamcheShape-Origin.woff2",
+    "retained_glyphs": 1491,
+    "encoded_characters": 319,
+    "differences": []
+  },
+  {
+    "file": "fonts/NamcheShape/webfonts/NamcheShape-Skeleton.woff2",
+    "retained_glyphs": 1491,
+    "encoded_characters": 319,
+    "differences": []
+  }
+]

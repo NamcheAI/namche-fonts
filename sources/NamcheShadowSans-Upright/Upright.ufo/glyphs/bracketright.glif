@@ -4,18 +4,18 @@
   <unicode hex="005D"/>
   <outline>
     <contour>
-      <point identifier="p0" x="15" y="-110" type="line"/>
-      <point identifier="p1" x="15" y="-40" type="line"/>
-      <point identifier="p2" x="115" y="-40" type="line"/>
-      <point identifier="p3" x="175" y="-40"/>
-      <point identifier="p4" x="175" y="20" type="qcurve"/>
-      <point identifier="p5" x="175" y="620" type="line"/>
-      <point identifier="p6" x="175" y="680"/>
-      <point identifier="p7" x="115" y="680" type="qcurve"/>
-      <point identifier="p8" x="15" y="680" type="line"/>
-      <point identifier="p9" x="15" y="750" type="line"/>
-      <point identifier="p10" x="255" y="750" type="line"/>
-      <point identifier="p11" x="255" y="-110" type="line"/>
+      <point x="15" y="-110" type="line" identifier="p0"/>
+      <point x="15" y="-40" type="line" identifier="p1"/>
+      <point x="115" y="-40" type="line" identifier="p2"/>
+      <point x="175" y="-40" identifier="p3"/>
+      <point x="175" y="20" type="qcurve" identifier="p4"/>
+      <point x="175" y="620" type="line" identifier="p5"/>
+      <point x="175" y="680" identifier="p6"/>
+      <point x="115" y="680" type="qcurve" identifier="p7"/>
+      <point x="15" y="680" type="line" identifier="p8"/>
+      <point x="15" y="750" type="line" identifier="p9"/>
+      <point x="255" y="750" type="line" identifier="p10"/>
+      <point x="255" y="-110" type="line" identifier="p11"/>
     </contour>
   </outline>
   <lib>

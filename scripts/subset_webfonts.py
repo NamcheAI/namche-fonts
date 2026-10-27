@@ -15,6 +15,7 @@ from fontTools.ttLib.tables.otBase import USE_HARFBUZZ_REPACKER
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_UNICODE_FILE = ROOT / "sources" / "subsets" / "latin.txt"
+CORE_UNICODE_FILE = ROOT / "sources" / "subsets" / "latin-core.txt"
 SUBSET_NAME = "latin"
 UNICODE_RANGE_RE = re.compile(
     r"^U\+([0-9A-Fa-f]{1,6})(?:-([0-9A-Fa-f]{1,6}))?$"
@@ -106,11 +107,19 @@ def build_subsets(root: Path, layout: str, unicode_file: Path) -> list[Path]:
     outputs: list[Path] = []
     for source in sources:
         destination = subset_path(source)
-        subset_webfont(source, destination, codepoints)
+        is_namche = source.relative_to(root).parts[0].startswith(('Namche', 'namche-'))
+        selected = read_unicode_ranges(CORE_UNICODE_FILE)[0] if is_namche else codepoints
+        if is_namche:
+            # The compatibility -latin entry point now carries the same Core
+            # scope as its unsuffixed Namche counterpart. Geist is unchanged.
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, destination)
+        else:
+            subset_webfont(source, destination, selected)
 
         original = TTFont(source, lazy=True)
         subset = TTFont(destination, lazy=True)
-        expected = unicode_codepoints(original) & codepoints
+        expected = unicode_codepoints(original) & selected
         actual = unicode_codepoints(subset)
         if actual != expected:
             missing = sorted(expected - actual)
@@ -118,7 +127,7 @@ def build_subsets(root: Path, layout: str, unicode_file: Path) -> list[Path]:
             raise RuntimeError(
                 f"{destination}: cmap mismatch; missing={missing}, unexpected={unexpected}"
             )
-        if destination.stat().st_size >= source.stat().st_size:
+        if not is_namche and destination.stat().st_size >= source.stat().st_size:
             raise RuntimeError(
                 f"{destination}: subset is not smaller than {source} "
                 f"({destination.stat().st_size} >= {source.stat().st_size})"

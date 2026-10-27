@@ -4,18 +4,18 @@
   <unicode hex="0022"/>
   <outline>
     <contour>
-      <point identifier="p0" x="98" y="444" type="line"/>
-      <point identifier="p1" x="118" y="630" type="line"/>
-      <point identifier="p2" x="135" y="710" type="line"/>
-      <point identifier="p3" x="223" y="710" type="line"/>
-      <point identifier="p4" x="160" y="444" type="line"/>
+      <point x="98" y="444" type="line" identifier="p0"/>
+      <point x="118" y="630" type="line" identifier="p1"/>
+      <point x="135" y="710" type="line" identifier="p2"/>
+      <point x="223" y="710" type="line" identifier="p3"/>
+      <point x="160" y="444" type="line" identifier="p4"/>
     </contour>
     <contour>
-      <point identifier="p5" x="252" y="444" type="line"/>
-      <point identifier="p6" x="303" y="710" type="line"/>
-      <point identifier="p7" x="391" y="710" type="line"/>
-      <point identifier="p8" x="374" y="630" type="line"/>
-      <point identifier="p9" x="314" y="444" type="line"/>
+      <point x="252" y="444" type="line" identifier="p5"/>
+      <point x="303" y="710" type="line" identifier="p6"/>
+      <point x="391" y="710" type="line" identifier="p7"/>
+      <point x="374" y="630" type="line" identifier="p8"/>
+      <point x="314" y="444" type="line" identifier="p9"/>
     </contour>
   </outline>
   <lib>

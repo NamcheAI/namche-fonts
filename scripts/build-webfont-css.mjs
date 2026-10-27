@@ -35,6 +35,7 @@ async function readUnicodeRange(file) {
 }
 
 const latinUnicodeRange = await readUnicodeRange(latinUnicodeFile);
+const coreUnicodeRange = await readUnicodeRange(path.join(repositoryRoot, "sources", "subsets", "latin-core.txt"));
 
 function parseArguments(arguments_) {
   const options = { cdn: false, check: false };
@@ -241,7 +242,7 @@ async function collectFaces(family, directory, urlForFile, subset = null) {
         ...face,
         filename,
         subset,
-        unicodeRange: subset ? latinUnicodeRange : null,
+        unicodeRange: subset ? (family.key === "geist" ? latinUnicodeRange : coreUnicodeRange) : null,
       };
     })
     .filter(Boolean);
@@ -313,7 +314,7 @@ function deriveSubsetFaces(faces, subset, urlForFile) {
       ...face,
       filename,
       subset,
-      unicodeRange: latinUnicodeRange,
+      unicodeRange: face.familyName === "Geist" ? latinUnicodeRange : coreUnicodeRange,
       url: urlForFile(`subsets/${filename}`),
     };
   });

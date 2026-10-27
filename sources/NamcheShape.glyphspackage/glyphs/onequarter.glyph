@@ -22,5 +22,4 @@ width = 760;
 );
 metricLeft = h;
 metricRight = h;
-unicode = 188;
 }

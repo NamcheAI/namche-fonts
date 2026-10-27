@@ -61,10 +61,11 @@ Or import only the families they use:
 @import "@namche/namche-shadow/shape.css";
 ```
 
-The self-hosted Latin equivalents are `fonts-latin.css`, `sans-latin.css`,
-`mono-latin.css`, and `shape-latin.css`. Use the unsuffixed entry points for
-user-generated or multilingual text and for Mono content that needs box
-drawing or technical symbols.
+All Namche fonts contain exactly 319 GF Latin Core characters. Cyrillic,
+box drawing and characters outside that set are no longer included. This is a
+breaking coverage change; bundled upstream Geist remains unchanged.
+The `fonts-latin.css`, `sans-latin.css`, `mono-latin.css` and `shape-latin.css`
+entry points remain available, with the same Namche coverage as unsuffixed files.
 
 This path includes the WOFF2 files in the application build and works offline
 or in air-gapped environments.

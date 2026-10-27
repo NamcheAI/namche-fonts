@@ -2,26 +2,26 @@
 <glyph name="uni03060301" format="2">
   <outline>
     <contour>
-      <point identifier="p0" x="241" y="731" type="line"/>
-      <point identifier="p1" x="311" y="839" type="line"/>
-      <point identifier="p2" x="397" y="839" type="line"/>
-      <point identifier="p3" x="309" y="731" type="line"/>
+      <point x="241" y="731" type="line" identifier="p0"/>
+      <point x="311" y="839" type="line" identifier="p1"/>
+      <point x="397" y="839" type="line" identifier="p2"/>
+      <point x="309" y="731" type="line" identifier="p3"/>
     </contour>
     <contour>
-      <point identifier="p4" x="256" y="593" type="qcurve"/>
-      <point identifier="p5" x="199" y="593"/>
-      <point identifier="p6" x="141" y="657"/>
-      <point identifier="p7" x="141" y="721" type="qcurve"/>
-      <point identifier="p8" x="199" y="721" type="line"/>
-      <point identifier="p9" x="199" y="684"/>
-      <point identifier="p10" x="231" y="655"/>
-      <point identifier="p11" x="264" y="655" type="qcurve"/>
-      <point identifier="p12" x="302" y="655"/>
-      <point identifier="p13" x="350" y="687"/>
-      <point identifier="p14" x="362" y="721" type="qcurve"/>
-      <point identifier="p15" x="420" y="721" type="line"/>
-      <point identifier="p16" x="404" y="663"/>
-      <point identifier="p17" x="326" y="593"/>
+      <point x="256" y="593" type="qcurve" identifier="p4"/>
+      <point x="199" y="593" identifier="p5"/>
+      <point x="141" y="657" identifier="p6"/>
+      <point x="141" y="721" type="qcurve" identifier="p7"/>
+      <point x="199" y="721" type="line" identifier="p8"/>
+      <point x="199" y="684" identifier="p9"/>
+      <point x="231" y="655" identifier="p10"/>
+      <point x="264" y="655" type="qcurve" identifier="p11"/>
+      <point x="302" y="655" identifier="p12"/>
+      <point x="350" y="687" identifier="p13"/>
+      <point x="362" y="721" type="qcurve" identifier="p14"/>
+      <point x="420" y="721" type="line" identifier="p15"/>
+      <point x="404" y="663" identifier="p16"/>
+      <point x="326" y="593" identifier="p17"/>
     </contour>
   </outline>
   <lib>

@@ -5,6 +5,15 @@ This repository is the source, build, review, and release home for
 but Namche-specific source and release decisions take precedence over upstream
 conventions.
 
+## Character scope
+
+All Namche families, working sources, generated releases, npm assets and the
+Google Fonts candidate encode exactly the 319 characters in
+`sources/charsets/GF_Latin_Core.nam`. Keep necessary unencoded components,
+ligatures and alternates. Run `scripts/check_latin_core.py` after source imports
+and builds. Historical evidence is not an active coverage declaration.
+`originals/geist/` and the bundled upstream `fonts/Geist/` remain unchanged.
+
 ## Sources and ownership
 
 - `sources/` contains the working Glyphs packages and builder configuration.
@@ -50,11 +59,9 @@ conventions.
   layout and metadata, flattens nested TrueType components, produces WOFF2,
   and refreshes the npm font directory. The export path must contain `otf/`
   and `ttf/` subdirectories.
-- Keep the complete ordered seven-filter stack. The final tier is
-  `RoundCorner;-10;include:Yusbig-cy,yusbig-cy,mu,baht,peso` (Glyphs may
-  serialize spaces after commas).
-- `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` must export in every
-  static. Do not add `Remove Glyphs` to static instances.
+- Preserve the ordered RoundCorner tiers for retained Latin Core glyphs.
+  Remove excluded names from include lists and omit a tier with no retained
+  names. Never turn an empty include list into a filter applying to all glyphs.
 - Build both variable fonts with `make build-sans-variable` from the recovered
   quadratic UFO and indexed variation/layout XML in
   `sources/NamcheShadowSans-Upright/` and `sources/NamcheShadowSans-Italic/`.
@@ -73,13 +80,8 @@ conventions.
   with complete STAT-matching style names, all within 32 characters. Existing
   release/npm names remain **Namche Shadow Sans**. Package renaming may change
   only the name table and checksum adjustment; preserve every other table.
-  A separate candidate-only recipe in `scripts/googlefonts_marks.py` adds
-  U+0331 with below-mark attachment and stacking. Preserve every existing
-  glyph's outline, variations and metrics and verify existing text shaping.
-  This candidate addition does not change the approved production VFs or statics.
-- Keep `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` parked from the
-  variable build until their rounded masters match. They must remain in every
-  static.
+  The candidate has the same exact GF Latin Core encoding as the release.
+  Do not add candidate-only characters outside the pinned scope.
 - The italic package is the one Sans exception to the Glyphs-export rule: it
   carries no RoundCorner filters, so its Shadow treatment lives in the masters
   and `gftools builder sources/config-NamcheShadowSans-Italic.yaml` reproduces
@@ -92,17 +94,17 @@ conventions.
   since been retuned for upright work; pass `--italic-recipe` to reproduce the
   profile the shipped italics were baked with. `make check-sans-counters` blocks
   the boolean-topology regression that collapsed the italic `A` counter (#78).
-- Namche Shadow Mono remains an outline-identical renamed Geist derivative.
+- Namche Shadow Mono preserves upstream outlines for its retained Latin Core glyphs.
 
 ## Namche Shape production rules
 
 - Namche Shape (Metaball, Origin, Skeleton; designed by Michael Marte for
   Ruhm etc.) replaced Namche Shadow Pixel on 2026-09-29. Its grid source is
-  `sources/NamcheShape.glyphspackage`, the Geist Pixel package with the
-  reviewed U+20B9 **₹** and U+25CC **◌** additions. Every base glyph there is
-  a set of 38-unit `pixel` components; the grid may change only through a
-  focused issue and reviewed design proof, and `make check-source-copies`
-  keeps it byte-identical to `originals/geist/` apart from those additions.
+  `sources/NamcheShape.glyphspackage`, restricted to GF Latin Core with
+  unencoded component and layout dependencies. Every base glyph is a set of
+  38-unit `pixel` components. Grid edits need a focused issue and design proof;
+  `make check-source-copies` checks retained geometry against the immutable
+  upstream archive, with the recorded scope migration in `sources/charsets/`.
 - `scripts/namche_shape.py` turns the grid into outlines and
   `scripts/build_namche_shape.py` (`make build-shape`) compiles OTF, TTF, and
   WOFF2 with ufo2ft, keeping the source's metrics, kerning, anchors, carets,
@@ -125,12 +127,9 @@ conventions.
   (`ORIGIN_MODE = "structure"`, inspired by Nigel Cottier's *Letterform
   Variations*); Metaball melts along strokes more often than across them.
 - `make check-namche-shape` blocks regressions across release and npm
-  binaries: glyph set, Unicode map, and widths match the source; U+2028/U+2029
-  stay inkless at 600 units; the zero-width soft hyphen stays; all source
-  `caret_*` positions (including `fi` and `fl`) survive; ₹ and ◌ carry ink;
-  every combining mark attaches to ◌; and į + a top mark shapes to dotless i +
-  ogonek + mark. `make check-namche-shape-reproducible` rebuilds and requires
-  every committed outline to equal the generator output.
+  binaries: exact GF Latin Core cmap, source widths, retained ligature carets,
+  combining-mark attachment and dotless-i behavior. Run
+  `make check-namche-shape-reproducible` to compare every generated outline.
 
 ## Metadata and layout (all families)
 
@@ -214,8 +213,7 @@ cd packages/next && npm pack --dry-run
 Additionally, inspect representative inner corners (`H`, `E`, `a`, diagonals,
 and figures) in every changed weight. Confirm the family names and credits in
 the built name tables, verify that the Sans statics contain no `fvar` table,
-and verify that the five temporarily parked variable glyphs are present in all
-Sans statics.
+and run `venv/bin/python scripts/check_latin_core.py`.
 
 Do not dismiss Fontspector output merely because CI currently marks the step as
 non-blocking. Summarize new warnings in the PR, distinguish upstream/pre-existing
