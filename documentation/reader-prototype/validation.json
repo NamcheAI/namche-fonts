@@ -1,0 +1,117 @@
+{
+  "prototype": true,
+  "export": "Glyphs 3.4.1",
+  "recipe_scale": 0.5,
+  "glyphs": 975,
+  "weight": 400,
+  "checks": {
+    "H": {
+      "ink": true,
+      "curves": 4,
+      "width": 713,
+      "original_width": 713
+    },
+    "E": {
+      "ink": true,
+      "curves": 4,
+      "width": 603,
+      "original_width": 603
+    },
+    "a": {
+      "ink": true,
+      "curves": 16,
+      "width": 551,
+      "original_width": 551
+    },
+    "e": {
+      "ink": true,
+      "curves": 11,
+      "width": 561,
+      "original_width": 561
+    },
+    "n": {
+      "ink": true,
+      "curves": 5,
+      "width": 581,
+      "original_width": 581
+    },
+    "M": {
+      "ink": true,
+      "curves": 3,
+      "width": 877,
+      "original_width": 877
+    },
+    "N": {
+      "ink": true,
+      "curves": 2,
+      "width": 743,
+      "original_width": 743
+    },
+    "2": {
+      "ink": true,
+      "curves": 9,
+      "width": 619,
+      "original_width": 619
+    },
+    "4": {
+      "ink": true,
+      "curves": 6,
+      "width": 615,
+      "original_width": 615
+    },
+    "6": {
+      "ink": true,
+      "curves": 13,
+      "width": 593,
+      "original_width": 593
+    },
+    "9": {
+      "ink": true,
+      "curves": 13,
+      "width": 593,
+      "original_width": 593
+    },
+    "\u00c4": {
+      "ink": true,
+      "curves": 5,
+      "width": 668,
+      "original_width": 668
+    },
+    "\u00d6": {
+      "ink": true,
+      "curves": 8,
+      "width": 739,
+      "original_width": 739
+    },
+    "\u00dc": {
+      "ink": true,
+      "curves": 4,
+      "width": 689,
+      "original_width": 689
+    },
+    "\u00e4": {
+      "ink": true,
+      "curves": 16,
+      "width": 551,
+      "original_width": 551
+    },
+    "\u00f6": {
+      "ink": true,
+      "curves": 8,
+      "width": 573,
+      "original_width": 573
+    },
+    "\u00fc": {
+      "ink": true,
+      "curves": 5,
+      "width": 575,
+      "original_width": 575
+    },
+    "\u00df": {
+      "ink": true,
+      "curves": 11,
+      "width": 587,
+      "original_width": 587
+    }
+  }
+}
