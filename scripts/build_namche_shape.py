@@ -30,6 +30,7 @@ from fontTools.ttLib import TTFont
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import namche_shape as ns  # noqa: E402
 import rename_font_metadata  # noqa: E402
+from latin_core import restrict_font
 
 FAMILY = "Namche Shape"
 # Each glyph ships this many seeded variants (the default plus alternates);
@@ -147,6 +148,7 @@ def build_style(style: str, grids, overrides, output: Path) -> list[Path]:
             options["flattenComponents"] = True
         font = compile_fn(ufo, **options)
         finalize(font, style)
+        restrict_font(font)
         path = output / sub / f"{stem}{suffix}"
         path.parent.mkdir(parents=True, exist_ok=True)
         font.save(path)

@@ -1,8 +1,8 @@
-import requests
-
-GF_Latin_All = "https://github.com/googlefonts/glyphsets/raw/main/GF_glyphsets/Latin/glyphs/CustomFilter_GF_Latin.plist"
-dest = "sources/CustomFilter_GF_Latin_All.plist"
-
-r = requests.get(GF_Latin_All)
-with open(dest, "wb") as f:
-    f.write(r.content)
+"""Generate the Glyphs editor filter from the pinned GF Latin Core list."""
+from pathlib import Path
+import plistlib
+import glyphsLib
+from latin_core import ROOT, CODEPOINTS
+font = glyphsLib.GSFont(str(ROOT/'sources/NamcheShadowSans.glyphspackage'))
+names = sorted(g.name for g in font.glyphs if any(int(u,16) in CODEPOINTS for u in g.unicodes))
+(ROOT/'sources/CustomFilter_GF_Latin_Core.plist').write_bytes(plistlib.dumps([{'name':'GF Latin Core','list':names}]))

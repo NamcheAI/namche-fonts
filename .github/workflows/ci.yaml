@@ -55,7 +55,10 @@ jobs:
               'Makefile',
               'requirements-checks.txt',
               'scripts/check_language_shaping.py',
-              'scripts/rename_font_metadata.py'
+              'scripts/rename_font_metadata.py',
+              'scripts/latin_core.py',
+              'scripts/check_latin_core.py',
+              'sources/charsets/'
             );
             const sharedBuild = changed(
               'Makefile',
@@ -63,7 +66,10 @@ jobs:
               'requirements.txt',
               'scripts/customize.py',
               'scripts/read-config.py',
-              'scripts/rename_font_metadata.py'
+              'scripts/rename_font_metadata.py',
+              'scripts/latin_core.py',
+              'scripts/check_latin_core.py',
+              'sources/charsets/'
             );
 
             const sansQa = full || sharedQa || changed(
@@ -171,6 +177,9 @@ jobs:
       - name: Check generated webfont CSS
         working-directory: packages/next
         run: npm run check:css
+
+      - name: Check exact Namche GF Latin Core scope
+        run: python scripts/check_latin_core.py
 
       - name: Smoke test packed webfont CSS
         run: node scripts/check-packed-webfont-css.mjs

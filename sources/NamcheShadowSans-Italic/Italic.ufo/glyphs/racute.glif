@@ -4,29 +4,29 @@
   <unicode hex="0155"/>
   <outline>
     <contour>
-      <point identifier="p0" x="229" y="598" type="line"/>
-      <point identifier="p1" x="321" y="726" type="line"/>
-      <point identifier="p2" x="417" y="726" type="line"/>
-      <point identifier="p3" x="299" y="598" type="line"/>
+      <point x="229" y="598" type="line" identifier="p0"/>
+      <point x="321" y="726" type="line" identifier="p1"/>
+      <point x="417" y="726" type="line" identifier="p2"/>
+      <point x="299" y="598" type="line" identifier="p3"/>
     </contour>
     <contour>
-      <point identifier="p4" x="108" y="0" type="line"/>
-      <point identifier="p5" x="24" y="0" type="line"/>
-      <point identifier="p6" x="136" y="530" type="line"/>
-      <point identifier="p7" x="210" y="530" type="line"/>
-      <point identifier="p8" x="204" y="496" type="line"/>
-      <point identifier="p9" x="233" y="488"/>
-      <point identifier="p10" x="255" y="507" type="qcurve"/>
-      <point identifier="p11" x="273" y="518"/>
-      <point identifier="p12" x="315" y="530"/>
-      <point identifier="p13" x="339" y="530" type="qcurve"/>
-      <point identifier="p14" x="391" y="530" type="line"/>
-      <point identifier="p15" x="374" y="450" type="line"/>
-      <point identifier="p16" x="322" y="450" type="line"/>
-      <point identifier="p17" x="282" y="450"/>
-      <point identifier="p18" x="223" y="421"/>
-      <point identifier="p19" x="185" y="363"/>
-      <point identifier="p20" x="176" y="320" type="qcurve"/>
+      <point x="108" y="0" type="line" identifier="p4"/>
+      <point x="24" y="0" type="line" identifier="p5"/>
+      <point x="136" y="530" type="line" identifier="p6"/>
+      <point x="210" y="530" type="line" identifier="p7"/>
+      <point x="204" y="496" type="line" identifier="p8"/>
+      <point x="233" y="488" identifier="p9"/>
+      <point x="255" y="507" type="qcurve" identifier="p10"/>
+      <point x="273" y="518" identifier="p11"/>
+      <point x="315" y="530" identifier="p12"/>
+      <point x="339" y="530" type="qcurve" identifier="p13"/>
+      <point x="391" y="530" type="line" identifier="p14"/>
+      <point x="374" y="450" type="line" identifier="p15"/>
+      <point x="322" y="450" type="line" identifier="p16"/>
+      <point x="282" y="450" identifier="p17"/>
+      <point x="223" y="421" identifier="p18"/>
+      <point x="185" y="363" identifier="p19"/>
+      <point x="176" y="320" type="qcurve" identifier="p20"/>
     </contour>
   </outline>
   <lib>

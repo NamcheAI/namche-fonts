@@ -3,64 +3,64 @@
   <advance width="600"/>
   <outline>
     <contour>
-      <point identifier="p0" x="40" y="0" type="line"/>
-      <point identifier="p1" x="40" y="710" type="line"/>
-      <point identifier="p2" x="565" y="710" type="line"/>
-      <point identifier="p3" x="565" y="0" type="line"/>
+      <point x="40" y="0" type="line" identifier="p0"/>
+      <point x="40" y="710" type="line" identifier="p1"/>
+      <point x="565" y="710" type="line" identifier="p2"/>
+      <point x="565" y="0" type="line" identifier="p3"/>
     </contour>
     <contour>
-      <point identifier="p4" x="73" y="190" type="line"/>
-      <point identifier="p5" x="73" y="147"/>
-      <point identifier="p6" x="121" y="131"/>
-      <point identifier="p7" x="146" y="166" type="qcurve"/>
-      <point identifier="p8" x="252" y="313" type="line"/>
-      <point identifier="p9" x="281" y="354"/>
-      <point identifier="p10" x="252" y="397" type="qcurve"/>
-      <point identifier="p11" x="146" y="544" type="line"/>
-      <point identifier="p12" x="121" y="579"/>
-      <point identifier="p13" x="73" y="563"/>
-      <point identifier="p14" x="73" y="520" type="qcurve"/>
+      <point x="73" y="190" type="line" identifier="p4"/>
+      <point x="73" y="147" identifier="p5"/>
+      <point x="121" y="131" identifier="p6"/>
+      <point x="146" y="166" type="qcurve" identifier="p7"/>
+      <point x="252" y="313" type="line" identifier="p8"/>
+      <point x="281" y="354" identifier="p9"/>
+      <point x="252" y="397" type="qcurve" identifier="p10"/>
+      <point x="146" y="544" type="line" identifier="p11"/>
+      <point x="121" y="579" identifier="p12"/>
+      <point x="73" y="563" identifier="p13"/>
+      <point x="73" y="520" type="qcurve" identifier="p14"/>
     </contour>
     <contour>
-      <point identifier="p15" x="147" y="109" type="line"/>
-      <point identifier="p16" x="125" y="79"/>
-      <point identifier="p17" x="148" y="36"/>
-      <point identifier="p18" x="185" y="36" type="qcurve"/>
-      <point identifier="p19" x="420" y="36" type="line"/>
-      <point identifier="p20" x="458" y="36"/>
-      <point identifier="p21" x="480" y="79"/>
-      <point identifier="p22" x="458" y="109" type="qcurve"/>
-      <point identifier="p23" x="345" y="267" type="line"/>
-      <point identifier="p24" x="326" y="294"/>
-      <point identifier="p25" x="280" y="293"/>
-      <point identifier="p26" x="261" y="267" type="qcurve"/>
+      <point x="147" y="109" type="line" identifier="p15"/>
+      <point x="125" y="79" identifier="p16"/>
+      <point x="148" y="36" identifier="p17"/>
+      <point x="185" y="36" type="qcurve" identifier="p18"/>
+      <point x="420" y="36" type="line" identifier="p19"/>
+      <point x="458" y="36" identifier="p20"/>
+      <point x="480" y="79" identifier="p21"/>
+      <point x="458" y="109" type="qcurve" identifier="p22"/>
+      <point x="345" y="267" type="line" identifier="p23"/>
+      <point x="326" y="294" identifier="p24"/>
+      <point x="280" y="293" identifier="p25"/>
+      <point x="261" y="267" type="qcurve" identifier="p26"/>
     </contour>
     <contour>
-      <point identifier="p27" x="185" y="674" type="line"/>
-      <point identifier="p28" x="148" y="674"/>
-      <point identifier="p29" x="125" y="631"/>
-      <point identifier="p30" x="147" y="601" type="qcurve"/>
-      <point identifier="p31" x="261" y="443" type="line"/>
-      <point identifier="p32" x="280" y="417"/>
-      <point identifier="p33" x="326" y="416"/>
-      <point identifier="p34" x="345" y="443" type="qcurve"/>
-      <point identifier="p35" x="458" y="601" type="line"/>
-      <point identifier="p36" x="480" y="631"/>
-      <point identifier="p37" x="458" y="674"/>
-      <point identifier="p38" x="420" y="674" type="qcurve"/>
+      <point x="185" y="674" type="line" identifier="p27"/>
+      <point x="148" y="674" identifier="p28"/>
+      <point x="125" y="631" identifier="p29"/>
+      <point x="147" y="601" type="qcurve" identifier="p30"/>
+      <point x="261" y="443" type="line" identifier="p31"/>
+      <point x="280" y="417" identifier="p32"/>
+      <point x="326" y="416" identifier="p33"/>
+      <point x="345" y="443" type="qcurve" identifier="p34"/>
+      <point x="458" y="601" type="line" identifier="p35"/>
+      <point x="480" y="631" identifier="p36"/>
+      <point x="458" y="674" identifier="p37"/>
+      <point x="420" y="674" type="qcurve" identifier="p38"/>
     </contour>
     <contour>
-      <point identifier="p39" x="353" y="397" type="line"/>
-      <point identifier="p40" x="323" y="355"/>
-      <point identifier="p41" x="353" y="313" type="qcurve"/>
-      <point identifier="p42" x="459" y="166" type="line"/>
-      <point identifier="p43" x="484" y="131"/>
-      <point identifier="p44" x="532" y="147"/>
-      <point identifier="p45" x="532" y="190" type="qcurve"/>
-      <point identifier="p46" x="532" y="520" type="line"/>
-      <point identifier="p47" x="532" y="563"/>
-      <point identifier="p48" x="484" y="579"/>
-      <point identifier="p49" x="459" y="544" type="qcurve"/>
+      <point x="353" y="397" type="line" identifier="p39"/>
+      <point x="323" y="355" identifier="p40"/>
+      <point x="353" y="313" type="qcurve" identifier="p41"/>
+      <point x="459" y="166" type="line" identifier="p42"/>
+      <point x="484" y="131" identifier="p43"/>
+      <point x="532" y="147" identifier="p44"/>
+      <point x="532" y="190" type="qcurve" identifier="p45"/>
+      <point x="532" y="520" type="line" identifier="p46"/>
+      <point x="532" y="563" identifier="p47"/>
+      <point x="484" y="579" identifier="p48"/>
+      <point x="459" y="544" type="qcurve" identifier="p49"/>
     </contour>
   </outline>
   <lib>

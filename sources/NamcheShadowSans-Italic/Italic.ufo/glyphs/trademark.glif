@@ -4,29 +4,29 @@
   <unicode hex="2122"/>
   <outline>
     <contour>
-      <point identifier="p0" x="442" y="359" type="line"/>
-      <point identifier="p1" x="517" y="710" type="line"/>
-      <point identifier="p2" x="595" y="710" type="line"/>
-      <point identifier="p3" x="640" y="415" type="line"/>
-      <point identifier="p4" x="812" y="710" type="line"/>
-      <point identifier="p5" x="893" y="710" type="line"/>
-      <point identifier="p6" x="818" y="359" type="line"/>
-      <point identifier="p7" x="760" y="359" type="line"/>
-      <point identifier="p8" x="815" y="617" type="line"/>
-      <point identifier="p9" x="669" y="359" type="line"/>
-      <point identifier="p10" x="595" y="359" type="line"/>
-      <point identifier="p11" x="556" y="620" type="line"/>
-      <point identifier="p12" x="500" y="359" type="line"/>
+      <point x="442" y="359" type="line" identifier="p0"/>
+      <point x="517" y="710" type="line" identifier="p1"/>
+      <point x="595" y="710" type="line" identifier="p2"/>
+      <point x="640" y="415" type="line" identifier="p3"/>
+      <point x="812" y="710" type="line" identifier="p4"/>
+      <point x="893" y="710" type="line" identifier="p5"/>
+      <point x="818" y="359" type="line" identifier="p6"/>
+      <point x="760" y="359" type="line" identifier="p7"/>
+      <point x="815" y="617" type="line" identifier="p8"/>
+      <point x="669" y="359" type="line" identifier="p9"/>
+      <point x="595" y="359" type="line" identifier="p10"/>
+      <point x="556" y="620" type="line" identifier="p11"/>
+      <point x="500" y="359" type="line" identifier="p12"/>
     </contour>
     <contour>
-      <point identifier="p13" x="224" y="359" type="line"/>
-      <point identifier="p14" x="286" y="654" type="line"/>
-      <point identifier="p15" x="175" y="654" type="line"/>
-      <point identifier="p16" x="187" y="710" type="line"/>
-      <point identifier="p17" x="470" y="710" type="line"/>
-      <point identifier="p18" x="458" y="654" type="line"/>
-      <point identifier="p19" x="346" y="654" type="line"/>
-      <point identifier="p20" x="284" y="359" type="line"/>
+      <point x="224" y="359" type="line" identifier="p13"/>
+      <point x="286" y="654" type="line" identifier="p14"/>
+      <point x="175" y="654" type="line" identifier="p15"/>
+      <point x="187" y="710" type="line" identifier="p16"/>
+      <point x="470" y="710" type="line" identifier="p17"/>
+      <point x="458" y="654" type="line" identifier="p18"/>
+      <point x="346" y="654" type="line" identifier="p19"/>
+      <point x="284" y="359" type="line" identifier="p20"/>
     </contour>
   </outline>
   <lib>

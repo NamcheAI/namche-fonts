@@ -1,5 +1,15 @@
 # Fontspector baseline
 
+## Current scope, 2026-10-27
+
+Issue #118 restricts all Namche sources and outputs to the pinned 319-character
+GF Latin Core set. Geist remains unchanged. Historical counts, hashes and
+broader-coverage findings below describe earlier releases, not the current
+branch. Current binary hashes live in each production source's provenance.json.
+The candidate no longer adds U+0331. See [Latin Core review](LATIN_CORE_REVIEW.md)
+for the current scope, preservation evidence, visual findings and QA limitations.
+
+
 For the current Google Fonts submission assessment of Sans 0.6.2, including a
 fresh Fontspector 1.9.0 run, see [Google Fonts readiness](GOOGLE_FONTS_READINESS.md).
 The baseline below records repository maintenance decisions, not Google Fonts

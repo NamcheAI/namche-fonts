@@ -3,12 +3,12 @@
   <advance width="451"/>
   <outline>
     <contour>
-      <point identifier="p0" x="243" y="-114" type="line"/>
-      <point identifier="p1" x="162" y="-114" type="line"/>
-      <point identifier="p2" x="345" y="354" type="line"/>
-      <point identifier="p3" x="162" y="821" type="line"/>
-      <point identifier="p4" x="243" y="821" type="line"/>
-      <point identifier="p5" x="426" y="354" type="line"/>
+      <point x="243" y="-114" type="line" identifier="p0"/>
+      <point x="162" y="-114" type="line" identifier="p1"/>
+      <point x="345" y="354" type="line" identifier="p2"/>
+      <point x="162" y="821" type="line" identifier="p3"/>
+      <point x="243" y="821" type="line" identifier="p4"/>
+      <point x="426" y="354" type="line" identifier="p5"/>
     </contour>
   </outline>
   <lib>

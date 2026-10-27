@@ -1,5 +1,15 @@
 # Sans VF provenance and open build
 
+## Current scope, 2026-10-27
+
+Issue #118 restricts all Namche sources and outputs to the pinned 319-character
+GF Latin Core set. Geist remains unchanged. Historical counts, hashes and
+broader-coverage findings below describe earlier releases, not the current
+branch. Current binary hashes live in each production source's provenance.json.
+The candidate no longer adds U+0331. See [Latin Core review](LATIN_CORE_REVIEW.md)
+for the current scope, preservation evidence, visual findings and QA limitations.
+
+
 Update 2026-10-25: `scripts/reconstruct_sans_masters.py` now exports nine editable
 quadratic UFO masters and a designspace per style. Reloading the saved masters
 and deriving their variation deltas reproduces all four approved TTF/WOFF2

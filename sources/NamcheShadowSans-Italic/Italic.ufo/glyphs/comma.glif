@@ -4,13 +4,13 @@
   <unicode hex="002C"/>
   <outline>
     <contour>
-      <point identifier="p0" x="-56" y="-156" type="line"/>
-      <point identifier="p1" x="25" y="0" type="line"/>
-      <point identifier="p2" x="-26" y="0" type="line"/>
-      <point identifier="p3" x="-2" y="113" type="line"/>
-      <point identifier="p4" x="111" y="113" type="line"/>
-      <point identifier="p5" x="90" y="14" type="line"/>
-      <point identifier="p6" x="-6" y="-156" type="line"/>
+      <point x="-56" y="-156" type="line" identifier="p0"/>
+      <point x="25" y="0" type="line" identifier="p1"/>
+      <point x="-26" y="0" type="line" identifier="p2"/>
+      <point x="-2" y="113" type="line" identifier="p3"/>
+      <point x="111" y="113" type="line" identifier="p4"/>
+      <point x="90" y="14" type="line" identifier="p5"/>
+      <point x="-6" y="-156" type="line" identifier="p6"/>
     </contour>
   </outline>
   <lib>

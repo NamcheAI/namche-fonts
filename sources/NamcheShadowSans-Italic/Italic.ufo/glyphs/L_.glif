@@ -4,15 +4,15 @@
   <unicode hex="004C"/>
   <outline>
     <contour>
-      <point identifier="p0" x="37" y="0" type="line"/>
-      <point identifier="p1" x="187" y="710" type="line"/>
-      <point identifier="p2" x="273" y="710" type="line"/>
-      <point identifier="p3" x="151" y="132" type="line"/>
-      <point identifier="p4" x="147" y="113"/>
-      <point identifier="p5" x="171" y="84"/>
-      <point identifier="p6" x="190" y="84" type="qcurve"/>
-      <point identifier="p7" x="495" y="84" type="line"/>
-      <point identifier="p8" x="478" y="0" type="line"/>
+      <point x="37" y="0" type="line" identifier="p0"/>
+      <point x="187" y="710" type="line" identifier="p1"/>
+      <point x="273" y="710" type="line" identifier="p2"/>
+      <point x="151" y="132" type="line" identifier="p3"/>
+      <point x="147" y="113" identifier="p4"/>
+      <point x="171" y="84" identifier="p5"/>
+      <point x="190" y="84" type="qcurve" identifier="p6"/>
+      <point x="495" y="84" type="line" identifier="p7"/>
+      <point x="478" y="0" type="line" identifier="p8"/>
     </contour>
   </outline>
   <lib>

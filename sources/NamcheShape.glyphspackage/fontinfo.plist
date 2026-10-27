@@ -26,8 +26,7 @@ value = 0;
 },
 {
 name = fsType;
-value = (
-);
+value = ();
 },
 {
 name = "meta Table";
@@ -56,282 +55,77 @@ date = "2026-04-03 11:28:45 +0000";
 familyName = "Namche Shape";
 featurePrefixes = (
 {
-automatic = 1;
-code = "languagesystem DFLT dflt;
-
-languagesystem latn dflt;
-languagesystem latn AZE;
-languagesystem latn CRT;
-languagesystem latn KAZ;
-languagesystem latn TAT;
-languagesystem latn TRK;
-languagesystem latn ROM;
-languagesystem latn MOL;
-languagesystem latn MAH;
-languagesystem latn NLD;
-";
-name = Languagesystems;
+code = "languagesystem DFLT dflt;\nlanguagesystem latn dflt;\nlanguagesystem latn AZE;\nlanguagesystem latn CRT;\nlanguagesystem latn KAZ;\nlanguagesystem latn TAT;\nlanguagesystem latn TRK;\nlanguagesystem latn ROM;\nlanguagesystem latn MOL;\nlanguagesystem latn MAH;\nlanguagesystem latn NLD;\n@CombiningTopAccents = [acutecomb brevecomb caroncomb circumflexcomb dieresiscomb dotaccentcomb gravecomb hungarumlautcomb macroncomb ringcomb tildecomb];\n# Prefix: Languagesystems\n# automatic";
+name = "Latin Core layout";
 }
 );
 features = (
 {
-automatic = 1;
-code = "feature locl;
-feature sups;
-feature numr;
-feature dnom;
-feature frac;
-feature ordn;
-feature ss01;
-feature ss02;
-feature ss03;
-feature ss04;
-feature ss05;
-feature ss06;
-feature ss09;
-";
+code = "# automatic\nfeature locl;\nfeature sups;\nfeature numr;\nfeature dnom;\nfeature frac;\nfeature ordn;\nfeature ss01;\nfeature ss02;\nfeature ss03;\nfeature ss04;\nfeature ss05;\nfeature ss06;\nfeature ss09;";
 tag = aalt;
 },
 {
-automatic = 1;
-code = "lookup ccmp_DFLT_1 {
-	@CombiningTopAccents = [acutecomb brevecomb caroncomb circumflexcomb commaturnedabovecomb dieresiscomb dotaccentcomb gravecomb hungarumlautcomb macroncomb ringcomb tildecomb];
-	lookupflag UseMarkFilteringSet @CombiningTopAccents;
-	sub i' @CombiningTopAccents by idotless;
-	sub iogonek' @CombiningTopAccents by idotless ogonekcomb;
-	sub j' @CombiningTopAccents by jdotless;
-} ccmp_DFLT_1;
-
-lookup ccmp_latn_1 {
-	lookupflag 0;
-	sub fi by f i;
-	sub fl by f l;
-} ccmp_latn_1;
-
-script latn;
-lookup ccmp_latn_1;
-";
+code = "# automatic\nlookup ccmp_DFLT_1 {\n    lookupflag UseMarkFilteringSet @CombiningTopAccents;\n    sub i' @CombiningTopAccents by idotless;\n    sub iogonek' @CombiningTopAccents by idotless ogonekcomb;\n    sub j' @CombiningTopAccents by jdotless;\n} ccmp_DFLT_1;\n\nlookup ccmp_latn_1 {\n    lookupflag 0;\n    sub fi by f i;\n    sub fl by f l;\n} ccmp_latn_1;\n\nscript latn;\nlookup ccmp_latn_1;";
 tag = ccmp;
 },
 {
-automatic = 1;
-code = "script latn;
-language AZE;
-lookup locl_latn_0 {
-	sub i by idotaccent;
-} locl_latn_0;
-language CRT;
-lookup locl_latn_0;
-language KAZ;
-lookup locl_latn_0;
-language TAT;
-lookup locl_latn_0;
-language TRK;
-lookup locl_latn_0;
-
-script latn;
-language ROM;
-lookup locl_latn_1 {
-	sub Scedilla by Scommaaccent;
-	sub scedilla by scommaaccent;
-	sub Tcedilla by Tcommaaccent;
-	sub tcedilla by tcommaaccent;
-} locl_latn_1;
-language MOL;
-lookup locl_latn_1;
-
-script latn;
-language MAH;
-lookup locl_latn_2 {
-	sub Lcommaaccent by Lcommaaccent.loclMAH;
-	sub Ncommaaccent by Ncommaaccent.loclMAH;
-	sub lcommaaccent by lcommaaccent.loclMAH;
-	sub ncommaaccent by ncommaaccent.loclMAH;
-	sub commaaccentcomb by commaaccentcomb.loclMAH;
-} locl_latn_2;
-
-script latn;
-language NLD;
-lookup locl_latn_3 {
-	sub iacute j' by jacute;
-	sub Iacute J' by Jacute;
-} locl_latn_3;
-";
+code = "# automatic\nscript latn;\nlanguage AZE;\nlookup locl_latn_0 {\n    sub i by idotaccent;\n} locl_latn_0;\n\nlanguage CRT;\nlookup locl_latn_0;\nlanguage KAZ;\nlookup locl_latn_0;\nlanguage TAT;\nlookup locl_latn_0;\nlanguage TRK;\nlookup locl_latn_0;\nscript latn;\nlanguage ROM;\nlookup locl_latn_1 {\n    sub Scedilla by Scommaaccent;\n    sub scedilla by scommaaccent;\n} locl_latn_1;\n\nlanguage MOL;\nlookup locl_latn_1;\nscript latn;\nlanguage MAH;\nlookup locl_latn_2 {\n    sub Lcommaaccent by Lcommaaccent.loclMAH;\n    sub Ncommaaccent by Ncommaaccent.loclMAH;\n    sub lcommaaccent by lcommaaccent.loclMAH;\n    sub ncommaaccent by ncommaaccent.loclMAH;\n    sub commaaccentcomb by commaaccentcomb.loclMAH;\n} locl_latn_2;\n\nscript latn;\nlanguage NLD;\nlookup locl_latn_3 {\n    sub iacute j' by jacute;\n    sub Iacute J' by Jacute;\n} locl_latn_3;\n";
 tag = locl;
 },
 {
-automatic = 1;
-code = "sub one by onesuperior;
-sub two by twosuperior;
-sub three by threesuperior;
-";
+code = "# automatic\nsub one by onesuperior;\nsub two by twosuperior;\nsub three by threesuperior;";
 tag = sups;
 },
 {
-automatic = 1;
-code = "sub three by three.numr;
-";
+code = "# automatic\nsub three by three.numr;";
 tag = numr;
 },
 {
-automatic = 1;
-code = "sub four by four.dnom;
-";
+code = "# automatic\nsub four by four.dnom;";
 tag = dnom;
 },
 {
-automatic = 1;
-code = "sub one slash four by onequarter;
-sub one slash two by onehalf;
-sub three slash four by threequarters;
-";
+code = "# automatic\nsub one slash four by onequarter;\nsub one slash two by onehalf;\nsub three slash four by threequarters;";
 tag = frac;
 },
 {
-automatic = 1;
-code = "sub [zero one two three four five six seven eight nine] [A a]' by ordfeminine;
-sub [zero one two three four five six seven eight nine] [O o]' by ordmasculine;
-sub N o period by numero;
-";
+code = "# automatic\nsub [zero one two three four five six seven eight nine] [A a]' by [ordfeminine ordfeminine];\nsub [zero one two three four five six seven eight nine] [O o]' by [ordmasculine ordmasculine];\nsub N o period by numero;";
 tag = ordn;
 },
 {
-automatic = 1;
-code = "lookupflag IgnoreMarks;
-sub f i by f_i.dlig;
-";
+code = "# automatic\nlookupflag IgnoreMarks;\nsub f i by f_i.dlig;";
 tag = dlig;
 },
 {
-automatic = 1;
-code = "lookupflag IgnoreMarks;
-sub A I by A_I.liga;
-sub U I by U_I.liga;
-sub f i by fi;
-sub f l by fl;
-";
+code = "# automatic\nlookupflag IgnoreMarks;\nsub A I by A_I.liga;\nsub U I by U_I.liga;\nsub f i by fi;\nsub f l by fl;";
 tag = liga;
 },
 {
-automatic = 1;
-code = "sub a by a.ss01;
-sub aacute by aacute.ss01;
-sub abreve by abreve.ss01;
-sub acircumflex by acircumflex.ss01;
-sub adieresis by adieresis.ss01;
-sub agrave by agrave.ss01;
-sub amacron by amacron.ss01;
-sub aogonek by aogonek.ss01;
-sub aring by aring.ss01;
-sub atilde by atilde.ss01;
-";
-labels = (
-{
-language = dflt;
-value = "No tail a";
-}
-);
+code = "featureNames {\n    name \"No tail a\";\n};\n\n# automatic\nsub a by a.ss01;\nsub aacute by aacute.ss01;\nsub abreve by abreve.ss01;\nsub acircumflex by acircumflex.ss01;\nsub adieresis by adieresis.ss01;\nsub agrave by agrave.ss01;\nsub amacron by amacron.ss01;\nsub aogonek by aogonek.ss01;\nsub aring by aring.ss01;\nsub atilde by atilde.ss01;";
 tag = ss01;
 },
 {
-automatic = 1;
-code = "sub a by a.ss02;
-sub aacute by aacute.ss02;
-sub abreve by abreve.ss02;
-sub acircumflex by acircumflex.ss02;
-sub adieresis by adieresis.ss02;
-sub agrave by agrave.ss02;
-sub amacron by amacron.ss02;
-sub aogonek by aogonek.ss02;
-sub aring by aring.ss02;
-sub atilde by atilde.ss02;
-";
-labels = (
-{
-language = dflt;
-value = "Alt a";
-}
-);
+code = "featureNames {\n    name \"Alt a\";\n};\n\n# automatic\nsub a by a.ss02;\nsub aacute by aacute.ss02;\nsub abreve by abreve.ss02;\nsub acircumflex by acircumflex.ss02;\nsub adieresis by adieresis.ss02;\nsub agrave by agrave.ss02;\nsub amacron by amacron.ss02;\nsub aogonek by aogonek.ss02;\nsub aring by aring.ss02;\nsub atilde by atilde.ss02;";
 tag = ss02;
 },
 {
-automatic = 1;
-code = "sub l by l.ss03;
-sub lacute by lacute.ss03;
-sub lcaron by lcaron.ss03;
-sub lcommaaccent.loclMAH by lcommaaccent.loclMAH.ss03;
-sub lcommaaccent by lcommaaccent.ss03;
-sub lslash by lslash.ss03;
-";
-labels = (
-{
-language = dflt;
-value = "Alt l";
-}
-);
+code = "featureNames {\n    name \"Alt l\";\n};\n\n# automatic\nsub l by l.ss03;\nsub lacute by lacute.ss03;\nsub lcaron by lcaron.ss03;\nsub lcommaaccent.loclMAH by lcommaaccent.loclMAH.ss03;\nsub lcommaaccent by lcommaaccent.ss03;\nsub lslash by lslash.ss03;";
 tag = ss03;
 },
 {
-automatic = 1;
-code = "sub R by R.ss04;
-sub Racute by Racute.ss04;
-sub Rcaron by Rcaron.ss04;
-sub Rcommaaccent by Rcommaaccent.ss04;
-";
-labels = (
-{
-language = dflt;
-value = "Alt R";
-}
-);
+code = "featureNames {\n    name \"Alt R\";\n};\n\n# automatic\nsub R by R.ss04;\nsub Racute by Racute.ss04;\nsub Rcaron by Rcaron.ss04;";
 tag = ss04;
 },
 {
-automatic = 1;
-code = "sub I by I.ss05;
-sub Iacute by Iacute.ss05;
-sub Icircumflex by Icircumflex.ss05;
-sub Idieresis by Idieresis.ss05;
-sub Idotaccent by Idotaccent.ss05;
-sub Igrave by Igrave.ss05;
-sub Imacron by Imacron.ss05;
-sub Iogonek by Iogonek.ss05;
-sub Itilde by Itilde.ss05;
-";
-labels = (
-{
-language = dflt;
-value = "Alt I";
-}
-);
+code = "featureNames {\n    name \"Alt I\";\n};\n\n# automatic\nsub I by I.ss05;\nsub Iacute by Iacute.ss05;\nsub Icircumflex by Icircumflex.ss05;\nsub Idieresis by Idieresis.ss05;\nsub Idotaccent by Idotaccent.ss05;\nsub Igrave by Igrave.ss05;\nsub Imacron by Imacron.ss05;\nsub Iogonek by Iogonek.ss05;";
 tag = ss05;
 },
 {
-automatic = 1;
-code = "sub G by G.ss06;
-sub Gbreve by Gbreve.ss06;
-sub Gcommaaccent by Gcommaaccent.ss06;
-sub Gdotaccent by Gdotaccent.ss06;
-sub Gmacron by Gmacron.ss06;
-";
-labels = (
-{
-language = dflt;
-value = "Alt G";
-}
-);
+code = "featureNames {\n    name \"Alt G\";\n};\n\n# automatic\nsub G by G.ss06;\nsub Gbreve by Gbreve.ss06;\nsub Gcommaaccent by Gcommaaccent.ss06;\nsub Gdotaccent by Gdotaccent.ss06;";
 tag = ss06;
 },
 {
-automatic = 1;
-code = "sub zero by zero.ss09;
-";
-labels = (
-{
-language = dflt;
-value = "Alt numbers";
-}
-);
+code = "featureNames {\n    name \"Alt numbers\";\n};\n\n# automatic\nsub zero by zero.ss09;";
 tag = ss09;
 }
 );
@@ -385,17 +179,22 @@ value = v;
 id = m01;
 metricValues = (
 {
+over = 0;
 pos = 722;
 },
 {
+over = 0;
 pos = 532;
 },
 {
+over = 0;
 },
 {
+over = 0;
 pos = -152;
 },
 {
+over = 0;
 }
 );
 name = Regular;
@@ -411,7 +210,6 @@ instanceInterpolations = {
 m01 = 1;
 };
 name = Regular;
-visible = 0;
 },
 {
 axesValues = (
@@ -430,7 +228,6 @@ instanceInterpolations = {
 m01 = 1;
 };
 name = Circle;
-visible = 0;
 },
 {
 axesValues = (
@@ -440,7 +237,6 @@ instanceInterpolations = {
 m01 = 1;
 };
 name = Grid;
-visible = 0;
 },
 {
 axesValues = (
@@ -450,7 +246,6 @@ instanceInterpolations = {
 m01 = 1;
 };
 name = Triangle;
-visible = 0;
 },
 {
 axesValues = (
@@ -460,7 +255,6 @@ instanceInterpolations = {
 m01 = 1;
 };
 name = Line;
-visible = 0;
 }
 );
 kerningLTR = {
@@ -532,7 +326,7 @@ key = designers;
 values = (
 {
 language = dflt;
-value = "Michael Marte (Ruhm GmbH), Andrés Briganti";
+value = "Michael Marte (Ruhm GmbH), Andr\U00E9s Briganti";
 }
 );
 },
@@ -554,7 +348,7 @@ key = manufacturers;
 values = (
 {
 language = dflt;
-value = "BTLG Holding GmbH; based on work by Vercel, Andrés Briganti, and Guido Ferreyra";
+value = "BTLG Holding GmbH; based on work by Vercel, Andr\U00E9s Briganti, and Guido Ferreyra";
 }
 );
 },
@@ -572,6 +366,7 @@ gridLength = 38;
 gridSubDivision = 38;
 keyboardIncrementBig = 38;
 };
+stems = ();
 unitsPerEm = 1000;
 userData = {
 backdropGlyphLib = {

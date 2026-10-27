@@ -3,15 +3,15 @@
   <advance width="551"/>
   <outline>
     <contour>
-      <point identifier="p0" x="163" y="-63" type="line"/>
-      <point identifier="p1" x="231" y="45"/>
-      <point identifier="p2" x="298" y="269"/>
-      <point identifier="p3" x="298" y="381" type="qcurve"/>
-      <point identifier="p4" x="298" y="494"/>
-      <point identifier="p5" x="231" y="718"/>
-      <point identifier="p6" x="163" y="825" type="qcurve"/>
-      <point identifier="p7" x="437" y="825" type="line"/>
-      <point identifier="p8" x="437" y="-63" type="line"/>
+      <point x="163" y="-63" type="line" identifier="p0"/>
+      <point x="231" y="45" identifier="p1"/>
+      <point x="298" y="269" identifier="p2"/>
+      <point x="298" y="381" type="qcurve" identifier="p3"/>
+      <point x="298" y="494" identifier="p4"/>
+      <point x="231" y="718" identifier="p5"/>
+      <point x="163" y="825" type="qcurve" identifier="p6"/>
+      <point x="437" y="825" type="line" identifier="p7"/>
+      <point x="437" y="-63" type="line" identifier="p8"/>
     </contour>
   </outline>
   <lib>

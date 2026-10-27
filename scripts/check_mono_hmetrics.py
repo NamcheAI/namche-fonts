@@ -10,7 +10,6 @@ from pathlib import Path
 from fontTools.ttLib import TTFont
 
 
-EXPECTED_COUNTS = {"upright": 1139, "italic": 1128}
 EXPECTED_ZERO_WIDTH_GLYPHS = {
     "acutecomb",
     "dotbelowcomb",
@@ -120,26 +119,20 @@ def validate_font(path: Path) -> list[str]:
         widths = [font["hmtx"][name][0] for name in order]
         actual = font["hhea"].numberOfHMetrics
         minimum = minimum_metric_count(widths)
-        orientation = "italic" if "Italic" in path.name else "upright"
-        expected = EXPECTED_COUNTS[orientation]
         if actual != minimum:
             errors.append(
                 f"{path}: numberOfHMetrics {actual} is not the safe minimum {minimum}"
             )
-        if actual != expected:
-            errors.append(
-                f"{path}: numberOfHMetrics {actual} differs from the reviewed "
-                f"{orientation} baseline {expected}"
-            )
+        expected_advances = {name: value for name, value in EXPECTED_EXCEPTIONAL_ADVANCES.items() if name in order}
         default_advances = exceptional_advances(font, order)
-        if default_advances != EXPECTED_EXCEPTIONAL_ADVANCES:
+        if default_advances != expected_advances:
             errors.append(
                 f"{path}: glyph-specific non-600 advances differ from the "
                 "reviewed baseline"
             )
         for location in variable_locations(font):
             instance_advances = exceptional_advances(font, order, location)
-            if instance_advances != EXPECTED_EXCEPTIONAL_ADVANCES:
+            if instance_advances != expected_advances:
                 errors.append(
                     f"{path}: HVAR-adjusted advances at normalized location "
                     f"{location} differ from "
@@ -194,7 +187,7 @@ def main() -> int:
         return 1
     print(
         "Verified minimum safe numberOfHMetrics in 80 Mono release/npm fonts "
-        "(upright 1139, italic 1128)"
+        "with the retained Latin Core glyph order"
     )
     return 0
 

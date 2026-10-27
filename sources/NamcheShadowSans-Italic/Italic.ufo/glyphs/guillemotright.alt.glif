@@ -3,20 +3,20 @@
   <advance width="618"/>
   <outline>
     <contour>
-      <point identifier="p0" x="410" y="-114" type="line"/>
-      <point identifier="p1" x="329" y="-114" type="line"/>
-      <point identifier="p2" x="512" y="354" type="line"/>
-      <point identifier="p3" x="329" y="821" type="line"/>
-      <point identifier="p4" x="410" y="821" type="line"/>
-      <point identifier="p5" x="593" y="354" type="line"/>
+      <point x="410" y="-114" type="line" identifier="p0"/>
+      <point x="329" y="-114" type="line" identifier="p1"/>
+      <point x="512" y="354" type="line" identifier="p2"/>
+      <point x="329" y="821" type="line" identifier="p3"/>
+      <point x="410" y="821" type="line" identifier="p4"/>
+      <point x="593" y="354" type="line" identifier="p5"/>
     </contour>
     <contour>
-      <point identifier="p6" x="243" y="-114" type="line"/>
-      <point identifier="p7" x="162" y="-114" type="line"/>
-      <point identifier="p8" x="345" y="354" type="line"/>
-      <point identifier="p9" x="162" y="821" type="line"/>
-      <point identifier="p10" x="243" y="821" type="line"/>
-      <point identifier="p11" x="426" y="354" type="line"/>
+      <point x="243" y="-114" type="line" identifier="p6"/>
+      <point x="162" y="-114" type="line" identifier="p7"/>
+      <point x="345" y="354" type="line" identifier="p8"/>
+      <point x="162" y="821" type="line" identifier="p9"/>
+      <point x="243" y="821" type="line" identifier="p10"/>
+      <point x="426" y="354" type="line" identifier="p11"/>
     </contour>
   </outline>
   <lib>

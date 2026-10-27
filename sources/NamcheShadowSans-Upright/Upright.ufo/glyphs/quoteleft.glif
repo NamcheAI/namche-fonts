@@ -4,16 +4,16 @@
   <unicode hex="2018"/>
   <outline>
     <contour>
-      <point identifier="p0" x="155" y="726" type="line"/>
-      <point identifier="p1" x="128" y="638" type="line"/>
-      <point identifier="p2" x="118" y="607"/>
-      <point identifier="p3" x="135" y="570"/>
-      <point identifier="p4" x="158" y="570" type="qcurve"/>
-      <point identifier="p5" x="158" y="570" type="line"/>
-      <point identifier="p6" x="158" y="457" type="line"/>
-      <point identifier="p7" x="45" y="457" type="line"/>
-      <point identifier="p8" x="45" y="556" type="line"/>
-      <point identifier="p9" x="105" y="726" type="line"/>
+      <point x="155" y="726" type="line" identifier="p0"/>
+      <point x="128" y="638" type="line" identifier="p1"/>
+      <point x="118" y="607" identifier="p2"/>
+      <point x="135" y="570" identifier="p3"/>
+      <point x="158" y="570" type="qcurve" identifier="p4"/>
+      <point x="158" y="570" type="line" identifier="p5"/>
+      <point x="158" y="457" type="line" identifier="p6"/>
+      <point x="45" y="457" type="line" identifier="p7"/>
+      <point x="45" y="556" type="line" identifier="p8"/>
+      <point x="105" y="726" type="line" identifier="p9"/>
     </contour>
   </outline>
   <lib>
