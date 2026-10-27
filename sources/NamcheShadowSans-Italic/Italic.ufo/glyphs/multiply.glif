@@ -4,18 +4,18 @@
   <unicode hex="00D7"/>
   <outline>
     <contour>
-      <point identifier="p0" x="61" y="82" type="line"/>
-      <point identifier="p1" x="14" y="141" type="line"/>
-      <point identifier="p2" x="206" y="299" type="line"/>
-      <point identifier="p3" x="85" y="453" type="line"/>
-      <point identifier="p4" x="146" y="504" type="line"/>
-      <point identifier="p5" x="267" y="350" type="line"/>
-      <point identifier="p6" x="459" y="508" type="line"/>
-      <point identifier="p7" x="506" y="449" type="line"/>
-      <point identifier="p8" x="314" y="291" type="line"/>
-      <point identifier="p9" x="435" y="137" type="line"/>
-      <point identifier="p10" x="374" y="86" type="line"/>
-      <point identifier="p11" x="253" y="240" type="line"/>
+      <point x="61" y="82" type="line" identifier="p0"/>
+      <point x="14" y="141" type="line" identifier="p1"/>
+      <point x="206" y="299" type="line" identifier="p2"/>
+      <point x="85" y="453" type="line" identifier="p3"/>
+      <point x="146" y="504" type="line" identifier="p4"/>
+      <point x="267" y="350" type="line" identifier="p5"/>
+      <point x="459" y="508" type="line" identifier="p6"/>
+      <point x="506" y="449" type="line" identifier="p7"/>
+      <point x="314" y="291" type="line" identifier="p8"/>
+      <point x="435" y="137" type="line" identifier="p9"/>
+      <point x="374" y="86" type="line" identifier="p10"/>
+      <point x="253" y="240" type="line" identifier="p11"/>
     </contour>
   </outline>
   <lib>

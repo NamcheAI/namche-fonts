@@ -4,473 +4,473 @@
   <unicode hex="00A3"/>
   <outline>
     <contour>
-      <point identifier="p0" x="0" y="0" type="qcurve"/>
-      <point identifier="p1" x="1" y="7"/>
-      <point identifier="p2" x="4" y="21"/>
-      <point identifier="p3" x="6" y="28" type="qcurve"/>
-      <point identifier="p4" x="7" y="32"/>
-      <point identifier="p5" x="8" y="41"/>
-      <point identifier="p6" x="9" y="45" type="qcurve"/>
-      <point identifier="p7" x="10" y="50"/>
-      <point identifier="p8" x="12" y="59"/>
-      <point identifier="p9" x="13" y="63" type="qcurve"/>
-      <point identifier="p10" x="14" y="68"/>
-      <point identifier="p11" x="16" y="77"/>
-      <point identifier="p12" x="17" y="82" type="qcurve"/>
-      <point identifier="p13" x="19" y="83"/>
-      <point identifier="p14" x="23" y="86"/>
-      <point identifier="p15" x="25" y="88" type="qcurve"/>
-      <point identifier="p16" x="28" y="89"/>
-      <point identifier="p17" x="32" y="92"/>
-      <point identifier="p18" x="34" y="94" type="qcurve"/>
-      <point identifier="p19" x="36" y="95"/>
-      <point identifier="p20" x="40" y="98"/>
-      <point identifier="p21" x="42" y="100" type="qcurve"/>
-      <point identifier="p22" x="44" y="101"/>
-      <point identifier="p23" x="48" y="104"/>
-      <point identifier="p24" x="51" y="105" type="qcurve"/>
-      <point identifier="p25" x="53" y="107"/>
-      <point identifier="p26" x="57" y="110"/>
-      <point identifier="p27" x="59" y="111" type="qcurve"/>
-      <point identifier="p28" x="108" y="149"/>
-      <point identifier="p29" x="167" y="233"/>
-      <point identifier="p30" x="176" y="306" type="qcurve"/>
-      <point identifier="p31" x="176" y="307"/>
-      <point identifier="p32" x="176" y="309"/>
-      <point identifier="p33" x="177" y="311" type="qcurve"/>
-      <point identifier="p34" x="177" y="311"/>
-      <point identifier="p35" x="177" y="312"/>
-      <point identifier="p36" x="177" y="312" type="qcurve"/>
-      <point identifier="p37" x="177" y="312"/>
-      <point identifier="p38" x="177" y="312"/>
-      <point identifier="p39" x="177" y="313" type="qcurve"/>
-      <point identifier="p40" x="177" y="313"/>
-      <point identifier="p41" x="177" y="313"/>
-      <point identifier="p42" x="177" y="313" type="qcurve"/>
-      <point identifier="p43" x="177" y="313"/>
-      <point identifier="p44" x="177" y="313"/>
-      <point identifier="p45" x="177" y="314" type="qcurve"/>
-      <point identifier="p46" x="177" y="314"/>
-      <point identifier="p47" x="177" y="314"/>
-      <point identifier="p48" x="177" y="314" type="qcurve"/>
-      <point identifier="p49" x="177" y="314"/>
-      <point identifier="p50" x="177" y="315"/>
-      <point identifier="p51" x="177" y="315" type="qcurve"/>
-      <point identifier="p52" x="177" y="315"/>
-      <point identifier="p53" x="177" y="315"/>
-      <point identifier="p54" x="177" y="316" type="qcurve"/>
-      <point identifier="p55" x="177" y="316"/>
-      <point identifier="p56" x="177" y="317"/>
-      <point identifier="p57" x="177" y="317" type="qcurve"/>
-      <point identifier="p58" x="177" y="317"/>
-      <point identifier="p59" x="177" y="317"/>
-      <point identifier="p60" x="177" y="317" type="qcurve"/>
-      <point identifier="p61" x="176" y="317"/>
-      <point identifier="p62" x="174" y="317"/>
-      <point identifier="p63" x="173" y="317" type="qcurve"/>
-      <point identifier="p64" x="172" y="317"/>
-      <point identifier="p65" x="172" y="317"/>
-      <point identifier="p66" x="172" y="317" type="qcurve"/>
-      <point identifier="p67" x="171" y="317"/>
-      <point identifier="p68" x="168" y="317"/>
-      <point identifier="p69" x="167" y="317" type="qcurve"/>
-      <point identifier="p70" x="166" y="317"/>
-      <point identifier="p71" x="165" y="317"/>
-      <point identifier="p72" x="164" y="317" type="qcurve"/>
-      <point identifier="p73" x="164" y="317"/>
-      <point identifier="p74" x="163" y="317"/>
-      <point identifier="p75" x="163" y="317" type="qcurve"/>
-      <point identifier="p76" x="141" y="317"/>
-      <point identifier="p77" x="97" y="317"/>
-      <point identifier="p78" x="74" y="317" type="qcurve"/>
-      <point identifier="p79" x="74" y="317"/>
-      <point identifier="p80" x="74" y="317"/>
-      <point identifier="p81" x="73" y="317" type="qcurve"/>
-      <point identifier="p82" x="73" y="317"/>
-      <point identifier="p83" x="72" y="317"/>
-      <point identifier="p84" x="71" y="317" type="qcurve"/>
-      <point identifier="p85" x="71" y="317"/>
-      <point identifier="p86" x="70" y="317"/>
-      <point identifier="p87" x="69" y="317" type="qcurve"/>
-      <point identifier="p88" x="69" y="317"/>
-      <point identifier="p89" x="68" y="317"/>
-      <point identifier="p90" x="67" y="317" type="qcurve"/>
-      <point identifier="p91" x="67" y="317"/>
-      <point identifier="p92" x="66" y="317"/>
-      <point identifier="p93" x="66" y="317" type="qcurve"/>
-      <point identifier="p94" x="67" y="320"/>
-      <point identifier="p95" x="68" y="325"/>
-      <point identifier="p96" x="68" y="327" type="qcurve"/>
-      <point identifier="p97" x="69" y="330"/>
-      <point identifier="p98" x="70" y="335"/>
-      <point identifier="p99" x="70" y="337" type="qcurve"/>
-      <point identifier="p100" x="71" y="340"/>
-      <point identifier="p101" x="72" y="344"/>
-      <point identifier="p102" x="72" y="346" type="qcurve"/>
-      <point identifier="p103" x="74" y="353"/>
-      <point identifier="p104" x="77" y="367"/>
-      <point identifier="p105" x="78" y="374" type="qcurve"/>
-      <point identifier="p106" x="79" y="376"/>
-      <point identifier="p107" x="79" y="379"/>
-      <point identifier="p108" x="80" y="380" type="qcurve"/>
-      <point identifier="p109" x="80" y="381"/>
-      <point identifier="p110" x="81" y="385"/>
-      <point identifier="p111" x="81" y="386" type="qcurve"/>
-      <point identifier="p112" x="81" y="387"/>
-      <point identifier="p113" x="82" y="390"/>
-      <point identifier="p114" x="82" y="391" type="qcurve"/>
-      <point identifier="p115" x="82" y="391"/>
-      <point identifier="p116" x="83" y="391"/>
-      <point identifier="p117" x="83" y="391" type="qcurve"/>
-      <point identifier="p118" x="83" y="391"/>
-      <point identifier="p119" x="83" y="391"/>
-      <point identifier="p120" x="83" y="391" type="qcurve"/>
-      <point identifier="p121" x="83" y="391"/>
-      <point identifier="p122" x="84" y="391"/>
-      <point identifier="p123" x="85" y="391" type="qcurve"/>
-      <point identifier="p124" x="85" y="391"/>
-      <point identifier="p125" x="85" y="391"/>
-      <point identifier="p126" x="85" y="391" type="qcurve"/>
-      <point identifier="p127" x="85" y="391"/>
-      <point identifier="p128" x="85" y="391"/>
-      <point identifier="p129" x="86" y="391" type="qcurve"/>
-      <point identifier="p130" x="109" y="391"/>
-      <point identifier="p131" x="156" y="391"/>
-      <point identifier="p132" x="180" y="391" type="qcurve"/>
-      <point identifier="p133" x="180" y="391"/>
-      <point identifier="p134" x="180" y="391"/>
-      <point identifier="p135" x="180" y="391" type="qcurve"/>
-      <point identifier="p136" x="180" y="391"/>
-      <point identifier="p137" x="180" y="392"/>
-      <point identifier="p138" x="180" y="392" type="qcurve"/>
-      <point identifier="p139" x="180" y="392"/>
-      <point identifier="p140" x="180" y="392"/>
-      <point identifier="p141" x="180" y="393" type="qcurve"/>
-      <point identifier="p142" x="180" y="393"/>
-      <point identifier="p143" x="180" y="393"/>
-      <point identifier="p144" x="180" y="393" type="qcurve"/>
-      <point identifier="p145" x="180" y="393"/>
-      <point identifier="p146" x="180" y="393"/>
-      <point identifier="p147" x="180" y="393" type="qcurve"/>
-      <point identifier="p148" x="180" y="393"/>
-      <point identifier="p149" x="180" y="394"/>
-      <point identifier="p150" x="180" y="394" type="qcurve"/>
-      <point identifier="p151" x="180" y="395"/>
-      <point identifier="p152" x="180" y="395"/>
-      <point identifier="p153" x="180" y="396" type="qcurve"/>
-      <point identifier="p154" x="180" y="396"/>
-      <point identifier="p155" x="180" y="397"/>
-      <point identifier="p156" x="180" y="398" type="qcurve"/>
-      <point identifier="p157" x="182" y="502"/>
-      <point identifier="p158" x="230" y="646"/>
-      <point identifier="p159" x="334" y="723"/>
-      <point identifier="p160" x="420" y="726" type="qcurve"/>
-      <point identifier="p161" x="423" y="726"/>
-      <point identifier="p162" x="426" y="726" type="qcurve"/>
-      <point identifier="p163" x="427" y="726"/>
-      <point identifier="p164" x="429" y="726" type="qcurve"/>
-      <point identifier="p165" x="432" y="726"/>
-      <point identifier="p166" x="434" y="726" type="qcurve"/>
-      <point identifier="p167" x="438" y="726"/>
-      <point identifier="p168" x="442" y="726" type="qcurve"/>
-      <point identifier="p169" x="445" y="726"/>
-      <point identifier="p170" x="448" y="726" type="qcurve"/>
-      <point identifier="p171" x="453" y="725"/>
-      <point identifier="p172" x="457" y="725" type="qcurve"/>
-      <point identifier="p173" x="461" y="725"/>
-      <point identifier="p174" x="464" y="724" type="qcurve"/>
-      <point identifier="p175" x="468" y="724"/>
-      <point identifier="p176" x="472" y="724" type="qcurve"/>
-      <point identifier="p177" x="541" y="714"/>
-      <point identifier="p178" x="610" y="638"/>
-      <point identifier="p179" x="620" y="593" type="qcurve"/>
-      <point identifier="p180" x="620" y="589"/>
-      <point identifier="p181" x="622" y="582"/>
-      <point identifier="p182" x="622" y="578" type="qcurve"/>
-      <point identifier="p183" x="623" y="575"/>
-      <point identifier="p184" x="623" y="568"/>
-      <point identifier="p185" x="623" y="565" type="qcurve"/>
-      <point identifier="p186" x="624" y="564"/>
-      <point identifier="p187" x="624" y="562"/>
-      <point identifier="p188" x="624" y="560" type="qcurve"/>
-      <point identifier="p189" x="624" y="558"/>
-      <point identifier="p190" x="624" y="553"/>
-      <point identifier="p191" x="624" y="550" type="qcurve"/>
-      <point identifier="p192" x="619" y="550"/>
-      <point identifier="p193" x="610" y="549"/>
-      <point identifier="p194" x="605" y="549" type="qcurve"/>
-      <point identifier="p195" x="603" y="549"/>
-      <point identifier="p196" x="600" y="548"/>
-      <point identifier="p197" x="598" y="548" type="qcurve"/>
-      <point identifier="p198" x="595" y="548"/>
-      <point identifier="p199" x="590" y="548"/>
-      <point identifier="p200" x="587" y="547" type="qcurve"/>
-      <point identifier="p201" x="582" y="547"/>
-      <point identifier="p202" x="572" y="546"/>
-      <point identifier="p203" x="568" y="546" type="qcurve"/>
-      <point identifier="p204" x="566" y="546"/>
-      <point identifier="p205" x="563" y="546"/>
-      <point identifier="p206" x="562" y="546" type="qcurve"/>
-      <point identifier="p207" x="559" y="545"/>
-      <point identifier="p208" x="552" y="545"/>
-      <point identifier="p209" x="549" y="545" type="qcurve"/>
-      <point identifier="p210" x="544" y="544"/>
-      <point identifier="p211" x="535" y="544"/>
-      <point identifier="p212" x="530" y="543" type="qcurve"/>
-      <point identifier="p213" x="529" y="543"/>
-      <point identifier="p214" x="526" y="543"/>
-      <point identifier="p215" x="524" y="543" type="qcurve"/>
-      <point identifier="p216" x="524" y="554"/>
-      <point identifier="p217" x="521" y="575"/>
-      <point identifier="p218" x="519" y="584" type="qcurve"/>
-      <point identifier="p219" x="516" y="594"/>
-      <point identifier="p220" x="506" y="611"/>
-      <point identifier="p221" x="499" y="618" type="qcurve"/>
-      <point identifier="p222" x="493" y="623"/>
-      <point identifier="p223" x="481" y="631"/>
-      <point identifier="p224" x="473" y="634" type="qcurve"/>
-      <point identifier="p225" x="470" y="635"/>
-      <point identifier="p226" x="465" y="636"/>
-      <point identifier="p227" x="462" y="637" type="qcurve"/>
-      <point identifier="p228" x="460" y="638"/>
-      <point identifier="p229" x="457" y="638"/>
-      <point identifier="p230" x="455" y="639" type="qcurve"/>
-      <point identifier="p231" x="451" y="640"/>
-      <point identifier="p232" x="443" y="641"/>
-      <point identifier="p233" x="439" y="641" type="qcurve"/>
-      <point identifier="p234" x="435" y="642"/>
-      <point identifier="p235" x="426" y="642"/>
-      <point identifier="p236" x="422" y="642" type="qcurve"/>
-      <point identifier="p237" x="421" y="642"/>
-      <point identifier="p238" x="420" y="642"/>
-      <point identifier="p239" x="420" y="642" type="qcurve"/>
-      <point identifier="p240" x="414" y="642"/>
-      <point identifier="p241" x="401" y="641"/>
-      <point identifier="p242" x="396" y="640" type="qcurve"/>
-      <point identifier="p243" x="392" y="640"/>
-      <point identifier="p244" x="385" y="639"/>
-      <point identifier="p245" x="381" y="638" type="qcurve"/>
-      <point identifier="p246" x="376" y="637"/>
-      <point identifier="p247" x="371" y="635" type="qcurve"/>
-      <point identifier="p248" x="359" y="631"/>
-      <point identifier="p249" x="348" y="625" type="qcurve"/>
-      <point identifier="p250" x="337" y="618"/>
-      <point identifier="p251" x="328" y="609" type="qcurve"/>
-      <point identifier="p252" x="319" y="601"/>
-      <point identifier="p253" x="312" y="591" type="qcurve"/>
-      <point identifier="p254" x="298" y="571"/>
-      <point identifier="p255" x="279" y="516"/>
-      <point identifier="p256" x="269" y="441"/>
-      <point identifier="p257" x="268" y="394" type="qcurve"/>
-      <point identifier="p258" x="268" y="394"/>
-      <point identifier="p259" x="268" y="394"/>
-      <point identifier="p260" x="268" y="394" type="qcurve"/>
-      <point identifier="p261" x="268" y="394"/>
-      <point identifier="p262" x="268" y="393"/>
-      <point identifier="p263" x="268" y="393" type="qcurve"/>
-      <point identifier="p264" x="268" y="393"/>
-      <point identifier="p265" x="268" y="393"/>
-      <point identifier="p266" x="268" y="393" type="qcurve"/>
-      <point identifier="p267" x="268" y="393"/>
-      <point identifier="p268" x="268" y="393"/>
-      <point identifier="p269" x="268" y="392" type="qcurve"/>
-      <point identifier="p270" x="268" y="392"/>
-      <point identifier="p271" x="268" y="392"/>
-      <point identifier="p272" x="268" y="392" type="qcurve"/>
-      <point identifier="p273" x="268" y="392"/>
-      <point identifier="p274" x="268" y="392"/>
-      <point identifier="p275" x="268" y="392" type="qcurve"/>
-      <point identifier="p276" x="268" y="391"/>
-      <point identifier="p277" x="268" y="391"/>
-      <point identifier="p278" x="268" y="391" type="qcurve"/>
-      <point identifier="p279" x="268" y="391"/>
-      <point identifier="p280" x="268" y="391"/>
-      <point identifier="p281" x="268" y="391" type="qcurve"/>
-      <point identifier="p282" x="268" y="391"/>
-      <point identifier="p283" x="269" y="391"/>
-      <point identifier="p284" x="269" y="391" type="qcurve"/>
-      <point identifier="p285" x="269" y="391"/>
-      <point identifier="p286" x="269" y="391"/>
-      <point identifier="p287" x="269" y="391" type="qcurve"/>
-      <point identifier="p288" x="269" y="391"/>
-      <point identifier="p289" x="270" y="391"/>
-      <point identifier="p290" x="270" y="391" type="qcurve"/>
-      <point identifier="p291" x="270" y="391"/>
-      <point identifier="p292" x="271" y="391"/>
-      <point identifier="p293" x="271" y="391" type="qcurve"/>
-      <point identifier="p294" x="271" y="391"/>
-      <point identifier="p295" x="273" y="391"/>
-      <point identifier="p296" x="273" y="391" type="qcurve"/>
-      <point identifier="p297" x="276" y="391"/>
-      <point identifier="p298" x="281" y="391"/>
-      <point identifier="p299" x="283" y="391" type="qcurve"/>
-      <point identifier="p300" x="285" y="391"/>
-      <point identifier="p301" x="287" y="391"/>
-      <point identifier="p302" x="288" y="391" type="qcurve"/>
-      <point identifier="p303" x="319" y="391"/>
-      <point identifier="p304" x="381" y="391"/>
-      <point identifier="p305" x="411" y="391" type="qcurve"/>
-      <point identifier="p306" x="413" y="391"/>
-      <point identifier="p307" x="417" y="391"/>
-      <point identifier="p308" x="418" y="391" type="qcurve"/>
-      <point identifier="p309" x="420" y="391"/>
-      <point identifier="p310" x="422" y="391"/>
-      <point identifier="p311" x="424" y="391" type="qcurve"/>
-      <point identifier="p312" x="425" y="391"/>
-      <point identifier="p313" x="428" y="391"/>
-      <point identifier="p314" x="430" y="391" type="qcurve"/>
-      <point identifier="p315" x="431" y="391"/>
-      <point identifier="p316" x="435" y="391"/>
-      <point identifier="p317" x="436" y="391" type="qcurve"/>
-      <point identifier="p318" x="438" y="391"/>
-      <point identifier="p319" x="441" y="391"/>
-      <point identifier="p320" x="443" y="391" type="qcurve"/>
-      <point identifier="p321" x="442" y="388"/>
-      <point identifier="p322" x="441" y="383"/>
-      <point identifier="p323" x="441" y="380" type="qcurve"/>
-      <point identifier="p324" x="440" y="376"/>
-      <point identifier="p325" x="438" y="369"/>
-      <point identifier="p326" x="437" y="365" type="qcurve"/>
-      <point identifier="p327" x="437" y="363"/>
-      <point identifier="p328" x="436" y="358"/>
-      <point identifier="p329" x="435" y="356" type="qcurve"/>
-      <point identifier="p330" x="434" y="351"/>
-      <point identifier="p331" x="432" y="341"/>
-      <point identifier="p332" x="431" y="336" type="qcurve"/>
-      <point identifier="p333" x="431" y="335"/>
-      <point identifier="p334" x="430" y="332"/>
-      <point identifier="p335" x="430" y="331" type="qcurve"/>
-      <point identifier="p336" x="430" y="330"/>
-      <point identifier="p337" x="430" y="329"/>
-      <point identifier="p338" x="429" y="328" type="qcurve"/>
-      <point identifier="p339" x="429" y="328"/>
-      <point identifier="p340" x="429" y="328"/>
-      <point identifier="p341" x="429" y="327" type="qcurve"/>
-      <point identifier="p342" x="429" y="327"/>
-      <point identifier="p343" x="429" y="326"/>
-      <point identifier="p344" x="429" y="326" type="qcurve"/>
-      <point identifier="p345" x="429" y="325"/>
-      <point identifier="p346" x="428" y="324"/>
-      <point identifier="p347" x="428" y="323" type="qcurve"/>
-      <point identifier="p348" x="428" y="323"/>
-      <point identifier="p349" x="428" y="322"/>
-      <point identifier="p350" x="428" y="322" type="qcurve"/>
-      <point identifier="p351" x="428" y="322"/>
-      <point identifier="p352" x="428" y="321"/>
-      <point identifier="p353" x="428" y="321" type="qcurve"/>
-      <point identifier="p354" x="428" y="320"/>
-      <point identifier="p355" x="427" y="318"/>
-      <point identifier="p356" x="427" y="317" type="qcurve"/>
-      <point identifier="p357" x="399" y="317"/>
-      <point identifier="p358" x="343" y="317"/>
-      <point identifier="p359" x="315" y="317" type="qcurve"/>
-      <point identifier="p360" x="312" y="317"/>
-      <point identifier="p361" x="306" y="317"/>
-      <point identifier="p362" x="304" y="317" type="qcurve"/>
-      <point identifier="p363" x="301" y="317"/>
-      <point identifier="p364" x="297" y="317"/>
-      <point identifier="p365" x="294" y="317" type="qcurve"/>
-      <point identifier="p366" x="292" y="317"/>
-      <point identifier="p367" x="287" y="317"/>
-      <point identifier="p368" x="285" y="317" type="qcurve"/>
-      <point identifier="p369" x="283" y="317"/>
-      <point identifier="p370" x="277" y="317"/>
-      <point identifier="p371" x="275" y="317" type="qcurve"/>
-      <point identifier="p372" x="272" y="317"/>
-      <point identifier="p373" x="266" y="317"/>
-      <point identifier="p374" x="263" y="317" type="qcurve"/>
-      <point identifier="p375" x="263" y="316"/>
-      <point identifier="p376" x="263" y="315"/>
-      <point identifier="p377" x="263" y="314" type="qcurve"/>
-      <point identifier="p378" x="262" y="313"/>
-      <point identifier="p379" x="262" y="310"/>
-      <point identifier="p380" x="262" y="308" type="qcurve"/>
-      <point identifier="p381" x="261" y="308"/>
-      <point identifier="p382" x="261" y="306"/>
-      <point identifier="p383" x="261" y="305" type="qcurve"/>
-      <point identifier="p384" x="254" y="269"/>
-      <point identifier="p385" x="228" y="205"/>
-      <point identifier="p386" x="210" y="178" type="qcurve"/>
-      <point identifier="p387" x="206" y="172"/>
-      <point identifier="p388" x="198" y="161"/>
-      <point identifier="p389" x="193" y="155" type="qcurve"/>
-      <point identifier="p390" x="189" y="150"/>
-      <point identifier="p391" x="179" y="140"/>
-      <point identifier="p392" x="175" y="135" type="qcurve"/>
-      <point identifier="p393" x="170" y="130"/>
-      <point identifier="p394" x="159" y="121"/>
-      <point identifier="p395" x="154" y="116" type="qcurve"/>
-      <point identifier="p396" x="148" y="112"/>
-      <point identifier="p397" x="136" y="104"/>
-      <point identifier="p398" x="130" y="100" type="qcurve"/>
-      <point identifier="p399" x="124" y="96"/>
-      <point identifier="p400" x="111" y="90"/>
-      <point identifier="p401" x="104" y="87" type="qcurve"/>
-      <point identifier="p402" x="110" y="87"/>
-      <point identifier="p403" x="123" y="87"/>
-      <point identifier="p404" x="130" y="87" type="qcurve"/>
-      <point identifier="p405" x="137" y="87"/>
-      <point identifier="p406" x="151" y="87"/>
-      <point identifier="p407" x="158" y="87" type="qcurve"/>
-      <point identifier="p408" x="164" y="87"/>
-      <point identifier="p409" x="176" y="87"/>
-      <point identifier="p410" x="182" y="87" type="qcurve"/>
-      <point identifier="p411" x="221" y="87"/>
-      <point identifier="p412" x="299" y="87"/>
-      <point identifier="p413" x="338" y="87" type="qcurve"/>
-      <point identifier="p414" x="346" y="87"/>
-      <point identifier="p415" x="363" y="87"/>
-      <point identifier="p416" x="371" y="87" type="qcurve"/>
-      <point identifier="p417" x="379" y="87"/>
-      <point identifier="p418" x="396" y="87"/>
-      <point identifier="p419" x="404" y="87" type="qcurve"/>
-      <point identifier="p420" x="412" y="87"/>
-      <point identifier="p421" x="429" y="87"/>
-      <point identifier="p422" x="437" y="87" type="qcurve"/>
-      <point identifier="p423" x="446" y="87"/>
-      <point identifier="p424" x="462" y="87"/>
-      <point identifier="p425" x="471" y="87" type="qcurve"/>
-      <point identifier="p426" x="478" y="87"/>
-      <point identifier="p427" x="491" y="87"/>
-      <point identifier="p428" x="498" y="87" type="qcurve"/>
-      <point identifier="p429" x="500" y="87"/>
-      <point identifier="p430" x="503" y="87"/>
-      <point identifier="p431" x="504" y="87" type="qcurve"/>
-      <point identifier="p432" x="503" y="84"/>
-      <point identifier="p433" x="502" y="77"/>
-      <point identifier="p434" x="501" y="74" type="qcurve"/>
-      <point identifier="p435" x="500" y="70"/>
-      <point identifier="p436" x="499" y="61"/>
-      <point identifier="p437" x="498" y="57" type="qcurve"/>
-      <point identifier="p438" x="498" y="57"/>
-      <point identifier="p439" x="498" y="56"/>
-      <point identifier="p440" x="498" y="56" type="qcurve"/>
-      <point identifier="p441" x="497" y="51"/>
-      <point identifier="p442" x="495" y="42"/>
-      <point identifier="p443" x="494" y="37" type="qcurve"/>
-      <point identifier="p444" x="493" y="35"/>
-      <point identifier="p445" x="492" y="29"/>
-      <point identifier="p446" x="491" y="26" type="qcurve"/>
-      <point identifier="p447" x="491" y="24"/>
-      <point identifier="p448" x="490" y="21"/>
-      <point identifier="p449" x="490" y="19" type="qcurve"/>
-      <point identifier="p450" x="489" y="14"/>
-      <point identifier="p451" x="487" y="5"/>
-      <point identifier="p452" x="486" y="0" type="qcurve"/>
-      <point identifier="p453" x="485" y="0"/>
-      <point identifier="p454" x="484" y="0"/>
-      <point identifier="p455" x="484" y="0" type="qcurve"/>
-      <point identifier="p456" x="482" y="0"/>
-      <point identifier="p457" x="478" y="0"/>
-      <point identifier="p458" x="476" y="0" type="qcurve"/>
-      <point identifier="p459" x="473" y="0"/>
-      <point identifier="p460" x="467" y="0"/>
-      <point identifier="p461" x="464" y="0" type="qcurve"/>
-      <point identifier="p462" x="462" y="0"/>
-      <point identifier="p463" x="457" y="0"/>
-      <point identifier="p464" x="455" y="0" type="qcurve"/>
-      <point identifier="p465" x="341" y="0"/>
-      <point identifier="p466" x="114" y="0"/>
+      <point x="0" y="0" type="qcurve" identifier="p0"/>
+      <point x="1" y="7" identifier="p1"/>
+      <point x="4" y="21" identifier="p2"/>
+      <point x="6" y="28" type="qcurve" identifier="p3"/>
+      <point x="7" y="32" identifier="p4"/>
+      <point x="8" y="41" identifier="p5"/>
+      <point x="9" y="45" type="qcurve" identifier="p6"/>
+      <point x="10" y="50" identifier="p7"/>
+      <point x="12" y="59" identifier="p8"/>
+      <point x="13" y="63" type="qcurve" identifier="p9"/>
+      <point x="14" y="68" identifier="p10"/>
+      <point x="16" y="77" identifier="p11"/>
+      <point x="17" y="82" type="qcurve" identifier="p12"/>
+      <point x="19" y="83" identifier="p13"/>
+      <point x="23" y="86" identifier="p14"/>
+      <point x="25" y="88" type="qcurve" identifier="p15"/>
+      <point x="28" y="89" identifier="p16"/>
+      <point x="32" y="92" identifier="p17"/>
+      <point x="34" y="94" type="qcurve" identifier="p18"/>
+      <point x="36" y="95" identifier="p19"/>
+      <point x="40" y="98" identifier="p20"/>
+      <point x="42" y="100" type="qcurve" identifier="p21"/>
+      <point x="44" y="101" identifier="p22"/>
+      <point x="48" y="104" identifier="p23"/>
+      <point x="51" y="105" type="qcurve" identifier="p24"/>
+      <point x="53" y="107" identifier="p25"/>
+      <point x="57" y="110" identifier="p26"/>
+      <point x="59" y="111" type="qcurve" identifier="p27"/>
+      <point x="108" y="149" identifier="p28"/>
+      <point x="167" y="233" identifier="p29"/>
+      <point x="176" y="306" type="qcurve" identifier="p30"/>
+      <point x="176" y="307" identifier="p31"/>
+      <point x="176" y="309" identifier="p32"/>
+      <point x="177" y="311" type="qcurve" identifier="p33"/>
+      <point x="177" y="311" identifier="p34"/>
+      <point x="177" y="312" identifier="p35"/>
+      <point x="177" y="312" type="qcurve" identifier="p36"/>
+      <point x="177" y="312" identifier="p37"/>
+      <point x="177" y="312" identifier="p38"/>
+      <point x="177" y="313" type="qcurve" identifier="p39"/>
+      <point x="177" y="313" identifier="p40"/>
+      <point x="177" y="313" identifier="p41"/>
+      <point x="177" y="313" type="qcurve" identifier="p42"/>
+      <point x="177" y="313" identifier="p43"/>
+      <point x="177" y="313" identifier="p44"/>
+      <point x="177" y="314" type="qcurve" identifier="p45"/>
+      <point x="177" y="314" identifier="p46"/>
+      <point x="177" y="314" identifier="p47"/>
+      <point x="177" y="314" type="qcurve" identifier="p48"/>
+      <point x="177" y="314" identifier="p49"/>
+      <point x="177" y="315" identifier="p50"/>
+      <point x="177" y="315" type="qcurve" identifier="p51"/>
+      <point x="177" y="315" identifier="p52"/>
+      <point x="177" y="315" identifier="p53"/>
+      <point x="177" y="316" type="qcurve" identifier="p54"/>
+      <point x="177" y="316" identifier="p55"/>
+      <point x="177" y="317" identifier="p56"/>
+      <point x="177" y="317" type="qcurve" identifier="p57"/>
+      <point x="177" y="317" identifier="p58"/>
+      <point x="177" y="317" identifier="p59"/>
+      <point x="177" y="317" type="qcurve" identifier="p60"/>
+      <point x="176" y="317" identifier="p61"/>
+      <point x="174" y="317" identifier="p62"/>
+      <point x="173" y="317" type="qcurve" identifier="p63"/>
+      <point x="172" y="317" identifier="p64"/>
+      <point x="172" y="317" identifier="p65"/>
+      <point x="172" y="317" type="qcurve" identifier="p66"/>
+      <point x="171" y="317" identifier="p67"/>
+      <point x="168" y="317" identifier="p68"/>
+      <point x="167" y="317" type="qcurve" identifier="p69"/>
+      <point x="166" y="317" identifier="p70"/>
+      <point x="165" y="317" identifier="p71"/>
+      <point x="164" y="317" type="qcurve" identifier="p72"/>
+      <point x="164" y="317" identifier="p73"/>
+      <point x="163" y="317" identifier="p74"/>
+      <point x="163" y="317" type="qcurve" identifier="p75"/>
+      <point x="141" y="317" identifier="p76"/>
+      <point x="97" y="317" identifier="p77"/>
+      <point x="74" y="317" type="qcurve" identifier="p78"/>
+      <point x="74" y="317" identifier="p79"/>
+      <point x="74" y="317" identifier="p80"/>
+      <point x="73" y="317" type="qcurve" identifier="p81"/>
+      <point x="73" y="317" identifier="p82"/>
+      <point x="72" y="317" identifier="p83"/>
+      <point x="71" y="317" type="qcurve" identifier="p84"/>
+      <point x="71" y="317" identifier="p85"/>
+      <point x="70" y="317" identifier="p86"/>
+      <point x="69" y="317" type="qcurve" identifier="p87"/>
+      <point x="69" y="317" identifier="p88"/>
+      <point x="68" y="317" identifier="p89"/>
+      <point x="67" y="317" type="qcurve" identifier="p90"/>
+      <point x="67" y="317" identifier="p91"/>
+      <point x="66" y="317" identifier="p92"/>
+      <point x="66" y="317" type="qcurve" identifier="p93"/>
+      <point x="67" y="320" identifier="p94"/>
+      <point x="68" y="325" identifier="p95"/>
+      <point x="68" y="327" type="qcurve" identifier="p96"/>
+      <point x="69" y="330" identifier="p97"/>
+      <point x="70" y="335" identifier="p98"/>
+      <point x="70" y="337" type="qcurve" identifier="p99"/>
+      <point x="71" y="340" identifier="p100"/>
+      <point x="72" y="344" identifier="p101"/>
+      <point x="72" y="346" type="qcurve" identifier="p102"/>
+      <point x="74" y="353" identifier="p103"/>
+      <point x="77" y="367" identifier="p104"/>
+      <point x="78" y="374" type="qcurve" identifier="p105"/>
+      <point x="79" y="376" identifier="p106"/>
+      <point x="79" y="379" identifier="p107"/>
+      <point x="80" y="380" type="qcurve" identifier="p108"/>
+      <point x="80" y="381" identifier="p109"/>
+      <point x="81" y="385" identifier="p110"/>
+      <point x="81" y="386" type="qcurve" identifier="p111"/>
+      <point x="81" y="387" identifier="p112"/>
+      <point x="82" y="390" identifier="p113"/>
+      <point x="82" y="391" type="qcurve" identifier="p114"/>
+      <point x="82" y="391" identifier="p115"/>
+      <point x="83" y="391" identifier="p116"/>
+      <point x="83" y="391" type="qcurve" identifier="p117"/>
+      <point x="83" y="391" identifier="p118"/>
+      <point x="83" y="391" identifier="p119"/>
+      <point x="83" y="391" type="qcurve" identifier="p120"/>
+      <point x="83" y="391" identifier="p121"/>
+      <point x="84" y="391" identifier="p122"/>
+      <point x="85" y="391" type="qcurve" identifier="p123"/>
+      <point x="85" y="391" identifier="p124"/>
+      <point x="85" y="391" identifier="p125"/>
+      <point x="85" y="391" type="qcurve" identifier="p126"/>
+      <point x="85" y="391" identifier="p127"/>
+      <point x="85" y="391" identifier="p128"/>
+      <point x="86" y="391" type="qcurve" identifier="p129"/>
+      <point x="109" y="391" identifier="p130"/>
+      <point x="156" y="391" identifier="p131"/>
+      <point x="180" y="391" type="qcurve" identifier="p132"/>
+      <point x="180" y="391" identifier="p133"/>
+      <point x="180" y="391" identifier="p134"/>
+      <point x="180" y="391" type="qcurve" identifier="p135"/>
+      <point x="180" y="391" identifier="p136"/>
+      <point x="180" y="392" identifier="p137"/>
+      <point x="180" y="392" type="qcurve" identifier="p138"/>
+      <point x="180" y="392" identifier="p139"/>
+      <point x="180" y="392" identifier="p140"/>
+      <point x="180" y="393" type="qcurve" identifier="p141"/>
+      <point x="180" y="393" identifier="p142"/>
+      <point x="180" y="393" identifier="p143"/>
+      <point x="180" y="393" type="qcurve" identifier="p144"/>
+      <point x="180" y="393" identifier="p145"/>
+      <point x="180" y="393" identifier="p146"/>
+      <point x="180" y="393" type="qcurve" identifier="p147"/>
+      <point x="180" y="393" identifier="p148"/>
+      <point x="180" y="394" identifier="p149"/>
+      <point x="180" y="394" type="qcurve" identifier="p150"/>
+      <point x="180" y="395" identifier="p151"/>
+      <point x="180" y="395" identifier="p152"/>
+      <point x="180" y="396" type="qcurve" identifier="p153"/>
+      <point x="180" y="396" identifier="p154"/>
+      <point x="180" y="397" identifier="p155"/>
+      <point x="180" y="398" type="qcurve" identifier="p156"/>
+      <point x="182" y="502" identifier="p157"/>
+      <point x="230" y="646" identifier="p158"/>
+      <point x="334" y="723" identifier="p159"/>
+      <point x="420" y="726" type="qcurve" identifier="p160"/>
+      <point x="423" y="726" identifier="p161"/>
+      <point x="426" y="726" type="qcurve" identifier="p162"/>
+      <point x="427" y="726" identifier="p163"/>
+      <point x="429" y="726" type="qcurve" identifier="p164"/>
+      <point x="432" y="726" identifier="p165"/>
+      <point x="434" y="726" type="qcurve" identifier="p166"/>
+      <point x="438" y="726" identifier="p167"/>
+      <point x="442" y="726" type="qcurve" identifier="p168"/>
+      <point x="445" y="726" identifier="p169"/>
+      <point x="448" y="726" type="qcurve" identifier="p170"/>
+      <point x="453" y="725" identifier="p171"/>
+      <point x="457" y="725" type="qcurve" identifier="p172"/>
+      <point x="461" y="725" identifier="p173"/>
+      <point x="464" y="724" type="qcurve" identifier="p174"/>
+      <point x="468" y="724" identifier="p175"/>
+      <point x="472" y="724" type="qcurve" identifier="p176"/>
+      <point x="541" y="714" identifier="p177"/>
+      <point x="610" y="638" identifier="p178"/>
+      <point x="620" y="593" type="qcurve" identifier="p179"/>
+      <point x="620" y="589" identifier="p180"/>
+      <point x="622" y="582" identifier="p181"/>
+      <point x="622" y="578" type="qcurve" identifier="p182"/>
+      <point x="623" y="575" identifier="p183"/>
+      <point x="623" y="568" identifier="p184"/>
+      <point x="623" y="565" type="qcurve" identifier="p185"/>
+      <point x="624" y="564" identifier="p186"/>
+      <point x="624" y="562" identifier="p187"/>
+      <point x="624" y="560" type="qcurve" identifier="p188"/>
+      <point x="624" y="558" identifier="p189"/>
+      <point x="624" y="553" identifier="p190"/>
+      <point x="624" y="550" type="qcurve" identifier="p191"/>
+      <point x="619" y="550" identifier="p192"/>
+      <point x="610" y="549" identifier="p193"/>
+      <point x="605" y="549" type="qcurve" identifier="p194"/>
+      <point x="603" y="549" identifier="p195"/>
+      <point x="600" y="548" identifier="p196"/>
+      <point x="598" y="548" type="qcurve" identifier="p197"/>
+      <point x="595" y="548" identifier="p198"/>
+      <point x="590" y="548" identifier="p199"/>
+      <point x="587" y="547" type="qcurve" identifier="p200"/>
+      <point x="582" y="547" identifier="p201"/>
+      <point x="572" y="546" identifier="p202"/>
+      <point x="568" y="546" type="qcurve" identifier="p203"/>
+      <point x="566" y="546" identifier="p204"/>
+      <point x="563" y="546" identifier="p205"/>
+      <point x="562" y="546" type="qcurve" identifier="p206"/>
+      <point x="559" y="545" identifier="p207"/>
+      <point x="552" y="545" identifier="p208"/>
+      <point x="549" y="545" type="qcurve" identifier="p209"/>
+      <point x="544" y="544" identifier="p210"/>
+      <point x="535" y="544" identifier="p211"/>
+      <point x="530" y="543" type="qcurve" identifier="p212"/>
+      <point x="529" y="543" identifier="p213"/>
+      <point x="526" y="543" identifier="p214"/>
+      <point x="524" y="543" type="qcurve" identifier="p215"/>
+      <point x="524" y="554" identifier="p216"/>
+      <point x="521" y="575" identifier="p217"/>
+      <point x="519" y="584" type="qcurve" identifier="p218"/>
+      <point x="516" y="594" identifier="p219"/>
+      <point x="506" y="611" identifier="p220"/>
+      <point x="499" y="618" type="qcurve" identifier="p221"/>
+      <point x="493" y="623" identifier="p222"/>
+      <point x="481" y="631" identifier="p223"/>
+      <point x="473" y="634" type="qcurve" identifier="p224"/>
+      <point x="470" y="635" identifier="p225"/>
+      <point x="465" y="636" identifier="p226"/>
+      <point x="462" y="637" type="qcurve" identifier="p227"/>
+      <point x="460" y="638" identifier="p228"/>
+      <point x="457" y="638" identifier="p229"/>
+      <point x="455" y="639" type="qcurve" identifier="p230"/>
+      <point x="451" y="640" identifier="p231"/>
+      <point x="443" y="641" identifier="p232"/>
+      <point x="439" y="641" type="qcurve" identifier="p233"/>
+      <point x="435" y="642" identifier="p234"/>
+      <point x="426" y="642" identifier="p235"/>
+      <point x="422" y="642" type="qcurve" identifier="p236"/>
+      <point x="421" y="642" identifier="p237"/>
+      <point x="420" y="642" identifier="p238"/>
+      <point x="420" y="642" type="qcurve" identifier="p239"/>
+      <point x="414" y="642" identifier="p240"/>
+      <point x="401" y="641" identifier="p241"/>
+      <point x="396" y="640" type="qcurve" identifier="p242"/>
+      <point x="392" y="640" identifier="p243"/>
+      <point x="385" y="639" identifier="p244"/>
+      <point x="381" y="638" type="qcurve" identifier="p245"/>
+      <point x="376" y="637" identifier="p246"/>
+      <point x="371" y="635" type="qcurve" identifier="p247"/>
+      <point x="359" y="631" identifier="p248"/>
+      <point x="348" y="625" type="qcurve" identifier="p249"/>
+      <point x="337" y="618" identifier="p250"/>
+      <point x="328" y="609" type="qcurve" identifier="p251"/>
+      <point x="319" y="601" identifier="p252"/>
+      <point x="312" y="591" type="qcurve" identifier="p253"/>
+      <point x="298" y="571" identifier="p254"/>
+      <point x="279" y="516" identifier="p255"/>
+      <point x="269" y="441" identifier="p256"/>
+      <point x="268" y="394" type="qcurve" identifier="p257"/>
+      <point x="268" y="394" identifier="p258"/>
+      <point x="268" y="394" identifier="p259"/>
+      <point x="268" y="394" type="qcurve" identifier="p260"/>
+      <point x="268" y="394" identifier="p261"/>
+      <point x="268" y="393" identifier="p262"/>
+      <point x="268" y="393" type="qcurve" identifier="p263"/>
+      <point x="268" y="393" identifier="p264"/>
+      <point x="268" y="393" identifier="p265"/>
+      <point x="268" y="393" type="qcurve" identifier="p266"/>
+      <point x="268" y="393" identifier="p267"/>
+      <point x="268" y="393" identifier="p268"/>
+      <point x="268" y="392" type="qcurve" identifier="p269"/>
+      <point x="268" y="392" identifier="p270"/>
+      <point x="268" y="392" identifier="p271"/>
+      <point x="268" y="392" type="qcurve" identifier="p272"/>
+      <point x="268" y="392" identifier="p273"/>
+      <point x="268" y="392" identifier="p274"/>
+      <point x="268" y="392" type="qcurve" identifier="p275"/>
+      <point x="268" y="391" identifier="p276"/>
+      <point x="268" y="391" identifier="p277"/>
+      <point x="268" y="391" type="qcurve" identifier="p278"/>
+      <point x="268" y="391" identifier="p279"/>
+      <point x="268" y="391" identifier="p280"/>
+      <point x="268" y="391" type="qcurve" identifier="p281"/>
+      <point x="268" y="391" identifier="p282"/>
+      <point x="269" y="391" identifier="p283"/>
+      <point x="269" y="391" type="qcurve" identifier="p284"/>
+      <point x="269" y="391" identifier="p285"/>
+      <point x="269" y="391" identifier="p286"/>
+      <point x="269" y="391" type="qcurve" identifier="p287"/>
+      <point x="269" y="391" identifier="p288"/>
+      <point x="270" y="391" identifier="p289"/>
+      <point x="270" y="391" type="qcurve" identifier="p290"/>
+      <point x="270" y="391" identifier="p291"/>
+      <point x="271" y="391" identifier="p292"/>
+      <point x="271" y="391" type="qcurve" identifier="p293"/>
+      <point x="271" y="391" identifier="p294"/>
+      <point x="273" y="391" identifier="p295"/>
+      <point x="273" y="391" type="qcurve" identifier="p296"/>
+      <point x="276" y="391" identifier="p297"/>
+      <point x="281" y="391" identifier="p298"/>
+      <point x="283" y="391" type="qcurve" identifier="p299"/>
+      <point x="285" y="391" identifier="p300"/>
+      <point x="287" y="391" identifier="p301"/>
+      <point x="288" y="391" type="qcurve" identifier="p302"/>
+      <point x="319" y="391" identifier="p303"/>
+      <point x="381" y="391" identifier="p304"/>
+      <point x="411" y="391" type="qcurve" identifier="p305"/>
+      <point x="413" y="391" identifier="p306"/>
+      <point x="417" y="391" identifier="p307"/>
+      <point x="418" y="391" type="qcurve" identifier="p308"/>
+      <point x="420" y="391" identifier="p309"/>
+      <point x="422" y="391" identifier="p310"/>
+      <point x="424" y="391" type="qcurve" identifier="p311"/>
+      <point x="425" y="391" identifier="p312"/>
+      <point x="428" y="391" identifier="p313"/>
+      <point x="430" y="391" type="qcurve" identifier="p314"/>
+      <point x="431" y="391" identifier="p315"/>
+      <point x="435" y="391" identifier="p316"/>
+      <point x="436" y="391" type="qcurve" identifier="p317"/>
+      <point x="438" y="391" identifier="p318"/>
+      <point x="441" y="391" identifier="p319"/>
+      <point x="443" y="391" type="qcurve" identifier="p320"/>
+      <point x="442" y="388" identifier="p321"/>
+      <point x="441" y="383" identifier="p322"/>
+      <point x="441" y="380" type="qcurve" identifier="p323"/>
+      <point x="440" y="376" identifier="p324"/>
+      <point x="438" y="369" identifier="p325"/>
+      <point x="437" y="365" type="qcurve" identifier="p326"/>
+      <point x="437" y="363" identifier="p327"/>
+      <point x="436" y="358" identifier="p328"/>
+      <point x="435" y="356" type="qcurve" identifier="p329"/>
+      <point x="434" y="351" identifier="p330"/>
+      <point x="432" y="341" identifier="p331"/>
+      <point x="431" y="336" type="qcurve" identifier="p332"/>
+      <point x="431" y="335" identifier="p333"/>
+      <point x="430" y="332" identifier="p334"/>
+      <point x="430" y="331" type="qcurve" identifier="p335"/>
+      <point x="430" y="330" identifier="p336"/>
+      <point x="430" y="329" identifier="p337"/>
+      <point x="429" y="328" type="qcurve" identifier="p338"/>
+      <point x="429" y="328" identifier="p339"/>
+      <point x="429" y="328" identifier="p340"/>
+      <point x="429" y="327" type="qcurve" identifier="p341"/>
+      <point x="429" y="327" identifier="p342"/>
+      <point x="429" y="326" identifier="p343"/>
+      <point x="429" y="326" type="qcurve" identifier="p344"/>
+      <point x="429" y="325" identifier="p345"/>
+      <point x="428" y="324" identifier="p346"/>
+      <point x="428" y="323" type="qcurve" identifier="p347"/>
+      <point x="428" y="323" identifier="p348"/>
+      <point x="428" y="322" identifier="p349"/>
+      <point x="428" y="322" type="qcurve" identifier="p350"/>
+      <point x="428" y="322" identifier="p351"/>
+      <point x="428" y="321" identifier="p352"/>
+      <point x="428" y="321" type="qcurve" identifier="p353"/>
+      <point x="428" y="320" identifier="p354"/>
+      <point x="427" y="318" identifier="p355"/>
+      <point x="427" y="317" type="qcurve" identifier="p356"/>
+      <point x="399" y="317" identifier="p357"/>
+      <point x="343" y="317" identifier="p358"/>
+      <point x="315" y="317" type="qcurve" identifier="p359"/>
+      <point x="312" y="317" identifier="p360"/>
+      <point x="306" y="317" identifier="p361"/>
+      <point x="304" y="317" type="qcurve" identifier="p362"/>
+      <point x="301" y="317" identifier="p363"/>
+      <point x="297" y="317" identifier="p364"/>
+      <point x="294" y="317" type="qcurve" identifier="p365"/>
+      <point x="292" y="317" identifier="p366"/>
+      <point x="287" y="317" identifier="p367"/>
+      <point x="285" y="317" type="qcurve" identifier="p368"/>
+      <point x="283" y="317" identifier="p369"/>
+      <point x="277" y="317" identifier="p370"/>
+      <point x="275" y="317" type="qcurve" identifier="p371"/>
+      <point x="272" y="317" identifier="p372"/>
+      <point x="266" y="317" identifier="p373"/>
+      <point x="263" y="317" type="qcurve" identifier="p374"/>
+      <point x="263" y="316" identifier="p375"/>
+      <point x="263" y="315" identifier="p376"/>
+      <point x="263" y="314" type="qcurve" identifier="p377"/>
+      <point x="262" y="313" identifier="p378"/>
+      <point x="262" y="310" identifier="p379"/>
+      <point x="262" y="308" type="qcurve" identifier="p380"/>
+      <point x="261" y="308" identifier="p381"/>
+      <point x="261" y="306" identifier="p382"/>
+      <point x="261" y="305" type="qcurve" identifier="p383"/>
+      <point x="254" y="269" identifier="p384"/>
+      <point x="228" y="205" identifier="p385"/>
+      <point x="210" y="178" type="qcurve" identifier="p386"/>
+      <point x="206" y="172" identifier="p387"/>
+      <point x="198" y="161" identifier="p388"/>
+      <point x="193" y="155" type="qcurve" identifier="p389"/>
+      <point x="189" y="150" identifier="p390"/>
+      <point x="179" y="140" identifier="p391"/>
+      <point x="175" y="135" type="qcurve" identifier="p392"/>
+      <point x="170" y="130" identifier="p393"/>
+      <point x="159" y="121" identifier="p394"/>
+      <point x="154" y="116" type="qcurve" identifier="p395"/>
+      <point x="148" y="112" identifier="p396"/>
+      <point x="136" y="104" identifier="p397"/>
+      <point x="130" y="100" type="qcurve" identifier="p398"/>
+      <point x="124" y="96" identifier="p399"/>
+      <point x="111" y="90" identifier="p400"/>
+      <point x="104" y="87" type="qcurve" identifier="p401"/>
+      <point x="110" y="87" identifier="p402"/>
+      <point x="123" y="87" identifier="p403"/>
+      <point x="130" y="87" type="qcurve" identifier="p404"/>
+      <point x="137" y="87" identifier="p405"/>
+      <point x="151" y="87" identifier="p406"/>
+      <point x="158" y="87" type="qcurve" identifier="p407"/>
+      <point x="164" y="87" identifier="p408"/>
+      <point x="176" y="87" identifier="p409"/>
+      <point x="182" y="87" type="qcurve" identifier="p410"/>
+      <point x="221" y="87" identifier="p411"/>
+      <point x="299" y="87" identifier="p412"/>
+      <point x="338" y="87" type="qcurve" identifier="p413"/>
+      <point x="346" y="87" identifier="p414"/>
+      <point x="363" y="87" identifier="p415"/>
+      <point x="371" y="87" type="qcurve" identifier="p416"/>
+      <point x="379" y="87" identifier="p417"/>
+      <point x="396" y="87" identifier="p418"/>
+      <point x="404" y="87" type="qcurve" identifier="p419"/>
+      <point x="412" y="87" identifier="p420"/>
+      <point x="429" y="87" identifier="p421"/>
+      <point x="437" y="87" type="qcurve" identifier="p422"/>
+      <point x="446" y="87" identifier="p423"/>
+      <point x="462" y="87" identifier="p424"/>
+      <point x="471" y="87" type="qcurve" identifier="p425"/>
+      <point x="478" y="87" identifier="p426"/>
+      <point x="491" y="87" identifier="p427"/>
+      <point x="498" y="87" type="qcurve" identifier="p428"/>
+      <point x="500" y="87" identifier="p429"/>
+      <point x="503" y="87" identifier="p430"/>
+      <point x="504" y="87" type="qcurve" identifier="p431"/>
+      <point x="503" y="84" identifier="p432"/>
+      <point x="502" y="77" identifier="p433"/>
+      <point x="501" y="74" type="qcurve" identifier="p434"/>
+      <point x="500" y="70" identifier="p435"/>
+      <point x="499" y="61" identifier="p436"/>
+      <point x="498" y="57" type="qcurve" identifier="p437"/>
+      <point x="498" y="57" identifier="p438"/>
+      <point x="498" y="56" identifier="p439"/>
+      <point x="498" y="56" type="qcurve" identifier="p440"/>
+      <point x="497" y="51" identifier="p441"/>
+      <point x="495" y="42" identifier="p442"/>
+      <point x="494" y="37" type="qcurve" identifier="p443"/>
+      <point x="493" y="35" identifier="p444"/>
+      <point x="492" y="29" identifier="p445"/>
+      <point x="491" y="26" type="qcurve" identifier="p446"/>
+      <point x="491" y="24" identifier="p447"/>
+      <point x="490" y="21" identifier="p448"/>
+      <point x="490" y="19" type="qcurve" identifier="p449"/>
+      <point x="489" y="14" identifier="p450"/>
+      <point x="487" y="5" identifier="p451"/>
+      <point x="486" y="0" type="qcurve" identifier="p452"/>
+      <point x="485" y="0" identifier="p453"/>
+      <point x="484" y="0" identifier="p454"/>
+      <point x="484" y="0" type="qcurve" identifier="p455"/>
+      <point x="482" y="0" identifier="p456"/>
+      <point x="478" y="0" identifier="p457"/>
+      <point x="476" y="0" type="qcurve" identifier="p458"/>
+      <point x="473" y="0" identifier="p459"/>
+      <point x="467" y="0" identifier="p460"/>
+      <point x="464" y="0" type="qcurve" identifier="p461"/>
+      <point x="462" y="0" identifier="p462"/>
+      <point x="457" y="0" identifier="p463"/>
+      <point x="455" y="0" type="qcurve" identifier="p464"/>
+      <point x="341" y="0" identifier="p465"/>
+      <point x="114" y="0" identifier="p466"/>
     </contour>
   </outline>
   <lib>

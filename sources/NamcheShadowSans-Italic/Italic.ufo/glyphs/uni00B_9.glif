@@ -1,19 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="uni00B9" format="2">
   <advance width="243"/>
-  <unicode hex="00B9"/>
   <outline>
     <contour>
-      <point identifier="p0" x="129" y="323" type="line"/>
-      <point identifier="p1" x="183" y="577" type="line"/>
-      <point identifier="p2" x="87" y="576" type="line"/>
-      <point identifier="p3" x="97" y="626" type="line"/>
-      <point identifier="p4" x="122" y="626" type="line"/>
-      <point identifier="p5" x="167" y="626"/>
-      <point identifier="p6" x="220" y="671"/>
-      <point identifier="p7" x="228" y="711" type="qcurve"/>
-      <point identifier="p8" x="277" y="711" type="line"/>
-      <point identifier="p9" x="195" y="323" type="line"/>
+      <point x="129" y="323" type="line" identifier="p0"/>
+      <point x="183" y="577" type="line" identifier="p1"/>
+      <point x="87" y="576" type="line" identifier="p2"/>
+      <point x="97" y="626" type="line" identifier="p3"/>
+      <point x="122" y="626" type="line" identifier="p4"/>
+      <point x="167" y="626" identifier="p5"/>
+      <point x="220" y="671" identifier="p6"/>
+      <point x="228" y="711" type="qcurve" identifier="p7"/>
+      <point x="277" y="711" type="line" identifier="p8"/>
+      <point x="195" y="323" type="line" identifier="p9"/>
     </contour>
   </outline>
   <lib>

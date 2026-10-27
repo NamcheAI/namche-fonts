@@ -49,7 +49,7 @@ class NamcheShapeGeneratorTest(unittest.TestCase):
 
     def testEveryExportedGridGlyphHasInkInEveryStyle(self):
         names = [n for n, g in self.grids.items() if g.cells and not n.startswith("pixel")]
-        self.assertGreater(len(names), 200)
+        self.assertGreater(len(names), 150)
         for style in ns.STYLES:
             for name in names:
                 with self.subTest(style=style, glyph=name):

@@ -1,7 +1,10 @@
 {
   "recovered_from": "fonts/NamcheShadowSans/variable/NamcheShadowSans-Italic[wght].ttf",
-  "sha256": "a79f21b2c31ead8e6296be8a12b46c870d0e394840df2cb7eed3d0773e69c439",
-  "method": "Lossless recovery of approved italic quadratic contours, variation deltas, layout and metadata as editable UFO/TTX production sources. The separate cubic Glyphs design source remains available; it is not automatically synchronized with this production source.",
+  "sha256": "48aaa48ee1e6eec74e892eabadd1aecc5222978f4ace2502bf98655c64fcb4c5",
+  "repository_commit": "6f583790f713e6d71f90728522537ab22c47e9f9",
+  "ufo": "Italic.ufo",
+  "harfbuzz_repacker": false,
+  "method": "Recovered quadratic UFO and indexed variation/layout TTX production snapshot; not a replacement for the separate cubic design masters.",
   "table_order": [
     "head",
     "hhea",
@@ -24,11 +27,10 @@
     "fvar",
     "gvar"
   ],
-  "ufo": "Italic.ufo",
-  "repository_commit": "039e0efdd5c404df38491ef4d676af5331e02da9",
   "outputs": {
-    "variable/NamcheShadowSans-Italic[wght].ttf": "a79f21b2c31ead8e6296be8a12b46c870d0e394840df2cb7eed3d0773e69c439",
-    "webfonts/NamcheShadowSans-Italic[wght].woff2": "8400debbacde1fa7b8228cd4d9d085bb3eb188340a2301107871fe8391ce8d9a"
+    "variable/NamcheShadowSans-Italic[wght].ttf": "b4b0ba879baee23434b3903c12415009710c93d91bccf4e7b77650b6774705ed",
+    "webfonts/NamcheShadowSans-Italic[wght].woff2": "57f6660487a56fde0fe5f653039e84f69915fc838a9b42651bd1d39d03cd9686"
   },
-  "harfbuzz_repacker": false
+  "scope": "GF Latin Core: sources/charsets/GF_Latin_Core.nam",
+  "migration_issue": "https://github.com/NamcheAI/namche-fonts/issues/118"
 }

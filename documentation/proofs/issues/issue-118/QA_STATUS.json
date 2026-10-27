@@ -1,0 +1,60 @@
+{
+  "submission_ready": false,
+  "open_findings": [
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Amarakaeri language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Qʼeqchiʼ language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ʼ (U+02BC)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Otomi, Mezquital language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Secoya language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Purepecha language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ŋ (U+014B)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Yapese language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ʼ (U+02BC)"
+    },
+    {
+      "check": "googlefonts/tofu",
+      "code": "bad-sample-text",
+      "severity": "FAIL",
+      "message": "We detected support for the Yucateco language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ʼ (U+02BC)"
+    },
+    {
+      "check": "googlefonts/metadata/consistent_repo_urls",
+      "code": "mismatch",
+      "severity": "FAIL",
+      "message": "Repository URL is https://github.com/NamcheAI/namche-fonts. But:\n\n* HTML description has 'href=\"https://github.com/fizzybubbele\">Michael'\n* HTML description has 'href=\"https://github.com/NamcheAI/namche-fonts\">the'"
+    },
+    {
+      "check": "googlefonts/metadata/subsets_correct",
+      "code": "unsupported-subset",
+      "severity": "WARN",
+      "message": "Please remove 'latin-ext' from METADATA.pb since less than 20% of its glyphs are supported by this font file."
+    }
+  ],
+  "note": "Local candidate regression gate only; open FAILs still require resolution or explicit Google Fonts approval."
+}

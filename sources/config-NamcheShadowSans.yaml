@@ -33,11 +33,11 @@ cleanUp: true
 # buildSmallCap: false
 
 # Glyphs does not apply Michael's RoundCorner filters to its own variable-font
-# export. The upright VF therefore has a dedicated post-rounding build via
-# scripts/build_sans_variable.py; do not enable gftools' sharp VF here.
+# export. Release VFs build from the recovered UFO/TTX with
+# make build-sans-variable; do not enable gftools' sharp VF here.
 buildVariable: false
 # Statics are exported in Glyphs 4 and committed because gftools does not run
-# the seven RoundCorner instance filters. See AGENTS.md.
+# the retained RoundCorner instance filters. See AGENTS.md.
 buildStatic: false
 
 # The next flags control autohinting.

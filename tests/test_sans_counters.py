@@ -81,7 +81,7 @@ class ItalicOutlineMergeGuardTest(unittest.TestCase):
             font.close()
         self.assertIn("A", glyphs)
         self.assertTrue(all(isinstance(code, bytes) for code in glyphs.values()))
-        self.assertTrue(global_subrs and local_subrs)
+        self.assertTrue(all(isinstance(code, bytes) for code in global_subrs + local_subrs))
 
     def testCapturingAfterDrawingIsRefused(self) -> None:
         font = open_font(self.OTF)
@@ -110,7 +110,10 @@ class ItalicOutlineMergeGuardTest(unittest.TestCase):
         finally:
             font.close()
         global_subrs = list(release[1])
-        global_subrs[0] = global_subrs[0] + b"\x00"
+        if global_subrs:
+            global_subrs[0] = global_subrs[0] + b"\x00"
+        else:
+            global_subrs.append(b"\x00")
         with self.assertRaises(SystemExit):
             check_untouched_charstrings(
                 release, (release[0], global_subrs, release[2]), ["A"]

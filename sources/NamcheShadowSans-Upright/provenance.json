@@ -1,7 +1,10 @@
 {
   "recovered_from": "fonts/NamcheShadowSans/variable/NamcheShadowSans[wght].ttf",
-  "sha256": "3cf41b789b5fcca787cb9db1adabacb1245e11c86a9ea34b99b76310641eb566",
-  "method": "Quadratic default-master UFO plus exact gvar variation deltas and layout in TTX. Recovered production sources; NOT the missing original cubic Glyphs compatible masters.",
+  "sha256": "7a63dc34ea89c0748364282ea7ea0d8e8b74d0a4b73b511670116604a461ca83",
+  "repository_commit": "6f583790f713e6d71f90728522537ab22c47e9f9",
+  "ufo": "Upright.ufo",
+  "harfbuzz_repacker": true,
+  "method": "Recovered quadratic UFO and indexed variation/layout TTX production snapshot; not a replacement for the separate cubic design masters.",
   "table_order": [
     "head",
     "hhea",
@@ -24,9 +27,10 @@
     "fvar",
     "gvar"
   ],
-  "repository_commit": "26f8807f8b23a91374057c919f6a2144fe170599",
   "outputs": {
-    "variable/NamcheShadowSans[wght].ttf": "3cf41b789b5fcca787cb9db1adabacb1245e11c86a9ea34b99b76310641eb566",
-    "webfonts/NamcheShadowSans[wght].woff2": "9be24264d6c984c344f73000a295030afcc3f60cf2c9720ced355d8f5297ed42"
-  }
+    "variable/NamcheShadowSans[wght].ttf": "7a63dc34ea89c0748364282ea7ea0d8e8b74d0a4b73b511670116604a461ca83",
+    "webfonts/NamcheShadowSans[wght].woff2": "997a74b399e2817b04e9089d66221be93c378a7ec848f38da77fce05f26b181a"
+  },
+  "scope": "GF Latin Core: sources/charsets/GF_Latin_Core.nam",
+  "migration_issue": "https://github.com/NamcheAI/namche-fonts/issues/118"
 }

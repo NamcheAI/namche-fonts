@@ -4,12 +4,12 @@
   <unicode hex="0027"/>
   <outline>
     <contour>
-      <point identifier="p0" x="95" y="444" type="line"/>
-      <point identifier="p1" x="118" y="630" type="line"/>
-      <point identifier="p2" x="135" y="710" type="line"/>
-      <point identifier="p3" x="223" y="710" type="line"/>
-      <point identifier="p4" x="206" y="630" type="line"/>
-      <point identifier="p5" x="151" y="444" type="line"/>
+      <point x="95" y="444" type="line" identifier="p0"/>
+      <point x="118" y="630" type="line" identifier="p1"/>
+      <point x="135" y="710" type="line" identifier="p2"/>
+      <point x="223" y="710" type="line" identifier="p3"/>
+      <point x="206" y="630" type="line" identifier="p4"/>
+      <point x="151" y="444" type="line" identifier="p5"/>
     </contour>
   </outline>
   <lib>

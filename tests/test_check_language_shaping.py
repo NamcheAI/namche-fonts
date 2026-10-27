@@ -76,7 +76,7 @@ class LanguageShapingReportTest(unittest.TestCase):
             ],
         )
 
-    def test_allows_parked_yus_only_in_sans_variable(self) -> None:
+    def test_rejects_obsolete_cyrillic_exception(self) -> None:
         message = (
             "| The following auxiliary characters are missing from the font: ѫ | |"
         )
@@ -89,7 +89,7 @@ class LanguageShapingReportTest(unittest.TestCase):
         )
         _, static_errors = self.validate(report(message))
 
-        self.assertEqual(variable_errors, [])
+        self.assertEqual(len(variable_errors), 1)
         self.assertEqual(len(static_errors), 1)
         self.assertIn("undocumented auxiliary omissions: ѫ", static_errors[0])
 

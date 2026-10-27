@@ -29,8 +29,8 @@ VENDOR_ID = "NMCH"
 WWS_BIT = 1 << 8
 SHAPE_FAMILY = "Namche Shape"
 FAMILY_LANGUAGE_TAGS = {
-    "Namche Shadow Sans": {"dlng": "Latn", "slng": "Latn,Cyrl"},
-    "Namche Shadow Mono": {"dlng": "Latn", "slng": "Latn,Cyrl"},
+    "Namche Shadow Sans": {"dlng": "Latn", "slng": "Latn"},
+    "Namche Shadow Mono": {"dlng": "Latn", "slng": "Latn"},
     "Namche Shape": {"dlng": "Latn", "slng": "Latn"},
 }
 LATIN_SUBSET_LANGUAGE_TAGS = {"dlng": "Latn", "slng": "Latn"}

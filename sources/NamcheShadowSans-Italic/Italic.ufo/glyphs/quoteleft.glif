@@ -4,13 +4,13 @@
   <unicode hex="2018"/>
   <outline>
     <contour>
-      <point identifier="p0" x="248" y="726" type="line"/>
-      <point identifier="p1" x="167" y="570" type="line"/>
-      <point identifier="p2" x="218" y="570" type="line"/>
-      <point identifier="p3" x="194" y="457" type="line"/>
-      <point identifier="p4" x="81" y="457" type="line"/>
-      <point identifier="p5" x="102" y="556" type="line"/>
-      <point identifier="p6" x="198" y="726" type="line"/>
+      <point x="248" y="726" type="line" identifier="p0"/>
+      <point x="167" y="570" type="line" identifier="p1"/>
+      <point x="218" y="570" type="line" identifier="p2"/>
+      <point x="194" y="457" type="line" identifier="p3"/>
+      <point x="81" y="457" type="line" identifier="p4"/>
+      <point x="102" y="556" type="line" identifier="p5"/>
+      <point x="198" y="726" type="line" identifier="p6"/>
     </contour>
   </outline>
   <lib>

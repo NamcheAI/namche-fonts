@@ -3,75 +3,57 @@
   "status": "Open candidate findings, not Google Fonts waivers",
   "explanations": {
     "googlefonts/metadata/consistent_repo_urls": "1.9.0 compares whitespace tokens containing github.com with the repository path, including href markup and the required designer profile. Retain credits; resolve with GF/tool maintainers.",
-    "googlefonts/tofu": "U+0331 now exists with below-mark attachment and stacking. Nine sample-serving failures remain because the pinned subset union omits U+0302, U+0331 and U+0338. No missing-glyph/sample-text failures remain. See SOURCE_QA_FOLLOWUP.md.",
-    "googlefonts/metadata/subsets_correct": "The checked extended subsets have under 20% coverage. Removing them also removes served supported characters. Resolve the exact subset declarations with Google Fonts; do not silently drop coverage."
+    "googlefonts/tofu": "Intentional GF Latin Core scope (#118): detected languages have sample-only U+0331, U+02BC or U+014B outside the 319-character contract. These are real missing characters, not fixed shaping or waived GF requirements. Curator decision remains open.",
+    "googlefonts/metadata/subsets_correct": "Latin Core includes characters served by latin-ext despite under 20% coverage of that larger serving subset. Keep the declaration pending curator guidance."
   },
   "findings": [
     {
       "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
+      "code": "bad-sample-text",
       "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the specimen 16 sample text for language Aleut, but although the font contained all the base exemplars for the language, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̂ (U+0302)"
+      "message": "We detected support for the Amarakaeri language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
     },
     {
       "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
+      "code": "bad-sample-text",
       "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the specimen 16 sample text for language Amarakaeri, but although the font contained all the base exemplars for the language, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̱ (U+0331)"
+      "message": "We detected support for the Qʼeqchiʼ language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ʼ (U+02BC)"
     },
     {
       "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
+      "code": "bad-sample-text",
       "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the poster md sample text for language Chickasaw, but although the font contained all the base exemplars for the language, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̱ (U+0331)"
+      "message": "We detected support for the Otomi, Mezquital language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
     },
     {
       "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
+      "code": "bad-sample-text",
       "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the poster md sample text for language Central Mazahua, but although the font contained all the codepoints for the sample text, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̱ (U+0331)"
+      "message": "We detected support for the Secoya language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ̱ (U+0331)"
     },
     {
       "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
+      "code": "bad-sample-text",
       "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the poster sm sample text for language Central Mazahua, but although the font contained all the codepoints for the sample text, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̸ (U+0338)"
+      "message": "We detected support for the Purepecha language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ŋ (U+014B)"
     },
     {
       "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
+      "code": "bad-sample-text",
       "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the specimen 16 sample text for language Otomi, Mezquital, but although the font contained all the base exemplars for the language, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̱ (U+0331)"
+      "message": "We detected support for the Yapese language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ʼ (U+02BC)"
     },
     {
       "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
+      "code": "bad-sample-text",
       "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the specimen 16 sample text for language Secoya, but although the font contained all the base exemplars for the language, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̱ (U+0331)"
-    },
-    {
-      "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
-      "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the poster lg sample text for language Siona, but although the font contained all the codepoints for the sample text, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̱ (U+0331)"
-    },
-    {
-      "check": "googlefonts/tofu",
-      "code": "missing-subsetted",
-      "severity": "FAIL",
-      "message": "The font has the following codepoints needed to render the specimen 16 sample text for language Ticuna, but although the font contained all the codepoints for the sample text, tofu will still be produced because the codepoints do not appear in any of the subsets cyrillic, cyrillic-ext, latin, latin-ext, vietnamese:\n\n* ̱ (U+0331)"
+      "message": "We detected support for the Yucateco language because the font contained all the base exemplars for the language, but the font is missing the following codepoints needed to render the specimen 16 sample text (This suggests there's something wrong with the sample text):\n\n* ʼ (U+02BC)"
     },
     {
       "check": "googlefonts/metadata/consistent_repo_urls",
       "code": "mismatch",
       "severity": "FAIL",
       "message": "Repository URL is https://github.com/NamcheAI/namche-fonts. But:\n\n* HTML description has 'href=\"https://github.com/fizzybubbele\">Michael'\n* HTML description has 'href=\"https://github.com/NamcheAI/namche-fonts\">the'"
-    },
-    {
-      "check": "googlefonts/metadata/subsets_correct",
-      "code": "unsupported-subset",
-      "severity": "WARN",
-      "message": "Please remove 'cyrillic-ext' from METADATA.pb since less than 20% of its glyphs are supported by this font file."
     },
     {
       "check": "googlefonts/metadata/subsets_correct",

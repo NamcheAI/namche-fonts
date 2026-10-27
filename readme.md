@@ -112,20 +112,15 @@ Import only the families an app uses to avoid loading unnecessary faces:
 @import "@namche/namche-shadow/shape.css";
 ```
 
-Namche-controlled properties that only render the maintained Latin web set can
-use the smaller opt-in entry points:
+All Namche families encode exactly the 319 characters in
+[GF Latin Core](sources/charsets/GF_Latin_Core.nam), including its accents and
+combining marks. Cyrillic, box drawing and other characters outside that set
+are no longer included. This is a breaking coverage change. Bundled upstream
+Geist keeps its original character set.
 
-```css
-@import "@namche/namche-shadow/sans-latin.css";
-@import "@namche/namche-shadow/mono-latin.css";
-```
-
-CDN-backed equivalents end in `-latin.cdn.css`; direct releases expose
-`fonts-latin.css` and the corresponding family-only stylesheets. Keep the
-unsuffixed full entry points for user-generated text, multilingual content,
-font specimens, or Mono interfaces that need Cyrillic, box drawing, and
-technical symbols. Every Latin `@font-face` has a matching `unicode-range`,
-and its WOFF2 file is also physically subsetted.
+The existing `sans-latin.css`, `mono-latin.css`, `shape-latin.css` and CDN
+counterparts remain compatible entry points. For Namche they now serve the
+same Latin Core fonts as the unsuffixed entries, with matching `unicode-range`.
 
 This fully self-hosted path bundles the required WOFF2 files, works offline or
 in an air-gapped deployment, and makes the downstream origin responsible for
@@ -173,11 +168,9 @@ import { NamcheShadowSans } from "@namche/namche-shadow/font/sans-latin";
 import { NamcheShadowMono } from "@namche/namche-shadow/font/mono-latin";
 ```
 
-The complete desktop OTF/TTF files and existing full WOFF2 entry points remain
-unchanged. GitHub Actions generates the Latin WOFF2 files deterministically
-from those approved full webfonts for npm, release ZIP, and CDN artifacts; the
-subset binaries are build outputs rather than committed sources. The shared
-codepoint contract is [`sources/subsets/latin.txt`](sources/subsets/latin.txt).
+Desktop OTF/TTF, variable fonts and WOFF2 share the exact Latin Core scope.
+The canonical list and its pinned upstream provenance are in `sources/charsets/`;
+`scripts/check_latin_core.py` enforces the contract across sources and artifacts.
 
 Published releases are mirrored to `https://cdn.namche.ai` through the
 infrastructure repository. A versioned URL is immutable and safe to cache
@@ -200,8 +193,7 @@ Namche Shadow Sans ships static Thin through Black weights plus a `wght`
 variable font pair, upright and italic. The approved static exports remain
 the visual source of truth. The default and `font/sans` npm entry points use
 both rounded VFs with static fallbacks; `font/sans-non-variable` uses statics
-throughout. Five glyphs whose rounded masters still differ are parked only
-from the VFs and remain present in every static.
+throughout. Statics and VFs encode the same Latin Core characters.
 
 Namche Shadow Mono retains its upstream-derived variable build. Namche Shape
 ships three static styles (Metaball, Origin, and Skeleton) and has no variable
@@ -210,8 +202,7 @@ font.
 ### Namche Shape
 
 Namche Shape is generated from the pixel grid of the Geist Pixel source, kept
-as `sources/NamcheShape.glyphspackage` (which still carries the reviewed
-**₹** and **◌** additions), by `scripts/namche_shape.py` and
+as `sources/NamcheShape.glyphspackage` (restricted to GF Latin Core), by `scripts/namche_shape.py` and
 `scripts/build_namche_shape.py` (`make build-shape`). It keeps Geist Pixel's
 metrics, spacing, kerning, and OpenType features.
 

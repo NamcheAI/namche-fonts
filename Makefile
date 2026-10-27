@@ -34,7 +34,7 @@ customize: venv
 
 build.stamp: venv sources/config-NamcheShadowSans.yaml \
 	$(SHAPE_SOURCES) $(SOURCES) $(OPEN_SANS_SOURCES) \
-	$(wildcard sources/googlefonts/*) scripts/build_googlefonts.py scripts/googlefonts_marks.py OFL.txt
+	$(wildcard sources/googlefonts/*) scripts/build_googlefonts.py scripts/latin_core.py sources/charsets/GF_Latin_Core.nam OFL.txt
 	$(MAKE) check-source-copies
 	rm -rf fonts namche-fonts namche-fonts.zip
 	$(MAKE) build-mono
@@ -67,6 +67,7 @@ build-mono: venv sources/config-NamcheShadowMono.yaml \
 	rm -rf fonts/NamcheShadowMono
 	. venv/bin/activate; gftools builder sources/config-NamcheShadowMono.yaml
 	. venv/bin/activate; python3 scripts/rename_font_metadata.py fonts/NamcheShadowMono
+	$(PYTHON) scripts/latin_core.py fonts/NamcheShadowMono
 
 # Namche Shape is generated from the pixel grid of its Glyphs source; the
 # random choices are seeded, so this rebuild is reproducible byte-for-outline.
@@ -78,7 +79,7 @@ build-shape: venv $(SHAPE_SOURCES)
 check-source-copies:
 	# Mono remains outline-identical; the Namche Shape grid permits reviewed source additions.
 	# The checker also permits only reviewed Mono anchor metadata.
-	python3 scripts/check_source_copies.py
+	$(PYTHON) scripts/check_source_copies.py
 
 check-sans-variable: venv
 	. venv/bin/activate; python3 scripts/check_sans_variable.py
