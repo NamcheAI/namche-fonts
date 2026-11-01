@@ -1,5 +1,9 @@
 # Google Fonts intake investigation, 2026-10-22
 
+See [the October 25 follow-up](SOURCE_QA_FOLLOWUP.md) for exact editable master
+reconstruction, the candidate U+0331 addition, and the resulting subset-serving
+findings. This document and `evidence.json` retain the original investigation.
+
 [Ready-to-edit Add Font issue](ISSUE.md), **not submitted**.
 [Machine-readable evidence](evidence.json) covers both VFs using the exact data
 crates locked by Fontspector 1.9.0, commit
