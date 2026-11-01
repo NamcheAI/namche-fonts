@@ -1,5 +1,12 @@
 # Sans VF provenance and open build
 
+Update 2026-10-25: `scripts/reconstruct_sans_masters.py` now exports nine editable
+quadratic UFO masters and a designspace per style. Reloading the saved masters
+and deriving their variation deltas reproduces all four approved TTF/WOFF2
+files byte-for-byte. This is an exact reconstruction of the production geometry,
+not recovery of the missing historical cubic exports. See
+[the follow-up](googlefonts-intake/SOURCE_QA_FOLLOWUP.md) for evidence and limits.
+
 Examined release: NamcheAI/namche-fonts 26f8807f8b23a91374057c919f6a2144fe170599.
 
 ## Root cause
