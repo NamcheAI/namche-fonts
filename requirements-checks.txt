@@ -2,8 +2,8 @@
 # Keep this separate from the full font-building and proof toolchain.
 fontpens==0.4.0
 fonttools[unicode,woff]==4.65.0
-glyphslib==6.16.0
+glyphslib==6.16.2
 numpy==2.2.6
-uharfbuzz==0.56.3
+uharfbuzz==0.56.4
 pyyaml==6.0.3
 skia-pathops==0.9.2
