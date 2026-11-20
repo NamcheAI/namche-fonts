@@ -9,6 +9,10 @@ prototype rule (c = 1.2, r_max 70 caps and figures / 53 rest).
 - `03-thin-c-variants.png` – Thin with c = 0.6, 0.9, 1.2 against current and plain Geist
 - `04-words-all-weights.png` – word images, wght 100–900
 
+German write-up for the team, with the same proofs in German labels and the
+radius chart: [`rundungen-diagnose-und-regel.md`](rundungen-diagnose-und-regel.md)
+(images in `de/`).
+
 `prototype/` holds the scripts that made them (see `LIESMICH.md`). The prototype
 rebuilds corners from Geist instances; its outlines are not interpolation-
 compatible and are for proofs only. The production change belongs in
