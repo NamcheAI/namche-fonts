@@ -84,6 +84,7 @@ jobs:
               'scripts/build_sans_open.py',
               'scripts/recover_sans_production_source.py',
               'scripts/equal_ink_corners.py',
+              'scripts/round_inner_corners.py',
               'scripts/finalize_equal_ink.py',
               'scripts/write_glyphspackage.py',
               'scripts/check_equal_ink.py',
