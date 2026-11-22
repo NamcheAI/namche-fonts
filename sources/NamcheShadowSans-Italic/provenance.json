@@ -1,6 +1,6 @@
 {
   "recovered_from": "issue-125 compatible cubic source build: NamcheShadowSans-Italic[wght].ttf",
-  "sha256": "56c12fcd96ed8d6f9c4dc5888ee2f2ba2f19c893b2e964595c19da973b379422",
+  "sha256": "c5b7a830cc12d29e2e1e50ab6544685f6e2747ece45060bb367050551e71954b",
   "repository_commit": "bbdc0fd6f436316347e40bc15c243df3fd957a6d",
   "ufo": "Italic.ufo",
   "harfbuzz_repacker": false,
@@ -31,8 +31,8 @@
     "vmtx"
   ],
   "outputs": {
-    "variable/NamcheShadowSans-Italic[wght].ttf": "56c12fcd96ed8d6f9c4dc5888ee2f2ba2f19c893b2e964595c19da973b379422",
-    "webfonts/NamcheShadowSans-Italic[wght].woff2": "d8be00da935adc6949e1b3622fe0685c08e692e44878cd9f601e2e70aae37f94"
+    "variable/NamcheShadowSans-Italic[wght].ttf": "c5b7a830cc12d29e2e1e50ab6544685f6e2747ece45060bb367050551e71954b",
+    "webfonts/NamcheShadowSans-Italic[wght].woff2": "a2f826b6abf354a1218c1438f2bab21b0d43e0abc06f91e9abb60e6bbd0bb7e6"
   },
   "clean_source_sha256": "dfe8c59c86c82acc33ed72135277a4ba6c3e97764f82efb8ef6a64fefb74d228"
 }

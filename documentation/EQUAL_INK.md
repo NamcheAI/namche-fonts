@@ -87,6 +87,21 @@ from one-sided slots. The symmetric subdivision preserves the inactive
 master's filled geometry. Regression cases cover italic a between masters,
 italic sterling, upright superscript zero, and the bold italic ordinal static.
 
+Both static and variable compilation explicitly select the Python cu2qu
+implementation shipped with pinned fontTools 4.60.1. Its compiled extension can
+differ by one floating-point ULP between macOS ARM and Linux; rounding a control
+point near a half unit then changes an integer outline by one unit. The scoped
+`fontmake_deterministic.py` entry point avoids that platform-dependent conversion
+without modifying the installed environment. It retains the same 0.1-unit
+conversion bound. The build logs the compiler version and Python-source hash.
+The conversion correction moves integer-rounded reviewed points by at most one
+unit. Across all glyphs at the 16 reviewed VF instances, the largest raw
+fractional movement is 1.097258 units: upright `three`/`three.tf` at weight 550.
+Existing integer-rounded gvar deltas combine with quantized tuple supports, so
+their weighted changes can exceed the single-point integer conversion change.
+Tuple supports, point/contour topology and advances remain unchanged; the
+compiled geometry allowance stays at two units and remains independently tested.
+
 Compilation disables the default lossy IUP optimization of variation deltas.
 Finalization applies zero-tolerance IUP compression and re-expands every tuple
 to verify exact delta equality; it keeps the full tuple if that check fails.
@@ -195,8 +210,8 @@ The webfont cost is measurable (bytes):
 
 | Style | Previous WOFF2 | Review WOFF2 | Review TTF |
 | --- | ---: | ---: | ---: |
-| Upright | 196,776 | 301,128 | 1,461,680 |
-| Italic | 222,908 | 305,612 | 1,515,800 |
+| Upright | 196,776 | 301,608 | 1,461,680 |
+| Italic | 222,908 | 305,740 | 1,515,800 |
 
 The sources remain unhinted. This review build still needs design review at
 intended text sizes; passing technical gates does not establish artistic

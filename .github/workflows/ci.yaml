@@ -81,6 +81,8 @@ jobs:
               'sources/config-NamcheShadowSans-Italic.yaml',
               'scripts/build_sans_variable.py',
               'scripts/build_sans_equal_ink.py',
+              'scripts/fontmake_deterministic.py',
+              'tests/test_fontmake_deterministic.py',
               'scripts/build_sans_open.py',
               'scripts/recover_sans_production_source.py',
               'scripts/equal_ink_corners.py',
@@ -341,6 +343,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install libcairo2-dev pkg-config python3-dev
           python -m pip install -r requirements.txt
+      - name: Test pinned deterministic compiler
+        run: python -m unittest discover -s tests -p 'test_fontmake_deterministic.py'
       - name: Verify every compiled Sans binary
         run: make check-sans-equal-ink PYTHON=python
       - name: Build unrounded geometry baseline

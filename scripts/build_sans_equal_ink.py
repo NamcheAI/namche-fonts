@@ -251,6 +251,7 @@ def static_sources(output):
 
 def compile_fonts(output, clean=False):
     import yaml
+    from scripts.fontmake_deterministic import fontmake_environment
     config = {'sources':['NamcheShadowSans.glyphspackage','NamcheShadowSans-Italic.glyphspackage'],
         'outputDir':'fonts','familyName':'Namche Shadow Sans','buildVariable':True,
         'buildStatic':True,'buildTTF':True,'buildOTF':True,'autohintTTF':False,
@@ -263,11 +264,13 @@ def compile_fonts(output, clean=False):
         config_path=output/filename
         config_path.write_text(yaml.safe_dump(settings,sort_keys=False))
         subprocess.run([str(Path(sys.executable).with_name('gftools')),'builder',str(config_path)],env=env,check=True)
-    if clean:
-        run(config, 'config.yaml')
-    else:
-        run(dict(config, buildStatic=False), 'config-variable.yaml')
-        run(dict(config, sources=static_sources(output), buildVariable=False), 'config-static.yaml')
+    with fontmake_environment(env) as compiler_environment:
+        env = compiler_environment
+        if clean:
+            run(config, 'config.yaml')
+        else:
+            run(dict(config, buildStatic=False), 'config-variable.yaml')
+            run(dict(config, sources=static_sources(output), buildVariable=False), 'config-static.yaml')
 
 
 def finalize(output):

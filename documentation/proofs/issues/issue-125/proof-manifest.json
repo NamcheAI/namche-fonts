@@ -68,10 +68,10 @@
         "sha256": "8bce9a30fda62c8bdf6e26198e18fc48e972c0f392d2f7d0f686031f7526b716"
       },
       "ExtraLightItalic": {
-        "sha256": "2de95761a523f576b35289ef4e523c8470219cd8c10f06eac8b1ab68f7403d67"
+        "sha256": "be090c230c13ec7d82ea8c0ad3354ed6794a11a467a4e485e3d9a6d0599f3f47"
       },
       "Light": {
-        "sha256": "8651ce0226c05b93d339d3e5ae297e31e92357b31df8651c63bcae9e1bf20b0b"
+        "sha256": "2fa3c6a1fd53ed9c147cf1d7ccacb07781e654b84d70e5084370ad33b0775a71"
       },
       "LightItalic": {
         "sha256": "78b914bd6cfa9a33b2593dbd31994ea702f04c588d41a9716d44f0b03ca6c503"
@@ -83,28 +83,28 @@
         "sha256": "52d2e42984873b8f8f1113cbbff53b2777abce50218d9d36cb409631e6bfcba0"
       },
       "Medium": {
-        "sha256": "5749be467b531428b07487d7bba0ff0ab0fdff756b679af9b6d22d41278ca6a2"
+        "sha256": "f04e1a3087a943ed459e089b456df321719b3b8ee53bdd7eb1c6a0b041ed4e20"
       },
       "MediumItalic": {
-        "sha256": "83b0373fd6a860e8708185f067c9b845e46e160310d0171d0f9206d765f23303"
+        "sha256": "d39a9396616a284023c7c71ed40f07f27fdc8a1c12c4d6a31529923dfd61003a"
       },
       "SemiBold": {
-        "sha256": "bea37999562f32da36dc79317976ccc52975b406d0520a39ce9d4aa6b5b5b9e0"
+        "sha256": "f3e6354c73091a0a420f71cff06b2a1c8b7dbfe818b2ebb6e462dc78a6f4706f"
       },
       "SemiBoldItalic": {
-        "sha256": "fa8a4d40e5840ed7f917e8182a45b2da8fd0fca0662d54a0e08d0d10797b47ca"
+        "sha256": "7bf91ee1d997a2fb3580592a9d9fb19a5ce376f981f76b9d8e8b258ac453ff49"
       },
       "Bold": {
-        "sha256": "3ba9572642217aab03059ea1706d7682f714966a702f947beab9e3eb6dd49e2e"
+        "sha256": "706ed728eb40be06d8baedcc6f67fb1df892097c0902a8db30ded82eba24cfb3"
       },
       "BoldItalic": {
-        "sha256": "55f8c4368189ed873b145a7a4f97685dab634b2a8961fb7aac062f94daacb9d4"
+        "sha256": "57a7ff00f253900aa64fc2d04c6a3377f69893c7709380230286cedd7d49a477"
       },
       "ExtraBold": {
-        "sha256": "cb2ed0eead8afd21a024c66ca45a3ad6654b523b7ab089c250a769753489de2b"
+        "sha256": "1851bf78784effbe01d21e1b2dc4880a1673233bf9e809f2b0ef707ec0d238aa"
       },
       "ExtraBoldItalic": {
-        "sha256": "ac68e5321c89a7efa460ae05a70ccd0e9d08fa7f7999ac8a9ac5942f0b70c4ae"
+        "sha256": "41c4c7469ed8363f0f044b21bf255a73f3d51ecf1c9b2e72cb0bd9ccaea3b01f"
       },
       "Black": {
         "sha256": "aae677c35873b5ca65f2b5fc0e274b95c33f6ea6752a9e78b79b34e3bdbd9be8"
@@ -160,8 +160,8 @@
     ],
     "sample_pixels": 105,
     "candidate_variable_sha256": {
-      "NamcheShadowSans[wght].ttf": "45b3776a99ea84a8805d893c23940f9314141128dd859ca4fbf3f89ae620aba6",
-      "NamcheShadowSans-Italic[wght].ttf": "56c12fcd96ed8d6f9c4dc5888ee2f2ba2f19c893b2e964595c19da973b379422"
+      "NamcheShadowSans[wght].ttf": "ef15e6b0e18500b3a59e711a4350c506f1fde213120946e8ec22a50ff4d22613",
+      "NamcheShadowSans-Italic[wght].ttf": "c5b7a830cc12d29e2e1e50ab6544685f6e2747ece45060bb367050551e71954b"
     }
   },
   "before_commit": "6d76177860dc7d3f4e80bc517bd74ae5a9109d9c",
