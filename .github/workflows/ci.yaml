@@ -361,7 +361,10 @@ jobs:
           name: namche-shadow-equal-ink-qa
           path: |
             out/equal-ink-check/corner-report.json
-            out/equal-ink-check/finalized/finalization-report.json
+            out/equal-ink-check/finalized/
+            out/equal-ink-check/NamcheShadowSans.glyphspackage/
+            out/equal-ink-check/NamcheShadowSans-Italic.glyphspackage/
+            out/equal-ink-check/release-differences.json
             out/equal-ink-measurements.json
           if-no-files-found: error
 

@@ -367,16 +367,107 @@ def _check_font_inventory(root, allow_derived_subsets=False):
     return required
 
 
+def _glyph_table_differences(expected_path, actual_path, tags):
+    """Return glyph names whose glyf or gvar records differ between fonts."""
+    from fontTools.ttLib import TTFont
+
+    names = {'glyf': [], 'gvar': []}
+    try:
+        with TTFont(expected_path, lazy=True) as expected, TTFont(actual_path, lazy=True) as actual:
+            for table_tag in ('glyf', 'gvar'):
+                if table_tag not in tags or table_tag not in expected or table_tag not in actual:
+                    continue
+                if table_tag == 'glyf':
+                    common = set(expected.getGlyphOrder()) | set(actual.getGlyphOrder())
+                    for name in sorted(common):
+                        if name not in expected['glyf'].glyphs or name not in actual['glyf'].glyphs:
+                            names[table_tag].append(name)
+                            continue
+                        left = expected['glyf'][name].compile(expected['glyf'])
+                        right = actual['glyf'][name].compile(actual['glyf'])
+                        if left != right:
+                            names[table_tag].append(name)
+                else:
+                    expected_variations = expected['gvar'].variations
+                    actual_variations = actual['gvar'].variations
+                    for name in sorted(set(expected_variations) | set(actual_variations)):
+                        def variation_records(values):
+                            return tuple((tuple(sorted(item.axes.items())), tuple(
+                                None if point is None else tuple(point)
+                                for point in item.coordinates
+                            )) for item in values or ())
+                        if variation_records(expected_variations.get(name)) != variation_records(actual_variations.get(name)):
+                            names[table_tag].append(name)
+    except Exception:
+        # Hashes/table tags remain useful even when an unusual font cannot be
+        # decoded far enough to name the changed outlines.
+        return names
+    return names
+
+
+def _release_difference(expected_path, actual_path, relative_name):
+    import hashlib
+    from fontTools.ttLib import TTFont
+
+    expected_sha = hashlib.sha256(expected_path.read_bytes()).hexdigest()
+    if not actual_path.is_file():
+        return {
+            'file': relative_name,
+            'expected_sha256': expected_sha,
+            'actual_sha256': None,
+            'differing_tables': [],
+            'affected_glyphs': {'glyf': [], 'gvar': []},
+        }
+    actual_sha = hashlib.sha256(actual_path.read_bytes()).hexdigest()
+    differing = []
+    try:
+        with TTFont(expected_path, lazy=True) as expected, TTFont(actual_path, lazy=True) as actual:
+            for tag in sorted(set(expected.keys()) | set(actual.keys())):
+                if tag == 'GlyphOrder':
+                    continue
+                if tag not in expected or tag not in actual:
+                    differing.append(tag)
+                elif expected.getTableData(tag) != actual.getTableData(tag):
+                    differing.append(tag)
+    except Exception as error:
+        return {
+            'file': relative_name,
+            'expected_sha256': expected_sha,
+            'actual_sha256': actual_sha,
+            'differing_tables': differing,
+            'affected_glyphs': {'glyf': [], 'gvar': []},
+            'table_diff_error': str(error),
+        }
+    return {
+        'file': relative_name,
+        'expected_sha256': expected_sha,
+        'actual_sha256': actual_sha,
+        'differing_tables': differing,
+        'affected_glyphs': _glyph_table_differences(expected_path, actual_path, set(differing)),
+    }
+
+
 def check_release(output, release):
     final = output/'finalized'
     required = _check_font_inventory(final)
     _check_font_inventory(release, allow_derived_subsets=True)
     expected = [final/name for name in sorted(required)]
-    failures = [str(p.relative_to(final)) for p in expected
-                if not (release/p.relative_to(final)).is_file()
-                or p.read_bytes() != (release/p.relative_to(final)).read_bytes()]
-    if failures:
-        raise ValueError(f'compiled Sans files differ from committed release: {failures}')
+    differences = []
+    for path in expected:
+        relative = path.relative_to(final)
+        actual = release/relative
+        if not actual.is_file() or path.read_bytes() != actual.read_bytes():
+            # Keep the conventional diagnostic meaning clear: expected is the
+            # committed release; actual is the freshly finalized build.
+            differences.append(_release_difference(actual, path, relative.as_posix()))
+    diagnostic = output/'release-differences.json'
+    if differences:
+        diagnostic.write_text(json.dumps({'differences': differences}, indent=2, sort_keys=True) + '\n')
+        raise ValueError(
+            f'compiled Sans files differ from committed release: '
+            f"{[item['file'] for item in differences]}; details: {diagnostic}"
+        )
+    diagnostic.unlink(missing_ok=True)
     import glyphsLib
     for suffix in ('', '-Italic'):
         name = f'NamcheShadowSans{suffix}.glyphspackage'

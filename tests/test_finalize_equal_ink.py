@@ -192,6 +192,29 @@ class EqualInkFinalizerTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'incomplete finalized font set'):
                 check_release(root, root/'release')
 
+    def test_release_mismatch_writes_table_and_glyph_diagnostics(self):
+        from scripts.build_sans_equal_ink import check_release
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            expected = root/'finalized/ttf/test.ttf'
+            actual = root/'release/ttf/test.ttf'
+            expected.parent.mkdir(parents=True)
+            actual.parent.mkdir(parents=True)
+            make_font(expected, 'Fixture')
+            make_font(actual, 'Fixture')
+            with TTFont(actual) as font:
+                glyph = font['glyf']['u0041']
+                glyph.coordinates[0] = (glyph.coordinates[0][0] + 1, glyph.coordinates[0][1])
+                font.save(actual)
+            with patch('scripts.build_sans_equal_ink._check_font_inventory', return_value={'ttf/test.ttf'}):
+                with self.assertRaisesRegex(ValueError, 'release-differences.json'):
+                    check_release(root, root/'release')
+            report = json.loads((root/'release-differences.json').read_text())
+            difference, = report['differences']
+            self.assertNotEqual(difference['expected_sha256'], difference['actual_sha256'])
+            self.assertIn('glyf', difference['differing_tables'])
+            self.assertIn('u0041', difference['affected_glyphs']['glyf'])
+
     def test_metadata_survives_new_order_and_no_release_binary_is_required(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
