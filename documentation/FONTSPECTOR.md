@@ -1,6 +1,12 @@
 # Fontspector baseline
 
-## Current scope, 2026-10-27
+The finding counts and detailed Sans outline comparisons below are historical
+Fontspector snapshots, not validation results for the issue #125 equal-ink
+geometry. Current Sans build and geometry gates are documented in
+[`EQUAL_INK.md`](EQUAL_INK.md); this baseline does not imply Google Fonts
+acceptance.
+
+## Scope snapshot, 2026-10-27
 
 Issue #118 restricts all Namche sources and outputs to the pinned 319-character
 GF Latin Core set. Geist remains unchanged. Historical counts, hashes and
@@ -32,7 +38,7 @@ failure, mark-attachment failure, or primary/mandatory orthography omission.
 The only accepted `shape_languages` warnings are the optional characters
 listed in [`LANGUAGE_SUPPORT.md`](LANGUAGE_SUPPORT.md).
 
-## Current failures
+## Failures recorded in this baseline
 
 | Family | Finding | Interpretation |
 | --- | --- | --- |
@@ -41,11 +47,11 @@ listed in [`LANGUAGE_SUPPORT.md`](LANGUAGE_SUPPORT.md).
 | Namche Shape statics | `googlefonts/canonical_filename`, `googlefonts/font_names` | Correct WWS IDs 21/22 expose Metaball, Origin, and Skeleton to the Google Fonts profile as separate Regular-only families. That profile consequently expects filenames/full/PostScript names such as `NamcheShapeMetaball-Regular`, conflicting with the intentionally retained public typographic family/style model and release filenames. This is expected for the direct/npm distribution but would need a separate naming model for a Google Fonts submission. |
 | Sans italic variable | `name/family_and_style_max_length` | The full STAT-matching instance names `ExtraLight Italic`, `SemiBold Italic`, and `ExtraBold Italic` push the combined family-and-style names past 32 characters (see [Naming compatibility](#naming-compatibility)). This is the deliberate inverse of the Mono alias tradeoff: Google Fonts' `fvar_instances` requires the full names, so this FAIL is accepted and must be raised explicitly during the Google Fonts submission. |
 
-The Namche Shadow Sans **upright** VF has no Fontspector failures; the italic
-VF's single failure is the accepted naming tradeoff in the table above. The
-upright's 26 warning results are the existing outline, glyph-reachability,
-language-shaping, WWS, vendor-ID, and sidebearing groups described below,
-plus:
+In the recorded baseline snapshot, the Namche Shadow Sans **upright** VF had no
+Fontspector failures; the italic VF's single failure was the accepted naming
+tradeoff in the table above. The upright's 26 warning results were the existing
+outline, glyph-reachability, language-shaping, WWS, vendor-ID, and sidebearing
+groups described below, plus:
 
 - `file_size`: the unsubsetted 970-glyph TTF is 1.2 MB (the shipped WOFF2 is
   substantially smaller).
@@ -58,18 +64,15 @@ plus:
   markers identify intended curves that remain visually smooth through the
   weight axis.
 
-All nine named VF weights were compared with Michael's approved rounded
-statics for the five reported glyphs. Their sampled outlines stay within 5.76
-font units on a 1000-unit em. `scripts/check_sans_variable.py` keeps a 7-unit
-regression limit and fingerprints the five glyphs' coordinates, curve flags,
-and contour endpoints at weights 150, 250, 350, 450, 550, 650, 750, and 850.
-This reviewed geometric baseline catches any intermediate shape change, not
-only empty glyphs. The visual comparison is maintained in
+In that historical snapshot, all nine named VF weights were compared with the
+then-approved statics for five reported glyphs. Their sampled outlines stayed
+within 5.76 font units on a 1000-unit em. The historical comparison is
+maintained in
 `documentation/proofs/issues/issue-22-variable-interpolation.png`: dark shapes are
 shared by the VF and static; blue/red fringes show their small segmentation and
-rounding differences. Do not move points merely to silence these heuristics;
-reopen design review and regenerate the baseline if the proof, digest, or
-guarded distance changes.
+rounding differences. Those old measurements and point digests are not evidence
+for the issue #125 geometry; use the current source-build and geometry gates in
+[`EQUAL_INK.md`](EQUAL_INK.md).
 
 ## Warning groups
 
@@ -148,20 +151,13 @@ the safe minimum or the reviewed advance inventory across the TrueType release
 and npm files. The proof is maintained at
 `documentation/proofs/issues/issue-33-mono-hmetrics.png`.
 
-For Sans, the release-specific acceptance checks are stronger than the generic
-profile: every static weight must contain the complete seven-tier RoundCorner
-result, `H` must retain the expected four rounded inner segments, the five
-tier-7 glyphs must remain in all statics and stay parked from the VFs, and no
-static may contain an `fvar` table. Run `scripts/check_sans_variable.py` and
-review `documentation/proofs/sans-variable-named-instances.png` and
-`documentation/proofs/sans-italic-variable-named-instances.png` for the VFs.
-The script validates both variable fonts — upright and
-`NamcheShadowSans-Italic[wght]` — against their static masters, verifies
-per-weight contour correspondence geometrically, and pins
-intermediate-weight digests. Outline distances sample the union'd OTF
-statics: the italic TTF statics keep overlapping composites, and sampling
-those directly would measure overlap depth rather than shape difference (the
-representations render identically).
+For current Sans production, validate the source-built output with the equal-ink
+recipe, full-weight geometry comparison and counter checks described in
+[`EQUAL_INK.md`](EQUAL_INK.md). Retain the distribution invariants: exact Latin
+Core coverage, public metadata and credits, static files without `fvar`, valid
+variable axes and instances, and the counter guard. The old seven-tier and
+parked-glyph checks describe the earlier Glyphs-based release and are not the
+current recipe.
 
 ## Naming compatibility
 

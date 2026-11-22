@@ -5,7 +5,6 @@
     <key>public.glyphOrder</key>
     <array>
       <string>.notdef</string>
-      <string>space</string>
       <string>A</string>
       <string>Aacute</string>
       <string>Abreve</string>
@@ -373,6 +372,7 @@
       <string>uni2077</string>
       <string>uni2078</string>
       <string>uni2079</string>
+      <string>space</string>
       <string>uni00A0</string>
       <string>hyphen_hyphen_hyphen_greater.liga</string>
       <string>hyphen_hyphen_greater.liga</string>

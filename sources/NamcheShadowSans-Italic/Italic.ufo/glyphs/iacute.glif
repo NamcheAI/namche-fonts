@@ -4,23 +4,23 @@
   <unicode hex="00ED"/>
   <outline>
     <contour>
-      <point x="155" y="598" type="line" identifier="p0"/>
-      <point x="247" y="726" type="line" identifier="p1"/>
-      <point x="343" y="726" type="line" identifier="p2"/>
-      <point x="225" y="598" type="line" identifier="p3"/>
+      <point x="24" y="0" type="line" identifier="p0"/>
+      <point x="136" y="530" type="line" identifier="p1"/>
+      <point x="220" y="530" type="line" identifier="p2"/>
+      <point x="108" y="0" type="line" identifier="p3"/>
     </contour>
     <contour>
-      <point x="24" y="0" type="line" identifier="p4"/>
-      <point x="136" y="530" type="line" identifier="p5"/>
-      <point x="220" y="530" type="line" identifier="p6"/>
-      <point x="108" y="0" type="line" identifier="p7"/>
+      <point x="155" y="598" type="line" identifier="p4"/>
+      <point x="247" y="726" type="line" identifier="p5"/>
+      <point x="343" y="726" type="line" identifier="p6"/>
+      <point x="225" y="598" type="line" identifier="p7"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
-        <integer>1</integer>
+        <integer>65</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

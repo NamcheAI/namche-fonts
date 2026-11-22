@@ -8,11 +8,12 @@ own, and the letter renders as a filled wedge with a hairline notch. The Sans
 italic ``A`` shipped that way in every static weight, in the webfonts built from
 them, and on the CDN (issue #78).
 
-Contour counts catch that damage for the price of reading the glyph outlines, so
-this check runs over every committed Sans release binary and every npm copy —
-upright and italic, OTF, TTF, WOFF2 and the variable font. The counts below are
-identical across all of them; a glyph that loses (or gains) a contour has had its
-topology changed and needs a look before it ships.
+Filled counter counts catch that damage across OTF, TTF, WOFF2 and variable
+fonts. Compatible source builds may retain overlapping outer parts (Q's tail)
+or zero-area interpolation contours; raw moveTo counts are not counter counts.
+The independent double-precision geometry helper resolves actual nonzero fill
+and ignores only sub-0.001-square-unit numerical counter slivers.
+
 """
 
 from __future__ import annotations
@@ -20,8 +21,12 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
+
+try:
+    from .check_equal_ink import _filled_geos, _geos_counters
+except ImportError:
+    from check_equal_ink import _filled_geos, _geos_counters
 
 FONT_SUFFIXES = {".otf", ".ttf", ".woff2"}
 
@@ -60,9 +65,9 @@ EXPECTED_RELEASE_FILES = 58
 
 
 def contour_count(glyph_set, name: str) -> int:
-    pen = DecomposingRecordingPen(glyph_set)
-    glyph_set[name].draw(pen)
-    return sum(1 for op, _ in pen.value if op == "moveTo")
+    """Effective contours: one filled body plus its actual bounded counters."""
+    filled, _ = _filled_geos(glyph_set, name, tolerance=0.01)
+    return (0 if filled.is_empty else 1) + len(_geos_counters(filled))
 
 
 def validate_font(path: Path) -> list[str]:

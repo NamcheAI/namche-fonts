@@ -4,43 +4,73 @@
   <unicode hex="1E83"/>
   <outline>
     <contour>
-      <point x="432" y="598" type="line" identifier="p0"/>
-      <point x="524" y="726" type="line" identifier="p1"/>
-      <point x="620" y="726" type="line" identifier="p2"/>
-      <point x="502" y="598" type="line" identifier="p3"/>
+      <point x="133" y="0" type="line" identifier="p0"/>
+      <point x="78" y="530" type="line" identifier="p1"/>
+      <point x="170" y="530" type="line" identifier="p2"/>
+      <point x="203" y="88" type="line" identifier="p3"/>
+      <point x="409" y="530" type="line" identifier="p4"/>
+      <point x="499" y="530" type="line" identifier="p5"/>
+      <point x="525" y="88" type="line" identifier="p6"/>
+      <point x="736" y="530" type="line" identifier="p7"/>
+      <point x="828" y="530" type="line" identifier="p8"/>
+      <point x="564" y="0" type="line" identifier="p9"/>
+      <point x="458" y="0" type="line" identifier="p10"/>
+      <point x="427" y="403" type="line" identifier="p11"/>
+      <point x="238" y="0" type="line" identifier="p12"/>
     </contour>
     <contour>
-      <point x="133" y="0" type="line" identifier="p4"/>
-      <point x="78" y="530" type="line" identifier="p5"/>
-      <point x="170" y="530" type="line" identifier="p6"/>
-      <point x="192" y="241" type="line" identifier="p7"/>
-      <point x="194" y="221" identifier="p8"/>
-      <point x="224" y="202" identifier="p9"/>
-      <point x="259" y="209" identifier="p10"/>
-      <point x="268" y="227" type="qcurve" identifier="p11"/>
-      <point x="409" y="530" type="line" identifier="p12"/>
-      <point x="499" y="530" type="line" identifier="p13"/>
-      <point x="516" y="243" type="line" identifier="p14"/>
-      <point x="517" y="223" identifier="p15"/>
-      <point x="547" y="203" identifier="p16"/>
-      <point x="583" y="210" identifier="p17"/>
-      <point x="592" y="228" type="qcurve" identifier="p18"/>
-      <point x="736" y="530" type="line" identifier="p19"/>
-      <point x="828" y="530" type="line" identifier="p20"/>
-      <point x="564" y="0" type="line" identifier="p21"/>
-      <point x="458" y="0" type="line" identifier="p22"/>
-      <point x="439" y="252" type="line" identifier="p23"/>
-      <point x="437" y="273" identifier="p24"/>
-      <point x="406" y="292" identifier="p25"/>
-      <point x="372" y="285" identifier="p26"/>
-      <point x="363" y="266" type="qcurve" identifier="p27"/>
-      <point x="238" y="0" type="line" identifier="p28"/>
+      <point x="133" y="0" type="line" identifier="p13"/>
+      <point x="78" y="530" type="line" identifier="p14"/>
+      <point x="170" y="530" type="line" identifier="p15"/>
+      <point x="199" y="147" type="line" identifier="p16"/>
+      <point x="199" y="142" identifier="p17"/>
+      <point x="206" y="134" identifier="p18"/>
+      <point x="211" y="133" type="qcurve" identifier="p19"/>
+      <point x="216" y="132" identifier="p20"/>
+      <point x="226" y="137" identifier="p21"/>
+      <point x="228" y="142" type="qcurve" identifier="p22"/>
+      <point x="409" y="530" type="line" identifier="p23"/>
+      <point x="499" y="530" type="line" identifier="p24"/>
+      <point x="522" y="147" type="line" identifier="p25"/>
+      <point x="522" y="142" identifier="p26"/>
+      <point x="529" y="134" identifier="p27"/>
+      <point x="534" y="133" type="qcurve" identifier="p28"/>
+      <point x="539" y="132" identifier="p29"/>
+      <point x="548" y="137" identifier="p30"/>
+      <point x="551" y="142" type="qcurve" identifier="p31"/>
+      <point x="736" y="530" type="line" identifier="p32"/>
+      <point x="828" y="530" type="line" identifier="p33"/>
+      <point x="564" y="0" type="line" identifier="p34"/>
+      <point x="458" y="0" type="line" identifier="p35"/>
+      <point x="432" y="344" type="line" identifier="p36"/>
+      <point x="431" y="349" identifier="p37"/>
+      <point x="424" y="357" identifier="p38"/>
+      <point x="419" y="358" type="qcurve" identifier="p39"/>
+      <point x="414" y="359" identifier="p40"/>
+      <point x="404" y="354" identifier="p41"/>
+      <point x="402" y="349" type="qcurve" identifier="p42"/>
+      <point x="238" y="0" type="line" identifier="p43"/>
+    </contour>
+    <contour>
+      <point x="432" y="598" type="line" identifier="p44"/>
+      <point x="524" y="726" type="line" identifier="p45"/>
+      <point x="620" y="726" type="line" identifier="p46"/>
+      <point x="502" y="598" type="line" identifier="p47"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
@@ -51,23 +81,33 @@
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
+        <integer>1</integer>
         <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
       </array>

@@ -3,34 +3,50 @@
   <advance width="184"/>
   <outline>
     <contour>
-      <point x="92" y="610" type="qcurve" identifier="p0"/>
-      <point x="71" y="610" identifier="p1"/>
-      <point x="44" y="637" identifier="p2"/>
-      <point x="44" y="660" type="qcurve" identifier="p3"/>
-      <point x="44" y="682" identifier="p4"/>
-      <point x="71" y="710" identifier="p5"/>
-      <point x="92" y="710" type="qcurve" identifier="p6"/>
-      <point x="113" y="710" identifier="p7"/>
-      <point x="140" y="682" identifier="p8"/>
-      <point x="140" y="660" type="qcurve" identifier="p9"/>
-      <point x="140" y="637" identifier="p10"/>
-      <point x="113" y="610" identifier="p11"/>
+      <point x="140" y="660" type="qcurve" identifier="p0"/>
+      <point x="140" y="648" identifier="p1"/>
+      <point x="133" y="630" identifier="p2"/>
+      <point x="120" y="617" identifier="p3"/>
+      <point x="103" y="610" identifier="p4"/>
+      <point x="92" y="610" type="qcurve" identifier="p5"/>
+      <point x="82" y="610" identifier="p6"/>
+      <point x="64" y="617" identifier="p7"/>
+      <point x="51" y="630" identifier="p8"/>
+      <point x="44" y="648" identifier="p9"/>
+      <point x="44" y="660" type="qcurve" identifier="p10"/>
+      <point x="44" y="671" identifier="p11"/>
+      <point x="51" y="689" identifier="p12"/>
+      <point x="64" y="703" identifier="p13"/>
+      <point x="82" y="710" identifier="p14"/>
+      <point x="92" y="710" type="qcurve" identifier="p15"/>
+      <point x="103" y="710" identifier="p16"/>
+      <point x="120" y="703" identifier="p17"/>
+      <point x="133" y="689" identifier="p18"/>
+      <point x="140" y="671" identifier="p19"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
-        <integer>1</integer>
+        <integer>65</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
       </array>

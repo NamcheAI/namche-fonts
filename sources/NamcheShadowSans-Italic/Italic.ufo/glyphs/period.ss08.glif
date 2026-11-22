@@ -3,37 +3,57 @@
   <advance width="188"/>
   <outline>
     <contour>
-      <point x="36" y="-8" type="qcurve" identifier="p0"/>
-      <point x="12" y="-8" identifier="p1"/>
-      <point x="-16" y="16" identifier="p2"/>
-      <point x="-16" y="40" type="qcurve" identifier="p3"/>
-      <point x="-16" y="63" identifier="p4"/>
-      <point x="5" y="97" identifier="p5"/>
-      <point x="40" y="116" identifier="p6"/>
-      <point x="62" y="116" type="qcurve" identifier="p7"/>
-      <point x="86" y="116" identifier="p8"/>
-      <point x="114" y="92" identifier="p9"/>
-      <point x="114" y="68" type="qcurve" identifier="p10"/>
-      <point x="114" y="44" identifier="p11"/>
-      <point x="93" y="10" identifier="p12"/>
-      <point x="58" y="-8" identifier="p13"/>
+      <point x="114" y="68" type="qcurve" identifier="p0"/>
+      <point x="114" y="56" identifier="p1"/>
+      <point x="109" y="35" identifier="p2"/>
+      <point x="99" y="19" identifier="p3"/>
+      <point x="84" y="5" identifier="p4"/>
+      <point x="67" y="-3" identifier="p5"/>
+      <point x="47" y="-8" identifier="p6"/>
+      <point x="36" y="-8" type="qcurve" identifier="p7"/>
+      <point x="24" y="-8" identifier="p8"/>
+      <point x="5" y="-2" identifier="p9"/>
+      <point x="-9" y="10" identifier="p10"/>
+      <point x="-16" y="28" identifier="p11"/>
+      <point x="-16" y="40" type="qcurve" identifier="p12"/>
+      <point x="-16" y="52" identifier="p13"/>
+      <point x="-11" y="72" identifier="p14"/>
+      <point x="-1" y="89" identifier="p15"/>
+      <point x="14" y="102" identifier="p16"/>
+      <point x="31" y="111" identifier="p17"/>
+      <point x="51" y="116" identifier="p18"/>
+      <point x="62" y="116" type="qcurve" identifier="p19"/>
+      <point x="74" y="116" identifier="p20"/>
+      <point x="93" y="110" identifier="p21"/>
+      <point x="107" y="98" identifier="p22"/>
+      <point x="114" y="80" identifier="p23"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
-        <integer>1</integer>
-        <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
+        <integer>65</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>

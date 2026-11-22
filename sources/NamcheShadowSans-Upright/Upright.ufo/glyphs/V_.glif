@@ -7,23 +7,49 @@
       <point x="277" y="0" type="line" identifier="p0"/>
       <point x="20" y="710" type="line" identifier="p1"/>
       <point x="114" y="710" type="line" identifier="p2"/>
-      <point x="295" y="204" type="line" identifier="p3"/>
-      <point x="309" y="164" identifier="p4"/>
-      <point x="359" y="164" identifier="p5"/>
-      <point x="373" y="204" type="qcurve" identifier="p6"/>
-      <point x="553" y="710" type="line" identifier="p7"/>
-      <point x="647" y="710" type="line" identifier="p8"/>
-      <point x="390" y="0" type="line" identifier="p9"/>
+      <point x="334" y="94" type="line" identifier="p3"/>
+      <point x="553" y="710" type="line" identifier="p4"/>
+      <point x="647" y="710" type="line" identifier="p5"/>
+      <point x="390" y="0" type="line" identifier="p6"/>
+    </contour>
+    <contour>
+      <point x="277" y="0" type="line" identifier="p7"/>
+      <point x="20" y="710" type="line" identifier="p8"/>
+      <point x="114" y="710" type="line" identifier="p9"/>
+      <point x="310" y="162" type="line" identifier="p10"/>
+      <point x="311" y="157" identifier="p11"/>
+      <point x="319" y="149" identifier="p12"/>
+      <point x="329" y="145" identifier="p13"/>
+      <point x="334" y="145" type="qcurve" identifier="p14"/>
+      <point x="339" y="145" identifier="p15"/>
+      <point x="349" y="149" identifier="p16"/>
+      <point x="356" y="157" identifier="p17"/>
+      <point x="358" y="162" type="qcurve" identifier="p18"/>
+      <point x="553" y="710" type="line" identifier="p19"/>
+      <point x="647" y="710" type="line" identifier="p20"/>
+      <point x="390" y="0" type="line" identifier="p21"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>

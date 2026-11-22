@@ -4,61 +4,57 @@
   <unicode hex="0141"/>
   <outline>
     <contour>
-      <point x="92" y="0" type="line" identifier="p0"/>
-      <point x="92" y="192" type="line" identifier="p1"/>
-      <point x="92" y="239" identifier="p2"/>
-      <point x="52" y="279" identifier="p3"/>
-      <point x="20" y="262" type="qcurve" identifier="p4"/>
-      <point x="20" y="262" type="line" identifier="p5"/>
-      <point x="20" y="338" type="line" identifier="p6"/>
-      <point x="34" y="345" type="line" identifier="p7"/>
-      <point x="92" y="375" identifier="p8"/>
-      <point x="92" y="440" type="qcurve" identifier="p9"/>
-      <point x="92" y="710" type="line" identifier="p10"/>
-      <point x="178" y="710" type="line" identifier="p11"/>
-      <point x="178" y="527" type="line" identifier="p12"/>
-      <point x="178" y="481" identifier="p13"/>
-      <point x="232" y="447" identifier="p14"/>
-      <point x="273" y="469" type="qcurve" identifier="p15"/>
-      <point x="328" y="498" type="line" identifier="p16"/>
-      <point x="328" y="422" type="line" identifier="p17"/>
-      <point x="235" y="374" type="line" identifier="p18"/>
-      <point x="178" y="345" identifier="p19"/>
-      <point x="178" y="279" type="qcurve" identifier="p20"/>
-      <point x="178" y="164" type="line" identifier="p21"/>
-      <point x="178" y="84" identifier="p22"/>
-      <point x="258" y="84" type="qcurve" identifier="p23"/>
-      <point x="533" y="84" type="line" identifier="p24"/>
-      <point x="533" y="0" type="line" identifier="p25"/>
+      <point x="533" y="0" type="line" identifier="p0"/>
+      <point x="92" y="0" type="line" identifier="p1"/>
+      <point x="92" y="710" type="line" identifier="p2"/>
+      <point x="178" y="710" type="line" identifier="p3"/>
+      <point x="178" y="84" type="line" identifier="p4"/>
+      <point x="533" y="84" type="line" identifier="p5"/>
+    </contour>
+    <contour>
+      <point x="533" y="0" type="line" identifier="p6"/>
+      <point x="92" y="0" type="line" identifier="p7"/>
+      <point x="92" y="710" type="line" identifier="p8"/>
+      <point x="178" y="710" type="line" identifier="p9"/>
+      <point x="178" y="154" type="line" identifier="p10"/>
+      <point x="178" y="140" identifier="p11"/>
+      <point x="189" y="114" identifier="p12"/>
+      <point x="199" y="105" type="qcurve" identifier="p13"/>
+      <point x="208" y="95" identifier="p14"/>
+      <point x="234" y="84" identifier="p15"/>
+      <point x="248" y="84" type="qcurve" identifier="p16"/>
+      <point x="533" y="84" type="line" identifier="p17"/>
+    </contour>
+    <contour>
+      <point x="20" y="262" type="line" identifier="p18"/>
+      <point x="20" y="338" type="line" identifier="p19"/>
+      <point x="328" y="498" type="line" identifier="p20"/>
+      <point x="328" y="422" type="line" identifier="p21"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
         <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
-        <integer>1</integer>
-        <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

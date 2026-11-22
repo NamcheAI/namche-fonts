@@ -7,24 +7,28 @@
       <point x="44" y="-63" type="line" identifier="p1"/>
       <point x="44" y="825" type="line" identifier="p2"/>
       <point x="318" y="825" type="line" identifier="p3"/>
-      <point x="251" y="718" identifier="p4"/>
-      <point x="183" y="494" identifier="p5"/>
-      <point x="183" y="381" type="qcurve" identifier="p6"/>
-      <point x="183" y="269" identifier="p7"/>
-      <point x="251" y="45" identifier="p8"/>
+      <point x="273" y="754" identifier="p4"/>
+      <point x="213" y="606" identifier="p5"/>
+      <point x="183" y="457" identifier="p6"/>
+      <point x="183" y="381" type="qcurve" identifier="p7"/>
+      <point x="183" y="306" identifier="p8"/>
+      <point x="213" y="157" identifier="p9"/>
+      <point x="273" y="9" identifier="p10"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
-        <integer>1</integer>
+        <integer>65</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
+        <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
       </array>

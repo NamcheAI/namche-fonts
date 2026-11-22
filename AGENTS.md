@@ -44,56 +44,49 @@ and builds. Historical evidence is not an active coverage declaration.
 
 ## Namche Shadow Sans production rules
 
-- The corrected `Namche-Shadow-Edited.glyphspackage` received from Michael on
-  2026-08-13 is the visual source of truth for upright statics.
-- Import a replacement package with
-  `python3 scripts/import_edited_sans.py /path/to/package`. The importer keeps
-  repository naming and attribution; do not copy an incoming `fontinfo.plist`
-  over the maintained one by hand.
-- Ship static Thin through Black instances. RoundCorner filters must run in
-  Glyphs 4 during export; `glyphs-cli` and a plain variable-font build do not
-  reproduce this treatment reliably.
-- Finalize the native Glyphs OTF/TTF exports with
-  `make finalize-sans-statics GLYPHS_SANS_EXPORT=/path/to/export`: it keeps
-  Glyphs' rounded outlines while preserving the current release's OpenType
-  layout and metadata, flattens nested TrueType components, produces WOFF2,
-  and refreshes the npm font directory. The export path must contain `otf/`
-  and `ttf/` subdirectories.
-- Preserve the ordered RoundCorner tiers for retained Latin Core glyphs.
-  Remove excluded names from include lists and omit a tier with no retained
-  names. Never turn an empty include list into a filter applying to all glyphs.
-- Build both variable fonts with `make build-sans-variable` from the recovered
-  quadratic UFO and indexed variation/layout XML in
-  `sources/NamcheShadowSans-Upright/` and `sources/NamcheShadowSans-Italic/`.
-  `make build-sans-italic-variable` rebuilds only italic. Neither command needs
-  compiled font inputs or Glyphs. `make check-sans-open` builds each twice and
-  requires exact equality to the approved hashes and committed TTF/WOFF2.
-  Point-count/order edits require matching variation-delta changes. Update
-  manifests and binaries together only for intentional reviewed changes.
-  See `documentation/OPEN_BUILD.md` for provenance and maintenance.
-- Glyphs design sources and recovered production sources are not automatically
-  synchronized. After an intentional italic outline refresh, migrate the open
-  production source and its manifest too. The historical upright compatible
-  Glyphs exports were not committed; ordinary upright static OTFs are not
-  equivalent VF inputs. Do not use them to rebuild the upright VF.
+- Michael's corrected upright package received on 2026-08-13 remains design
+  provenance and supplies maintained identity, metrics, components, anchors,
+  and layout. The geometric inputs are pinned in
+  `sources/equal-ink/clean-outlines.json`. Issue #125 replaces the historical
+  seven-tier RoundCorner export with the compatible equal-ink recipe in
+  `scripts/equal_ink_corners.py`.
+- `sources/equal-ink/clean-outlines.json` pins unrounded upright foregrounds
+  and immutable Geist italic foregrounds. Historical italic backgrounds are
+  not trustworthy design inputs: some contain upright forms. Never derive a
+  clean input by reversing or repeatedly rounding the baked output.
+- `make build-sans` bakes compatible cubic Glyphs masters and builds all 18
+  statics plus both VFs with open tools. The rule uses the measured stem with
+  c=1.2 and caps 70 (capitals/figures) or 53 (other glyphs); acute curved joins
+  solve actual added area. Obtuse joins and the 45% flank limit are explicit
+  exceptions to equal area. Preserve sparse brace layers and matched topology.
+- The maintained Glyphs packages carry the generated rounded foregrounds plus
+  repository metadata, components, anchors and layout. Commit these packages,
+  clean inputs, the recipe, recovered production snapshots and regenerated
+  binaries together after an intentional design change. Do not reintroduce
+  native RoundCorner filters or use the historical italic recipe for releases.
+- `sources/equal-ink/release-metadata/` is the text-only identity/layout contract.
+  Finalization preserves names, attribution, shaping and static advance widths,
+  removes obsolete point hint programs and reports any one-unit normalization
+  of unencoded static ligatures. Encoded or variable metric changes are refused.
+- `make check-sans-equal-ink` rebuilds the full recipe and compares every binary
+  with the committed release. `make check-sans-open` independently builds both
+  quadratic UFO/TTX production snapshots twice and checks their pinned hashes.
+  `make build-sans-variable` can rebuild just those snapshots. Point topology
+  changes require synchronized variation deltas, point-order maps and hashes.
+  See `documentation/EQUAL_INK.md` and `documentation/OPEN_BUILD.md`.
+- Source imports must preserve repository naming and credits. Reconcile a new
+  clean source explicitly with `clean-outlines.json`; the historical importer
+  alone is not a complete equal-ink migration.
 - `make build-googlefonts` creates a separate **Namche Shadow** candidate family
   with complete STAT-matching style names, all within 32 characters. Existing
   release/npm names remain **Namche Shadow Sans**. Package renaming may change
   only the name table and checksum adjustment; preserve every other table.
   The candidate has the same exact GF Latin Core encoding as the release.
   Do not add candidate-only characters outside the pinned scope.
-- The italic package is the one Sans exception to the Glyphs-export rule: it
-  carries no RoundCorner filters, so its Shadow treatment lives in the masters
-  and `gftools builder sources/config-NamcheShadowSans-Italic.yaml` reproduces
-  the committed italic outlines exactly. Land an italic source correction with
-  `make refresh-sans-italic-outlines`; `scripts/refresh_sans_italic_outlines.py`
-  replaces only the glyph outlines that changed, refuses a metric change, and
-  leaves metadata, layout, and hinting byte-identical. Never rebuild the italic
-  release wholesale — that also rewrites metadata the release already carries.
-- `scripts/round_inner_corners.py` bakes those italic masters. Its defaults have
-  since been retuned for upright work; pass `--italic-recipe` to reproduce the
-  profile the shipped italics were baked with. `make check-sans-counters` blocks
-  the boolean-topology regression that collapsed the italic `A` counter (#78).
+- Validate the compiled 319-character set in upright and italic at named and
+  intermediate weights with `scripts/check_equal_ink.py`, and run the existing
+  counter, metadata, shaping and Fontspector checks. Local source checks alone
+  do not prove that quantized/interpolated binaries preserve the design.
 - Namche Shadow Mono preserves upstream outlines for its retained Latin Core glyphs.
 
 ## Namche Shape production rules
@@ -178,8 +171,9 @@ and builds. Historical evidence is not an active coverage declaration.
   rebuild, so a source-build failure cannot be bypassed by the fast path.
 - Pull requests rebuild Mono or Namche Shape only when that family's source or
   a shared build input changes. A Namche Shape change must not pay for a Mono
-  rebuild, and vice versa. Sans statics remain native Glyphs exports. Both VFs and Google Fonts candidate packages are rebuilt from
-  open sources on Linux on every PR. Byte equality, package reproducibility and
+  rebuild, and vice versa. Sans statics and VFs are rebuilt with the equal-ink recipe when Sans inputs
+  change. Both VF production snapshots and Google Fonts candidate packages are
+  rebuilt from open sources on Linux on every PR. Byte equality, package reproducibility and
   the candidate QA regression gate are mandatory. Known open submission findings
   remain visible in QA_STATUS.json; a green candidate build is not GF acceptance.
 - Fontspector runs only for families affected by the PR. Full proofs, release

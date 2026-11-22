@@ -1,5 +1,11 @@
 # Sans VF provenance and open build
 
+> Issue #125 replaces the historical RoundCorner design build described below.
+> The current clean inputs, compatible cubic recipe and regenerated production
+> snapshots are documented in [EQUAL_INK.md](EQUAL_INK.md). The UFO/TTX builder remains an exact verification path; the historical
+> binaries and missing exports below are provenance, not current build inputs.
+
+
 ## Current scope, 2026-10-27
 
 Issue #118 restricts all Namche sources and outputs to the pinned 319-character

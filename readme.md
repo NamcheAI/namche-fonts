@@ -41,9 +41,9 @@ The current Fontspector baseline and triage guidance are documented in
 The supported-script contract and intentional auxiliary omissions are listed in
 [`documentation/LANGUAGE_SUPPORT.md`](documentation/LANGUAGE_SUPPORT.md).
 
-The Namche Shadow Sans RoundCorner workflow still requires Glyphs for final design
-exports. See [`scripts/NAMCHE_SHADOW.md`](scripts/NAMCHE_SHADOW.md) and
-[`LEARNINGS.md`](LEARNINGS.md) before producing a release.
+Namche Shadow Sans uses a compatible equal-ink corner recipe for upright and
+italic statics and variable fonts. `make build-sans` builds from open sources
+without Glyphs. See [the recipe and its limits](documentation/EQUAL_INK.md).
 
 ## Repository layout
 
@@ -190,10 +190,14 @@ font repository never holds origin or SSH credentials.
 ### Static and variable fonts
 
 Namche Shadow Sans ships static Thin through Black weights plus a `wght`
-variable font pair, upright and italic. The approved static exports remain
-the visual source of truth. The default and `font/sans` npm entry points use
-both rounded VFs with static fallbacks; `font/sans-non-variable` uses statics
-throughout. Statics and VFs encode the same Latin Core characters.
+variable font pair, upright and italic. All Sans statics and VFs are generated
+from the compatible source-built equal-ink recipe. The clean master contours
+are pinned in `sources/equal-ink/clean-outlines.json`; maintained Glyphs
+packages supply identity, metrics, components, anchors, and layout. See the
+[production and validation notes](documentation/EQUAL_INK.md). The default and
+`font/sans` npm entry points use both rounded VFs with static fallbacks;
+`font/sans-non-variable` uses statics throughout. Statics and VFs encode the
+same Latin Core characters.
 
 Namche Shadow Mono retains its upstream-derived variable build. Namche Shape
 ships three static styles (Metaball, Origin, and Skeleton) and has no variable
@@ -251,12 +255,15 @@ The fonts, sources, and derivative font work are licensed under the
 [SIL Open Font License 1.1](OFL.txt). Original Geist copyright notices and
 author credits are retained in the sources and binary font metadata.
 
-### Reproducible Sans variable builds
+### Sans source builds
 
-`make build-sans-variable` compiles the approved upright and italic TTF/WOFF2 pairs from
-open UFO/TTX production sources without Glyphs. `make check-sans-open` enforces
-byte-identical repeated builds and published files in CI. See
-[provenance and source maintenance](documentation/OPEN_BUILD.md).
+`make build-sans` builds the current Sans release: all 18 statics and both VFs
+from the compatible equal-ink sources. `make check-sans-equal-ink` verifies the
+complete generated release. `make build-sans-variable` builds only the
+supplemental upright and italic VF snapshots from open UFO/TTX sources;
+`make check-sans-open` verifies those repeated builds and pinned outputs. See
+[the current recipe](documentation/EQUAL_INK.md) and
+[VF snapshot provenance](documentation/OPEN_BUILD.md).
 
 `make build-googlefonts` produces reproducible production and Google Fonts
 candidate ZIPs in `out/googlefonts/`. The separate candidate family is named

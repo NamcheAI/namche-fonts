@@ -5,36 +5,52 @@
   <outline>
     <contour>
       <point x="218" y="750" type="line" identifier="p0"/>
-      <point x="250" y="681" identifier="p1"/>
-      <point x="281" y="539" identifier="p2"/>
-      <point x="281" y="464" type="qcurve" identifier="p3"/>
-      <point x="281" y="308" identifier="p4"/>
-      <point x="153" y="24" identifier="p5"/>
-      <point x="36" y="-110" type="qcurve" identifier="p6"/>
-      <point x="-39" y="-110" type="line" identifier="p7"/>
-      <point x="73" y="30" identifier="p8"/>
-      <point x="195" y="316" identifier="p9"/>
-      <point x="195" y="473" type="qcurve" identifier="p10"/>
-      <point x="195" y="544" identifier="p11"/>
-      <point x="169" y="680" identifier="p12"/>
-      <point x="143" y="750" type="qcurve" identifier="p13"/>
+      <point x="239" y="704" identifier="p1"/>
+      <point x="267" y="610" identifier="p2"/>
+      <point x="281" y="514" identifier="p3"/>
+      <point x="281" y="464" type="qcurve" identifier="p4"/>
+      <point x="281" y="402" identifier="p5"/>
+      <point x="260" y="281" identifier="p6"/>
+      <point x="219" y="165" identifier="p7"/>
+      <point x="160" y="53" identifier="p8"/>
+      <point x="83" y="-57" identifier="p9"/>
+      <point x="36" y="-110" type="qcurve" identifier="p10"/>
+      <point x="-39" y="-110" type="line" identifier="p11"/>
+      <point x="6" y="-54" identifier="p12"/>
+      <point x="79" y="59" identifier="p13"/>
+      <point x="136" y="173" identifier="p14"/>
+      <point x="175" y="289" identifier="p15"/>
+      <point x="195" y="410" identifier="p16"/>
+      <point x="195" y="473" type="qcurve" identifier="p17"/>
+      <point x="195" y="520" identifier="p18"/>
+      <point x="184" y="612" identifier="p19"/>
+      <point x="161" y="704" identifier="p20"/>
+      <point x="143" y="750" type="qcurve" identifier="p21"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
-        <integer>1</integer>
+        <integer>65</integer>
         <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>

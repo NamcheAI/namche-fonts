@@ -3,7 +3,8 @@ import tempfile
 import unittest
 
 from fontTools.pens.ttGlyphPen import TTGlyphPen
-from fontTools.ttLib import TTFont
+from fontTools.ttLib import TTFont, newTable
+from array import array
 
 from scripts.check_sans_counters import (
     EXPECTED_CONTOURS,
@@ -126,7 +127,11 @@ class ItalicOutlineMergeGuardTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as scratch:
             tampered = Path(scratch) / "other-cvt.ttf"
             font = TTFont(ttf, recalcTimestamp=False)
-            font["cvt "].values[0] += 7
+            if "cvt " not in font:
+                font["cvt "] = newTable("cvt ")
+                font["cvt "].values = array("h", [7])
+            else:
+                font["cvt "].values[0] += 7
             font.save(tampered)
             font.close()
             release, compiled = open_font(ttf), open_font(tampered)

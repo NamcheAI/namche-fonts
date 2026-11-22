@@ -68,3 +68,6 @@ out/reconstructed-masters*/
 out/googlefonts-mark/
 out/mark-prototype/
 out/latin-core*/
+
+# Equal-ink source builds and full geometry reports
+out/equal-ink*/

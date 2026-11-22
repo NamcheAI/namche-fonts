@@ -3,37 +3,57 @@
   <advance width="253"/>
   <outline>
     <contour>
-      <point x="199" y="303" type="qcurve" identifier="p0"/>
-      <point x="175" y="303" identifier="p1"/>
-      <point x="147" y="327" identifier="p2"/>
-      <point x="147" y="351" type="qcurve" identifier="p3"/>
-      <point x="147" y="374" identifier="p4"/>
-      <point x="168" y="408" identifier="p5"/>
-      <point x="203" y="427" identifier="p6"/>
-      <point x="225" y="427" type="qcurve" identifier="p7"/>
-      <point x="249" y="427" identifier="p8"/>
-      <point x="277" y="403" identifier="p9"/>
-      <point x="277" y="379" type="qcurve" identifier="p10"/>
-      <point x="277" y="355" identifier="p11"/>
-      <point x="256" y="321" identifier="p12"/>
-      <point x="221" y="303" identifier="p13"/>
+      <point x="277" y="379" type="qcurve" identifier="p0"/>
+      <point x="277" y="367" identifier="p1"/>
+      <point x="272" y="346" identifier="p2"/>
+      <point x="262" y="330" identifier="p3"/>
+      <point x="247" y="316" identifier="p4"/>
+      <point x="230" y="308" identifier="p5"/>
+      <point x="210" y="303" identifier="p6"/>
+      <point x="199" y="303" type="qcurve" identifier="p7"/>
+      <point x="187" y="303" identifier="p8"/>
+      <point x="168" y="309" identifier="p9"/>
+      <point x="154" y="321" identifier="p10"/>
+      <point x="147" y="339" identifier="p11"/>
+      <point x="147" y="351" type="qcurve" identifier="p12"/>
+      <point x="147" y="363" identifier="p13"/>
+      <point x="152" y="383" identifier="p14"/>
+      <point x="162" y="400" identifier="p15"/>
+      <point x="177" y="413" identifier="p16"/>
+      <point x="194" y="422" identifier="p17"/>
+      <point x="214" y="427" identifier="p18"/>
+      <point x="225" y="427" type="qcurve" identifier="p19"/>
+      <point x="237" y="427" identifier="p20"/>
+      <point x="256" y="421" identifier="p21"/>
+      <point x="270" y="409" identifier="p22"/>
+      <point x="277" y="391" identifier="p23"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
-        <integer>1</integer>
-        <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
+        <integer>65</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>

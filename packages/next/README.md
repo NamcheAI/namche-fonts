@@ -100,9 +100,10 @@ assembly; full desktop and webfont files remain available unchanged.
 The default export and `font/sans` use the rounded Namche Shadow Sans
 variable fonts — upright and italic — with static fallbacks, and
 `font/sans-latin` serves the two variable Latin subsets.
-`font/sans-non-variable` keeps the static upright and italic files. The Thin
-through Black statics remain Michael's approved multi-tier RoundCorner
-references. The Mono exports currently provide upright styles.
+`font/sans-non-variable` keeps the static upright and italic files. Sans
+statics and variable fonts are generated with the compatible source-built
+equal-ink recipe; see the [production and validation notes](../../documentation/EQUAL_INK.md).
+The Mono exports currently provide upright styles.
 
 Namche Shape styles are exported from `@namche/namche-shadow/font/shape`:
 

@@ -32,12 +32,10 @@ cleanUp: true
 # buildOTF: true
 # buildSmallCap: false
 
-# Glyphs does not apply Michael's RoundCorner filters to its own variable-font
-# export. Release VFs build from the recovered UFO/TTX with
-# make build-sans-variable; do not enable gftools' sharp VF here.
+# This legacy gftools config is not the current release build. `make build-sans`
+# generates production statics and VFs from the compatible equal-ink sources.
+# Keep generic gftools outputs disabled so they cannot replace those artifacts.
 buildVariable: false
-# Statics are exported in Glyphs 4 and committed because gftools does not run
-# the retained RoundCorner instance filters. See AGENTS.md.
 buildStatic: false
 
 # The next flags control autohinting.

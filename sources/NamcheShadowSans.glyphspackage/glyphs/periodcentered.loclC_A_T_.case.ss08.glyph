@@ -32,6 +32,160 @@ ref = periodcentered.ss08;
 }
 );
 width = 270;
+},
+{
+layerId = "EDFEC0B0-64A8-5409-A17D-B5AD40B32068";
+shapes = (
+{
+pos = (-38.333,75.833);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 99.33333;
+},
+{
+layerId = "E219D6E4-5A1E-5DA0-AA45-C37828AB8233";
+shapes = (
+{
+pos = (-32.667,72.667);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 118.66667;
+},
+{
+layerId = "98587C87-D753-5A85-878E-6812C012A453";
+shapes = (
+{
+pos = (-27,69.5);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 138;
+},
+{
+layerId = "8AB14D89-F78F-5F06-83EB-08C9659D5205";
+shapes = (
+{
+pos = (-21.333,66.333);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 157.33333;
+},
+{
+layerId = "497BF131-9796-5D24-B827-C5B616104042";
+shapes = (
+{
+pos = (-15.667,63.167);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 176.66667;
+},
+{
+layerId = "11355361-D56B-59C1-B922-55B4D1882C53";
+shapes = (
+{
+pos = (-9.1,63.5);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 203.4;
+},
+{
+layerId = "257094E6-8761-564E-90FF-356D0071157A";
+shapes = (
+{
+pos = (-8.2,67);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 210.8;
+},
+{
+layerId = "1394F607-211E-5577-ADCD-74A3CC1C3A09";
+shapes = (
+{
+pos = (-7.3,70.5);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 218.2;
+},
+{
+layerId = "DF830DFE-D5B8-519A-A254-0813CB09ED47";
+shapes = (
+{
+pos = (-6.4,74);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 225.6;
+},
+{
+layerId = "D734DCC9-6A5A-584E-9E99-E199B9F0C28E";
+shapes = (
+{
+pos = (-5.5,77.5);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 233;
+},
+{
+layerId = "59F70112-3ADC-569E-859E-A53FA36FE89C";
+shapes = (
+{
+pos = (-4.6,81);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 240.4;
+},
+{
+layerId = "911DB82E-7AA5-5856-9993-584CCE2AFDC0";
+shapes = (
+{
+pos = (-3.7,84.5);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 247.8;
+},
+{
+layerId = "B8A058F0-8A73-5084-BE35-EE3057726689";
+shapes = (
+{
+pos = (-2.8,88);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 255.2;
+},
+{
+layerId = "2A7382F4-F03F-5580-91CA-6B0CA74BCCAB";
+shapes = (
+{
+pos = (-1.9,91.5);
+ref = periodcentered.ss08;
+}
+);
+vertWidth = 0;
+width = 262.6;
 }
 );
 metricRight = "=|";

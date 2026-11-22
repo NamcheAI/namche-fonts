@@ -1,6 +1,15 @@
 # Google Fonts readiness: Namche Shadow Sans
 
-## Current scope, 2026-10-27
+## Production source update, 2026-11-22
+
+Issue [#125](https://github.com/NamcheAI/namche-fonts/issues/125) replaces
+the prior static Glyphs filter workflow and baked italic treatment with the
+compatible source-built equal-ink recipe. See [EQUAL_INK.md](EQUAL_INK.md) for
+the inputs, build steps and validation limits. The dated readiness results
+below concern their named snapshots only; they do not establish that the new
+geometry has passed final release review or Google Fonts acceptance.
+
+## Scope snapshot, 2026-10-27
 
 Issue #118 restricts all Namche sources and outputs to the pinned 319-character
 GF Latin Core set. Geist remains unchanged. Historical counts, hashes and
@@ -10,7 +19,7 @@ The candidate no longer adds U+0331. See [Latin Core review](LATIN_CORE_REVIEW.m
 for the current scope, preservation evidence, visual findings and QA limitations.
 
 
-## Follow-up, 2026-10-25
+## Historical follow-up, 2026-10-25
 
 [Source reconstruction and mark correction](googlefonts-intake/SOURCE_QA_FOLLOWUP.md)
 supersedes the candidate-specific counts and missing-glyph status below. Eighteen
@@ -226,10 +235,11 @@ explicitly. Raw transient reports belong in `out/`.
   [LANGUAGE_SUPPORT.md](LANGUAGE_SUPPORT.md) are supporting evidence, not a GF
   waiver. Derive supported subsets from real coverage; do not add every auxiliary
   glyph or change visible outlines just to reduce warning counts.
-- **Preferred source maintenance:** the public Glyphs design source and recovered
-  production sources are not automatically synchronized. The onboarding
-  build/maintenance documentation must explain which source is changed for which
-  output and how point/delta changes are reviewed.
+- **Current source maintenance:** the equal-ink inputs and build/validation
+  contract are documented in [EQUAL_INK.md](EQUAL_INK.md). The readiness
+  findings and counts in this dated report remain tied to their earlier build
+  snapshots; new geometry requires its own evidence and review before any
+  submission or acceptance claim.
 
 ## Recommended sequence
 

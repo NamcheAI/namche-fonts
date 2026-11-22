@@ -4,46 +4,69 @@
   <unicode hex="0048"/>
   <outline>
     <contour>
-      <point x="37" y="0" type="line" identifier="p0"/>
-      <point x="187" y="710" type="line" identifier="p1"/>
-      <point x="273" y="710" type="line" identifier="p2"/>
-      <point x="217" y="447" type="line" identifier="p3"/>
-      <point x="213" y="428" identifier="p4"/>
-      <point x="238" y="399" identifier="p5"/>
-      <point x="257" y="399" type="qcurve" identifier="p6"/>
-      <point x="520" y="399" type="line" identifier="p7"/>
-      <point x="534" y="399" identifier="p8"/>
-      <point x="556" y="417" identifier="p9"/>
-      <point x="559" y="431" type="qcurve" identifier="p10"/>
-      <point x="618" y="710" type="line" identifier="p11"/>
-      <point x="704" y="710" type="line" identifier="p12"/>
-      <point x="554" y="0" type="line" identifier="p13"/>
-      <point x="468" y="0" type="line" identifier="p14"/>
-      <point x="525" y="267" type="line" identifier="p15"/>
-      <point x="529" y="286" identifier="p16"/>
-      <point x="505" y="315" identifier="p17"/>
-      <point x="485" y="315" type="qcurve" identifier="p18"/>
-      <point x="222" y="315" type="line" identifier="p19"/>
-      <point x="208" y="315" identifier="p20"/>
-      <point x="186" y="297" identifier="p21"/>
-      <point x="183" y="283" type="qcurve" identifier="p22"/>
-      <point x="123" y="0" type="line" identifier="p23"/>
+      <point x="123" y="0" type="line" identifier="p0"/>
+      <point x="37" y="0" type="line" identifier="p1"/>
+      <point x="187" y="710" type="line" identifier="p2"/>
+      <point x="273" y="710" type="line" identifier="p3"/>
+      <point x="207" y="399" type="line" identifier="p4"/>
+      <point x="552" y="399" type="line" identifier="p5"/>
+      <point x="618" y="710" type="line" identifier="p6"/>
+      <point x="704" y="710" type="line" identifier="p7"/>
+      <point x="554" y="0" type="line" identifier="p8"/>
+      <point x="468" y="0" type="line" identifier="p9"/>
+      <point x="535" y="315" type="line" identifier="p10"/>
+      <point x="190" y="315" type="line" identifier="p11"/>
+    </contour>
+    <contour>
+      <point x="247" y="315" type="line" identifier="p12"/>
+      <point x="234" y="315" identifier="p13"/>
+      <point x="212" y="307" identifier="p14"/>
+      <point x="202" y="299" type="qcurve" identifier="p15"/>
+      <point x="193" y="292" identifier="p16"/>
+      <point x="181" y="271" identifier="p17"/>
+      <point x="178" y="260" type="qcurve" identifier="p18"/>
+      <point x="123" y="0" type="line" identifier="p19"/>
+      <point x="37" y="0" type="line" identifier="p20"/>
+      <point x="187" y="710" type="line" identifier="p21"/>
+      <point x="273" y="710" type="line" identifier="p22"/>
+      <point x="221" y="466" type="line" identifier="p23"/>
+      <point x="219" y="453" identifier="p24"/>
+      <point x="225" y="429" identifier="p25"/>
+      <point x="232" y="419" type="qcurve" identifier="p26"/>
+      <point x="240" y="410" identifier="p27"/>
+      <point x="263" y="399" identifier="p28"/>
+      <point x="275" y="399" type="qcurve" identifier="p29"/>
+      <point x="495" y="399" type="line" identifier="p30"/>
+      <point x="507" y="399" identifier="p31"/>
+      <point x="530" y="407" identifier="p32"/>
+      <point x="540" y="415" type="qcurve" identifier="p33"/>
+      <point x="549" y="422" identifier="p34"/>
+      <point x="561" y="443" identifier="p35"/>
+      <point x="564" y="455" type="qcurve" identifier="p36"/>
+      <point x="618" y="710" type="line" identifier="p37"/>
+      <point x="704" y="710" type="line" identifier="p38"/>
+      <point x="554" y="0" type="line" identifier="p39"/>
+      <point x="468" y="0" type="line" identifier="p40"/>
+      <point x="521" y="248" type="line" identifier="p41"/>
+      <point x="523" y="261" identifier="p42"/>
+      <point x="517" y="285" identifier="p43"/>
+      <point x="510" y="295" type="qcurve" identifier="p44"/>
+      <point x="502" y="304" identifier="p45"/>
+      <point x="479" y="315" identifier="p46"/>
+      <point x="467" y="315" type="qcurve" identifier="p47"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
-        <integer>0</integer>
-        <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
-        <integer>0</integer>
-        <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
@@ -53,10 +76,37 @@
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>1</integer>
       </array>
     </dict>

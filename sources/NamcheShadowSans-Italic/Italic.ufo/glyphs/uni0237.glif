@@ -7,26 +7,35 @@
       <point x="-92" y="-150" type="line" identifier="p0"/>
       <point x="-77" y="-76" type="line" identifier="p1"/>
       <point x="-44" y="-76" type="line" identifier="p2"/>
-      <point x="-24" y="-76" identifier="p3"/>
-      <point x="4" y="-65" identifier="p4"/>
-      <point x="23" y="-40" identifier="p5"/>
-      <point x="27" y="-18" type="qcurve" identifier="p6"/>
-      <point x="143" y="530" type="line" identifier="p7"/>
-      <point x="227" y="530" type="line" identifier="p8"/>
-      <point x="110" y="-22" type="line" identifier="p9"/>
-      <point x="100" y="-70" identifier="p10"/>
-      <point x="61" y="-126" identifier="p11"/>
-      <point x="-3" y="-150" identifier="p12"/>
-      <point x="-51" y="-150" type="qcurve" identifier="p13"/>
+      <point x="-34" y="-76" identifier="p3"/>
+      <point x="-17" y="-73" identifier="p4"/>
+      <point x="-3" y="-68" identifier="p5"/>
+      <point x="9" y="-59" identifier="p6"/>
+      <point x="18" y="-46" identifier="p7"/>
+      <point x="25" y="-29" identifier="p8"/>
+      <point x="27" y="-18" type="qcurve" identifier="p9"/>
+      <point x="143" y="530" type="line" identifier="p10"/>
+      <point x="227" y="530" type="line" identifier="p11"/>
+      <point x="110" y="-22" type="line" identifier="p12"/>
+      <point x="105" y="-46" identifier="p13"/>
+      <point x="90" y="-84" identifier="p14"/>
+      <point x="71" y="-112" identifier="p15"/>
+      <point x="45" y="-132" identifier="p16"/>
+      <point x="13" y="-144" identifier="p17"/>
+      <point x="-27" y="-150" identifier="p18"/>
+      <point x="-51" y="-150" type="qcurve" identifier="p19"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
         <integer>1</integer>
         <integer>1</integer>
-        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
@@ -34,6 +43,9 @@
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>

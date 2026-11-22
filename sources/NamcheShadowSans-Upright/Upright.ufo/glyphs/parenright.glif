@@ -4,24 +4,29 @@
   <unicode hex="0029"/>
   <outline>
     <contour>
-      <point x="15" y="-110" type="line" identifier="p0"/>
-      <point x="78" y="-2" identifier="p1"/>
-      <point x="142" y="213" identifier="p2"/>
-      <point x="142" y="320" type="qcurve" identifier="p3"/>
-      <point x="142" y="427" identifier="p4"/>
-      <point x="78" y="643" identifier="p5"/>
-      <point x="15" y="750" type="qcurve" identifier="p6"/>
-      <point x="90" y="750" type="line" identifier="p7"/>
-      <point x="229" y="542" identifier="p8"/>
-      <point x="229" y="320" type="qcurve" identifier="p9"/>
-      <point x="229" y="99" identifier="p10"/>
-      <point x="90" y="-110" type="qcurve" identifier="p11"/>
+      <point x="90" y="-110" type="qcurve" identifier="p0"/>
+      <point x="15" y="-110" type="line" identifier="p1"/>
+      <point x="78" y="-2" identifier="p2"/>
+      <point x="142" y="213" identifier="p3"/>
+      <point x="142" y="320" type="qcurve" identifier="p4"/>
+      <point x="142" y="427" identifier="p5"/>
+      <point x="78" y="643" identifier="p6"/>
+      <point x="15" y="750" type="qcurve" identifier="p7"/>
+      <point x="90" y="750" type="line" identifier="p8"/>
+      <point x="136" y="681" identifier="p9"/>
+      <point x="198" y="538" identifier="p10"/>
+      <point x="229" y="393" identifier="p11"/>
+      <point x="229" y="320" type="qcurve" identifier="p12"/>
+      <point x="229" y="247" identifier="p13"/>
+      <point x="198" y="102" identifier="p14"/>
+      <point x="136" y="-41" identifier="p15"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
@@ -31,9 +36,12 @@
         <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>
-        <integer>1</integer>
+        <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>0</integer>
       </array>
     </dict>
   </lib>
