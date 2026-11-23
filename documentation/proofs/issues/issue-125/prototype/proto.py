@@ -105,7 +105,7 @@ def cone_mask(cn, R, widen=25):
         a = lo + (hi - lo) * i / k; m.lineTo(v[0] + R*math.cos(a), v[1] + R*math.sin(a))
     m.close(); return m
 
-def fill_corners(pp, stem, c=C, rmax=RMAX, space=SPACE, log=None, as_skia=True):
+def fill_corners(pp, stem, c=C, rmax=RMAX, space=SPACE, log=None, as_skia=True, floor=0.0):
     """Every inner corner receives the same ink area A* = F90 * r90^2, r90 = min(c*stem, rmax).
     Radius per corner is solved so the actual filled area hits A* (handles curves and
     near-tangent joins), limited by the space cap along the adjacent segments."""
@@ -164,7 +164,12 @@ def fill_corners(pp, stem, c=C, rmax=RMAX, space=SPACE, log=None, as_skia=True):
                 if A2 > target: hi = r
                 else: lo = r
             _, f, A, r0 = best
-        if A > 3 * target + 60:
+            rf = min(floor * r90, r_cap)
+            if rf > r0 + 0.5:
+                f2, A2 = fill_for(cn, rf, th)
+                if f2 is not None: f, A, r0 = f2, A2, rf
+        lim = max(target, r0 * r0 * max(f_theta(min(th, 179)), 0.05))
+        if A > 3 * lim + 60:
             if log is not None: log.append((th, round(r0, 1), "skipped", round(A)))
             continue
         try: out = op(out, f, U)
