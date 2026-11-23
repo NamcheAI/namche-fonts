@@ -1,9 +1,9 @@
 """Compatible, additive inner fillets for clean, unrounded cubic masters.
 
-The clean glyph is retained beside a complete compatible rounded glyph. Circular fillets are
+The VFs and statics share the rounded boundaries and local curve guards. Fillets are
 solved on the *actual* adjacent Beziers, not their tangent-line extensions.
 Acute joins solve the boolean added ink area numerically; obtuse joins retain
-r90.  All flank cuts are bounded by 45 percent of the original segment.
+r90. Reviewed exterior lowercase spurs have a longer flank allowance.
 The historical italic recipe remains in round_inner_corners.py.
 """
 from __future__ import annotations
@@ -38,13 +38,21 @@ AREA_TOLERANCE = 0.05  # aggregate square font units; pathops uses float32 geome
 LOCAL_LOSS_TOLERANCE = 0.0001
 MIN_ADDED_AREA = 1.0  # Subunit changes are not stable on the integer TrueType lattice.
 MIN_COMPATIBLE_FILLET_AREA = 1.0  # One square unit: the integer TrueType coordinate lattice.
+# Short curved flanks in these outlines change shape between solved masters.
+# Keep the original curve locally. The eight needs continuous rounded counters:
+# disconnected patches at its waist can acquire small white pockets in TrueType.
+LOCAL_GUARDS = {
+    ('Upright', 'three'): 'fillets', ('Upright', 'threesuperior'): 'fillets',
+    ('Upright', 'at'): 'fillets', ('-Italic', 'at'): 'fillets',
+    ('Upright', 'eight'): 'flanks', ('-Italic', 'eight'): 'flanks',
+}
 
 
 def r90_for_stem(stem: float, uppercase_or_figure: bool = False) -> float:
-    """Issue #125: c=1.2, capped at 70 for capitals/figures, otherwise 53."""
+    """Issue #125: c=1.6, capped at 70 for capitals/figures, otherwise 53."""
     if not math.isfinite(stem) or stem <= 0:
         raise ValueError("stem must be finite and positive")
-    return min(1.2 * stem, 70.0 if uppercase_or_figure else 53.0)
+    return min(1.6 * stem, 70.0 if uppercase_or_figure else 53.0)
 
 
 def _path(contours):
@@ -266,10 +274,10 @@ def _portion(seg, start=0.0, end=1.0):
     return ("curve", *points)
 
 
-def _parameter_limit(seg, at_end):
+def _parameter_limit(seg, at_end, fraction=FLANK_FRACTION):
     if seg[0] == "line":
-        return FLANK_FRACTION
-    t = _cubic_split_t_for_arclen(seg, FLANK_FRACTION*seg_length(seg), not at_end)
+        return fraction
+    t = _cubic_split_t_for_arclen(seg, fraction*seg_length(seg), not at_end)
     return 1-t if at_end else t
 
 
@@ -278,9 +286,9 @@ def _offset(seg, t, radius):
     return add(p, mul((u[1], -u[0]), radius))
 
 
-def _circle(a, b, radius, phi):
-    """Find circle tangent to both real flanks, within their 45% bounds."""
-    ma, mb = _parameter_limit(a, True), _parameter_limit(b, False)
+def _circle(a, b, radius, phi, limits=(FLANK_FRACTION, FLANK_FRACTION)):
+    """Find circle tangent to both real flanks, within their arc-length bounds."""
+    ma, mb = _parameter_limit(a, True, limits[0]), _parameter_limit(b, False, limits[1])
     trim = radius * math.tan(phi/2)
     x = min(ma, trim / max(seg_length(a), 1e-10))
     y = min(mb, trim / max(seg_length(b), 1e-10))
@@ -366,28 +374,43 @@ def _changed(contours, ci, j, solution, as_nodes=False):
     return output if as_nodes else _path(output)
 
 
-def _solve(contours, ci, j, radius, base, diagnostic=None):
+def _solve(contours, ci, j, radius, base, diagnostic=None, *, soft_spur=False, counter_scale=1.0):
     segs = contours[ci]
     a, b = segs[j], segs[(j+1) % len(segs)]
     u, v = seg_tangent_in(a), seg_tangent_out(b)
     turn = math.atan2(cross(u, v), dot(u, v))
     if turn >= -math.radians(.1) or turn <= -math.pi+1e-5:
         return None
-    phi, target = -turn, F90*radius*radius
+    phi = -turn
+    acute = phi > math.pi/2 + 1e-8
+    if acute:
+        radius *= counter_scale
+    target = F90*radius*radius
+    # Both ends of a segment may have fillets. Only extend a flank if its
+    # other end cannot consume it too. This keeps a positive original run.
+    limits = [FLANK_FRACTION, FLANK_FRACTION]
+    minimum = 0.
+    soft_spur = soft_spur and acute
+    if soft_spur:
+        minimum = .60 * radius
+        for side, k in enumerate(((j-1) % len(segs), (j+1) % len(segs))):
+            t1, t2 = seg_tangent_in(segs[k]), seg_tangent_out(segs[(k+1) % len(segs)])
+            if math.atan2(cross(t1, t2), dot(t1, t2)) >= -math.radians(.1):
+                limits[side] = .90
     robust_base = None
     def candidate(r):
         nonlocal robust_base
         try:
-            solution = _circle(a, b, r, phi)
+            solution = _circle(a, b, r, phi, limits)
         except ValueError:
             return None
         if solution is None:
             if diagnostic is not None:
-                diagnostic["reason"] = "no_tangent_circle_within_45_percent_flanks"
+                diagnostic["reason"] = "no_tangent_circle_within_flank_limits"
             return None
         changed = _changed(contours, ci, j, solution)
         loss = abs(_op(base, changed, pathops.PathOp.DIFFERENCE).area)
-        if loss > LOCAL_LOSS_TOLERANCE:
+        if loss > LOCAL_LOSS_TOLERANCE and not soft_spur:
             if diagnostic is not None:
                 diagnostic.update(reason="candidate_loses_ink", lost_area=loss)
             return None
@@ -401,7 +424,7 @@ def _solve(contours, ci, j, radius, base, diagnostic=None):
         pen = AreaPen(None)
         _NodeGlyph([patch]).draw(pen)
         local_area = abs(pen.value)
-        if area > local_area + max(.001, local_area*1e-5):
+        if loss > LOCAL_LOSS_TOLERANCE or area > local_area + max(.001, local_area*1e-5):
             try:
                 from .check_equal_ink import _filled_geos, _geos_roundoff_bound
             except ImportError:
@@ -430,18 +453,17 @@ def _solve(contours, ci, j, radius, base, diagnostic=None):
             high_r = r
             break
         low_r, low = r, found
-        if phi > math.pi/2 + 1e-8 and found.area >= target:
+        if acute and found.area >= target and r >= minimum:
             high_r = r
             break
     else:
         high_r = ceiling
-    acute = phi > math.pi/2 + 1e-8
     if low is not None and (not acute and low_r == ceiling):
         return low
     # For an acute join bracket the *measured* added area, including curved
     # sides. A failed/capped tangent solution is an upper bound, never a wedge
     # or angle-only shortcut. Space-limited joins report their smaller area.
-    if low is not None and acute and low.area >= target:
+    if low is not None and acute and low.area >= target and low_r >= minimum:
         high_r, low_r, low = low_r, 0.0, None
     best = low
     for _ in range(30):
@@ -449,7 +471,7 @@ def _solve(contours, ci, j, radius, base, diagnostic=None):
         found = candidate(mid)
         if found is None:
             high_r = mid
-        elif acute and found.area >= target:
+        elif acute and found.area >= target and mid >= minimum:
             high_r = mid
             if best is None or abs(found.area-target) < abs(best.area-target):
                 best = found
@@ -459,6 +481,13 @@ def _solve(contours, ci, j, radius, base, diagnostic=None):
                 best = found
         if high_r-low_r < 1e-7:
             break
+    if minimum and best is not None and best.radius < minimum:
+        # When the full floor will not fit, retain the largest safe circle.
+        floor_solution = candidate(minimum)
+        if floor_solution is not None:
+            best = floor_solution
+        elif low is not None and low.radius > best.radius:
+            best = low
     if best is not None:
         best.capped = (abs(best.area-target) > max(.1, target*1e-4)) if acute else best.radius < radius-1e-4
     return best
@@ -472,7 +501,7 @@ def _as_cubic(segment):
     return ('curve', start, add(start, mul(delta, 1/3)), add(start, mul(delta, 2/3)), end)
 
 
-def _backed_flank(segment):
+def _backed_flank(segment, depth=None):
     """Bury a patch's hidden edge inside existing ink without moving its arc.
 
     The reverse flank travels with original ink on its right. Inset only its
@@ -481,7 +510,8 @@ def _backed_flank(segment):
     would otherwise coincide only approximately.
     """
     segment = _as_cubic(segment)
-    depth = min(3.0, .1*seg_length(segment))
+    if depth is None:
+        depth = min(3.0, .1*seg_length(segment))
     start_tangent, end_tangent = seg_tangent_out(segment), seg_tangent_in(segment)
     return ('curve', segment[1],
             add(segment[2], mul((start_tangent[1], -start_tangent[0]), depth)),
@@ -496,8 +526,8 @@ def _additive_patch(segments, join, solution):
     outgoing = _portion(segments[(join+1) % len(segments)], 0, solution.outgoing)
     # Reverse the two original flank pieces in travel order: cutB->vertex,
     # vertex->cutA. The circular bridge runs cutA->cutB, so this is CCW ink.
-    pieces = solution.bridges+[_backed_flank(_reverse([outgoing])[0]),
-                               _backed_flank(_reverse([incoming])[0])]
+    pieces = solution.bridges + [_backed_flank(_reverse([outgoing])[0]),
+                                 _backed_flank(_reverse([incoming])[0])]
     patch = _nodes_preserving_segment_start(pieces)
     if nodes_to_pathops(patch).clockwise:
         raise ValueError('additive fillet patch has negative winding')
@@ -557,6 +587,93 @@ def _verify_source_geos(baseline, candidate, master_index, maximum_added_area=No
                 added_area_flattening_bound=approximation_area,
                 conservation_error=metrics.area_conservation_error,
                 precision_bound=metrics.area_conservation_tolerance)
+
+
+def round_upright_a_notch(master_contours, radii, weights):
+    """Match the three upright notch silhouettes in Michael's r2_a proof."""
+    from fontTools.varLib.models import piecewiseLinearMap
+
+    # Fitted to the rightmost column of documentation/proofs/issues/issue-125/
+    # runde-2/r2_a.png at 664bbad5, using the clean Geist column to calibrate
+    # font units. Regular is already close; Thin needs the largest change.
+    reviewed = {100: 31.5, 400: 34.75, 900: 38.75}
+    rounded, measurements = [], []
+    for index, (original, r90, weight) in enumerate(zip(master_contours, radii, weights, strict=True)):
+        contours = _normalize(original)
+        outer = contours[0]
+        if len(outer) != 15 or outer[-1][0] != 'curve' or outer[0][0] != 'curve':
+            raise ValueError('unrecognized upright a bowl-to-tail junction')
+        radius = max(.60 * r90, piecewiseLinearMap(weight, reviewed))
+        u, v = seg_tangent_in(outer[-1]), seg_tangent_out(outer[0])
+        phi = -math.atan2(cross(u, v), dot(u, v))
+        circle = _circle(outer[-1], outer[0], radius, phi, (.90, .90))
+        if circle is None:
+            raise ValueError('upright a notch cannot reach the reviewed radius')
+        result = _changed(contours, 0, len(outer)-1, circle, as_nodes=True)
+        verification = _verify_source_geos(original, result, index)
+        rounded.append(result)
+        measurements.append(dict(radius=radius, area=verification['added_area'], target=F90*r90*r90))
+    return rounded, dict(contour=0, join=14, status='rounded', semantic='upright_a_bowl_to_tail',
+                         masters=measurements)
+
+
+def round_italic_a_notch(master_contours, radii):
+    """Reach across the smooth subdivision of the italic bowl-to-tail flank."""
+    rounded, measurements = [], []
+    for index, (original, r90) in enumerate(zip(master_contours, radii, strict=True)):
+        outer = nodes_to_segments(original[0])
+        incoming, connector, outgoing = outer[2:5]
+        u, v = seg_tangent_in(incoming), seg_tangent_out(connector)
+        phi = -math.atan2(cross(u, v), dot(u, v))
+        if (len(outer) != 17 or not all(seg[0] == 'curve' for seg in outer[2:5])
+                or phi <= math.pi/2 or dot(seg_tangent_in(connector), seg_tangent_out(outgoing)) < .999):
+            raise ValueError('unrecognized italic a bowl-to-tail junction')
+        target = F90 * r90**2
+
+        def fit(radius):
+            circle = _circle(incoming, outgoing, radius, phi, (.90, .90))
+            if circle is None:
+                raise ValueError('italic a notch cannot reach the reviewed radius')
+            cut_in, cut_out, bridge = circle
+            replaced = [_portion(incoming, 1-cut_in, 1), connector, _portion(outgoing, 0, cut_out)]
+            permitted = .90 * (seg_length(connector) + seg_length(outgoing))
+            if seg_length(connector) + seg_length(replaced[-1]) > permitted:
+                raise ValueError('italic a notch exceeds the reviewed tail reach')
+            # Integrate the closed patch. The selected solution below is also
+            # checked against the complete two-contour glyph independently.
+            pen = AreaPen(None)
+            _NodeGlyph([_nodes_preserving_segment_start(bridge + _reverse(replaced))]).draw(pen)
+            return circle, abs(pen.value)
+
+        low, high = .60 * r90, r90
+        radius = low
+        circle, area = fit(radius)
+        if area < target:
+            for _ in range(20):
+                radius = (low + high) / 2
+                circle, area = fit(radius)
+                if abs(area - target) < .002:
+                    break
+                if area < target:
+                    low = radius
+                else:
+                    high = radius
+        cut_in, cut_out, bridge = circle
+        # The bridge travels left to right all the way to the tail. A circular
+        # tip with a neck doubles back in x and fails this design check.
+        for segment in bridge:
+            xs = [point[0] for point in segment[1:]]
+            if xs != sorted(xs):
+                raise ValueError('italic a notch doubles back before the tail')
+        silhouette = [*outer[:2], _portion(incoming, 0, 1-cut_in), *bridge,
+                      _portion(outgoing, cut_out, 1), *outer[5:]]
+        result = [_nodes_preserving_segment_start(silhouette), *original[1:]]
+        verification = _verify_source_geos(original, result, index, area)
+        rounded.append(result)
+        measurements.append(dict(radius=radius, area=verification['added_area'],
+                                 target=target, capped=abs(area - target) > .01))
+    return rounded, dict(contour=0, join=2, status='rounded', semantic='italic_a_bowl_to_tail',
+                         masters=measurements)
 
 
 def _b_waist_flanks(contours):
@@ -711,15 +828,18 @@ def _inactive_cut(segment, at_end=False):
 
 
 def round_compatible_contours(master_contours: Sequence[Sequence[Sequence[Node]]],
-                              radii: Sequence[float], *, semantic_b_waist: bool = False):
+                              radii: Sequence[float], *, semantic_b_waist: bool = False,
+                              soft_spurs=False, counter_scales=None, local_guard=None, static_projection=None):
     """Return (master_contours, report) with compatible cubic topology.
 
     Supply clean source outlines, never already rounded outlines. Corresponding
     contours must have matching segment kinds/order in all masters. Winding is
-    normalized by nesting. ``radii`` are r90 values, one per master. Clean base
-    contours remain whole beside a complete rounded contour set. Their union
-    preserves base ink without independent contact seams. Subunit members are
-    inactive; meaningful members elsewhere in the family remain active.
+    normalized by nesting. ``radii`` are r90 values, one per master. The
+    default outline has one continuous boundary per source contour.
+    A 'fillets' guard keeps the original contours with isolated ink additions;
+    a 'flanks' guard backs the rounded boundary with short strips following
+    the original curves at trimmed joins.
+    Subunit members are inactive; other weights keep compatible arc slots.
     Report entries have status ``rounded`` or ``skipped``. Rounded entries
     identify each master's radius, actual added area, target and cap status.
     Skipped entries explain which master had no safe local solution. Capping
@@ -734,17 +854,22 @@ def round_compatible_contours(master_contours: Sequence[Sequence[Sequence[Node]]
     if any(signature(m) != signature(masters[0]) for m in masters[1:]):
         raise ValueError("clean master contours have incompatible segment topology")
     bases = [_path([segments_to_nodes(c) for c in m]) for m in masters]
+    if counter_scales is None:
+        counter_scales = [1.] * len(masters)
     chosen, report = {}, []
     for ci, contour in enumerate(masters[0]):
+        counter = nodes_to_pathops(_nodes_preserving_segment_start(contour)).clockwise
         for j in range(len(contour)):
             solutions, diagnostics = [], []
             failed = False
-            for m, r, base in zip(masters, radii, bases):
+            for m, r, base, scale in zip(masters, radii, bases, counter_scales, strict=True):
                 a, b = m[ci][j], m[ci][(j+1) % len(contour)]
                 u, v = seg_tangent_in(a), seg_tangent_out(b)
                 concave = math.atan2(cross(u, v), dot(u, v)) < -math.radians(.1)
                 diagnostic = dict(status="inactive")
-                solution = _solve(m, ci, j, r, base, diagnostic) if concave else None
+                solution = _solve(m, ci, j, r, base, diagnostic,
+                                  soft_spur=soft_spurs and not counter,
+                                  counter_scale=scale if counter else 1.) if concave else None
                 if solution is not None and solution.area < MIN_ADDED_AREA:
                     diagnostic.update(status="inactive", reason="subunit_fillet_member", area=solution.area, radius=solution.radius)
                     solution = None
@@ -793,10 +918,6 @@ def round_compatible_contours(master_contours: Sequence[Sequence[Sequence[Node]]
                                     for solution in waist_solutions]))
     output = []
     for mi, master in enumerate(masters):
-        contours = []
-        # Union TWO COMPLETE filled glyphs, never isolated contact patches.
-        # The clean base restores any interpolation shave; the continuous
-        # rounded contours have no independently quantized contact seams.
         contours = [_nodes_preserving_segment_start(segs) for segs in master]
         if chosen or waist_solutions:
             rounded = []
@@ -805,8 +926,11 @@ def round_compatible_contours(master_contours: Sequence[Sequence[Sequence[Node]]
                 for j,seg in enumerate(segs):
                     before = chosen.get((ci,(j-1)%n),[None]*len(masters))[mi]
                     after = chosen.get((ci,j),[None]*len(masters))[mi]
-                    result.append(_portion(seg,before.outgoing if before else (_inactive_cut(seg) if (ci,(j-1)%n) in chosen else 0),
-                                           1-after.incoming if after else (1-_inactive_cut(seg,True) if (ci,j) in chosen else 1)))
+                    start = before.outgoing if before else (_inactive_cut(seg) if (ci,(j-1)%n) in chosen else 0)
+                    end = 1-after.incoming if after else (1-_inactive_cut(seg,True) if (ci,j) in chosen else 1)
+                    if start >= end:
+                        raise ValueError(f'fillets overlap on contour {ci}, segment {j}, master {mi}')
+                    result.append(_portion(seg, start, end))
                     if (ci,j) in chosen:
                         if after: result.extend(after.bridges)
                         else:
@@ -820,7 +944,25 @@ def round_compatible_contours(master_contours: Sequence[Sequence[Sequence[Node]]
                                    if not nodes_to_pathops(_nodes_preserving_segment_start(segs)).clockwise),
                                   key=lambda i:nodes_to_pathops(_nodes_preserving_segment_start(master[i])).area)
                 rounded[outer_index] = waist_solutions[mi]['rounded_outer']
-            contours.extend(rounded)
+            contours = rounded
+            if static_projection is not None:
+                static_projection.append(rounded.copy())
+            if local_guard == 'fillets':
+                # Preserve the curved base across interpolation and add the
+                # solved ink locally. Exact named statics use the boundary above.
+                contours = [_nodes_preserving_segment_start(segs) for segs in master]
+                contours.extend(_additive_patch(master[ci], j, solutions[mi])
+                                for (ci, j), solutions in chosen.items())
+            if local_guard == 'flanks':
+                for ci, segs in enumerate(master):
+                    for j, seg in enumerate(segs):
+                        if seg[0] == 'curve' and ((ci, j) in chosen or (ci, (j-1) % len(segs)) in chosen):
+                            # Follow only the original trimmed curve, then return
+                            # inside the stroke. Keep full contours out of the guard.
+                            reverse = _reverse([seg])[0]
+                            contours.append(_nodes_preserving_segment_start([seg, _backed_flank(reverse, 15.)]))
+        elif static_projection is not None:
+            static_projection.append(contours)
         final = _path(contours)
         loss = abs(_op(bases[mi], final, pathops.PathOp.DIFFERENCE).area)
         counter_change = _counter_count(final) != _counter_count(bases[mi])

@@ -63,28 +63,19 @@
       <point x="124" y="221" identifier="p54"/>
     </contour>
     <contour>
-      <point x="273" y="598" type="line" identifier="p55"/>
-      <point x="201" y="598" type="line" identifier="p56"/>
-      <point x="319" y="731" type="line" identifier="p57"/>
-      <point x="413" y="731" type="line" identifier="p58"/>
-      <point x="475" y="598" type="line" identifier="p59"/>
-      <point x="407" y="598" type="line" identifier="p60"/>
-      <point x="359" y="687" type="line" identifier="p61"/>
-    </contour>
-    <contour>
-      <point x="380" y="647" type="line" identifier="p62"/>
-      <point x="377" y="654" identifier="p63"/>
-      <point x="364" y="663" identifier="p64"/>
-      <point x="356" y="664" type="qcurve" identifier="p65"/>
-      <point x="348" y="665" identifier="p66"/>
-      <point x="333" y="660" identifier="p67"/>
-      <point x="327" y="654" type="qcurve" identifier="p68"/>
-      <point x="273" y="598" type="line" identifier="p69"/>
-      <point x="201" y="598" type="line" identifier="p70"/>
-      <point x="319" y="731" type="line" identifier="p71"/>
-      <point x="413" y="731" type="line" identifier="p72"/>
-      <point x="475" y="598" type="line" identifier="p73"/>
-      <point x="407" y="598" type="line" identifier="p74"/>
+      <point x="380" y="647" type="line" identifier="p55"/>
+      <point x="377" y="654" identifier="p56"/>
+      <point x="364" y="663" identifier="p57"/>
+      <point x="356" y="664" type="qcurve" identifier="p58"/>
+      <point x="348" y="665" identifier="p59"/>
+      <point x="333" y="660" identifier="p60"/>
+      <point x="327" y="654" type="qcurve" identifier="p61"/>
+      <point x="273" y="598" type="line" identifier="p62"/>
+      <point x="201" y="598" type="line" identifier="p63"/>
+      <point x="319" y="731" type="line" identifier="p64"/>
+      <point x="413" y="731" type="line" identifier="p65"/>
+      <point x="475" y="598" type="line" identifier="p66"/>
+      <point x="407" y="598" type="line" identifier="p67"/>
     </contour>
   </outline>
   <lib>
@@ -146,13 +137,6 @@
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>

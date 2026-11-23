@@ -46,8 +46,8 @@ REPRESENTATIVE_GLYPHS = (
 )
 OUTLINE_SAMPLE_LENGTH = 4
 STATIC_OUTLINE_TOLERANCE = 7
-INTERMEDIATE_OUTLINE_DIGESTS = {150: '6fd9fe38ec4635aa22b5ca3e0d75210e4f13aac9a7de7b287c5d7a52d65bf876', 250: '4a61d4c2702ce61a7326299928ff45032ae2694fbc542d4442751afd59fedfce', 350: 'b75a963e1c0c6e0492ebc3764a8c92d0bb44293dfddc770a289586df21b6233f', 450: '8913a4e03589c118c6667a10d365f2a0c6d8f3192c00bf33df4ccece613cb75f', 550: '11fb7f86cfdcd351a2aa63b780f4a2a87e838b40cc942bc46a2d88f48d962520', 650: '75991f7b73ed945fbc73fa9d5510162c4a8835fced1539d61e2d6592979cb399', 750: 'ae8dc7ed7374898f6f14ce494dbb5d750092b092299bade540093a18a7eded49', 850: '49ee42acefad64e9f60f8ebc390ad09d8689ccc8375daff4c2f440c20fd18673'}
-ITALIC_INTERMEDIATE_OUTLINE_DIGESTS = {150: '06db844705960e210b9954948fe2ea453fb217a08af5c1ba1ced5de7dd73b65d', 250: '014fd4a301409c566ac54727ec69bd89fdcee9eeb702ba1dde0230a4fe871e48', 350: 'fe828da082741733725dc206d7b74ae8e9d41178ba1c266848c55ffd604d0985', 450: 'b9d7b4186901c6d64ba00402a8d9a85f6a65c70e49f638499dd9cb68d198c2cf', 550: '15c628e3845add952576a07ba8f73a39a05b1a75e080afa46fd7e9814ffb2b03', 650: '04b56fd5ac8fe289acca3eb873d61c5e388d81840e15e81006b3a64184a665cb', 750: '8a166e474e700baa3eb1f8ba4e4d8a721a58cfc3e6ad30fa69459eaa1340407d', 850: '986d8ebf3a339bd6a3c6bec81c017d9eac32d8b43bb23041f5b8d4434c5d5b45'}
+INTERMEDIATE_OUTLINE_DIGESTS = {150: '584dde494583c43dceb173352d6e50213b1ff794850ffbc2aacbe198198ddd1a', 250: 'c72255f7dddea714c079e5751fa30456317bddfe7bd78f7dd94053d3cbbe20bd', 350: '0413e4c5580775366f48c0b2daf866ab0137f1916caf916bfa4f39716ffc9ded', 450: '265029d9c7348090065f649460aba3b708f842dc29a45d7ea3f93efd900f2b22', 550: 'c72e729aeebf0e46912cde758d4a27780c45440d7f9d0b87698574f3facaf108', 650: '578623fd34ba1327d3482a78a6f396dd574e743596a92d987e990d3b6e18a45c', 750: '97197a245b5b6edfad000eb40dc34daf246a14e45f107a9180b74412ca7423d5', 850: '508f853004616f713dcf4e54a188ff3485b27972af531c2282bc0f6157d9aea5'}
+ITALIC_INTERMEDIATE_OUTLINE_DIGESTS = {150: '1dd626124c5295e3b31ccd8cac997d8ece3f427800b285e238c5620ef5bc2c48', 250: '7606c4c23395c64ea81b583684a76af89f2861c89993620bcc04e5a7b4ee948b', 350: '3c9ffc19a0a5a239e0af025899580f569e69e58d4302151623b33c6f55adccff', 450: '1beb1bced93c6d2040f5711ef6e8bd7bf14bf8f26b91fa867dd973ab04c19def', 550: '00b1cdd5c2248fa342d94c19991fcff39e75e458df955d819543dc844485d036', 650: '10027d6e77e988c605da4d20330885ddc7bea3ca81a96a0c9c87396d91f8c085', 750: '7dac6179f7ce7b8f4566857361fdec561bd6fdecedab918c1f939e026dd33c87', 850: 'fe86ec88aae0c77dbe0e0bbebd7e3ed7c7ef6d91ca05e965988b6440f9e393fa'}
 NPM_ENTRYPOINTS = ("font.js", "sans.js")
 NPM_UPRIGHT_STYLES = (
     "Thin",
@@ -73,9 +73,8 @@ def _outline_points(font: TTFont, glyph_name: str) -> np.ndarray:
     """Flatten an outline so visually equivalent, differently segmented curves compare."""
 
     glyph_set = font.getGlyphSet()
-    # Compatible VFs retain overlapping base/fillet contours; statics union
-    # them. Compare their visible nonzero-filled boundaries, not hidden backing
-    # edges. _filled_path also decomposes components before taking the union.
+    # Compare visible boundaries after decomposing components and resolving
+    # any overlaps at the handful of variable-font corner guards.
     filled = _filled_path(glyph_set, glyph_name)
     recording = RecordingPen()
     flattening = FlattenPen(
@@ -182,7 +181,7 @@ def check_variable(root: Path, italic: bool, digests: dict[int, str]) -> tuple[P
         style = file_style(base, italic)
         static = TTFont(root / "ttf" / f"NamcheShadowSans-{style}.ttf", recalcTimestamp=False)
         # Compare the visible VF boundary with independently compiled CFF
-        # statics; the compatible VF retains intentionally overlapping patches.
+        # statics, including glyphs with local interpolation guards.
         otf_static = TTFont(root / "otf" / f"NamcheShadowSans-{style}.otf", recalcTimestamp=False)
         if "fvar" in static:
             raise ValueError(f"static unexpectedly contains fvar: {style}")

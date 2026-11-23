@@ -99,25 +99,16 @@
     </contour>
     <contour>
       <point x="258" y="-240" type="line" identifier="p92"/>
-      <point x="313" y="-143" type="line" identifier="p93"/>
-      <point x="277" y="-143" type="line" identifier="p94"/>
-      <point x="277" y="-53" type="line" identifier="p95"/>
-      <point x="377" y="-53" type="line" identifier="p96"/>
-      <point x="377" y="-135" type="line" identifier="p97"/>
-      <point x="316" y="-240" type="line" identifier="p98"/>
-    </contour>
-    <contour>
-      <point x="258" y="-240" type="line" identifier="p99"/>
-      <point x="305" y="-157" type="line" identifier="p100"/>
-      <point x="308" y="-152" identifier="p101"/>
-      <point x="305" y="-148" type="qcurve" identifier="p102"/>
-      <point x="302" y="-143" identifier="p103"/>
-      <point x="297" y="-143" type="qcurve" identifier="p104"/>
-      <point x="277" y="-143" type="line" identifier="p105"/>
-      <point x="277" y="-53" type="line" identifier="p106"/>
-      <point x="377" y="-53" type="line" identifier="p107"/>
-      <point x="377" y="-135" type="line" identifier="p108"/>
-      <point x="316" y="-240" type="line" identifier="p109"/>
+      <point x="305" y="-157" type="line" identifier="p93"/>
+      <point x="308" y="-152" identifier="p94"/>
+      <point x="305" y="-148" type="qcurve" identifier="p95"/>
+      <point x="302" y="-143" identifier="p96"/>
+      <point x="297" y="-143" type="qcurve" identifier="p97"/>
+      <point x="277" y="-143" type="line" identifier="p98"/>
+      <point x="277" y="-53" type="line" identifier="p99"/>
+      <point x="377" y="-53" type="line" identifier="p100"/>
+      <point x="377" y="-135" type="line" identifier="p101"/>
+      <point x="316" y="-240" type="line" identifier="p102"/>
     </contour>
   </outline>
   <lib>
@@ -216,13 +207,6 @@
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>

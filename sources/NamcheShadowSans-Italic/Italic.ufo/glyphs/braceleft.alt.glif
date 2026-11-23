@@ -7,22 +7,14 @@
       <point x="163" y="826" type="line" identifier="p1"/>
       <point x="465" y="826" type="line" identifier="p2"/>
       <point x="465" y="748" type="line" identifier="p3"/>
-      <point x="243" y="748" type="line" identifier="p4"/>
-      <point x="243" y="235" type="line" identifier="p5"/>
-    </contour>
-    <contour>
-      <point x="163" y="235" type="line" identifier="p6"/>
-      <point x="163" y="826" type="line" identifier="p7"/>
-      <point x="465" y="826" type="line" identifier="p8"/>
-      <point x="465" y="748" type="line" identifier="p9"/>
-      <point x="296" y="748" type="line" identifier="p10"/>
-      <point x="285" y="748" identifier="p11"/>
-      <point x="266" y="740" identifier="p12"/>
-      <point x="259" y="732" type="qcurve" identifier="p13"/>
-      <point x="251" y="725" identifier="p14"/>
-      <point x="243" y="706" identifier="p15"/>
-      <point x="243" y="695" type="qcurve" identifier="p16"/>
-      <point x="243" y="235" type="line" identifier="p17"/>
+      <point x="296" y="748" type="line" identifier="p4"/>
+      <point x="285" y="748" identifier="p5"/>
+      <point x="266" y="740" identifier="p6"/>
+      <point x="259" y="732" type="qcurve" identifier="p7"/>
+      <point x="251" y="725" identifier="p8"/>
+      <point x="243" y="706" identifier="p9"/>
+      <point x="243" y="695" type="qcurve" identifier="p10"/>
+      <point x="243" y="235" type="line" identifier="p11"/>
     </contour>
   </outline>
   <lib>
@@ -30,12 +22,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

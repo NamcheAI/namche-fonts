@@ -10,6 +10,7 @@ import openstep_plist
 from glyphsLib import GSFont
 
 from scripts import build_sans_equal_ink as build
+from scripts import equal_ink_corners as corners
 from scripts.check_equal_ink import _filled_geos, _geos_counters, _polygon_parts
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -81,6 +82,76 @@ class EqualInkSourceTest(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'refusing to replace'):
                     build.initialize()
             self.assertEqual(fixture.read_text(), 'pinned design inputs\n')
+
+    def test_default_y_joins_arm_directly_to_descender_in_both_styles(self):
+        records = json.loads(build.BASE.read_text())['styles']
+        for suffix in ('', '-Italic'):
+            upstream = GSFont(ROOT / f'originals/geist/sources/Geist{suffix}.glyphspackage')
+            source = GSFont(build.package(suffix))
+            record = records[suffix or 'Upright']['y']
+            for master in upstream.masters:
+                with self.subTest(style=suffix, weight=master.axes[0]):
+                    initial = build.contours(upstream.glyphs['y'].layers[master.id])
+                    pinned, = record['masters'][master.id]
+                    rebuilt, = build.remove_y_ledge(initial)
+                    self.assertEqual([tuple(n) for n in pinned], rebuilt)
+                    # The arm passes the former ledge and joins the tail below
+                    # the baseline. The remaining tail follows its curve left
+                    # and down without doubling back in the heavy masters.
+                    self.assertLess(pinned[9][1], 0)
+                    x0, y0 = initial[0][8][:2]
+                    x1, y1 = initial[0][9][:2]
+                    x, y = pinned[9][:2]
+                    arm_x = x0 + (x1 - x0) * (y - y0) / (y1 - y0)
+                    self.assertAlmostEqual(x, arm_x, delta=.001)
+                    for a, b in zip(pinned[9:15], pinned[10:16]):
+                        self.assertLess(b[0], a[0])
+                        self.assertLessEqual(b[1], a[1])
+                    self.assertEqual(sum(n[2] != 'o' for n in pinned),
+                                     sum(n[2] != 'o' for n in initial[0]) - 1)
+                    for accent in ('yacute', 'ycircumflex', 'ydieresis', 'ygrave', 'ydieresis.ss08'):
+                        base = source.glyphs[accent].layers[master.id].components[0]
+                        self.assertEqual(base.name, 'y')
+                        self.assertEqual(tuple(base.transform), (1, 0, 0, 1, 0, 0))
+
+    def test_italic_a_bowl_to_tail_crosses_the_short_subdivision(self):
+        masters = list(self.clean['a']['masters'].values())
+        radii = [51.2, 53., 53.]
+        revised, report = corners.round_italic_a_notch(masters, radii)
+        for original, new, radius, measured in zip(masters, revised, radii, report['masters']):
+            with self.subTest(radius=measured['radius']):
+                self.assertEqual(new[1], original[1])
+                original_segments = corners.nodes_to_segments(original[0])
+                revised_segments = corners.nodes_to_segments(new[0])
+                # The new arc ends downstream of the short subdivision, where
+                # the outer tail is already heading right. A neck or kink
+                # would double back in x or break tangency at a contact.
+                self.assertGreater(corners.seg_end(revised_segments[4])[0],
+                                   corners.seg_end(original_segments[3])[0])
+                for left, right in zip(revised_segments[2:5], revised_segments[3:6]):
+                    tangent_a = corners.seg_tangent_in(left)
+                    tangent_b = corners.seg_tangent_out(right)
+                    self.assertGreater(corners.dot(tangent_a, tangent_b), .99999)
+                    self.assertGreater(tangent_a[0], 0)
+                self.assertGreaterEqual(measured['radius'], .6*radius)
+                if radius == 53.:
+                    self.assertAlmostEqual(measured['area']/measured['target'], 1., delta=.002)
+
+    def test_upright_a_notch_matches_reviewed_wave_at_the_three_design_masters(self):
+        records = json.loads(build.BASE.read_text())['styles']['Upright']['a']
+        masters = list(records['masters'].values())
+        revised, report = corners.round_upright_a_notch(masters, [51.2, 53., 53.], [100, 400, 900])
+        # Independent optical check: these are the white-notch crest heights
+        # read from the approved Thin/Regular/Black proof, aligned to Geist.
+        for contours, maximum, measured in zip(revised, (60., 46., 47.), report['masters']):
+            segments = corners.nodes_to_segments(contours[0])
+            bridge = [seg for seg in segments if seg[0] == 'curve' and
+                      300 < seg[1][0] < 450 and 300 < seg[-1][0] < 450
+                      and 0 < seg[1][1] < 65 and 0 < seg[-1][1] < 65]
+            self.assertEqual(len(bridge), 2)
+            apex = max(corners._point(segment, t/100)[1] for segment in bridge for t in range(101))
+            self.assertAlmostEqual(apex, maximum, delta=2)
+            self.assertGreater(measured['area'], 0)
 
     def test_prepare_component_interpolation_matches_saved_package_precision(self):
         with tempfile.TemporaryDirectory() as folder:

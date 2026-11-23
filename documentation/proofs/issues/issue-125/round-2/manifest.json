@@ -1,0 +1,136 @@
+{
+  "inputs_sha256": {
+    "before": {
+      "NamcheShadowSans-Thin.ttf": "352552d00b9c142e6a451d2695aded9fb88523fc7622d8f621a0996092e45fbc",
+      "NamcheShadowSans[wght].ttf": "ef15e6b0e18500b3a59e711a4350c506f1fde213120946e8ec22a50ff4d22613",
+      "NamcheShadowSans-ExtraLight.ttf": "8bce9a30fda62c8bdf6e26198e18fc48e972c0f392d2f7d0f686031f7526b716",
+      "NamcheShadowSans-Light.ttf": "2fa3c6a1fd53ed9c147cf1d7ccacb07781e654b84d70e5084370ad33b0775a71",
+      "NamcheShadowSans-Regular.ttf": "74b617e23d97568db8086f3e61fe104ffecbf20d9340d525fd84444134419820",
+      "NamcheShadowSans-Medium.ttf": "f04e1a3087a943ed459e089b456df321719b3b8ee53bdd7eb1c6a0b041ed4e20",
+      "NamcheShadowSans-SemiBold.ttf": "f3e6354c73091a0a420f71cff06b2a1c8b7dbfe818b2ebb6e462dc78a6f4706f",
+      "NamcheShadowSans-Bold.ttf": "706ed728eb40be06d8baedcc6f67fb1df892097c0902a8db30ded82eba24cfb3",
+      "NamcheShadowSans-ExtraBold.ttf": "1851bf78784effbe01d21e1b2dc4880a1673233bf9e809f2b0ef707ec0d238aa",
+      "NamcheShadowSans-Black.ttf": "aae677c35873b5ca65f2b5fc0e274b95c33f6ea6752a9e78b79b34e3bdbd9be8",
+      "NamcheShadowSans-ThinItalic.ttf": "391accbfd67e5f4e76b583fa1eff02a51faec530e7e8ac52c7e768f8df450480",
+      "NamcheShadowSans-Italic[wght].ttf": "c5b7a830cc12d29e2e1e50ab6544685f6e2747ece45060bb367050551e71954b",
+      "NamcheShadowSans-ExtraLightItalic.ttf": "be090c230c13ec7d82ea8c0ad3354ed6794a11a467a4e485e3d9a6d0599f3f47",
+      "NamcheShadowSans-LightItalic.ttf": "78b914bd6cfa9a33b2593dbd31994ea702f04c588d41a9716d44f0b03ca6c503",
+      "NamcheShadowSans-Italic.ttf": "52d2e42984873b8f8f1113cbbff53b2777abce50218d9d36cb409631e6bfcba0",
+      "NamcheShadowSans-MediumItalic.ttf": "d39a9396616a284023c7c71ed40f07f27fdc8a1c12c4d6a31529923dfd61003a",
+      "NamcheShadowSans-SemiBoldItalic.ttf": "7bf91ee1d997a2fb3580592a9d9fb19a5ce376f981f76b9d8e8b258ac453ff49",
+      "NamcheShadowSans-BoldItalic.ttf": "57a7ff00f253900aa64fc2d04c6a3377f69893c7709380230286cedd7d49a477",
+      "NamcheShadowSans-ExtraBoldItalic.ttf": "41c4c7469ed8363f0f044b21bf255a73f3d51ecf1c9b2e72cb0bd9ccaea3b01f",
+      "NamcheShadowSans-BlackItalic.ttf": "1aebd870d40328cfea66286854cece0d6c7b7d53f55b7e55a9e0ad855d17da05"
+    },
+    "after": {
+      "NamcheShadowSans-Thin.ttf": "15a3db9391d66d2bdebde039478978800182290fa1af83dd56998891e7cf0101",
+      "NamcheShadowSans[wght].ttf": "1344cd37c2854f595b9757f9314843e71e6b89cab7d9287ded7d2b089540afa8",
+      "NamcheShadowSans-ExtraLight.ttf": "630e7b5bb51c3801f26f417c5a4de7a1631fdf88ad95dcc8ae8c4d35c1dd48e9",
+      "NamcheShadowSans-Light.ttf": "c7c252562383917f39f3ae757b37e81181304b858480c18e4469de71da932c3e",
+      "NamcheShadowSans-Regular.ttf": "b3ab2579b0528e75e4ed5d9d87781806854941470a2b3e568b692b3b6c3a1f0e",
+      "NamcheShadowSans-Medium.ttf": "6295baee88ad18aea8d544cf65686eb76731f71ea5fc9e7675b626d9a71a3d29",
+      "NamcheShadowSans-SemiBold.ttf": "cd3910814f7d4b5e4eedd888e5778ea26e29c7dca84fd6959f0b0a4927922afe",
+      "NamcheShadowSans-Bold.ttf": "2e9af26b6edaa69beadbd0a04113e09ba879466d1390313b33714bcfbb8bba3d",
+      "NamcheShadowSans-ExtraBold.ttf": "df0a75bdeeb84392b9dd03cde20308ff47031993ec29103bad8b7cfb41ee725c",
+      "NamcheShadowSans-Black.ttf": "45d57d1a21436bb155a9f872bc4d8ffa8ecc8c6fcd1fe558873e6510080b3b40",
+      "NamcheShadowSans-ThinItalic.ttf": "275cbb3ab2b005f4179bb1d24e69e9715c4c637db180e571d1a610a539f914c1",
+      "NamcheShadowSans-Italic[wght].ttf": "50853d62975d78196843397229bea5891617b5bd442a30b2dc30217e0185495e",
+      "NamcheShadowSans-ExtraLightItalic.ttf": "87b67f6d80547a4c0ee901f9a8263d5307543869bc7ac0eeb4200aff1f785811",
+      "NamcheShadowSans-LightItalic.ttf": "3e603f32c0efce06643d421ff5baf6fa311f48c866c482fee4e0feb42dedded1",
+      "NamcheShadowSans-Italic.ttf": "9b0a71bf11c3cf0b8e2fe27b4a20a4d264c2c0104fbe9fd12b95d10e0fc4ed76",
+      "NamcheShadowSans-MediumItalic.ttf": "0790b5904e5e0d6d42dc7ab98ee6285adf5696fbe79729739733a5bcf8a58c82",
+      "NamcheShadowSans-SemiBoldItalic.ttf": "fefa221311362439d754586dd92d789e669281b988902a8a871896fbedf4ff39",
+      "NamcheShadowSans-BoldItalic.ttf": "ed358df09cc9602a652fcf60a932035ca2d2172b25aec4b217a4ef3074abf9a3",
+      "NamcheShadowSans-ExtraBoldItalic.ttf": "ea0bb5afb6522e523c19f46aee9466cbff72971c162d3aa78b1a66e29ce158b3",
+      "NamcheShadowSans-BlackItalic.ttf": "0f31f2dde392544cba52c8c843dddc2e143b8d43d029c9401e37b85e45f1476c"
+    },
+    "counter_reference": {
+      "NamcheShadowSans-Bold.ttf": "143563d2ff6434aae26c49bea9e9b452c43e4622cafba13e31ef116a7ade625d",
+      "NamcheShadowSans-ExtraBold.ttf": "5664e8ffc18c9b294ed859deafa1361ed795287622efbb8ef3186125436f861d",
+      "NamcheShadowSans-Black.ttf": "7283eae2a5d8deef403b18c5583d8bd2e5150178661c2d28b6631c56fef26738",
+      "NamcheShadowSans-BoldItalic.ttf": "02064e975f42954bfd0c24ce72e8523c200e7dc2b42776895137654e2873e4ca",
+      "NamcheShadowSans-ExtraBoldItalic.ttf": "7a68b73e12c6f19b48bd9c6ebe8401e4febfcb73e2a9e5a516e9cc7ed80746d7",
+      "NamcheShadowSans-BlackItalic.ttf": "aeb52bc38d74fb545add2e22b7046ba5a58c2481ba425e272c086a65901e23f6"
+    }
+  },
+  "proofs_sha256": {
+    "changes.png": "67680841f36d5d9f7a08009bada0159560deae836a3dd7a986d02159a49c94fb",
+    "outlines-upright.png": "faf71150abf64f425f1b3409ea7d7eb0e1f507cef0832a6e995c7042f67f9705",
+    "text-upright.png": "615b7a61d74d9a638b376d52f0e561c4f63978f0733466f5b5810f0117f7fd74",
+    "outlines-italic.png": "b265d1e0666a3ac35a3195d9dc4cd6ded90725e5f0bb0861ba4e714b0b58a32a",
+    "text-italic.png": "e048468fe2afabc5491a7ecd14442d9219e1f60aa022aaeb142da7373667c9e2",
+    "rendering.csv": "2fdf98a9ebf39352ca772f629b3b393df5687778582cabe330340f373dd5fb1e",
+    "counters.csv": "95316f99be9f333ca43cb471f680360468580b78c6a79390757e33ebbf953f8e"
+  },
+  "text": [
+    "The rounded inner corners give the sans a printed, slightly soft texture.",
+    "A shaded room by the old quay in Vienna costs €45."
+  ],
+  "pillow": "12.3.0",
+  "freetype": "2.14.3",
+  "layout_engine": "RAQM",
+  "raqm": "0.10.5",
+  "harfbuzz": "14.2.1",
+  "rendering": "Sum of 8-bit grayscale glyph coverage on both complete shaped lines. Each percentage is 100 × (VF / static − 1) within the same snapshot, style, weight and integer ppem. Positive values indicate a darker VF. The latin_core columns repeat the comparison on all 319 characters in codepoint order, space-separated, with combining marks shown on n.",
+  "counters": "Enclosed counter area in square font units, from unioned static TTF outlines.",
+  "y_geometry": {
+    "before": {
+      "upright": {
+        "static_instances": 9,
+        "vf_instances": 33,
+        "min_horizontal_step_units": 9.0,
+        "max_horizontal_step_units": 40.0,
+        "max_accented_base_xor_square_units": 0
+      },
+      "italic": {
+        "static_instances": 9,
+        "vf_instances": 33,
+        "min_horizontal_step_units": 8.0,
+        "max_horizontal_step_units": 37.0,
+        "max_accented_base_xor_square_units": 0
+      }
+    },
+    "after": {
+      "upright": {
+        "static_instances": 9,
+        "vf_instances": 33,
+        "min_horizontal_step_units": 0,
+        "max_horizontal_step_units": 0,
+        "max_accented_base_xor_square_units": 0
+      },
+      "italic": {
+        "static_instances": 9,
+        "vf_instances": 33,
+        "min_horizontal_step_units": 0,
+        "max_horizontal_step_units": 0,
+        "max_accented_base_xor_square_units": 0
+      }
+    }
+  },
+  "y_method": "Maximum horizontal line length in the former ledge region (left endpoint x 120–300, y 0–55) on the unioned default y. Check the default contour against the descender-reaching contour of ý ÿ ŷ ỳ at every named static weight and every 25 VF weight units.",
+  "overlay": "Matched static glyphs rendered at 260 ppem on the same baseline and origin in both snapshots. Color shows the difference in grayscale coverage.",
+  "outlines": {
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      700,
+      900
+    ],
+    "samples": [
+      [
+        80,
+        "y ý ÿ ŷ ỳ    A 4 #"
+      ],
+      [
+        80,
+        "a b d h m n p q r u"
+      ],
+      [
+        54,
+        "H E K Y   & # $ €   ¢ Œ Q"
+      ]
+    ]
+  }
+}

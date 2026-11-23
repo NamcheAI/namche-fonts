@@ -10,27 +10,18 @@
     </contour>
     <contour>
       <point x="-41" y="-240" type="line" identifier="p4"/>
-      <point x="35" y="-143" type="line" identifier="p5"/>
-      <point x="-1" y="-143" type="line" identifier="p6"/>
-      <point x="18" y="-53" type="line" identifier="p7"/>
-      <point x="118" y="-53" type="line" identifier="p8"/>
-      <point x="100" y="-135" type="line" identifier="p9"/>
-      <point x="17" y="-240" type="line" identifier="p10"/>
-    </contour>
-    <contour>
-      <point x="-41" y="-240" type="line" identifier="p11"/>
-      <point x="25" y="-156" type="line" identifier="p12"/>
-      <point x="26" y="-154" identifier="p13"/>
-      <point x="27" y="-149" identifier="p14"/>
-      <point x="26" y="-147" type="qcurve" identifier="p15"/>
-      <point x="25" y="-145" identifier="p16"/>
-      <point x="21" y="-143" identifier="p17"/>
-      <point x="19" y="-143" type="qcurve" identifier="p18"/>
-      <point x="-1" y="-143" type="line" identifier="p19"/>
-      <point x="18" y="-53" type="line" identifier="p20"/>
-      <point x="118" y="-53" type="line" identifier="p21"/>
-      <point x="100" y="-135" type="line" identifier="p22"/>
-      <point x="17" y="-240" type="line" identifier="p23"/>
+      <point x="25" y="-156" type="line" identifier="p5"/>
+      <point x="26" y="-154" identifier="p6"/>
+      <point x="27" y="-149" identifier="p7"/>
+      <point x="26" y="-147" type="qcurve" identifier="p8"/>
+      <point x="25" y="-145" identifier="p9"/>
+      <point x="21" y="-143" identifier="p10"/>
+      <point x="19" y="-143" type="qcurve" identifier="p11"/>
+      <point x="-1" y="-143" type="line" identifier="p12"/>
+      <point x="18" y="-53" type="line" identifier="p13"/>
+      <point x="118" y="-53" type="line" identifier="p14"/>
+      <point x="100" y="-135" type="line" identifier="p15"/>
+      <point x="17" y="-240" type="line" identifier="p16"/>
     </contour>
   </outline>
   <lib>
@@ -38,13 +29,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

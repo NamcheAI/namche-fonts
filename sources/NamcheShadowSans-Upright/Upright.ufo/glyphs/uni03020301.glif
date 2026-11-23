@@ -2,40 +2,25 @@
 <glyph name="uni03020301" format="2">
   <outline>
     <contour>
-      <point x="114" y="588" type="line" identifier="p0"/>
-      <point x="44" y="588" type="line" identifier="p1"/>
-      <point x="134" y="710" type="line" identifier="p2"/>
-      <point x="228" y="710" type="line" identifier="p3"/>
-      <point x="318" y="588" type="line" identifier="p4"/>
-      <point x="248" y="588" type="line" identifier="p5"/>
-      <point x="181" y="664" type="line" identifier="p6"/>
+      <point x="211" y="630" type="line" identifier="p0"/>
+      <point x="205" y="636" identifier="p1"/>
+      <point x="190" y="643" identifier="p2"/>
+      <point x="181" y="643" type="qcurve" identifier="p3"/>
+      <point x="172" y="643" identifier="p4"/>
+      <point x="157" y="636" identifier="p5"/>
+      <point x="151" y="630" type="qcurve" identifier="p6"/>
+      <point x="114" y="588" type="line" identifier="p7"/>
+      <point x="44" y="588" type="line" identifier="p8"/>
+      <point x="134" y="710" type="line" identifier="p9"/>
+      <point x="228" y="710" type="line" identifier="p10"/>
+      <point x="318" y="588" type="line" identifier="p11"/>
+      <point x="248" y="588" type="line" identifier="p12"/>
     </contour>
     <contour>
-      <point x="336" y="690" type="line" identifier="p7"/>
-      <point x="266" y="690" type="line" identifier="p8"/>
-      <point x="318" y="818" type="line" identifier="p9"/>
-      <point x="412" y="818" type="line" identifier="p10"/>
-    </contour>
-    <contour>
-      <point x="211" y="630" type="line" identifier="p11"/>
-      <point x="205" y="636" identifier="p12"/>
-      <point x="190" y="643" identifier="p13"/>
-      <point x="181" y="643" type="qcurve" identifier="p14"/>
-      <point x="172" y="643" identifier="p15"/>
-      <point x="157" y="636" identifier="p16"/>
-      <point x="151" y="630" type="qcurve" identifier="p17"/>
-      <point x="114" y="588" type="line" identifier="p18"/>
-      <point x="44" y="588" type="line" identifier="p19"/>
-      <point x="134" y="710" type="line" identifier="p20"/>
-      <point x="228" y="710" type="line" identifier="p21"/>
-      <point x="318" y="588" type="line" identifier="p22"/>
-      <point x="248" y="588" type="line" identifier="p23"/>
-    </contour>
-    <contour>
-      <point x="336" y="690" type="line" identifier="p24"/>
-      <point x="266" y="690" type="line" identifier="p25"/>
-      <point x="318" y="818" type="line" identifier="p26"/>
-      <point x="412" y="818" type="line" identifier="p27"/>
+      <point x="336" y="690" type="line" identifier="p13"/>
+      <point x="266" y="690" type="line" identifier="p14"/>
+      <point x="318" y="818" type="line" identifier="p15"/>
+      <point x="412" y="818" type="line" identifier="p16"/>
     </contour>
   </outline>
   <lib>
@@ -43,17 +28,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>

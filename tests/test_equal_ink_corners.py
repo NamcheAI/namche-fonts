@@ -42,7 +42,7 @@ class EqualInkGeometryTest(unittest.TestCase):
         return abs(eq._op(new, old, pathops.PathOp.DIFFERENCE).area)
 
     def test_rule_uses_measured_stem_and_category_caps(self):
-        self.assertAlmostEqual(eq.r90_for_stem(32, True), 38.4)
+        self.assertAlmostEqual(eq.r90_for_stem(32, True), 51.2)
         self.assertEqual(eq.r90_for_stem(96, True), 70)
         self.assertEqual(eq.r90_for_stem(190, True), 70)
         self.assertEqual(eq.r90_for_stem(96), 53)
@@ -57,8 +57,7 @@ class EqualInkGeometryTest(unittest.TestCase):
                 self.assertEqual(types[0], types[1])
                 self.assertEqual(types[1], types[2])
                 self.assertEqual(types[0].count("c"), 2)
-                self.assertEqual(len(rounded[0]), 2, "complete clean and rounded glyphs")
-                self.assertEqual(rounded[0][0], source[0], 'base outline was trimmed')
+                self.assertEqual(len(rounded[0]), 1, "no coincident clean contour")
                 for master, radius in zip(rounded, [38.4, 70, 70]):
                     area = self.assert_additive(source, master)
                     self.assertAlmostEqual(area, eq.F90*radius*radius, delta=.03)
@@ -107,9 +106,8 @@ class EqualInkGeometryTest(unittest.TestCase):
         self.assertTrue(info["capped"])
         self.assertLess(info["area"], info["target"])
         self.assert_additive(source, rounded[0])
-        # The base is unchanged. The two arc contacts consume no more than
+        # The two arc contacts consume no more than
         # 45% of either original flank in the continuous rounded contour.
-        self.assertEqual(rounded[0][0], source[0])
         original = eq._normalize(source)[0]
         join = report[0]['join']
         arcs = [s for s in nodes_to_segments(rounded[0][-1]) if s[0] == 'curve']
@@ -117,6 +115,38 @@ class EqualInkGeometryTest(unittest.TestCase):
         self.assertEqual(len(arcs), 2)
         self.assertLessEqual(math.dist(vertex, arcs[0][1]), .45*seg_length(original[join])+1e-5)
         self.assertLessEqual(math.dist(vertex, arcs[-1][-1]), .45*seg_length(original[(join+1)%len(original)])+1e-5)
+
+    def test_longer_soft_spur_uses_the_radius_floor_until_it_runs_out_of_flank(self):
+        for length in (100, 1000):
+            with self.subTest(length=length):
+                source = [notch(30, length)]
+                rounded, joins = eq.round_compatible_contours([source], [53], soft_spurs=True)
+                reach = min(.6*53 / math.tan(math.radians(15)), .90*length)
+                self.assertAlmostEqual(joins[0]['masters'][0]['radius'],
+                                       reach*math.tan(math.radians(15)), places=4)
+                self.assert_additive(source, rounded[0])
+
+    def test_static_projection_uses_identical_arcs_without_interpolation_guards(self):
+        source = [[notch(30, curvature=120)]]
+        continuous, _ = eq.round_compatible_contours(source, [53])
+        for guard in ('flanks', 'fillets'):
+            with self.subTest(guard=guard):
+                statics = []
+                variable, _ = eq.round_compatible_contours(
+                    source, [53], local_guard=guard, static_projection=statics)
+                self.assertEqual(statics, continuous)
+                self.assertGreater(len(variable[0]), len(statics[0]))
+
+    def test_weight_exception_only_reduces_fill_inside_acute_counters(self):
+        outer = [(0, 0, 'l'), (1000, 0, 'l'), (1000, 1000, 'l'), (0, 1000, 'l')]
+        triangle = [(200, 200, 'l'), (500, 800, 'l'), (800, 200, 'l')]
+        source = [outer, triangle]
+        rounded, joins = eq.round_compatible_contours([source]*2, [70, 70], counter_scales=[1., .5])
+        self.assertEqual(len(joins), 3)
+        for join in joins:
+            regular, black = join['masters']
+            self.assertAlmostEqual(black['area'], regular['area'] / 4, delta=.05)
+        self.assert_additive(source, rounded[1])
 
     def test_winding_normalization_includes_counters(self):
         outer = [(-2000, -1000, 'l'), (2000, -1000, 'l'),
@@ -344,7 +374,7 @@ class ActualMasterGeometryTest(unittest.TestCase):
                 self.assertEqual(len(_geos_counters(geometry)), 2)
 
 
-    def test_complete_glyph_union_preserves_curved_base_ink_between_masters(self):
+    def test_local_guards_preserve_curved_base_ink_between_masters(self):
         from scripts.check_equal_ink import _filled_geos, _geos_counters
         weights = (100, 400, 900)
         def interpolate(source, weight):
@@ -354,14 +384,23 @@ class ActualMasterGeometryTest(unittest.TestCase):
                     for left,right in zip(source[low],source[low+1])]
         cases = [('Upright','at',600,650,53), ('-Italic','at',350,400,53),
                  ('Upright','eight',350,400,70), ('Upright','three',500,550,70),
-                 ('Upright','braceright',200,300,53)]
+                 ('Upright','threesuperior',150,200,53), ('Upright','threesuperior',300,350,53)]
         for style, name, lower, upper, radius in cases:
             with self.subTest(style=style,glyph=name):
                 original = [self.clean[style][name]['masters'][mid] for mid in MASTER_IDS.values()]
+                self.assertTrue(all(original), 'exercise actual foregrounds, not an empty component glyph')
                 pair = [interpolate(original,w) for w in (lower,upper)]
-                rounded,_ = eq.round_compatible_contours(pair,[radius,radius])
-                self.assertEqual(rounded[0][:len(pair[0])],pair[0])
-                self.assertEqual(rounded[1][:len(pair[1])],pair[1])
+                rounded,report = eq.round_compatible_contours(pair,[radius,radius],
+                    local_guard=eq.LOCAL_GUARDS[style, name])
+                patches = rounded[0][len(pair[0]):]
+                if eq.LOCAL_GUARDS[style, name] == 'flanks':
+                    self.assertTrue(patches)
+                    self.assertTrue(all(len(nodes_to_segments(patch)) == 2 for patch in patches))
+                else:
+                    self.assertEqual(rounded[0][:len(pair[0])],pair[0])
+                    self.assertEqual(rounded[1][:len(pair[1])],pair[1])
+                    self.assertEqual(len(patches), sum(r['status'] == 'rounded' for r in report))
+                    self.assertTrue(all(len(nodes_to_segments(patch)) == 4 for patch in patches))
                 for t in (0,.25,.5,.75,1):
                     mix = lambda values:[[((1-t)*a[0]+t*b[0],(1-t)*a[1]+t*b[1],a[2])
                         for a,b in zip(left,right)] for left,right in zip(values[0],values[1])]
@@ -387,8 +426,8 @@ class ActualMasterGeometryTest(unittest.TestCase):
             self.assertTrue(all(m.get('inactive') for m in item['masters'][:3]))
             self.assertGreaterEqual(item['masters'][-1]['area'],1)
         for base,final in zip(source,rounded):
-            self.assertEqual(final[:len(base)],base)
-            self.assertEqual(len(final),2*len(base))
+            self.assertEqual(len(final), len(base))
+            self.assertLess(eq._op(eq._path(base), eq._path(final), pathops.PathOp.DIFFERENCE).area, .05)
 
     def test_compiled_inactive_slots_preserve_counters_at_every_quarter_step(self):
         from fontTools.designspaceLib import DesignSpaceDocument, AxisDescriptor, SourceDescriptor
@@ -396,7 +435,8 @@ class ActualMasterGeometryTest(unittest.TestCase):
         from ufo2ft import compileVariableTTF
         from scripts.check_equal_ink import _filled_geos, _geos_counters
         weights = list(range(100,901,50))
-        for style,name,expected in [('Upright','zerosuperior',2),('-Italic','sterling',0),('-Italic','a',1)]:
+        for style,name,expected in [('Upright','zerosuperior',2),('-Italic','sterling',0),('-Italic','a',1),
+                                    ('Upright','braceleft',0), ('Upright','eight',2), ('-Italic','eight',2)]:
             original = [self.clean[style][name]['masters'][mid] for mid in MASTER_IDS.values()]
             def at(weight):
                 low = 0 if weight <= 400 else 1
@@ -406,7 +446,8 @@ class ActualMasterGeometryTest(unittest.TestCase):
                          for a,b in zip(left,right)] for left,right in zip(original[low],original[low+1])]
             clean = [at(w) for w in weights]
             stems = [32+(96-32)*(w-100)/300 if w <= 400 else 96+(190-96)*(w-400)/500 for w in weights]
-            rounded,_ = eq.round_compatible_contours(clean,[eq.r90_for_stem(stem) for stem in stems])
+            rounded,_ = eq.round_compatible_contours(clean,[eq.r90_for_stem(stem, name == 'eight') for stem in stems],
+                local_guard=eq.LOCAL_GUARDS.get((style, name)))
             document = DesignSpaceDocument()
             document.addAxis(AxisDescriptor(name='Weight',tag='wght',minimum=100,default=400,maximum=900))
             for weight,paths in zip(weights,rounded):
@@ -420,7 +461,10 @@ class ActualMasterGeometryTest(unittest.TestCase):
                 document.addSource(SourceDescriptor(name=f'weight{weight}',font=ufo,location={'Weight':weight}))
             font = compileVariableTTF(document,optimizeGvar=False,removeOverlaps=False,
                                       cubicConversionError=.0001,featureWriters=[],useProductionNames=False)
-            for weight in range(100,901,25):
+            probes = set(range(100,901,25))
+            if name == 'eight':
+                probes.update((592, 611, 616))  # Quantization-sensitive crossings at the waist.
+            for weight in sorted(probes):
                 with self.subTest(style=style,glyph=name,weight=weight):
                     shape,_ = _filled_geos(font.getGlyphSet(location={'wght':weight}),name,.001)
                     self.assertEqual(len(_geos_counters(shape)),expected)
@@ -443,7 +487,7 @@ class ActualMasterGeometryTest(unittest.TestCase):
                 glyph = ufo.newGlyph('ordfeminine')
                 glyph.width=1000
                 # Named static export keeps the complete solved contour set.
-                eq._NodeGlyph(rounded[1][len(bold):]).draw(glyph.getPen())
+                eq._NodeGlyph(rounded[1]).draw(glyph.getPen())
                 options = dict(removeOverlaps=True,featureWriters=[],useProductionNames=False)
                 if compiler is compileTTF:
                     options['cubicConversionError'] = .0001
@@ -461,11 +505,11 @@ class ActualMasterGeometryTest(unittest.TestCase):
         self.assertAlmostEqual(semantic['masters'][-1]['connector_length'],math.sqrt(5))
         for mi,(clean,final) in enumerate(zip(source,rounded)):
             self.assertAlmostEqual(semantic['masters'][mi]['area'],semantic['masters'][mi]['target'],delta=.02)
-            self.assertEqual(len(final), 2*len(clean))
+            self.assertEqual(len(final), len(clean))
             self.assertEqual(len(nodes_to_segments(final[-1])),9)
             old,_ = _filled_geos({'B':eq._NodeGlyph(clean)},'B',.001)
             new,_ = _filled_geos({'B':eq._NodeGlyph(final)},'B',.001)
-            self.assertLess(old.difference(new).area,1e-7)
+            self.assertLess(old.difference(new.buffer(.002)).area,1e-7)
             self.assertEqual(len(_geos_counters(new)),2)
             def waist_turn(geometry):
                 polygon = orient(max(_polygon_parts(geometry),key=lambda p:p.area),sign=1)

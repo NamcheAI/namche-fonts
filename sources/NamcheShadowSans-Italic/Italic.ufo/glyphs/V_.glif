@@ -7,27 +7,18 @@
       <point x="222" y="0" type="line" identifier="p0"/>
       <point x="115" y="710" type="line" identifier="p1"/>
       <point x="207" y="710" type="line" identifier="p2"/>
-      <point x="297" y="94" type="line" identifier="p3"/>
-      <point x="646" y="710" type="line" identifier="p4"/>
-      <point x="742" y="710" type="line" identifier="p5"/>
-      <point x="335" y="0" type="line" identifier="p6"/>
-    </contour>
-    <contour>
-      <point x="222" y="0" type="line" identifier="p7"/>
-      <point x="115" y="710" type="line" identifier="p8"/>
-      <point x="207" y="710" type="line" identifier="p9"/>
-      <point x="286" y="166" type="line" identifier="p10"/>
-      <point x="287" y="161" identifier="p11"/>
-      <point x="293" y="152" identifier="p12"/>
-      <point x="301" y="146" identifier="p13"/>
-      <point x="307" y="145" type="qcurve" identifier="p14"/>
-      <point x="312" y="144" identifier="p15"/>
-      <point x="322" y="147" identifier="p16"/>
-      <point x="330" y="153" identifier="p17"/>
-      <point x="333" y="158" type="qcurve" identifier="p18"/>
-      <point x="646" y="710" type="line" identifier="p19"/>
-      <point x="742" y="710" type="line" identifier="p20"/>
-      <point x="335" y="0" type="line" identifier="p21"/>
+      <point x="286" y="166" type="line" identifier="p3"/>
+      <point x="287" y="161" identifier="p4"/>
+      <point x="293" y="152" identifier="p5"/>
+      <point x="301" y="146" identifier="p6"/>
+      <point x="307" y="145" type="qcurve" identifier="p7"/>
+      <point x="312" y="144" identifier="p8"/>
+      <point x="322" y="147" identifier="p9"/>
+      <point x="330" y="153" identifier="p10"/>
+      <point x="333" y="158" type="qcurve" identifier="p11"/>
+      <point x="646" y="710" type="line" identifier="p12"/>
+      <point x="742" y="710" type="line" identifier="p13"/>
+      <point x="335" y="0" type="line" identifier="p14"/>
     </contour>
   </outline>
   <lib>
@@ -35,13 +26,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

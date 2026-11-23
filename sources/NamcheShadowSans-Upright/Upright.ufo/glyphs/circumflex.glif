@@ -4,28 +4,19 @@
   <unicode hex="02C6"/>
   <outline>
     <contour>
-      <point x="114" y="598" type="line" identifier="p0"/>
-      <point x="44" y="598" type="line" identifier="p1"/>
-      <point x="134" y="731" type="line" identifier="p2"/>
-      <point x="228" y="731" type="line" identifier="p3"/>
-      <point x="318" y="598" type="line" identifier="p4"/>
-      <point x="248" y="598" type="line" identifier="p5"/>
-      <point x="181" y="687" type="line" identifier="p6"/>
-    </contour>
-    <contour>
-      <point x="211" y="647" type="line" identifier="p7"/>
-      <point x="206" y="654" identifier="p8"/>
-      <point x="190" y="662" identifier="p9"/>
-      <point x="181" y="662" type="qcurve" identifier="p10"/>
-      <point x="172" y="662" identifier="p11"/>
-      <point x="156" y="654" identifier="p12"/>
-      <point x="151" y="647" type="qcurve" identifier="p13"/>
-      <point x="114" y="598" type="line" identifier="p14"/>
-      <point x="44" y="598" type="line" identifier="p15"/>
-      <point x="134" y="731" type="line" identifier="p16"/>
-      <point x="228" y="731" type="line" identifier="p17"/>
-      <point x="318" y="598" type="line" identifier="p18"/>
-      <point x="248" y="598" type="line" identifier="p19"/>
+      <point x="211" y="647" type="line" identifier="p0"/>
+      <point x="206" y="654" identifier="p1"/>
+      <point x="190" y="662" identifier="p2"/>
+      <point x="181" y="662" type="qcurve" identifier="p3"/>
+      <point x="172" y="662" identifier="p4"/>
+      <point x="156" y="654" identifier="p5"/>
+      <point x="151" y="647" type="qcurve" identifier="p6"/>
+      <point x="114" y="598" type="line" identifier="p7"/>
+      <point x="44" y="598" type="line" identifier="p8"/>
+      <point x="134" y="731" type="line" identifier="p9"/>
+      <point x="228" y="731" type="line" identifier="p10"/>
+      <point x="318" y="598" type="line" identifier="p11"/>
+      <point x="248" y="598" type="line" identifier="p12"/>
     </contour>
   </outline>
   <lib>
@@ -33,13 +24,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>

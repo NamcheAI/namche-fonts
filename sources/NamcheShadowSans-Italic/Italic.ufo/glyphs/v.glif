@@ -7,25 +7,16 @@
       <point x="154" y="0" type="line" identifier="p0"/>
       <point x="78" y="530" type="line" identifier="p1"/>
       <point x="170" y="530" type="line" identifier="p2"/>
-      <point x="223" y="86" type="line" identifier="p3"/>
-      <point x="463" y="530" type="line" identifier="p4"/>
-      <point x="556" y="530" type="line" identifier="p5"/>
-      <point x="260" y="0" type="line" identifier="p6"/>
-    </contour>
-    <contour>
-      <point x="154" y="0" type="line" identifier="p7"/>
-      <point x="78" y="530" type="line" identifier="p8"/>
-      <point x="170" y="530" type="line" identifier="p9"/>
-      <point x="216" y="142" type="line" identifier="p10"/>
-      <point x="217" y="136" identifier="p11"/>
-      <point x="225" y="128" identifier="p12"/>
-      <point x="231" y="126" type="qcurve" identifier="p13"/>
-      <point x="236" y="125" identifier="p14"/>
-      <point x="247" y="130" identifier="p15"/>
-      <point x="250" y="136" type="qcurve" identifier="p16"/>
-      <point x="463" y="530" type="line" identifier="p17"/>
-      <point x="556" y="530" type="line" identifier="p18"/>
-      <point x="260" y="0" type="line" identifier="p19"/>
+      <point x="216" y="142" type="line" identifier="p3"/>
+      <point x="217" y="136" identifier="p4"/>
+      <point x="225" y="128" identifier="p5"/>
+      <point x="231" y="126" type="qcurve" identifier="p6"/>
+      <point x="236" y="125" identifier="p7"/>
+      <point x="247" y="130" identifier="p8"/>
+      <point x="250" y="136" type="qcurve" identifier="p9"/>
+      <point x="463" y="530" type="line" identifier="p10"/>
+      <point x="556" y="530" type="line" identifier="p11"/>
+      <point x="260" y="0" type="line" identifier="p12"/>
     </contour>
   </outline>
   <lib>
@@ -33,13 +24,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

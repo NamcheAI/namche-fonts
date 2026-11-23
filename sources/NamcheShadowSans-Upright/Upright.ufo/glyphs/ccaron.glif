@@ -63,25 +63,16 @@
       <point x="240" y="598" type="line" identifier="p54"/>
       <point x="150" y="731" type="line" identifier="p55"/>
       <point x="220" y="731" type="line" identifier="p56"/>
-      <point x="287" y="642" type="line" identifier="p57"/>
-      <point x="354" y="731" type="line" identifier="p58"/>
-      <point x="424" y="731" type="line" identifier="p59"/>
-      <point x="334" y="598" type="line" identifier="p60"/>
-    </contour>
-    <contour>
-      <point x="240" y="598" type="line" identifier="p61"/>
-      <point x="150" y="731" type="line" identifier="p62"/>
-      <point x="220" y="731" type="line" identifier="p63"/>
-      <point x="257" y="682" type="line" identifier="p64"/>
-      <point x="262" y="675" identifier="p65"/>
-      <point x="278" y="667" identifier="p66"/>
-      <point x="287" y="667" type="qcurve" identifier="p67"/>
-      <point x="296" y="667" identifier="p68"/>
-      <point x="312" y="675" identifier="p69"/>
-      <point x="317" y="682" type="qcurve" identifier="p70"/>
-      <point x="354" y="731" type="line" identifier="p71"/>
-      <point x="424" y="731" type="line" identifier="p72"/>
-      <point x="334" y="598" type="line" identifier="p73"/>
+      <point x="257" y="682" type="line" identifier="p57"/>
+      <point x="262" y="675" identifier="p58"/>
+      <point x="278" y="667" identifier="p59"/>
+      <point x="287" y="667" type="qcurve" identifier="p60"/>
+      <point x="296" y="667" identifier="p61"/>
+      <point x="312" y="675" identifier="p62"/>
+      <point x="317" y="682" type="qcurve" identifier="p63"/>
+      <point x="354" y="731" type="line" identifier="p64"/>
+      <point x="424" y="731" type="line" identifier="p65"/>
+      <point x="334" y="598" type="line" identifier="p66"/>
     </contour>
   </outline>
   <lib>
@@ -141,13 +132,6 @@
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

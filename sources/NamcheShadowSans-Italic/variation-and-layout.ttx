@@ -513,7 +513,7 @@
     <!-- Most of this table will be recalculated by the compiler -->
     <tableVersion value="1.0"/>
     <fontRevision value="1.8"/>
-    <checkSumAdjustment value="0x97e43511"/>
+    <checkSumAdjustment value="0xaa886a29"/>
     <magicNumber value="0x5f0f3cf5"/>
     <flags value="00000000 00001111"/>
     <unitsPerEm value="1000"/>
@@ -554,8 +554,8 @@
     <!-- Most of this table will be recalculated by the compiler -->
     <tableVersion value="0x10000"/>
     <numGlyphs value="504"/>
-    <maxPoints value="306"/>
-    <maxContours value="10"/>
+    <maxPoints value="172"/>
+    <maxContours value="7"/>
     <maxCompositePoints value="0"/>
     <maxCompositeContours value="0"/>
     <maxZones value="1"/>

@@ -113,27 +113,18 @@
     </contour>
     <contour>
       <point x="153" y="-240" type="line" identifier="p106"/>
-      <point x="229" y="-143" type="line" identifier="p107"/>
-      <point x="193" y="-143" type="line" identifier="p108"/>
-      <point x="212" y="-53" type="line" identifier="p109"/>
-      <point x="312" y="-53" type="line" identifier="p110"/>
-      <point x="294" y="-135" type="line" identifier="p111"/>
-      <point x="211" y="-240" type="line" identifier="p112"/>
-    </contour>
-    <contour>
-      <point x="153" y="-240" type="line" identifier="p113"/>
-      <point x="219" y="-156" type="line" identifier="p114"/>
-      <point x="220" y="-154" identifier="p115"/>
-      <point x="221" y="-149" identifier="p116"/>
-      <point x="220" y="-147" type="qcurve" identifier="p117"/>
-      <point x="219" y="-145" identifier="p118"/>
-      <point x="215" y="-143" identifier="p119"/>
-      <point x="213" y="-143" type="qcurve" identifier="p120"/>
-      <point x="193" y="-143" type="line" identifier="p121"/>
-      <point x="212" y="-53" type="line" identifier="p122"/>
-      <point x="312" y="-53" type="line" identifier="p123"/>
-      <point x="294" y="-135" type="line" identifier="p124"/>
-      <point x="211" y="-240" type="line" identifier="p125"/>
+      <point x="219" y="-156" type="line" identifier="p107"/>
+      <point x="220" y="-154" identifier="p108"/>
+      <point x="221" y="-149" identifier="p109"/>
+      <point x="220" y="-147" type="qcurve" identifier="p110"/>
+      <point x="219" y="-145" identifier="p111"/>
+      <point x="215" y="-143" identifier="p112"/>
+      <point x="213" y="-143" type="qcurve" identifier="p113"/>
+      <point x="193" y="-143" type="line" identifier="p114"/>
+      <point x="212" y="-53" type="line" identifier="p115"/>
+      <point x="312" y="-53" type="line" identifier="p116"/>
+      <point x="294" y="-135" type="line" identifier="p117"/>
+      <point x="211" y="-240" type="line" identifier="p118"/>
     </contour>
   </outline>
   <lib>
@@ -246,13 +237,6 @@
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>

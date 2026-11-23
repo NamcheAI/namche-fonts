@@ -8,51 +8,29 @@
       <point x="24" y="0" type="line" identifier="p1"/>
       <point x="136" y="530" type="line" identifier="p2"/>
       <point x="210" y="530" type="line" identifier="p3"/>
-      <point x="192" y="432" type="line" identifier="p4"/>
-      <point x="205" y="457" identifier="p5"/>
-      <point x="236" y="494" identifier="p6"/>
-      <point x="272" y="518" identifier="p7"/>
-      <point x="315" y="530" identifier="p8"/>
-      <point x="339" y="530" type="qcurve" identifier="p9"/>
-      <point x="391" y="530" type="line" identifier="p10"/>
-      <point x="374" y="450" type="line" identifier="p11"/>
-      <point x="322" y="450" type="line" identifier="p12"/>
-      <point x="305" y="450" identifier="p13"/>
-      <point x="274" y="445" identifier="p14"/>
-      <point x="248" y="434" identifier="p15"/>
-      <point x="225" y="418" identifier="p16"/>
-      <point x="206" y="397" identifier="p17"/>
-      <point x="191" y="370" identifier="p18"/>
-      <point x="180" y="338" identifier="p19"/>
-      <point x="176" y="320" type="qcurve" identifier="p20"/>
-    </contour>
-    <contour>
-      <point x="108" y="0" type="line" identifier="p21"/>
-      <point x="24" y="0" type="line" identifier="p22"/>
-      <point x="136" y="530" type="line" identifier="p23"/>
-      <point x="210" y="530" type="line" identifier="p24"/>
-      <point x="200" y="474" type="line" identifier="p25"/>
-      <point x="199" y="471" identifier="p26"/>
-      <point x="202" y="466" identifier="p27"/>
-      <point x="205" y="465" type="qcurve" identifier="p28"/>
-      <point x="207" y="464" identifier="p29"/>
-      <point x="213" y="466" identifier="p30"/>
-      <point x="214" y="468" type="qcurve" identifier="p31"/>
-      <point x="230" y="489" identifier="p32"/>
-      <point x="268" y="516" identifier="p33"/>
-      <point x="313" y="530" identifier="p34"/>
-      <point x="339" y="530" type="qcurve" identifier="p35"/>
-      <point x="391" y="530" type="line" identifier="p36"/>
-      <point x="374" y="450" type="line" identifier="p37"/>
-      <point x="322" y="450" type="line" identifier="p38"/>
-      <point x="305" y="450" identifier="p39"/>
-      <point x="274" y="445" identifier="p40"/>
-      <point x="248" y="434" identifier="p41"/>
-      <point x="225" y="418" identifier="p42"/>
-      <point x="206" y="397" identifier="p43"/>
-      <point x="191" y="370" identifier="p44"/>
-      <point x="180" y="338" identifier="p45"/>
-      <point x="176" y="320" type="qcurve" identifier="p46"/>
+      <point x="206" y="508" type="line" identifier="p4"/>
+      <point x="205" y="504" identifier="p5"/>
+      <point x="207" y="497" identifier="p6"/>
+      <point x="212" y="491" identifier="p7"/>
+      <point x="215" y="489" type="qcurve" identifier="p8"/>
+      <point x="218" y="487" identifier="p9"/>
+      <point x="226" y="487" identifier="p10"/>
+      <point x="233" y="489" identifier="p11"/>
+      <point x="236" y="492" type="qcurve" identifier="p12"/>
+      <point x="257" y="511" identifier="p13"/>
+      <point x="308" y="530" identifier="p14"/>
+      <point x="339" y="530" type="qcurve" identifier="p15"/>
+      <point x="391" y="530" type="line" identifier="p16"/>
+      <point x="374" y="450" type="line" identifier="p17"/>
+      <point x="322" y="450" type="line" identifier="p18"/>
+      <point x="305" y="450" identifier="p19"/>
+      <point x="274" y="445" identifier="p20"/>
+      <point x="248" y="434" identifier="p21"/>
+      <point x="225" y="418" identifier="p22"/>
+      <point x="206" y="397" identifier="p23"/>
+      <point x="191" y="370" identifier="p24"/>
+      <point x="180" y="338" identifier="p25"/>
+      <point x="176" y="320" type="qcurve" identifier="p26"/>
     </contour>
   </outline>
   <lib>
@@ -67,31 +45,11 @@
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>0</integer>
-        <integer>0</integer>
-        <integer>0</integer>
-        <integer>0</integer>
         <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
-        <integer>0</integer>
-        <integer>0</integer>
-        <integer>1</integer>
-        <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>

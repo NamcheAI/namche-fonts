@@ -73,24 +73,15 @@
       <point x="417" y="778" type="line" identifier="p64"/>
       <point x="355" y="911" type="line" identifier="p65"/>
       <point x="423" y="911" type="line" identifier="p66"/>
-      <point x="471" y="822" type="line" identifier="p67"/>
-      <point x="557" y="911" type="line" identifier="p68"/>
-      <point x="629" y="911" type="line" identifier="p69"/>
-    </contour>
-    <contour>
-      <point x="511" y="778" type="line" identifier="p70"/>
-      <point x="417" y="778" type="line" identifier="p71"/>
-      <point x="355" y="911" type="line" identifier="p72"/>
-      <point x="423" y="911" type="line" identifier="p73"/>
-      <point x="450" y="862" type="line" identifier="p74"/>
-      <point x="453" y="855" identifier="p75"/>
-      <point x="466" y="846" identifier="p76"/>
-      <point x="474" y="845" type="qcurve" identifier="p77"/>
-      <point x="482" y="844" identifier="p78"/>
-      <point x="497" y="849" identifier="p79"/>
-      <point x="503" y="855" type="qcurve" identifier="p80"/>
-      <point x="557" y="911" type="line" identifier="p81"/>
-      <point x="629" y="911" type="line" identifier="p82"/>
+      <point x="450" y="862" type="line" identifier="p67"/>
+      <point x="453" y="855" identifier="p68"/>
+      <point x="466" y="846" identifier="p69"/>
+      <point x="474" y="845" type="qcurve" identifier="p70"/>
+      <point x="482" y="844" identifier="p71"/>
+      <point x="497" y="849" identifier="p72"/>
+      <point x="503" y="855" type="qcurve" identifier="p73"/>
+      <point x="557" y="911" type="line" identifier="p74"/>
+      <point x="629" y="911" type="line" identifier="p75"/>
     </contour>
   </outline>
   <lib>
@@ -159,13 +150,6 @@
         <integer>0</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

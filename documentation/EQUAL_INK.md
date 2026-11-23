@@ -8,7 +8,9 @@ it does not assert that a particular build has passed final release validation.
 ## Design inputs and provenance
 
 `sources/equal-ink/clean-outlines.json` is the explicit, pinned unrounded design
-input. Upright contours come from the maintained upright Glyphs foreground.
+input. The default y in each style includes Michael’s [option B](https://github.com/NamcheAI/namche-fonts/issues/125#issuecomment-7104336521). It joins the left arm to the descender across all masters. In Black the intersection falls on the cubic below the short straight edge. Accented forms inherit the new base.
+
+Original upright contours come from the maintained upright Glyphs foreground.
 Italic contours come exclusively from the immutable
 `originals/geist/sources/Geist-Italic.glyphspackage` **foreground**. Maintained
 packages continue to supply metrics, components, anchors, layout and attribution.
@@ -40,19 +42,31 @@ Independent raw-outline tests cover these symbols, `.notdef`, A and H in all
 three masters of both styles; the new resolver preserves their filled area.
 The compiled before/after proof also includes these symbols explicitly.
 
-## Corner recipe and qualifications
+## Corner recipe
 
-The reference radius is `min(1.2 × stem, cap)`, capped at 70 units for capitals
+The reference radius is `min(1.6 × stem, cap)`, capped at 70 units for capitals
 and figures and 53 for the remaining glyphs. Stem width comes from the clean I
 masters. The reference right-angle added area is
 `(1 − π/4) × radius²`. Acute joins solve for that added area using boolean-filled
 geometry; right and obtuse joins retain the reference radius where feasible.
-Circular fillets are solved on the actual adjacent Bézier curves. A rounded
-copy remains a complete, continuous filled glyph, including all its counter
-contours. It is combined with the entire clean contour set. Keeping the clean
-base prevents curved-flank interpolation from removing original ink; keeping
-the rounded contours continuous avoids independently quantized contact seams.
-Glyphs without any active rounding keep just their original contours.
+Circular fillets are solved on the actual adjacent Bézier curves.
+Thin with a 32-unit stem therefore rounds at 51.2 units. Michael requested a
+softer wave at the exterior lowercase bowl and shoulder joins. There the
+requested minimum radius is 0.60 × r90, bounded by the available flank. A
+fillet may use up to 90% of a flank whose opposite end is free. Opposing
+fillets each retain the 45% limit. The default italic a spans an additional
+short curve where the bowl meets the tail. Its bridge meets the outgoing curve
+tangentially and runs left to right without doubling back. The upright a uses
+31.5, 34.75 and 38.75 font-unit radii in Thin, Regular and Black, fitted to the
+edge of Michael’s [reference proof](https://github.com/NamcheAI/namche-fonts/blob/664bbad5fc32de40b9e8307bbbb532865c9ae313/documentation/proofs/issues/issue-125/runde-2/r2_a.png).
+The intermediate masters interpolate those radii.
+
+For the two heavy counters Michael identified, upright four and italic A,
+the reference radius for acute inner joins decreases linearly from its normal
+value at 500 to half at 900. Other counter treatments retain their reviewed
+design. The [first](https://github.com/NamcheAI/namche-fonts/issues/125#issuecomment-7103017258)
+and [second](https://github.com/NamcheAI/namche-fonts/issues/125#issuecomment-7103995878)
+reviews record the glyph and rendering decisions.
 
 Component rotation, translation and scale are normalized to the Glyphs package
 serializer precision before interpolation. In particular, the historical bullet
@@ -68,14 +82,20 @@ public family still has the same nine named weights. The italic B waist is
 identified on its resolved filled boundary because the authored overlapping
 contours do not expose that join. Its rounded outer contour has nine compatible
 segments in every master; the tiny connector in heavier masters is replaced by
-the solved arc. Both counter contours and the original clean B remain present.
+the solved arc. Both counter contours remain present.
 Its actual added ink is measured against the full glyph.
 
-Every public static lies on a solved master. Static source projection therefore
-keeps the complete rounded contours without duplicating the clean guard; it
-does not redraw any curve, component, metric or layout input. This avoids
-coincident-edge artifacts during static integer conversion. Variable fonts keep
-both complete contour sets and explicitly set OpenType overlap flags.
+The statics and variable fonts use the same solved arcs. The
+previous review build included a second complete copy of every rounded glyph
+in the variable font. FreeType’s grayscale rendering exposed that duplication
+at small sizes. Four base glyphs need localized protection against a curved
+edge moving inward between masters. Both slopes of @, upright 3 and its
+superscript retain the clean boundary with local fillets. Both slopes of 8
+retain strips along the affected curves. Derived components inherit their
+base’s treatment. Static exports use the continuous solved contours alone.
+Adding the interpolation guards to the statics produced subunit backtracking
+segments after quadratic conversion in 8 and 3. The build therefore projects
+the static boundaries before compilation.
 
 A fillet member adding less than one square unit is left inactive and reported;
 meaningful members at other weights remain active through compatible slots.
@@ -109,7 +129,7 @@ Thus file compression cannot introduce the half-unit point movements seen in
 the discarded prototype. Cubic-to-quadratic conversion uses a 0.1-unit bound;
 integer coordinates and variation-delta rounding still require compiled tests.
 
-Each flank may be cut back by at most 45% of its original arc length. Space
+Flank limits use the original arc length. Space
 limits or curved offset-branch limits can prevent reaching the requested radius
 or area. Inspect `corner-report.json` for capped, skipped and inactive joins;
 do not describe all joins as mathematically equal-area. In particular, obtuse
@@ -188,7 +208,20 @@ the exact final font commit and SHA-256 manifest. Keep earlier feedback labeled
 with its original snapshot; pending visual questions are not automatically
 resolved by a successful build.
 
-## Fontspector comparison for the review build
+## November 23 review
+
+The [review sheets and rendering measurements](proofs/issues/issue-125/round-2/README.md)
+compare the compiled revisions with the November 22 build at `fc9062d`.
+FreeType is sampled at every integer size from 11 to 16 px in both slopes and
+all nine weights. The sheets show the small text at its native resolution.
+
+The upright variable WOFF2 is 254,736 bytes (previously 301,608). Italic is
+260,396 bytes (previously 305,740). Fontspector 1.9.0 on the 20 production
+TTFs reports 264 warnings and the same seven existing failures. Both variable
+contour-count warnings cleared. The file-size warnings remain. The projected
+statics have no newly flagged glyphs in the outline checks.
+
+## First review snapshot (fc9062d)
 
 Fontspector 1.9.0 ran the Google Fonts profile on all 18 static TTFs and both
 production VFs. Against the preceding Latin Core review snapshot, WARN results
@@ -213,6 +246,4 @@ The webfont cost is measurable (bytes):
 | Upright | 196,776 | 301,608 | 1,461,680 |
 | Italic | 222,908 | 305,740 | 1,515,800 |
 
-The sources remain unhinted. This review build still needs design review at
-intended text sizes; passing technical gates does not establish artistic
-approval or Google Fonts acceptance.
+The preceding figures describe the November 22 review snapshot.

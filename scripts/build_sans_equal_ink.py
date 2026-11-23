@@ -22,8 +22,13 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from glyphsLib import GSFont, GSNode, GSPath
+from fontTools.misc.bezierTools import curveLineIntersections, lineLineIntersections, splitCubicAtT
+from fontTools.misc.vector import Vector
 from scripts.write_glyphspackage import save_package
-from scripts.equal_ink_corners import round_compatible_contours, r90_for_stem, resolve_clean_contours, resolve_compatible_clean_contours
+from scripts.equal_ink_corners import (
+    LOCAL_GUARDS, r90_for_stem, resolve_clean_contours, resolve_compatible_clean_contours,
+    round_compatible_contours, round_italic_a_notch, round_upright_a_notch,
+)
 
 BASE = ROOT / 'sources/equal-ink/clean-outlines.json'
 NODE_TYPES = {'line': 'l', 'curve': 'c', 'offcurve': 'o'}
@@ -75,6 +80,42 @@ def package(suffix):
     return ROOT / f'sources/NamcheShadowSans{suffix}.glyphspackage'
 
 
+def remove_y_ledge(paths):
+    """Michael's option B, joining the left arm to the actual descender edge."""
+    contour, = paths
+    # These are the corresponding nodes of the pinned Geist/upright inputs.
+    # At the join the path runs down the arm, across the ledge, down a short
+    # straight, then into the cubic ending at the horizontal tail terminal.
+    if [node[2] for node in contour[8:15]] != ['l', 'l', 'l', 'l', 'o', 'o', 'c']:
+        raise ValueError('unexpected source nodes at the y ledge')
+    arm, ledge_start, ledge_end, tail_start, *handles_and_end = [
+        Vector(node[:2]) for node in contour[8:15]
+    ]
+    if not (ledge_start[1] == ledge_end[1] and ledge_start[0] < ledge_end[0]
+            and arm[1] > ledge_start[1] > tail_start[1]):
+        raise ValueError('expected a horizontal ledge on the descending y arm')
+    tail = [tail_start, *handles_and_end]
+    arm_extension = [arm, ledge_start + (ledge_start - arm)]
+    straight_hits = lineLineIntersections(*arm_extension, ledge_end, tail_start)
+    if straight_hits:
+        junction = Vector(straight_hits[0].pt)
+        length = tail_start - junction
+        first = [junction, junction + length / 3, tail_start - length / 3, tail_start]
+        second = tail
+    else:
+        # In Black the arm meets the curved part of the descender. Extending
+        # the short straight past its endpoint would reverse the tail and make
+        # another spur. Trim the existing curve, preserving it exactly. Split
+        # it once so the topology matches Thin/Regular's straight-plus-curve.
+        hit, = curveLineIntersections(tail, arm_extension)
+        _, remainder = splitCubicAtT(*tail, hit.t1)
+        first, second = splitCubicAtT(*remainder, 0.5)
+    points = [*first, *second[1:]]
+    types = ['l', 'o', 'o', 'c', 'o', 'o', 'c']
+    replacement = [(round(x, 6), round(y, 6), kind) for (x, y), kind in zip(points, types)]
+    return [contour[:9] + replacement + contour[15:]]
+
+
 def initialize():
     """One-time explicit clean source extraction, reviewed with the migration."""
     if BASE.exists():
@@ -96,6 +137,9 @@ def initialize():
                 selected = [upstream.glyphs[glyph.name].layers[l.layerId] for l in layers]
                 origin = 'immutable Geist italic clean foreground'
             paths, normalization = resolve_compatible_clean_contours([contours(l) if l.paths else [] for l in selected])
+            if glyph.name == 'y':
+                paths = [remove_y_ledge(master) for master in paths]
+                origin += '; Michael Marte, #125 option B (remove ledge from default y)'
             if normalization['method'] == 'authored_overlap_correspondence':
                 print(f'Keeping authored compatible overlaps: {suffix or "Upright"}/{glyph.name}', flush=True)
             records[glyph.name] = {'origin':origin, 'topology_normalization':normalization,
@@ -186,6 +230,7 @@ def prepare(output, clean=False, only=None):
             for x,y,t in points: ys.setdefault(y, []).append(x)
             stems.append(min(max(xs)-min(xs) for xs in ys.values() if len(xs)>1))
         style_report = {}
+        static_layers = {}
         for glyph in font.glyphs:
             layers = [glyph.layers[mid] for mid in ids] + [l for l in glyph.layers if 'coordinates' in l.attributes]
             glyph_ids = [l.layerId for l in layers]
@@ -196,9 +241,33 @@ def prepare(output, clean=False, only=None):
                 if not glyph.unicodes:
                     base = font.glyphs[glyph.name.split('.')[0]]
                     upper = bool(base and any(unicodedata.category(chr(int(cp,16))) in ('Lu','Nd') for cp in base.unicodes))
+                base_name = glyph.name.split('.')[0]
+                # Michael approved the upright A and italic number sign. Reduce
+                # only the two counters identified as too tight in his review.
+                ease_counter = (suffix, base_name) in {('-Italic', 'A'), ('', 'four')}
+                weights = [m.axes[0] for m in font.masters] + [
+                    float(l.attributes['coordinates'][0]) for l in layers[len(ids):]]
+                counter_scales = ([1.0 - 0.5 * max(0.0, (w - 500) / 400) for w in weights]
+                                  if ease_counter else None)
                 try:
-                    paths, joins = round_compatible_contours(paths, [r90_for_stem(s,upper) for s in glyph_stems],
-                        semantic_b_waist=bool(suffix and glyph.name == 'B'))
+                    radii = [r90_for_stem(s, upper) for s in glyph_stems]
+                    notch = None
+                    if glyph.name == 'a':
+                        if suffix:
+                            paths, notch = round_italic_a_notch(paths, radii)
+                        else:
+                            paths, notch = round_upright_a_notch(paths, radii, weights)
+                    guard = LOCAL_GUARDS.get((suffix or 'Upright', glyph.name))
+                    projection = [] if guard else None
+                    paths, joins = round_compatible_contours(paths, radii,
+                        semantic_b_waist=bool(suffix and glyph.name == 'B'),
+                        soft_spurs=base_name in ('a', 'b', 'd', 'g', 'h', 'm', 'n', 'p', 'q', 'r', 'u', 'thorn'),
+                        counter_scales=counter_scales,
+                        local_guard=guard, static_projection=projection)
+                    if guard:
+                        static_layers[glyph.name] = dict(zip(glyph_ids, projection, strict=True))
+                    if notch:
+                        joins.append(notch)
                 except ValueError as exc:
                     raise ValueError(f'{suffix or "Upright"}/{glyph.name}: {exc}') from exc
                 style_report[glyph.name] = joins
@@ -212,41 +281,18 @@ def prepare(output, clean=False, only=None):
                     del instance.customParameters[p.name]
         target=output/f'NamcheShadowSans{suffix}.glyphspackage'
         save_package(font, target, package(suffix))
+        if not clean:
+            # The public statics sit on solved masters. Overlap removal after
+            # quantizing VF guards can leave tiny backtracking edges in the 8.
+            # Project the exact same arcs without interpolation-only geometry.
+            for name, layer_paths in static_layers.items():
+                for mid, paths in layer_paths.items():
+                    set_paths(font.glyphs[name].layers[mid], paths)
+            static_package = output/'static-sources'/target.name
+            static_package.parent.mkdir(exist_ok=True)
+            save_package(font, static_package, package(suffix))
         report[suffix or 'Upright']={'stems':stems,'glyphs':style_report}
     (output/'corner-report.json').write_text(json.dumps(report,indent=2)+'\n')
-
-
-def static_sources(output):
-    """Keep only the solved continuous glyph for exact-master static exports.
-
-    The extra clean contour set protects interpolation between VF masters. Each
-    public static lies on a solved master, so overlapping that guard again only
-    introduces coincident edges during integer conversion. This projection is
-    structural: no curves, metrics, components or layout are redrawn.
-    """
-    records = json.loads(BASE.read_text())['styles']
-    directory = output/'static-sources'
-    directory.mkdir(parents=True, exist_ok=True)
-    paths = []
-    for suffix in ('', '-Italic'):
-        name = f'NamcheShadowSans{suffix}.glyphspackage'
-        font = GSFont(output/name)
-        for glyph in font.glyphs:
-            counts = {len(contours) for contours in records[suffix or 'Upright'][glyph.name]['masters'].values()}
-            if len(counts) != 1:
-                raise ValueError(f'{glyph.name}: clean contour count is incompatible')
-            count = counts.pop()
-            for layer in glyph.layers:
-                contours = list(layer.paths)
-                if len(contours) == count:
-                    continue
-                if not count or len(contours) != 2*count:
-                    raise ValueError(f'{glyph.name}: unexpected clean/rounded contour structure')
-                layer.paths = contours[count:]
-        destination = directory/name
-        save_package(font, destination, package(suffix))
-        paths.append(destination.relative_to(output).as_posix())
-    return paths
 
 
 def compile_fonts(output, clean=False):
@@ -270,7 +316,8 @@ def compile_fonts(output, clean=False):
             run(config, 'config.yaml')
         else:
             run(dict(config, buildStatic=False), 'config-variable.yaml')
-            run(dict(config, sources=static_sources(output), buildVariable=False), 'config-static.yaml')
+            static_packages = ['static-sources/' + name for name in config['sources']]
+            run(dict(config, sources=static_packages, buildVariable=False), 'config-static.yaml')
 
 
 def finalize(output):
@@ -497,7 +544,7 @@ def main():
     if a.initialize:initialize()
     a.output.mkdir(parents=True,exist_ok=True)
     prepare(a.output,a.clean,a.glyphs)
-    if not a.prepare_only:compile_fonts(a.output,a.clean)
+    if not a.prepare_only:compile_fonts(a.output, a.clean)
     if a.finalize or a.check:finalize(a.output)
     if a.promote:promote_release(a.output)
     if a.check:check_release(a.output,ROOT/'fonts/NamcheShadowSans')

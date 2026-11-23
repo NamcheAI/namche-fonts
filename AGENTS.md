@@ -51,14 +51,17 @@ and builds. Historical evidence is not an active coverage declaration.
   seven-tier RoundCorner export with the compatible equal-ink recipe in
   `scripts/equal_ink_corners.py`.
 - `sources/equal-ink/clean-outlines.json` pins unrounded upright foregrounds
-  and immutable Geist italic foregrounds. Historical italic backgrounds are
+  and Geist italic foregrounds, with the approved option-B edit to the default
+  y in both styles. Historical italic backgrounds are
   not trustworthy design inputs: some contain upright forms. Never derive a
   clean input by reversing or repeatedly rounding the baked output.
 - `make build-sans` bakes compatible cubic Glyphs masters and builds all 18
   statics plus both VFs with open tools. The rule uses the measured stem with
-  c=1.2 and caps 70 (capitals/figures) or 53 (other glyphs); acute curved joins
-  solve actual added area. Obtuse joins and the 45% flank limit are explicit
-  exceptions to equal area. Preserve sparse brace layers and matched topology.
+  c=1.6 and caps of 70 (capitals/figures) or 53 (other glyphs). Reviewed
+  exterior lowercase spurs use a 60% radius floor where geometry permits and
+  up to 90% of the available flank. Other joins retain the 45% limit. Ease
+  the acute counter corners of heavy italic A and upright 4. Preserve sparse
+  brace layers and matched topology.
 - The maintained Glyphs packages carry the generated rounded foregrounds plus
   repository metadata, components, anchors and layout. Commit these packages,
   clean inputs, the recipe, recovered production snapshots and regenerated

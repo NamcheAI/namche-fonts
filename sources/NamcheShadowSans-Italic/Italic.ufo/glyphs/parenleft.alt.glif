@@ -8,27 +8,17 @@
       <point x="121" y="627" type="line" identifier="p2"/>
       <point x="370" y="850" type="line" identifier="p3"/>
       <point x="422" y="793" type="line" identifier="p4"/>
-      <point x="201" y="595" type="line" identifier="p5"/>
-      <point x="201" y="112" type="line" identifier="p6"/>
-      <point x="424" y="-89" type="line" identifier="p7"/>
-    </contour>
-    <contour>
-      <point x="372" y="-146" type="line" identifier="p8"/>
-      <point x="121" y="80" type="line" identifier="p9"/>
-      <point x="121" y="627" type="line" identifier="p10"/>
-      <point x="370" y="850" type="line" identifier="p11"/>
-      <point x="422" y="793" type="line" identifier="p12"/>
-      <point x="219" y="611" type="line" identifier="p13"/>
-      <point x="210" y="603" identifier="p14"/>
-      <point x="206" y="593" type="qcurve" identifier="p15"/>
-      <point x="201" y="583" identifier="p16"/>
-      <point x="201" y="571" type="qcurve" identifier="p17"/>
-      <point x="201" y="136" type="line" identifier="p18"/>
-      <point x="201" y="124" identifier="p19"/>
-      <point x="206" y="114" type="qcurve" identifier="p20"/>
-      <point x="210" y="104" identifier="p21"/>
-      <point x="219" y="96" type="qcurve" identifier="p22"/>
-      <point x="424" y="-89" type="line" identifier="p23"/>
+      <point x="219" y="611" type="line" identifier="p5"/>
+      <point x="210" y="603" identifier="p6"/>
+      <point x="206" y="593" type="qcurve" identifier="p7"/>
+      <point x="201" y="583" identifier="p8"/>
+      <point x="201" y="571" type="qcurve" identifier="p9"/>
+      <point x="201" y="136" type="line" identifier="p10"/>
+      <point x="201" y="124" identifier="p11"/>
+      <point x="206" y="114" type="qcurve" identifier="p12"/>
+      <point x="210" y="104" identifier="p13"/>
+      <point x="219" y="96" type="qcurve" identifier="p14"/>
+      <point x="424" y="-89" type="line" identifier="p15"/>
     </contour>
   </outline>
   <lib>
@@ -36,14 +26,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

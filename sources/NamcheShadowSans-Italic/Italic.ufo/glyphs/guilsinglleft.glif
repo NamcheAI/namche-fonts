@@ -6,26 +6,17 @@
     <contour>
       <point x="231" y="476" type="line" identifier="p0"/>
       <point x="339" y="476" type="line" identifier="p1"/>
-      <point x="124" y="268" type="line" identifier="p2"/>
-      <point x="249" y="76" type="line" identifier="p3"/>
-      <point x="151" y="76" type="line" identifier="p4"/>
-      <point x="44" y="239" type="line" identifier="p5"/>
-      <point x="60" y="313" type="line" identifier="p6"/>
-    </contour>
-    <contour>
-      <point x="231" y="476" type="line" identifier="p7"/>
-      <point x="339" y="476" type="line" identifier="p8"/>
-      <point x="156" y="299" type="line" identifier="p9"/>
-      <point x="149" y="292" identifier="p10"/>
-      <point x="141" y="276" identifier="p11"/>
-      <point x="140" y="266" type="qcurve" identifier="p12"/>
-      <point x="139" y="257" identifier="p13"/>
-      <point x="143" y="239" identifier="p14"/>
-      <point x="148" y="232" type="qcurve" identifier="p15"/>
-      <point x="249" y="76" type="line" identifier="p16"/>
-      <point x="151" y="76" type="line" identifier="p17"/>
-      <point x="44" y="239" type="line" identifier="p18"/>
-      <point x="60" y="313" type="line" identifier="p19"/>
+      <point x="156" y="299" type="line" identifier="p2"/>
+      <point x="149" y="292" identifier="p3"/>
+      <point x="141" y="276" identifier="p4"/>
+      <point x="140" y="266" type="qcurve" identifier="p5"/>
+      <point x="139" y="257" identifier="p6"/>
+      <point x="143" y="239" identifier="p7"/>
+      <point x="148" y="232" type="qcurve" identifier="p8"/>
+      <point x="249" y="76" type="line" identifier="p9"/>
+      <point x="151" y="76" type="line" identifier="p10"/>
+      <point x="44" y="239" type="line" identifier="p11"/>
+      <point x="60" y="313" type="line" identifier="p12"/>
     </contour>
   </outline>
   <lib>
@@ -33,13 +24,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>0</integer>

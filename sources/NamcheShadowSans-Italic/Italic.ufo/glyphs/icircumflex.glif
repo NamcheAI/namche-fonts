@@ -10,28 +10,19 @@
       <point x="108" y="0" type="line" identifier="p3"/>
     </contour>
     <contour>
-      <point x="128" y="598" type="line" identifier="p4"/>
-      <point x="56" y="598" type="line" identifier="p5"/>
-      <point x="174" y="731" type="line" identifier="p6"/>
-      <point x="268" y="731" type="line" identifier="p7"/>
-      <point x="330" y="598" type="line" identifier="p8"/>
-      <point x="262" y="598" type="line" identifier="p9"/>
-      <point x="214" y="687" type="line" identifier="p10"/>
-    </contour>
-    <contour>
-      <point x="235" y="647" type="line" identifier="p11"/>
-      <point x="232" y="654" identifier="p12"/>
-      <point x="219" y="663" identifier="p13"/>
-      <point x="211" y="664" type="qcurve" identifier="p14"/>
-      <point x="203" y="665" identifier="p15"/>
-      <point x="188" y="660" identifier="p16"/>
-      <point x="182" y="654" type="qcurve" identifier="p17"/>
-      <point x="128" y="598" type="line" identifier="p18"/>
-      <point x="56" y="598" type="line" identifier="p19"/>
-      <point x="174" y="731" type="line" identifier="p20"/>
-      <point x="268" y="731" type="line" identifier="p21"/>
-      <point x="330" y="598" type="line" identifier="p22"/>
-      <point x="262" y="598" type="line" identifier="p23"/>
+      <point x="235" y="647" type="line" identifier="p4"/>
+      <point x="232" y="654" identifier="p5"/>
+      <point x="219" y="663" identifier="p6"/>
+      <point x="211" y="664" type="qcurve" identifier="p7"/>
+      <point x="203" y="665" identifier="p8"/>
+      <point x="188" y="660" identifier="p9"/>
+      <point x="182" y="654" type="qcurve" identifier="p10"/>
+      <point x="128" y="598" type="line" identifier="p11"/>
+      <point x="56" y="598" type="line" identifier="p12"/>
+      <point x="174" y="731" type="line" identifier="p13"/>
+      <point x="268" y="731" type="line" identifier="p14"/>
+      <point x="330" y="598" type="line" identifier="p15"/>
+      <point x="262" y="598" type="line" identifier="p16"/>
     </contour>
   </outline>
   <lib>
@@ -39,13 +30,6 @@
       <key>org.namche.originalFlags</key>
       <array>
         <integer>65</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
-        <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
