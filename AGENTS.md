@@ -58,8 +58,11 @@ and builds. Historical evidence is not an active coverage declaration.
 - `make build-sans` bakes compatible cubic Glyphs masters and builds all 18
   statics plus both VFs with open tools. The rule uses the measured stem with
   c=1.6 and caps of 70 (capitals/figures) or 53 (other glyphs). Reviewed
-  exterior lowercase spurs use a 60% radius floor where geometry permits and
-  up to 90% of the available flank. Other joins retain the 45% limit. Ease
+  exterior spurs in a b d h m n p q r u use a radius floor that rises
+  linearly from 40% in Thin to 60% in Regular and holds through Black.
+  A fillet may use 90% of a free flank. After removing the step in the
+  default y, round its arm against the full descender, including the flat
+  terminal when the tangent reaches it. Other joins retain their existing limits. Ease
   the acute counter corners of heavy italic A and upright 4. Preserve sparse
   brace layers and matched topology.
 - The maintained Glyphs packages carry the generated rounded foregrounds plus

@@ -36,6 +36,16 @@ DETAIL_LINES = (
 DETAIL_WEIGHTS = (100, 200, 300, 400, 700, 900)
 SIZES = range(11, 17)
 
+# Centers in design units on the Thin master. Use the same origin for both
+# builds so a moving boundary remains visible in the close-up.
+THIN_JOINS = (
+    ('a', (400, 65), (360, 60)), ('b', (145, 475), (180, 475)),
+    ('d', (430, 67), (385, 63)), ('h', (143, 483), (183, 484)),
+    ('m', (431, 450), (458, 450)), ('n', (140, 474), (180, 475)),
+    ('p', (142, 465), (180, 465)), ('q', (430, 65), (369, 52)),
+    ('r', (140, 474), (180, 475)), ('u', (420, 63), (378, 60)),
+)
+
 
 def snapshot_paths(root, slope, style):
     return (root / 'ttf' / f'NamcheShadowSans-{style}.ttf',
@@ -109,6 +119,52 @@ def text_panel(before, after, slope, index, output):
                     draw.text((x + 57, baseline + n * 22), line, font=font, anchor='ls', fill='black')
         draw.line((24, y + 123, image.width - 24, y + 123), fill=LINE)
     image.save(output)
+
+
+def draw_join_pair(image, before, after, style, char, center, x, y):
+    width, height, gap = 226, 172, 12
+    for column, root in enumerate((before, after)):
+        path = root / 'ttf' / f'NamcheShadowSans-{style}.ttf'
+        with TTFont(path, lazy=True) as font:
+            ppem = font['head'].unitsPerEm * 2
+        view = Image.new('RGB', (width, height), '#f4f5f2')
+        origin = (width // 2 - 2 * center[0], height // 2 + 2 * center[1])
+        ImageDraw.Draw(view).text(origin, char, font=face(str(path), ppem),
+                                  anchor='ls', fill=INK)
+        image.paste(view, (x + column * (width + gap), y))
+
+
+def join_panels(before, after, output):
+    columns = [(x, name) for start in (120, 690)
+               for x, name in ((start, 'Previous PR'), (start + 238, 'Revision'))]
+    weights = (100, 200, 300, 400, 500, 600, 700, 800, 900)
+    image, draw = proof_canvas(
+        before, 'Default y · arm into descender',
+        'Upright on the left, italic on the right. Both builds use the same crop at two pixels per font unit.',
+        (1180, 170 + 182 * len(weights)), columns)
+    for row, weight in enumerate(weights):
+        top = 162 + row * 182
+        draw.text((24, top + 65), str(weight), font=label_font(before, 22), fill=INK)
+        for index, style in enumerate(WEIGHT_STYLES[weight]):
+            center = (210 - 55 * index, -15)
+            draw_join_pair(image, before, after, style, 'y', center, columns[2 * index][0], top)
+    image.save(output / 'y-junction.png')
+    filenames = ['y-junction.png']
+    for index, slope in enumerate(('upright', 'italic')):
+        image, draw = proof_canvas(
+            before, f'Thin {slope} · lowercase joins',
+            'The same crop in both builds at two pixels per font unit.',
+            (1180, 170 + 182 * 5), columns)
+        for position, (char, upright, italic) in enumerate(THIN_JOINS):
+            row, col = divmod(position, 2)
+            top, x = 162 + row * 182, columns[2 * col][0]
+            draw.text((x - 57, top + 56), char, font=label_font(before, 35), fill=INK)
+            draw_join_pair(image, before, after, WEIGHT_STYLES[100][index],
+                           char, (upright, italic)[index], x, top)
+        name = f'thin-joins-{slope}.png'
+        image.save(output / name)
+        filenames.append(name)
+    return filenames
 
 
 def overlay_panel(before, after, output):
@@ -223,10 +279,13 @@ def write_rows(path, rows):
         writer.writerows(rows)
 
 
-def generate(before, after, output, counter_reference=None):
+def generate(before, after, output, counter_reference=None, join_details=False):
     output.mkdir(parents=True, exist_ok=True)
     rendering, counters = [], []
     files = {}
+    if join_details:
+        for name in join_panels(before, after, output):
+            files[name] = sha256((output / name).read_bytes()).hexdigest()
     inputs = {'before': {}, 'after': {}}
     y_checks = {'before': {}, 'after': {}}
     overlay = output / 'changes.png'
@@ -290,5 +349,7 @@ if __name__ == '__main__':
     parser.add_argument('--counter-reference', type=Path,
                         help='Optional pre-PR Sans family root for the original heavy counter comparison')
     parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--join-details', action='store_true',
+                        help='Include magnified default y and Thin lowercase joins for round three')
     args = parser.parse_args()
-    generate(args.before, args.after, args.output, args.counter_reference)
+    generate(args.before, args.after, args.output, args.counter_reference, args.join_details)

@@ -52,14 +52,29 @@ geometry; right and obtuse joins retain the reference radius where feasible.
 Circular fillets are solved on the actual adjacent Bézier curves.
 Thin with a 32-unit stem therefore rounds at 51.2 units. Michael requested a
 softer wave at the exterior lowercase bowl and shoulder joins. There the
-requested minimum radius is 0.60 × r90, bounded by the available flank. A
+minimum radius for a b d h m n p q r u rises linearly from 0.40 × r90
+at Thin (100) to 0.60 × r90 at Regular (400) and stays there through Black.
+The available flank bounds the radius. A
 fillet may use up to 90% of a flank whose opposite end is free. Opposing
-fillets each retain the 45% limit. The default italic a spans an additional
+fillets each retain the 45% limit. In Thin the designer’s prototype also
+limits the tangent distance along the shorter free run. It sums the segment
+chords up to the next turn of at least 12°. For run length L and interior
+angle θ, the radius limit is 0.90 × L × tan(θ/2). Any additional reduction
+from this limit tapers linearly to zero at Regular. The default italic a spans an additional
 short curve where the bowl meets the tail. Its bridge meets the outgoing curve
 tangentially and runs left to right without doubling back. The upright a uses
-31.5, 34.75 and 38.75 font-unit radii in Thin, Regular and Black, fitted to the
-edge of Michael’s [reference proof](https://github.com/NamcheAI/namche-fonts/blob/664bbad5fc32de40b9e8307bbbb532865c9ae313/documentation/proofs/issues/issue-125/runde-2/r2_a.png).
-The intermediate masters interpolate those radii.
+21, 34.75 and 38.75 font-unit radii in Thin, Regular and Black. The Thin
+anchor scales the earlier fit by 0.4/0.6. The Regular and Black anchors come
+from Michael’s [bowl-to-tail reference](https://github.com/NamcheAI/namche-fonts/blob/664bbad5fc32de40b9e8307bbbb532865c9ae313/documentation/proofs/issues/issue-125/runde-2/r2_a.png).
+Intermediate masters interpolate these radii.
+
+After the clean option-B edit, the y arm meets a descender built from several
+smooth segments. Rounding considers the whole flank so the outgoing tangent
+can land on either curve or on the flat terminal. The italic uses r90. In
+the upright, the radius follows r90 through Regular, then reaches 42 units
+at Bold and 37 at Black. Those heavy upright anchors were fitted to the
+designer’s preview. The radius floor is 0.60 × r90 in both slopes, including
+Thin. [Michael’s round-three preview, right column](https://github.com/NamcheAI/namche-fonts/blob/5ef6ee4c998e542f7a38c1656dd9d51aa598bdef/documentation/proofs/issues/issue-125/runde-3/r3_y_vorschau.png?raw=true)
 
 For the two heavy counters Michael identified, upright four and italic A,
 the reference radius for acute inner joins decreases linearly from its normal
@@ -208,7 +223,13 @@ the exact final font commit and SHA-256 manifest. Keep earlier feedback labeled
 with its original snapshot; pending visual questions are not automatically
 resolved by a successful build.
 
-## November 23 review
+## Current review proofs
+
+The [round-three sheets](proofs/issues/issue-125/round-3/README.md) show the
+arm-to-descender join in all nine weights, the ten revised Thin lowercase joins
+and native-size comparisons between each static and variable Regular at 11–16 px.
+
+## Second review snapshot (7b47095)
 
 The [review sheets and rendering measurements](proofs/issues/issue-125/round-2/README.md)
 compare the compiled revisions with the November 22 build at `fc9062d`.

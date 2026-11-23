@@ -117,8 +117,9 @@ class EqualInkSourceTest(unittest.TestCase):
     def test_italic_a_bowl_to_tail_crosses_the_short_subdivision(self):
         masters = list(self.clean['a']['masters'].values())
         radii = [51.2, 53., 53.]
-        revised, report = corners.round_italic_a_notch(masters, radii)
-        for original, new, radius, measured in zip(masters, revised, radii, report['masters']):
+        weights = [100, 400, 900]
+        revised, report = corners.round_italic_a_notch(masters, radii, weights)
+        for original, new, radius, weight, measured in zip(masters, revised, radii, weights, report['masters']):
             with self.subTest(radius=measured['radius']):
                 self.assertEqual(new[1], original[1])
                 original_segments = corners.nodes_to_segments(original[0])
@@ -133,7 +134,7 @@ class EqualInkSourceTest(unittest.TestCase):
                     tangent_b = corners.seg_tangent_out(right)
                     self.assertGreater(corners.dot(tangent_a, tangent_b), .99999)
                     self.assertGreater(tangent_a[0], 0)
-                self.assertGreaterEqual(measured['radius'], .6*radius)
+                self.assertGreaterEqual(measured['radius'], corners.spur_floor_at(weight)*radius)
                 if radius == 53.:
                     self.assertAlmostEqual(measured['area']/measured['target'], 1., delta=.002)
 
@@ -141,13 +142,13 @@ class EqualInkSourceTest(unittest.TestCase):
         records = json.loads(build.BASE.read_text())['styles']['Upright']['a']
         masters = list(records['masters'].values())
         revised, report = corners.round_upright_a_notch(masters, [51.2, 53., 53.], [100, 400, 900])
-        # Independent optical check: these are the white-notch crest heights
-        # read from the approved Thin/Regular/Black proof, aligned to Geist.
-        for contours, maximum, measured in zip(revised, (60., 46., 47.), report['masters']):
+        # Round 3 opens the white notch in Thin. The Regular and Black crest
+        # heights retain their calibration to Michael's round-2 optical proof.
+        for contours, maximum, measured in zip(revised, (70., 46., 47.), report['masters']):
             segments = corners.nodes_to_segments(contours[0])
             bridge = [seg for seg in segments if seg[0] == 'curve' and
                       300 < seg[1][0] < 450 and 300 < seg[-1][0] < 450
-                      and 0 < seg[1][1] < 65 and 0 < seg[-1][1] < 65]
+                      and 0 < seg[1][1] < 80 and 0 < seg[-1][1] < 80]
             self.assertEqual(len(bridge), 2)
             apex = max(corners._point(segment, t/100)[1] for segment in bridge for t in range(101))
             self.assertAlmostEqual(apex, maximum, delta=2)

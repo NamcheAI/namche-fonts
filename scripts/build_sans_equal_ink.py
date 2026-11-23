@@ -26,8 +26,8 @@ from fontTools.misc.bezierTools import curveLineIntersections, lineLineIntersect
 from fontTools.misc.vector import Vector
 from scripts.write_glyphspackage import save_package
 from scripts.equal_ink_corners import (
-    LOCAL_GUARDS, r90_for_stem, resolve_clean_contours, resolve_compatible_clean_contours,
-    round_compatible_contours, round_italic_a_notch, round_upright_a_notch,
+    LIGHTER_SPURS, LOCAL_GUARDS, r90_for_stem, resolve_clean_contours, resolve_compatible_clean_contours,
+    round_compatible_contours, round_italic_a_notch, round_upright_a_notch, round_y_junction, spur_floor_at,
 )
 
 BASE = ROOT / 'sources/equal-ink/clean-outlines.json'
@@ -254,14 +254,17 @@ def prepare(output, clean=False, only=None):
                     notch = None
                     if glyph.name == 'a':
                         if suffix:
-                            paths, notch = round_italic_a_notch(paths, radii)
+                            paths, notch = round_italic_a_notch(paths, radii, weights)
                         else:
                             paths, notch = round_upright_a_notch(paths, radii, weights)
+                    elif glyph.name == 'y':
+                        paths, notch = round_y_junction(paths, radii, weights, bool(suffix))
                     guard = LOCAL_GUARDS.get((suffix or 'Upright', glyph.name))
                     projection = [] if guard else None
                     paths, joins = round_compatible_contours(paths, radii,
                         semantic_b_waist=bool(suffix and glyph.name == 'B'),
-                        soft_spurs=base_name in ('a', 'b', 'd', 'g', 'h', 'm', 'n', 'p', 'q', 'r', 'u', 'thorn'),
+                        soft_spurs=base_name in ('g', 'thorn'),
+                        spur_floors=[spur_floor_at(w) for w in weights] if base_name in LIGHTER_SPURS else None,
                         counter_scales=counter_scales,
                         local_guard=guard, static_projection=projection)
                     if guard:

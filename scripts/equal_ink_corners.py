@@ -38,6 +38,16 @@ AREA_TOLERANCE = 0.05  # aggregate square font units; pathops uses float32 geome
 LOCAL_LOSS_TOLERANCE = 0.0001
 MIN_ADDED_AREA = 1.0  # Subunit changes are not stable on the integer TrueType lattice.
 MIN_COMPATIBLE_FILLET_AREA = 1.0  # One square unit: the integer TrueType coordinate lattice.
+LIGHTER_SPURS = frozenset("abdhmnpqru")
+
+
+def spur_floor_at(weight):
+    """Michael's minimum radius for the ten reviewed exterior lowercase joins."""
+    if weight >= 400:
+        return .60
+    return .40 + .20 * max(0., weight - 100) / 300
+
+
 # Short curved flanks in these outlines change shape between solved masters.
 # Keep the original curve locally. The eight needs continuous rounded counters:
 # disconnected patches at its waist can acquire small white pockets in TrueType.
@@ -353,6 +363,7 @@ class Fillet:
     area: float
     target: float
     capped: bool
+    tangent_run_limit: float | None = None
 
 
 def _changed(contours, ci, j, solution, as_nodes=False):
@@ -374,7 +385,23 @@ def _changed(contours, ci, j, solution, as_nodes=False):
     return output if as_nodes else _path(output)
 
 
-def _solve(contours, ci, j, radius, base, diagnostic=None, *, soft_spur=False, counter_scale=1.0):
+def _free_run(segments, join, direction):
+    """Prototype chord lengths up to the next change in tangent of at least 12°."""
+    k = join + 1 if direction == 1 else join
+    total = 0.
+    for _ in segments:
+        segment = segments[k % len(segments)]
+        total += dist(seg_start(segment), seg_end(segment))
+        end = k if direction == 1 else k - 1
+        left = seg_tangent_in(segments[end % len(segments)])
+        right = seg_tangent_out(segments[(end + 1) % len(segments)])
+        if abs(math.atan2(cross(left, right), dot(left, right))) >= math.radians(12):
+            break
+        k += direction
+    return total
+
+
+def _solve(contours, ci, j, radius, base, diagnostic=None, *, spur_floor=0., counter_scale=1.0):
     segs = contours[ci]
     a, b = segs[j], segs[(j+1) % len(segs)]
     u, v = seg_tangent_in(a), seg_tangent_out(b)
@@ -390,9 +417,9 @@ def _solve(contours, ci, j, radius, base, diagnostic=None, *, soft_spur=False, c
     # other end cannot consume it too. This keeps a positive original run.
     limits = [FLANK_FRACTION, FLANK_FRACTION]
     minimum = 0.
-    soft_spur = soft_spur and acute
+    soft_spur = spur_floor > 0 and acute
     if soft_spur:
-        minimum = .60 * radius
+        minimum = spur_floor * radius
         for side, k in enumerate(((j-1) % len(segs), (j+1) % len(segs))):
             t1, t2 = seg_tangent_in(segs[k]), seg_tangent_out(segs[(k+1) % len(segs)])
             if math.atan2(cross(t1, t2), dot(t1, t2)) >= -math.radians(.1):
@@ -488,6 +515,18 @@ def _solve(contours, ci, j, radius, base, diagnostic=None, *, soft_spur=False, c
             best = floor_solution
         elif low is not None and low.radius > best.radius:
             best = low
+    if best is not None and soft_spur and spur_floor < .60:
+        # Michael's third-round prototype also limits the tangent-ray reach.
+        # A curved flank can fit a larger actual arc while still respecting
+        # the 90% arc-length cap. That excess ink is visible on Thin n and u.
+        limit = .90 * min(_free_run(segs, j, -1), _free_run(segs, j, 1)) / math.tan(phi / 2)
+        if limit < best.radius:
+            thin_share = (.60 - spur_floor) / (.60 - .40)
+            limited = candidate(best.radius + thin_share * (limit - best.radius))
+            if limited is None:
+                raise ValueError('could not fit the tapered tangent-run limit on the curved flanks')
+            limited.tangent_run_limit = limit
+            best = limited
     if best is not None:
         best.capped = (abs(best.area-target) > max(.1, target*1e-4)) if acute else best.radius < radius-1e-4
     return best
@@ -596,14 +635,16 @@ def round_upright_a_notch(master_contours, radii, weights):
     # Fitted to the rightmost column of documentation/proofs/issues/issue-125/
     # runde-2/r2_a.png at 664bbad5, using the clean Geist column to calibrate
     # font units. Regular is already close; Thin needs the largest change.
-    reviewed = {100: 31.5, 400: 34.75, 900: 38.75}
+    # Reduce the calibrated Thin arc by the same 0.4/0.6 ratio as the spurs.
+    # The Regular and Black optical corrections retain their reviewed values.
+    reviewed = {100: 21., 400: 34.75, 900: 38.75}
     rounded, measurements = [], []
     for index, (original, r90, weight) in enumerate(zip(master_contours, radii, weights, strict=True)):
         contours = _normalize(original)
         outer = contours[0]
         if len(outer) != 15 or outer[-1][0] != 'curve' or outer[0][0] != 'curve':
             raise ValueError('unrecognized upright a bowl-to-tail junction')
-        radius = max(.60 * r90, piecewiseLinearMap(weight, reviewed))
+        radius = max(spur_floor_at(weight) * r90, piecewiseLinearMap(weight, reviewed))
         u, v = seg_tangent_in(outer[-1]), seg_tangent_out(outer[0])
         phi = -math.atan2(cross(u, v), dot(u, v))
         circle = _circle(outer[-1], outer[0], radius, phi, (.90, .90))
@@ -617,10 +658,10 @@ def round_upright_a_notch(master_contours, radii, weights):
                          masters=measurements)
 
 
-def round_italic_a_notch(master_contours, radii):
+def round_italic_a_notch(master_contours, radii, weights):
     """Reach across the smooth subdivision of the italic bowl-to-tail flank."""
     rounded, measurements = [], []
-    for index, (original, r90) in enumerate(zip(master_contours, radii, strict=True)):
+    for index, (original, r90, weight) in enumerate(zip(master_contours, radii, weights, strict=True)):
         outer = nodes_to_segments(original[0])
         incoming, connector, outgoing = outer[2:5]
         u, v = seg_tangent_in(incoming), seg_tangent_out(connector)
@@ -645,7 +686,7 @@ def round_italic_a_notch(master_contours, radii):
             _NodeGlyph([_nodes_preserving_segment_start(bridge + _reverse(replaced))]).draw(pen)
             return circle, abs(pen.value)
 
-        low, high = .60 * r90, r90
+        low, high = spur_floor_at(weight) * r90, r90
         radius = low
         circle, area = fit(radius)
         if area < target:
@@ -674,6 +715,85 @@ def round_italic_a_notch(master_contours, radii):
                                  target=target, capped=abs(area - target) > .01))
     return rounded, dict(contour=0, join=2, status='rounded', semantic='italic_a_bowl_to_tail',
                          masters=measurements)
+
+
+def _y_tail_contact(arm, flanks, radius):
+    """Find the tangent circle on the entire free flank, across its cubic knots."""
+    tangent = seg_tangent_in(arm)
+    origin = _offset(arm, 1., radius)
+    maximum = .90 * sum(seg_length(s) for s in flanks)
+    travelled = 0.
+    contacts = []
+    for index, flank in enumerate(flanks):
+        # The center of a tangent circle lies on the offset arm line. A
+        # curved flank can meet that line several times. Keep only empty
+        # circles on the outward boundary and take the downstream contact.
+        def side(t):
+            return cross(sub(_offset(flank, t, radius), origin), tangent)
+
+        divisions = 24 if flank[0] == 'curve' else 1
+        for part in range(divisions):
+            lo, hi = part/divisions, (part+1)/divisions
+            at_lo = side(lo)
+            if at_lo * side(hi) > 0:
+                continue
+            for _ in range(42):
+                mid = (lo + hi) / 2
+                if at_lo * side(mid) <= 0:
+                    hi = mid
+                else:
+                    lo = mid
+            touch = (lo + hi) / 2
+            center = _offset(flank, touch, radius)
+            cut = -dot(sub(center, origin), tangent) / seg_length(arm)
+            if not 0 < cut < .90:
+                continue
+            consumed = _portion(flank, 0, touch)
+            if travelled + seg_length(consumed) > maximum:
+                continue
+            replaced = [_portion(arm, 1-cut, 1), *flanks[:index], consumed]
+            if any(dist(center, _point(s, k/32)) < radius - 1e-5 for s in replaced for k in range(33)):
+                continue
+            arc = _arc(_point(arm, 1-cut), _point(flank, touch), center, radius)
+            contacts.append((cut, arc, index, touch, travelled + seg_length(consumed)))
+        travelled += seg_length(flank)
+    if not contacts:
+        raise ValueError('default y has no safe tangent circle on the free descender flank')
+    return contacts[-1]
+
+
+def round_y_junction(master_contours, radii, weights, italic):
+    """Round Michael's ledge-free y all the way onto the terminal when needed."""
+    from fontTools.varLib.models import piecewiseLinearMap
+
+    rounded, measurements = [], []
+    for i, (original, r90, weight) in enumerate(zip(master_contours, radii, weights, strict=True)):
+        segs, = _normalize(original)
+        arm, *flanks = segs[6:10]
+        if [s[0] for s in [arm, *flanks]] != ['line', 'curve', 'curve', 'line'] or flanks[-1][1][1] != flanks[-1][2][1]:
+            raise ValueError('unrecognized option-B y junction')
+        # Optical sizes fitted to the rightmost column of Michael's
+        # r3_y_vorschau.png (5ef6ee4c). Italic matches its ordinary radius.
+        optical = r90 if italic else piecewiseLinearMap(weight, {100: 53., 400: 53., 700: 42., 900: 37.})
+        radius = max(.60*r90, min(r90, optical))
+        cut, arc, contact, touch, reach = _y_tail_contact(arm, flanks, radius)
+        remainder = _portion(flanks[contact], touch, 1)
+        # Preserve two cubic slots and one line after the arc throughout the
+        # axis, even where the contact has passed a knot or reached the flat.
+        if contact == 0:
+            tail = [remainder, *flanks[1:]]
+        elif contact == 1:
+            tail = [_portion(remainder, 0, .5), _portion(remainder, .5, 1), flanks[-1]]
+        else:
+            tail = [_as_cubic(_portion(remainder, 0, 1/3)), _as_cubic(_portion(remainder, 1/3, 2/3)),
+                    _portion(remainder, 2/3, 1)]
+        silhouette = [*segs[:6], _portion(arm, 0, 1-cut), *arc, *tail, *segs[10:]]
+        result = [_nodes_preserving_segment_start(silhouette)]
+        verification = _verify_source_geos(original, result, i)
+        measurements.append(dict(radius=radius, target=F90*r90**2, area=verification['added_area'],
+                                 flank=contact, reach=reach))
+        rounded.append(result)
+    return rounded, dict(contour=0, join=6, status='rounded', semantic='y_arm_to_descender', masters=measurements)
 
 
 def _b_waist_flanks(contours):
@@ -829,7 +949,7 @@ def _inactive_cut(segment, at_end=False):
 
 def round_compatible_contours(master_contours: Sequence[Sequence[Sequence[Node]]],
                               radii: Sequence[float], *, semantic_b_waist: bool = False,
-                              soft_spurs=False, counter_scales=None, local_guard=None, static_projection=None):
+                              soft_spurs=False, spur_floors=None, counter_scales=None, local_guard=None, static_projection=None):
     """Return (master_contours, report) with compatible cubic topology.
 
     Supply clean source outlines, never already rounded outlines. Corresponding
@@ -856,19 +976,21 @@ def round_compatible_contours(master_contours: Sequence[Sequence[Sequence[Node]]
     bases = [_path([segments_to_nodes(c) for c in m]) for m in masters]
     if counter_scales is None:
         counter_scales = [1.] * len(masters)
+    if spur_floors is None:
+        spur_floors = [.60 if soft_spurs else 0.] * len(masters)
     chosen, report = {}, []
     for ci, contour in enumerate(masters[0]):
         counter = nodes_to_pathops(_nodes_preserving_segment_start(contour)).clockwise
         for j in range(len(contour)):
             solutions, diagnostics = [], []
             failed = False
-            for m, r, base, scale in zip(masters, radii, bases, counter_scales, strict=True):
+            for m, r, base, scale, floor in zip(masters, radii, bases, counter_scales, spur_floors, strict=True):
                 a, b = m[ci][j], m[ci][(j+1) % len(contour)]
                 u, v = seg_tangent_in(a), seg_tangent_out(b)
                 concave = math.atan2(cross(u, v), dot(u, v)) < -math.radians(.1)
                 diagnostic = dict(status="inactive")
                 solution = _solve(m, ci, j, r, base, diagnostic,
-                                  soft_spur=soft_spurs and not counter,
+                                  spur_floor=0. if counter else floor,
                                   counter_scale=scale if counter else 1.) if concave else None
                 if solution is not None and solution.area < MIN_ADDED_AREA:
                     diagnostic.update(status="inactive", reason="subunit_fillet_member", area=solution.area, radius=solution.radius)
@@ -904,7 +1026,8 @@ def round_compatible_contours(master_contours: Sequence[Sequence[Sequence[Node]]
                 continue
             chosen[ci, j] = solutions
             report.append(dict(contour=ci, join=j, status="rounded", masters=[
-                dict(radius=s.radius, area=s.area, target=s.target, capped=s.capped)
+                dict(radius=s.radius, area=s.area, target=s.target, capped=s.capped,
+                     **({'tangent_run_limit': s.tangent_run_limit} if s.tangent_run_limit is not None else {}))
                 if s else dict(radius=0, area=0, target=F90*r*r, inactive=True,
                                reason=d.get('reason', 'join_not_concave'),
                                measured_area=d.get('area', 0))
