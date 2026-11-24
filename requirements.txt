@@ -246,6 +246,7 @@ numpy==2.2.6
     # via
     #   blackrenderer
     #   drawbot-skia
+    #   shapely
     #   skia-python
 openstep-plist==0.5.1
     # via
@@ -307,7 +308,7 @@ pygithub==2.8.1
     # via gftools
 pygments==2.20.0
     # via rich
-pyjwt[crypto]==2.14.0
+pyjwt[crypto]==2.15.0
     # via pygithub
 pynacl==1.6.2
     # via pygithub
@@ -348,6 +349,8 @@ ruamel-yaml==0.19.1
 selenium==4.40.0
     # via diffenator2
 sh==2.4.0
+    # via -r requirements.in
+shapely==2.1.2
     # via -r requirements.in
 shaperglot==1.2.0
     # via fontbakery
@@ -491,6 +494,3 @@ zopfli==0.4.0
 # The following packages are considered to be unsafe in a requirements file:
 # pip
 # setuptools
-
-# Independent double-precision geometry checks for compiled Sans outlines.
-shapely==2.1.2
