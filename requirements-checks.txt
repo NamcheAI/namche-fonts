@@ -1,7 +1,7 @@
 # Minimal dependencies for checks that inspect committed release binaries.
 # Keep this separate from the full font-building and proof toolchain.
 fontpens==0.4.0
-fonttools[unicode,woff]==4.65.0
+fonttools[unicode,woff]==4.60.2
 glyphslib==6.16.0
 numpy==2.2.6
 uharfbuzz==0.56.3
