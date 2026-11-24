@@ -1,0 +1,145 @@
+{
+  "inputs_sha256": {
+    "before": {
+      "NamcheShadowSans-Italic.otf": "b38992e6299d23b543e1bdb2590c2702947afa4efb8e832ad0151e43bf669a9a",
+      "NamcheShadowSans-MediumItalic.otf": "67e1d1e168cd1433daf35c289990a9fd1e71a52c52b9095760639426a8da6693",
+      "NamcheShadowSans-Thin.ttf": "3df58c080b3e9a4002d7a55f5aa0eca06bd4aa996d725bac218b2c43d9caba7a",
+      "NamcheShadowSans[wght].ttf": "f49e886cacfac5ca662ca790f8c20cffbe7cda0f055b71c89173ffca1701e580",
+      "NamcheShadowSans-ExtraLight.ttf": "7902e9a7c7738c94bad619a3cb1ccc354ff9c73577d32fa3584dc999217ff0b9",
+      "NamcheShadowSans-Light.ttf": "bf39c6155645055888e3c85978ceddd2844a9e8ab99d4d26bf56fa76aca74a69",
+      "NamcheShadowSans-Regular.ttf": "e9af4a0720a617e901f9ecfc86c7c02593e853b97e6f3d91a87e2b28c1ae6ad0",
+      "NamcheShadowSans-Medium.ttf": "c13a44de93a64173d1d60400462b4aa2b9f69ecd363b4678b8643c4519d8e596",
+      "NamcheShadowSans-SemiBold.ttf": "2ab0f0f2f7888fe65eb24c38acee5493a86c1a596e3f586a04caf9ebaaf32113",
+      "NamcheShadowSans-Bold.ttf": "2c58c09418d031c76c8c623c046dfb5ab846cdce4c48301d3e9613f008406950",
+      "NamcheShadowSans-ExtraBold.ttf": "d2f30fea3db0f1e42856801028f495c75b74f4ba6b70c5549f6d537cfed38843",
+      "NamcheShadowSans-Black.ttf": "c770f3486c730e589f8f6db47fb7ac7496edbfe5ed1fbb5833b0953607aa86de",
+      "NamcheShadowSans-ThinItalic.ttf": "938fe9ddd2134c83a6ad0465459bb4c2589d9302fd82863d7f9370f7be88c77e",
+      "NamcheShadowSans-Italic[wght].ttf": "c9bc500bd59aec492950875bcc42c7d6cbeeff1b8418f53957b394a5b6b45cc6",
+      "NamcheShadowSans-ExtraLightItalic.ttf": "64342cb562c265dd8fad234dcf2b5dbd04aa9990e0b82ae67c3591961770926d",
+      "NamcheShadowSans-LightItalic.ttf": "29007f47d9ebea5fc581347e16345316bc057ef247a66315e74676def47a4008",
+      "NamcheShadowSans-Italic.ttf": "db30272030b895e79416626a44ead23d0ea8e1cb3fd1bafacf36a3a4e628a8c5",
+      "NamcheShadowSans-MediumItalic.ttf": "b611e5b7179eb9834811ff0cac04aa94bcec486851d43d9387e3353c6f1a95e0",
+      "NamcheShadowSans-SemiBoldItalic.ttf": "58bebf83291bcace64e31570f5e623b0cd424af069bd65bd0d860fda696e27d3",
+      "NamcheShadowSans-BoldItalic.ttf": "af931f965358c7267af7693576edcbcf4678cc5de98610334bff41ddfdcfc7c3",
+      "NamcheShadowSans-ExtraBoldItalic.ttf": "88d75825a72cf9d446278eb8492cb61333e955b33e6462aa04364c99c3e44248",
+      "NamcheShadowSans-BlackItalic.ttf": "a38252601142e519cf8e4e790476e1e5c2e01f16ffebf2b31921f998458aae32"
+    },
+    "after": {
+      "NamcheShadowSans-Italic.otf": "e02feb8433751fcfa62b99ae286488cc683b69de3c889b1edd7daf786a51160c",
+      "NamcheShadowSans-MediumItalic.otf": "493d63cfb6b3580efdb5ed46c7208008b9fe405e19969a4fd92e0f82868db0e1",
+      "NamcheShadowSans-Thin.ttf": "8daa8697f0eef10648bf5f92952e0243e56cad26295f62b1254812ccc9d69448",
+      "NamcheShadowSans[wght].ttf": "96425168ca9bbfc94808b67d4f5eff6f87db1f8ab5efc35fb17ba3e079a430f0",
+      "NamcheShadowSans-ExtraLight.ttf": "8cbbb5f1acab55368cd83cd0ae46411c84623108a466b1dada941cc5ac9f0819",
+      "NamcheShadowSans-Light.ttf": "683290de96ee710f696b2d1aba324a7b8d5204071ad60731184e934ccd45fc91",
+      "NamcheShadowSans-Regular.ttf": "e9af4a0720a617e901f9ecfc86c7c02593e853b97e6f3d91a87e2b28c1ae6ad0",
+      "NamcheShadowSans-Medium.ttf": "c13a44de93a64173d1d60400462b4aa2b9f69ecd363b4678b8643c4519d8e596",
+      "NamcheShadowSans-SemiBold.ttf": "2ab0f0f2f7888fe65eb24c38acee5493a86c1a596e3f586a04caf9ebaaf32113",
+      "NamcheShadowSans-Bold.ttf": "2c58c09418d031c76c8c623c046dfb5ab846cdce4c48301d3e9613f008406950",
+      "NamcheShadowSans-ExtraBold.ttf": "d2f30fea3db0f1e42856801028f495c75b74f4ba6b70c5549f6d537cfed38843",
+      "NamcheShadowSans-Black.ttf": "c770f3486c730e589f8f6db47fb7ac7496edbfe5ed1fbb5833b0953607aa86de",
+      "NamcheShadowSans-ThinItalic.ttf": "ab5dea8d942ba76da748fbf1388dbad1023d7c637f037df3a8bf72d4af84b6e5",
+      "NamcheShadowSans-Italic[wght].ttf": "0f78a2e0278bcc07361800b75c1a6af2f5b2df6fce308c798de42effc85e7db8",
+      "NamcheShadowSans-ExtraLightItalic.ttf": "f5cd25160934e3bf3356643b8d0cd9c287c939732f13e4553c948ac1140ece66",
+      "NamcheShadowSans-LightItalic.ttf": "e62264a4af9648c4e01a7908dbcea035a6ae928b7b8ff785fa5cf2b470267101",
+      "NamcheShadowSans-Italic.ttf": "72ad3cba78713e17c2ed91ecf6fa4ef54479df1c251d186a5f4a51fc20083577",
+      "NamcheShadowSans-MediumItalic.ttf": "a6f38d6794912d31ebf9921296bba3f3d0c9a698b063b0138ad8ceb9dea30138",
+      "NamcheShadowSans-SemiBoldItalic.ttf": "58bebf83291bcace64e31570f5e623b0cd424af069bd65bd0d860fda696e27d3",
+      "NamcheShadowSans-BoldItalic.ttf": "af931f965358c7267af7693576edcbcf4678cc5de98610334bff41ddfdcfc7c3",
+      "NamcheShadowSans-ExtraBoldItalic.ttf": "88d75825a72cf9d446278eb8492cb61333e955b33e6462aa04364c99c3e44248",
+      "NamcheShadowSans-BlackItalic.ttf": "a38252601142e519cf8e4e790476e1e5c2e01f16ffebf2b31921f998458aae32"
+    },
+    "geist_ink_reference": {
+      "Geist-Italic[wght].woff2": "5aa7d48f114322a085337fad71e52664d6fd69331eb7e395af3b7d0025613da4",
+      "Geist-Variable.woff2": "a369fcf5628ea2aa4e1b9e2ec6a5b3624e365bda588e1f0f2f12b564f728fbb8"
+    }
+  },
+  "proofs_sha256": {
+    "tangent-upright.png": "59503ea8750ca28e1f1cd4872508cdfd1464a2ce4c348b12c3ea4f7df5e180ac",
+    "tangent-italic.png": "86f4a0dca1acc336990e6c1cc51ddabfd73e4836960c5da8ff39662b94174f2c",
+    "y-terminal.png": "ce31b195d6c485f0a590638f2ba9c1d02a91c5071941205534d1cf663a82bbf0",
+    "tangent-crops.csv": "e31d42dbc9329e5e90145fe732a5677437075812f5f269985423759057253d4b",
+    "y-terminal.csv": "deb7e156431f823e632322130e14f8da75f77f029fff0af5f009e39db1d8090c",
+    "lowercase-ink.csv": "63e0860efb9fecd3856314fc5ef73be5e0420b510c3babd3ee228e14b1f285f3",
+    "changes.png": "e33d2abd3339f0bfe390e85135d8bf6906499acba300f2b4227130d13d9109c1",
+    "outlines-upright.png": "de7e04464cdcb90b1814d7dfcae472974f2a2ff821ada7f6f4c04042f41a2599",
+    "text-upright.png": "7645791aac094fb4c68257953af345b80068f6f7893120a78592b709cdfaf492",
+    "outlines-italic.png": "feec8ea2b2c9778dc3ab85e3b630eb3524ef8b6e5554aad0c0efd466fe048418",
+    "text-italic.png": "fae912ee5c84c2d093fd6f890a80fe95ad3229132d1c016c98aa7ef81e76d4b5",
+    "rendering.csv": "4b803c0c1e3ae58b4e8977c6684b56756d51fd8911cf95a6da92c4d5f3f9acf0",
+    "counters.csv": "ffca87387ddaad578fe2c4d07d8acd77d724936c2fbd39b3ed1ddaa8ab768f68"
+  },
+  "text": [
+    "The rounded inner corners give the sans a printed, slightly soft texture.",
+    "A shaded room by the old quay in Vienna costs €45."
+  ],
+  "pillow": "12.3.0",
+  "freetype": "2.14.3",
+  "layout_engine": "RAQM",
+  "raqm": "0.10.5",
+  "harfbuzz": "14.2.1",
+  "rendering": "Sum of 8-bit grayscale glyph coverage on both complete shaped lines. Each percentage is 100 × (VF / static − 1) within the same snapshot, style, weight and integer ppem. Positive values indicate a darker VF. The latin_core columns repeat the comparison on all 319 characters in codepoint order, space-separated, with combining marks shown on n.",
+  "counters": "Enclosed counter area in square font units, from unioned static TTF outlines.",
+  "y_geometry": {
+    "before": {
+      "upright": {
+        "static_instances": 9,
+        "vf_instances": 33,
+        "min_horizontal_step_units": 0,
+        "max_horizontal_step_units": 0,
+        "max_accented_base_xor_square_units": 0
+      },
+      "italic": {
+        "static_instances": 9,
+        "vf_instances": 33,
+        "min_horizontal_step_units": 0,
+        "max_horizontal_step_units": 0,
+        "max_accented_base_xor_square_units": 0
+      }
+    },
+    "after": {
+      "upright": {
+        "static_instances": 9,
+        "vf_instances": 33,
+        "min_horizontal_step_units": 0,
+        "max_horizontal_step_units": 0,
+        "max_accented_base_xor_square_units": 0
+      },
+      "italic": {
+        "static_instances": 9,
+        "vf_instances": 33,
+        "min_horizontal_step_units": 0,
+        "max_horizontal_step_units": 0,
+        "max_accented_base_xor_square_units": 0
+      }
+    }
+  },
+  "y_method": "Maximum horizontal line length in the former ledge region (left endpoint x 120–300, y 0–55) on the unioned default y. Check the default contour against the descender-reaching contour of ý ÿ ŷ ỳ at every named static weight and every 25 VF weight units.",
+  "overlay": "Matched static glyphs rendered at 260 ppem on the same baseline and origin in both snapshots. Color shows the difference in grayscale coverage.",
+  "outlines": {
+    "weights": [
+      100,
+      200,
+      300,
+      400,
+      700,
+      900
+    ],
+    "samples": [
+      [
+        80,
+        "y ý ÿ ŷ ỳ    A 4 #"
+      ],
+      [
+        80,
+        "a b d h m n p q r u"
+      ],
+      [
+        54,
+        "H E K Y   & # $ €   ¢ Œ Q"
+      ]
+    ]
+  },
+  "tangent_crops": "Maximum absolute angle between adjoining curves inside each PNG row at four pixels per font unit. Variable instances are serialized and reopened on the integer TTF grid.",
+  "y_terminal": "Maximum internal turn along the italic y terminal and whole-outline Hausdorff distance in font units. Sample every 25 weight units in the frozen VF and the two reviewed weights in both static formats.",
+  "lowercase_ink": "Grayscale coverage at one pixel per font unit, summed over a b d h m n p q r u. Subtract the same ten glyphs from the bundled Geist VF at the same slope and weight."
+}

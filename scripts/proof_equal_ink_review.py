@@ -279,14 +279,30 @@ def write_rows(path, rows):
         writer.writerows(rows)
 
 
-def generate(before, after, output, counter_reference=None, join_details=False):
+def generate(before, after, output, counter_reference=None, join_details=False, tangent_details=False):
     output.mkdir(parents=True, exist_ok=True)
     rendering, counters = [], []
     files = {}
     if join_details:
         for name in join_panels(before, after, output):
             files[name] = sha256((output / name).read_bytes()).hexdigest()
+    if tangent_details:
+        try:
+            from .proof_equal_ink_tangents import tangent_panels
+        except ImportError:
+            from proof_equal_ink_tangents import tangent_panels
+        for name in tangent_panels(before, after, output):
+            files[name] = sha256((output / name).read_bytes()).hexdigest()
     inputs = {'before': {}, 'after': {}}
+    if tangent_details:
+        for key, root in (('before', before), ('after', after)):
+            for weight in (400, 500):
+                style = WEIGHT_STYLES[weight][1]
+                path = root / 'otf' / f'NamcheShadowSans-{style}.otf'
+                inputs[key][path.name] = sha256(path.read_bytes()).hexdigest()
+        geist = Path(__file__).resolve().parents[1] / 'fonts/Geist/webfonts'
+        inputs['geist_ink_reference'] = {
+            p.name: sha256(p.read_bytes()).hexdigest() for p in sorted(geist.glob('*.woff2'))}
     y_checks = {'before': {}, 'after': {}}
     overlay = output / 'changes.png'
     overlay_panel(before, after, overlay)
@@ -339,6 +355,17 @@ def generate(before, after, output, counter_reference=None, join_details=False):
                    'origin in both snapshots. Color shows the difference in grayscale coverage.',
         'outlines': {'weights': DETAIL_WEIGHTS, 'samples': DETAIL_LINES},
     }
+    if tangent_details:
+        manifest['tangent_crops'] = (
+            'Maximum absolute angle between adjoining curves inside each PNG row at four pixels '
+            'per font unit. Variable instances are serialized and reopened on the integer TTF grid.')
+        manifest['y_terminal'] = (
+            'Maximum internal turn along the italic y terminal and whole-outline Hausdorff distance '
+            'in font units. Sample every 25 weight units in the frozen VF and the two reviewed '
+            'weights in both static formats.')
+        manifest['lowercase_ink'] = (
+            'Grayscale coverage at one pixel per font unit, summed over a b d h m n p q r u. '
+            'Subtract the same ten glyphs from the bundled Geist VF at the same slope and weight.')
     (output / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
 
 
@@ -351,5 +378,8 @@ if __name__ == '__main__':
     parser.add_argument('--output', required=True, type=Path)
     parser.add_argument('--join-details', action='store_true',
                         help='Include magnified default y and Thin lowercase joins for round three')
+    parser.add_argument('--tangent-details', action='store_true',
+                        help='Include the light VF joins and italic y terminal for round four')
     args = parser.parse_args()
-    generate(args.before, args.after, args.output, args.counter_reference, args.join_details)
+    generate(args.before, args.after, args.output, args.counter_reference,
+             args.join_details, args.tangent_details)

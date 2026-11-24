@@ -225,6 +225,27 @@ resolved by a successful build.
 
 ## Current review proofs
 
+The [round-four sheets](proofs/issues/issue-125/round-4/README.md) compare the
+italic y terminal in Regular and Medium and the light upright and italic
+lowercase joins with Michael’s reviewed build at `66120c2`. The close-ups
+include frozen intermediate VF instances. Native-size text comparisons use
+the live variable fonts at each labeled weight.
+
+The cubic design already had smooth contacts. During conversion, the integer
+TrueType grid could put an explicit joining point slightly off the line
+between its two controls. At the reviewed bowl contacts and the three joins
+before the italic y terminal, the release now uses the TrueType implied
+midpoint between off-curve controls. That midpoint stays tangent when both
+controls move along the weight axis. The lowercase fit moves each adjacent
+control by at most one grid step per axis, weighting the Thin silhouette in
+the fit. Flattened accents use their source component's contact locations.
+The static lowercase treatment applies to Thin, ExtraLight and Light in
+both formats. CFF uses fractional controls for these lowercase fillets and
+projects the three italic y contacts onto their handle chords in Regular and Medium.
+The recovered open sources and their variation deltas carry the same geometry.
+
+## Third review snapshot (66120c2)
+
 The [round-three sheets](proofs/issues/issue-125/round-3/README.md) show the
 arm-to-descender join in all nine weights, the ten revised Thin lowercase joins
 and native-size comparisons between each static and variable Regular at 11–16 px.

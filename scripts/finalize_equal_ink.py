@@ -17,6 +17,7 @@ from copy import deepcopy
 import json
 from pathlib import Path
 import shutil
+import sys
 from types import SimpleNamespace
 import tempfile
 
@@ -25,15 +26,20 @@ from fontTools.subset import Options, Subsetter
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.t2CharStringPen import T2CharStringPen
+from fontTools.ttLib.tables.otTraverse import dfs_base_table
 
 try:
+    from .equal_ink_tangents import smooth_italic_y
     from .latin_core import CODEPOINTS
     from .refresh_sans_italic_outlines import CFF_IDENTITY_KEYS, preserve_cff_identity
 except ImportError:
+    from equal_ink_tangents import smooth_italic_y
     from latin_core import CODEPOINTS
     from refresh_sans_italic_outlines import CFF_IDENTITY_KEYS, preserve_cff_identity
 
 ROOT = Path(__file__).resolve().parents[1]
+if __package__ in (None, ''):
+    sys.path.insert(0, str(ROOT))
 DEFAULT_RELEASE = ROOT / 'fonts/NamcheShadowSans'
 DEFAULT_METADATA = ROOT / 'sources/equal-ink/release-metadata'
 WEIGHTS = ('Thin', 'ExtraLight', 'Light', 'Regular', 'Medium', 'SemiBold', 'Bold', 'ExtraBold', 'Black')
@@ -338,8 +344,26 @@ def _mark_variable_overlaps(font):
     return sum(glyf[name].numberOfContours != 0 for name in font.getGlyphOrder())
 
 
+def _check_point_attachments(font):
+    """A changed glyf point number must not redirect a layout or component attachment."""
+    if 'glyf' not in font:
+        return
+    for tag in ('GDEF', 'GPOS', 'BASE'):
+        if tag not in font:
+            continue
+        for path in dfs_base_table(font[tag].table):
+            table = path[-1].value
+            if any(hasattr(table, key) for key in ('AnchorPoint', 'CaretValuePoint', 'BaseCoordPoint', 'PointIndex')):
+                raise ValueError(f'{tag} point-indexed attachment requires remapping before editing glyf')
+    glyf = font['glyf']
+    for name in font.getGlyphOrder():
+        glyph = glyf[name]
+        if glyph.isComposite() and any(hasattr(c, 'firstPt') for c in glyph.components):
+            raise ValueError(f'{name}: point-attached components require remapping before editing glyf')
+
+
 def finalize_font(compiled_path: Path, ttx_path: Path, output_path: Path,
-                  normalize_unencoded_advances: bool = False):
+                  normalize_unencoded_advances: bool = False, lowercase_sources=None):
     """Finalize one new font, remapping captured layout by glyph name."""
     record = json.loads(ttx_path.with_suffix('.json').read_text())
     metadata = TTFont(recalcTimestamp=False)
@@ -392,6 +416,12 @@ def finalize_font(compiled_path: Path, ttx_path: Path, output_path: Path,
         pruned_glyphs = _prune_unreachable_extras(font, old_order)
         new_order = font.getGlyphOrder()
         cleaned_static_geometry = _cleanup_static_geometry(font)
+        _check_point_attachments(font)
+        smoothed_y = smooth_italic_y(font)
+        smoothed_lowercase = {}
+        if lowercase_sources is not None:
+            from scripts.lowercase_fillet_tangents import smooth_lowercase_fillets
+            smoothed_lowercase = smooth_lowercase_fillets(font, lowercase_sources)
         marked_variable_overlaps = _mark_variable_overlaps(font)
         lossless_variation_compression = _compress_variable_deltas_losslessly(font)
         # Native Glyphs statics and fresh interpolation differ by one unit for
@@ -443,6 +473,8 @@ def finalize_font(compiled_path: Path, ttx_path: Path, output_path: Path,
             'removed_hint_tables': removed_hints,
             'pruned_unreachable_glyphs': pruned_glyphs,
             'cleaned_static_geometry': cleaned_static_geometry,
+            'smoothed_italic_y_outlines': smoothed_y,
+            'smoothed_lowercase_contacts': smoothed_lowercase,
             'marked_variable_overlaps': marked_variable_overlaps,
             'lossless_variation_compression': lossless_variation_compression,
             'preserved_cff_identity': identity_keys}
@@ -462,11 +494,18 @@ def finalize_tree(compiled: Path, metadata: Path, output: Path, normalize_unenco
                 raise FileNotFoundError(path)
     output.parent.mkdir(parents=True, exist_ok=True)
     report = {}
+    # Use the exact baked cubic sources alongside this build. Their fillets
+    # supply the geometric contact locations and tangent directions.
+    from scripts.lowercase_fillet_tangents import source_contacts
+    contacts = {suffix: source_contacts(compiled.parent / f'NamcheShadowSans{suffix}.glyphspackage')
+                for suffix in ('', '-Italic')}
     with tempfile.TemporaryDirectory(prefix='namche-equal-ink-finalize-', dir=output.parent) as tmp:
         stage = Path(tmp)
         for rel in manifest['fonts']:
             final_path = stage/rel
-            report[rel] = finalize_font(compiled/rel, metadata/(rel+'.ttx'), final_path, normalize_unencoded_advances)
+            slope = '-Italic' if 'Italic' in rel else ''
+            report[rel] = finalize_font(compiled/rel, metadata/(rel+'.ttx'), final_path,
+                                        normalize_unencoded_advances, contacts[slope])
             if final_path.suffix == '.ttf':
                 woff = stage/'webfonts'/final_path.with_suffix('.woff2').name
                 with TTFont(final_path, recalcTimestamp=False) as font:
