@@ -1,5 +1,11 @@
 # @namche/namche-shadow
 
+## 1.1.0
+
+### Minor Changes
+
+- 83b0e4f: Add uppercase and lowercase eng (Ŋ, ŋ), modifier letter apostrophe (ʼ) and combining macron below (◌̱) to Namche Shadow Sans upright and italic across all weights.
+
 ## 1.0.0
 
 ### Major Changes
