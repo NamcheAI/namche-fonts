@@ -449,7 +449,7 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: [validate, rebuild-sans-open, rebuild-sans-recipe]
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v7
         with:
