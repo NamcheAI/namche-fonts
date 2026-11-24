@@ -35,7 +35,7 @@ customize: venv
 
 build.stamp: venv sources/config-NamcheShadowSans.yaml \
 	$(SHAPE_SOURCES) $(SOURCES) $(OPEN_SANS_SOURCES) $(EQUAL_INK_SOURCES) \
-	$(wildcard sources/googlefonts/*) scripts/build_googlefonts.py scripts/latin_core.py sources/charsets/GF_Latin_Core.nam OFL.txt
+	$(wildcard sources/googlefonts/*) sources/build.sh scripts/build_googlefonts.py scripts/latin_core.py sources/charsets/GF_Latin_Core.nam OFL.txt
 	$(MAKE) check-source-copies
 	rm -rf fonts namche-fonts namche-fonts.zip
 	$(MAKE) build-mono
@@ -106,7 +106,7 @@ build-sans-italic-variable: venv
 
 .PHONY: build-googlefonts
 build-googlefonts:
-	$(PYTHON) scripts/build_googlefonts.py --check
+	PYTHON="$(PYTHON)" sources/build.sh --check
 
 refresh-sans-shaping: venv
 	test -n "$(COMPILED_SANS_BUILD)" || (echo "Set COMPILED_SANS_BUILD to a fresh gftools Sans output." && exit 1)

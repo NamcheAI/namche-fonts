@@ -265,6 +265,15 @@ supplemental upright and italic VF snapshots from open UFO/TTX sources;
 [the current recipe](documentation/EQUAL_INK.md) and
 [VF snapshot provenance](documentation/OPEN_BUILD.md).
 
+This font repository structure is inspired by Unified Font Repository and the
+[Google Fonts Project Template](https://github.com/googlefonts/googlefonts-project-template).
+Design and production sources live in `sources/`, release binaries in `fonts/`
+(grouped by family and format), and specimens and build notes in `documentation/`.
+
+From a checkout with Python 3.11, run `./sources/build.sh` to build the Google
+Fonts candidate. The script creates a temporary environment and installs the
+pinned dependencies. The two candidate TTFs are in `out/googlefonts/ofl/namcheshadow/`.
+
 `make build-googlefonts` produces reproducible production and Google Fonts
 candidate ZIPs in `out/googlefonts/`. The separate candidate family is named
 **Namche Shadow**, retaining complete style names within 32 characters. Release

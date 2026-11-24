@@ -18,7 +18,7 @@ changes require a major version.
 2. Build all families with `make build`.
 3. Run `make test` and inspect the generated Fontspector reports.
 4. Confirm the static Namche Shadow Sans files contain Michael's intended outlines.
-5. Confirm the current variable-font limitation described in `readme.md` is
+5. Confirm the current variable-font limitation described in `README.md` is
    still accurate.
 6. Bump `packages/next/package.json` and update both changelogs.
 7. Open a `codex/...` or `jodok/...` branch and merge it through a green,
