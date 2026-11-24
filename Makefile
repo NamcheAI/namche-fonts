@@ -35,7 +35,7 @@ customize: venv
 
 build.stamp: venv sources/config-NamcheShadowSans.yaml \
 	$(SHAPE_SOURCES) $(SOURCES) $(OPEN_SANS_SOURCES) $(EQUAL_INK_SOURCES) \
-	$(wildcard sources/googlefonts/*) sources/build.sh scripts/build_googlefonts.py scripts/latin_core.py sources/charsets/GF_Latin_Core.nam OFL.txt
+	$(wildcard sources/googlefonts/*) sources/build.sh scripts/build_googlefonts.py scripts/latin_core.py sources/charsets/GF_Latin_Core.nam sources/subsets/sans-supplement.txt OFL.txt
 	$(MAKE) check-source-copies
 	rm -rf fonts namche-fonts namche-fonts.zip
 	$(MAKE) build-mono

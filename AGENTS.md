@@ -8,8 +8,10 @@ conventions.
 ## Character scope
 
 All Namche families, working sources, generated releases, npm assets and the
-Google Fonts candidate encode exactly the 319 characters in
-`sources/charsets/GF_Latin_Core.nam`. Keep necessary unencoded components,
+Google Fonts candidate encode the 319 characters in
+`sources/charsets/GF_Latin_Core.nam`. Sans and its Google Fonts candidate
+add the four characters in `sources/subsets/sans-supplement.txt`. Mono
+and Shape encode exactly the 319 Core characters. Keep necessary unencoded components,
 ligatures and alternates. Run `scripts/check_latin_core.py` after source imports
 and builds. Historical evidence is not an active coverage declaration.
 `originals/geist/` and the bundled upstream `fonts/Geist/` remain unchanged.
@@ -91,9 +93,9 @@ and builds. Historical evidence is not an active coverage declaration.
   with complete STAT-matching style names, all within 32 characters. Existing
   release/npm names remain **Namche Shadow Sans**. Package renaming may change
   only the name table and checksum adjustment; preserve every other table.
-  The candidate has the same exact GF Latin Core encoding as the release.
+  The candidate has the same 323-character encoding as the release.
   Do not add candidate-only characters outside the pinned scope.
-- Validate the compiled 319-character set in upright and italic at named and
+- Validate the compiled 323-character set in upright and italic at named and
   intermediate weights with `scripts/check_equal_ink.py`, and run the existing
   counter, metadata, shaping and Fontspector checks. Local source checks alone
   do not prove that quantized/interpolated binaries preserve the design.

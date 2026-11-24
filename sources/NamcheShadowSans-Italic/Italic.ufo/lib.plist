@@ -508,6 +508,10 @@
       <string>ogonek</string>
       <string>dieresis.ss08</string>
       <string>dotaccent.ss08</string>
+      <string>eng</string>
+      <string>uni02BC</string>
+      <string>uni0331</string>
+      <string>Eng</string>
     </array>
   </dict>
 </plist>

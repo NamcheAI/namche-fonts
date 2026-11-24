@@ -3,7 +3,7 @@
 Branch: `codex/gf-latin-core`. Tracking: [issue #118](https://github.com/NamcheAI/namche-fonts/issues/118).
 This is a breaking coverage change, not a new font variant or a redesign.
 
-## Scope
+## Scope at the 1.0.0 release
 
 Every Namche family encodes exactly the 319 codepoints in
 [`GF_Latin_Core.nam`](../sources/charsets/GF_Latin_Core.nam), pinned to Google
@@ -18,6 +18,8 @@ Cyrillic, box drawing, U+0331, U+20B9 and U+25CC are outside the contract.
 Existing `-latin` entry points remain available; Namche files now contain the
 same Core repertoire as the unsuffixed files. Earlier published versions remain
 unchanged. A major Changeset records the compatibility impact.
+
+Subsequent Sans releases extend this repertoire for Google Fonts language specimens. [Issue #135](https://github.com/NamcheAI/namche-fonts/issues/135)
 
 ## Visual review
 

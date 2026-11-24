@@ -70,6 +70,8 @@
     <string>E_grave.glif</string>
     <key>Emacron</key>
     <string>E_macron.glif</string>
+    <key>Eng</key>
+    <string>E_ng.glif</string>
     <key>Eogonek</key>
     <string>E_ogonek.glif</string>
     <key>Eth</key>
@@ -472,6 +474,8 @@
     <string>emdash.glif</string>
     <key>endash</key>
     <string>endash.glif</string>
+    <key>eng</key>
+    <string>eng.glif</string>
     <key>eogonek</key>
     <string>eogonek.glif</string>
     <key>equal</key>
@@ -878,6 +882,8 @@
     <string>uni021B_.glif</string>
     <key>uni0237</key>
     <string>uni0237.glif</string>
+    <key>uni02BC</key>
+    <string>uni02B_C_.glif</string>
     <key>uni0302</key>
     <string>uni0302.glif</string>
     <key>uni03020300</key>
@@ -918,6 +924,8 @@
     <string>uni0327.glif</string>
     <key>uni0328</key>
     <string>uni0328.glif</string>
+    <key>uni0331</key>
+    <string>uni0331.glif</string>
     <key>uni1E9E</key>
     <string>uni1E_9E_.glif</string>
     <key>uni2070</key>

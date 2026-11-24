@@ -31,9 +31,9 @@ from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
 
 try:
-    from .latin_core import CODEPOINTS
+    from .latin_core import SANS_CODEPOINTS
 except ImportError:
-    from latin_core import CODEPOINTS
+    from latin_core import SANS_CODEPOINTS
 
 DEFAULT_FLATTEN_TOLERANCE = 0.01
 COUNTER_NOISE_AREA = 0.001  # Ignore only sub-millifont-unit-square numerical holes.
@@ -493,16 +493,16 @@ def compare_glyphs(baseline_glyph_set, candidate_glyph_set, baseline_name,
 def _names_by_codepoint(font: TTFont, path: Path) -> dict[str, list[int]]:
     cmap = font.getBestCmap()
     actual = set(cmap)
-    if actual != CODEPOINTS:
-        missing = sorted(CODEPOINTS - actual)
-        extra = sorted(actual - CODEPOINTS)
+    if actual != SANS_CODEPOINTS:
+        missing = sorted(SANS_CODEPOINTS - actual)
+        extra = sorted(actual - SANS_CODEPOINTS)
         raise ValueError(
-            f"{path}: cmap must equal GF Latin Core ({len(CODEPOINTS)} codepoints); "
+            f"{path}: cmap must match the Sans repertoire ({len(SANS_CODEPOINTS)} codepoints); "
             f"missing={[f'U+{cp:04X}' for cp in missing]}, "
             f"extra={[f'U+{cp:04X}' for cp in extra]}"
         )
     names: dict[str, list[int]] = defaultdict(list)
-    for codepoint in sorted(CODEPOINTS):
+    for codepoint in sorted(SANS_CODEPOINTS):
         names[cmap[codepoint]].append(codepoint)
     return dict(names)
 
@@ -554,7 +554,7 @@ def _compare_pair(
         # outlines through each cmap rather than requiring equal glyph names.
         # Group aliases to avoid repeating expensive booleans for one outline.
         pairs: dict[tuple[str, str], list[int]] = defaultdict(list)
-        for codepoint in sorted(CODEPOINTS):
+        for codepoint in sorted(SANS_CODEPOINTS):
             pairs[(baseline_mapping[codepoint], candidate_mapping[codepoint])].append(codepoint)
         if include_unencoded:
             # Retained components, alternates and ligatures have no cmap entry.

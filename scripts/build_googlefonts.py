@@ -121,13 +121,14 @@ def build_package(output: Path, commit: str, config_dir: Path = CONFIG) -> None:
         # JSON is a strict YAML subset, accepted by gftools' YAML reader.
         (dest / 'upstream.yaml').write_text(json.dumps(upstream, indent=2) + '\n')
         inputs = [ROOT / 'sources/build.sh', ROOT / 'requirements-open-build.txt', ROOT / 'OFL.txt',
-                  Path(__file__), ROOT / 'scripts/build_sans_open.py', ROOT / 'scripts/latin_core.py', ROOT / 'sources/charsets/GF_Latin_Core.nam']
+                  Path(__file__), ROOT / 'scripts/build_sans_open.py', ROOT / 'scripts/latin_core.py', ROOT / 'sources/charsets/GF_Latin_Core.nam',
+                  ROOT / 'sources/subsets/sans-supplement.txt']
         inputs += [p for directory in (SOURCE, ITALIC_SOURCE, config_dir)
                    for p in directory.rglob('*') if p.is_file()]
         report = {'source_commit': commit,
                   'source_sha256': {p.relative_to(ROOT).as_posix(): sha256(p.read_bytes()).hexdigest()
                                     for p in sorted(inputs)}, 'family': family, 'status': 'candidate, not accepted by Google Fonts',
-                  'character_scope': 'GF Latin Core, 319 encoded characters; no candidate-only additions',
+                  'character_scope': 'GF Latin Core plus U+014A, U+014B, U+02BC and U+0331, matching production Sans',
                   'production_sha256': hashes, 'submission_sha256': {
                       p.relative_to(staging).as_posix(): sha256(p.read_bytes()).hexdigest()
                       for p in sorted(dest.iterdir())}}

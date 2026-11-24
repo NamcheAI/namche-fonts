@@ -6,15 +6,13 @@
 > binaries and missing exports below are provenance, not current build inputs.
 
 
-## Current scope, 2026-10-27
+## Current character scope
 
-Issue #118 restricts all Namche sources and outputs to the pinned 319-character
-GF Latin Core set. Geist remains unchanged. Historical counts, hashes and
-broader-coverage findings below describe earlier releases, not the current
-branch. Current binary hashes live in each production source's provenance.json.
-The candidate no longer adds U+0331. See [Latin Core review](LATIN_CORE_REVIEW.md)
-for the current scope, preservation evidence, visual findings and QA limitations.
-
+Both production Sans fonts and their Google Fonts candidates encode the 319
+GF Latin Core characters plus U+014A, U+014B, U+02BC and U+0331 for the Google Fonts
+language specimens. Mono and Shape retain the 319-character repertoire
+documented in the [Latin Core review](LATIN_CORE_REVIEW.md). Current binary
+hashes live in each production source's provenance.json.
 
 Update 2026-10-25: `scripts/reconstruct_sans_masters.py` now exports nine editable
 quadratic UFO masters and a designspace per style. Reloading the saved masters

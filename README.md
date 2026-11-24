@@ -112,15 +112,15 @@ Import only the families an app uses to avoid loading unnecessary faces:
 @import "@namche/namche-shadow/shape.css";
 ```
 
-All Namche families encode exactly the 319 characters in
+All Namche families encode the 319 characters in
 [GF Latin Core](sources/charsets/GF_Latin_Core.nam), including its accents and
-combining marks. Cyrillic, box drawing and other characters outside that set
-are no longer included. This is a breaking coverage change. Bundled upstream
+combining marks. Sans also supports Ŋ and ŋ (U+014A and U+014B), ʼ (U+02BC) and the combining
+macron below (U+0331) for Google Fonts language specimens. Bundled upstream
 Geist keeps its original character set.
 
 The existing `sans-latin.css`, `mono-latin.css`, `shape-latin.css` and CDN
 counterparts remain compatible entry points. For Namche they now serve the
-same Latin Core fonts as the unsuffixed entries, with matching `unicode-range`.
+same family fonts as the unsuffixed entries, with matching `unicode-range`.
 
 This fully self-hosted path bundles the required WOFF2 files, works offline or
 in an air-gapped deployment, and makes the downstream origin responsible for
@@ -168,7 +168,7 @@ import { NamcheShadowSans } from "@namche/namche-shadow/font/sans-latin";
 import { NamcheShadowMono } from "@namche/namche-shadow/font/mono-latin";
 ```
 
-Desktop OTF/TTF, variable fonts and WOFF2 share the exact Latin Core scope.
+Desktop OTF/TTF, variable fonts and WOFF2 share the same character set within each family.
 The canonical list and its pinned upstream provenance are in `sources/charsets/`;
 `scripts/check_latin_core.py` enforces the contract across sources and artifacts.
 

@@ -1,0 +1,5 @@
+# Additional Namche Shadow Sans characters used in Google Fonts language specimens.
+U+014A
+U+014B
+U+02BC
+U+0331

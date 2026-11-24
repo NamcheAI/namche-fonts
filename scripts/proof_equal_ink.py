@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render paired release snapshots, without changing fonts or review decisions.
 
-Produces 18 complete Latin Core overview PNGs (one per static style), a targeted
+Produces 18 complete Sans repertoire overview PNGs (one per static style), a targeted
 six-style detail PNG, an intermediate-VF panel, and a JSON manifest tying every image to input hashes.
 """
 from __future__ import annotations
@@ -18,9 +18,9 @@ from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFont
 
 try:
-    from .latin_core import CODEPOINTS
+    from .latin_core import SANS_CODEPOINTS as CODEPOINTS
 except ImportError:
-    from latin_core import CODEPOINTS
+    from latin_core import SANS_CODEPOINTS as CODEPOINTS
 
 WEIGHTS = ('Thin', 'ExtraLight', 'Light', 'Regular', 'Medium', 'SemiBold',
            'Bold', 'ExtraBold', 'Black')
@@ -91,7 +91,7 @@ def make_overview(before, after, style, output):
     image = Image.new('RGB', (columns*cell_w+48,
                               math.ceil(len(chars)/columns)*cell_h+header+24), 'white')
     draw = ImageDraw.Draw(image)
-    heading(draw, f'Namche Shadow Sans • {style} • all {len(chars)} Latin Core characters',
+    heading(draw, f'Namche Shadow Sans • {style} • all {len(chars)} encoded characters',
             'Issue #125 review proof • no automatic design approval', label_font(before, 24))
     for index, character in enumerate(chars):
         pair(draw, (24+(index%columns)*cell_w, header+(index//columns)*cell_h,
@@ -161,7 +161,7 @@ def generate(before: Path, after: Path, output: Path):
             with TTFont(path) as font:
                 cmap = font.getBestCmap()
                 if set(cmap) != CODEPOINTS:
-                    raise ValueError(f'{path}: expected exact Latin Core encoding')
+                    raise ValueError(f'{path}: expected exact Sans character repertoire')
                 if 0xffff in cmap or font.getGlyphOrder()[0] != '.notdef':
                     raise ValueError(f'{path}: cannot prove glyph zero with unmapped U+FFFF')
             inputs[snapshot][style] = {'path': str(path.resolve()),

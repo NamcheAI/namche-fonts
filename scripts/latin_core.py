@@ -9,6 +9,18 @@ CODEPOINTS = frozenset(int(line.split()[0], 16) for line in CHARSET.read_text().
                       if line.startswith('0x'))
 
 
+SANS_SUPPLEMENT = ROOT / 'sources/subsets/sans-supplement.txt'
+SANS_CODEPOINTS = CODEPOINTS | frozenset(
+    int(line[2:], 16) for line in SANS_SUPPLEMENT.read_text().splitlines()
+    if line.startswith('U+')
+)
+
+
+def font_codepoints(font):
+    family = font['name'].getBestFamilyName()
+    return SANS_CODEPOINTS if family in ('Namche Shadow Sans', 'Namche Shadow') else CODEPOINTS
+
+
 def normalize_info(info, keep):
     """Retain filter order/radii, restricting only their named glyph lists."""
     if isinstance(info, dict):
@@ -45,9 +57,10 @@ def normalize_info(info, keep):
 
 
 def restrict_font(font):
-    missing = CODEPOINTS - set(font.getBestCmap())
+    expected = font_codepoints(font)
+    missing = expected - set(font.getBestCmap())
     if missing:
-        raise ValueError(f'Missing Latin Core characters: {sorted(missing)}')
+        raise ValueError(f'Missing required family characters: {sorted(missing)}')
     options = Options()
     options.layout_features = ['*']
     options.name_IDs = ['*']
@@ -59,13 +72,13 @@ def restrict_font(font):
     options.recalc_timestamp = False
     options.no_subset_tables += ['meta']
     subsetter = Subsetter(options=options)
-    subsetter.populate(unicodes=CODEPOINTS)
+    subsetter.populate(unicodes=expected)
     subsetter.subset(font)
     if 'meta' in font:
         font['meta'].data['dlng'] = 'Latn'
         font['meta'].data['slng'] = 'Latn'
-    if set(font.getBestCmap()) != CODEPOINTS:
-        raise ValueError('Subsetting did not produce exactly GF Latin Core')
+    if set(font.getBestCmap()) != expected:
+        raise ValueError('Subsetting produced an incorrect family character set')
     return font
 
 
@@ -78,9 +91,10 @@ def restrict_file(path):
 
 def check_file(path):
     with TTFont(path) as font:
-        actual = set(font.getBestCmap())
-        if actual != CODEPOINTS:
-            raise ValueError(f'{path}: missing={sorted(CODEPOINTS-actual)}, extra={sorted(actual-CODEPOINTS)}')
+        expected = font_codepoints(font)
+        actual = {cp for table in font['cmap'].tables if table.isUnicode() for cp in table.cmap}
+        if actual != expected:
+            raise ValueError(f'{path}: missing={sorted(expected-actual)}, extra={sorted(actual-expected)}')
 
 
 if __name__ == '__main__':
@@ -95,4 +109,4 @@ if __name__ == '__main__':
             if path.suffix in ('.ttf', '.otf', '.woff2') and 'subsets' not in path.parts:
                 (check_file if args.check else restrict_file)(path)
                 count += 1
-    print(f'{"Checked" if args.check else "Restricted"} {count} fonts to {len(CODEPOINTS)} GF Latin Core characters')
+    print(f'{"Checked" if args.check else "Restricted"} {count} fonts against the family character sets')

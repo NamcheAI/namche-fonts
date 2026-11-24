@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import glyphsLib
 from ufoLib2 import Font
-from latin_core import CODEPOINTS, ROOT, check_file
+from latin_core import CODEPOINTS, SANS_CODEPOINTS, ROOT, check_file
 from subset_webfonts import read_unicode_ranges
 
 
@@ -12,14 +12,15 @@ def main():
     for source in (ROOT/'sources').glob('Namche*.glyphspackage'):
         font = glyphsLib.GSFont(str(source))
         actual = {int(value,16) for glyph in font.glyphs for value in glyph.unicodes}
-        if actual != CODEPOINTS:
+        expected = SANS_CODEPOINTS if font.familyName == 'Namche Shadow Sans' else CODEPOINTS
+        if actual != expected:
             raise ValueError(f'{source}: incorrect source character scope')
     for source in (ROOT/'sources').glob('NamcheShadowSans-*'):
         if not source.is_dir() or not (source/'provenance.json').exists():
             continue
         manifest = json.loads((source/'provenance.json').read_text())
         font = Font.open(source/manifest['ufo'])
-        if {cp for glyph in font for cp in glyph.unicodes} != CODEPOINTS:
+        if {cp for glyph in font for cp in glyph.unicodes} != SANS_CODEPOINTS:
             raise ValueError(f'{source}: incorrect production-source character scope')
     for parent, pattern in [(ROOT/'fonts','Namche*'), (ROOT/'packages/next/dist/fonts','namche-*')]:
         for family in parent.glob(pattern):
@@ -31,7 +32,7 @@ def main():
         raise ValueError('CSS Core ranges differ from canonical charset')
     if not count:
         raise ValueError('No release binaries checked')
-    print(f'PASS: all Namche design/production sources and {count} release/npm fonts have exactly {len(CODEPOINTS)} characters')
+    print(f'PASS: all Namche design/production sources and {count} release/npm fonts match their family character sets')
 
 
 if __name__ == '__main__':
