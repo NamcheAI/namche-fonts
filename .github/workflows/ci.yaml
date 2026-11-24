@@ -601,15 +601,22 @@ jobs:
           GH_TOKEN: ${{ secrets.INFRA_DISPATCH_TOKEN }}
           TAG: ${{ needs.release-npm.outputs.tag }}
         run: |
-          # --ref is required, not cosmetic. Without it `gh` first resolves
-          # infra's default branch over GraphQL (repository.defaultBranchRef),
-          # which needs Contents: read. INFRA_DISPATCH_TOKEN is deliberately
-          # scoped to Actions read/write and nothing else, so that lookup fails
-          # with "Resource not accessible by personal access token" and the
-          # dispatch never happens. Naming the ref skips the lookup; widening
-          # the shared token would be the wrong fix.
+          set -euo pipefail
+          # Use REST metadata and an explicit ref with the Actions-scoped token.
+          # A default-ref GraphQL lookup would require Contents access.
+          repo=$(
+            gh api --hostname github.com -X GET repositories/1304797650 |
+              jq -er '
+                select(.id == 1304797650 and .owner.id == 261817074 and
+                       .owner.login == "NamcheAI" and .owner.type == "Organization" and
+                       .private == true and .default_branch == "main" and
+                       (.full_name == "NamcheAI/infra" or .full_name == "NamcheAI/infra-platform"))
+                | .full_name'
+          )
+          gh api --hostname github.com -X GET "repos/$repo/actions/workflows/publish-cdn-release.yml" |
+            jq -e '.id == 335993022 and .path == ".github/workflows/publish-cdn-release.yml" and .state == "active"' >/dev/null
           gh workflow run publish-cdn-release.yml \
-            --repo NamcheAI/infra \
+            --repo "github.com/$repo" \
             --ref main \
             --field publisher=namche-fonts \
             --field "tag=$TAG"
