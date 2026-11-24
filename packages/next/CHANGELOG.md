@@ -1,5 +1,27 @@
 # @namche/namche-shadow
 
+## 1.0.0
+
+### Major Changes
+
+- b1ffa7a: Restrict Namche Shadow Sans, Namche Shadow Mono and Namche Shape to the 319
+  encoded characters in GF Latin Core. Cyrillic, Vietnamese-specific characters
+  and other out-of-scope characters are no longer included. Required internal
+  ligature, alternate and component glyphs remain. The `-latin` entry points now
+  provide the same character coverage as the default Namche entry points.
+  Bundled upstream Geist is unchanged.
+
+### Patch Changes
+
+- b1ffa7a: Refine Namche Shadow Sans upright and italic inner corners with a stem-scaled,
+  angle-aware equal-ink rule. Lighten the Thin lowercase joins, open the heavy
+  italic A and upright 4 counters, and round the default y where its arm flows
+  into the descender in all nine weights.
+  Smooth the italic y terminal in Regular and Medium and the light lowercase
+  joins at intermediate weights. Scale the rounding of numerators, denominators,
+  superscripts and subscripts to their height so the small 4 keeps an open counter.
+  Rebuild statics and variable fonts from compatible open sources while preserving the GF Latin Core scope and public family names.
+
 ## 0.6.2
 
 ### Patch Changes
