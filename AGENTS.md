@@ -57,13 +57,17 @@ and builds. Historical evidence is not an active coverage declaration.
   clean input by reversing or repeatedly rounding the baked output.
 - `make build-sans` bakes compatible cubic Glyphs masters and builds all 18
   statics plus both VFs with open tools. The rule uses the measured stem with
-  c=1.6 and caps of 70 (capitals/figures) or 53 (other glyphs). Reviewed
+  c=1.6 and caps of 70 for capitals and full-size decimal figures or 53 for
+  other glyphs. The ten superior figure outlines use a cap of
+  `53 × 387/710` (28.89 units), shared by numerators, denominators and
+  inferiors through components. Reviewed
   exterior spurs in a b d h m n p q r u use a radius floor that rises
   linearly from 40% in Thin to 60% in Regular and holds through Black.
   A fillet may use 90% of a free flank. After removing the step in the
   default y, round its arm against the full descender, including the flat
   terminal when the tangent reaches it. Other joins retain their existing limits. Ease
-  the acute counter corners of heavy italic A and upright 4. Preserve sparse
+  the acute counter corners of heavy italic A, full-size upright 4 and the
+  small 4 in both slopes. Preserve sparse
   brace layers and matched topology.
 - The maintained Glyphs packages carry the generated rounded foregrounds plus
   repository metadata, components, anchors and layout. Commit these packages,

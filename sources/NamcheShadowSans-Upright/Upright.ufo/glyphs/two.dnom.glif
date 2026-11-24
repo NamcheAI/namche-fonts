@@ -49,19 +49,18 @@
       <point x="229" y="166" identifier="p43"/>
       <point x="212" y="157" type="qcurve" identifier="p44"/>
       <point x="171" y="135" type="line" identifier="p45"/>
-      <point x="157" y="127" identifier="p46"/>
-      <point x="136" y="109" identifier="p47"/>
-      <point x="129" y="100" type="qcurve" identifier="p48"/>
-      <point x="126" y="96" identifier="p49"/>
-      <point x="123" y="87" identifier="p50"/>
-      <point x="124" y="77" identifier="p51"/>
+      <point x="161" y="130" identifier="p46"/>
+      <point x="146" y="118" identifier="p47"/>
+      <point x="133" y="106" identifier="p48"/>
+      <point x="129" y="100" type="qcurve" identifier="p49"/>
+      <point x="124" y="94" identifier="p50"/>
+      <point x="123" y="79" identifier="p51"/>
       <point x="127" y="72" type="qcurve" identifier="p52"/>
-      <point x="129" y="68" identifier="p53"/>
-      <point x="136" y="62" identifier="p54"/>
-      <point x="145" y="58" identifier="p55"/>
-      <point x="150" y="58" type="qcurve" identifier="p56"/>
-      <point x="306" y="58" type="line" identifier="p57"/>
-      <point x="306" y="0" type="line" identifier="p58"/>
+      <point x="130" y="66" identifier="p53"/>
+      <point x="143" y="58" identifier="p54"/>
+      <point x="150" y="58" type="qcurve" identifier="p55"/>
+      <point x="306" y="58" type="line" identifier="p56"/>
+      <point x="306" y="0" type="line" identifier="p57"/>
     </contour>
   </outline>
   <lib>
@@ -116,12 +115,11 @@
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
-        <integer>1</integer>
-        <integer>0</integer>
-        <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>
         <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
         <integer>1</integer>

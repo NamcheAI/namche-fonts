@@ -45,7 +45,7 @@ The compiled before/after proof also includes these symbols explicitly.
 ## Corner recipe
 
 The reference radius is `min(1.6 × stem, cap)`, capped at 70 units for capitals
-and figures and 53 for the remaining glyphs. Stem width comes from the clean I
+and full-size decimal figures and 53 for other full-size glyphs. Stem width comes from the clean I
 masters. The reference right-angle added area is
 `(1 − π/4) × radius²`. Acute joins solve for that added area using boolean-filled
 geometry; right and obtuse joins retain the reference radius where feasible.
@@ -76,12 +76,40 @@ at Bold and 37 at Black. Those heavy upright anchors were fitted to the
 designer’s preview. The radius floor is 0.60 × r90 in both slopes, including
 Thin. [Michael’s round-three preview, right column](https://github.com/NamcheAI/namche-fonts/blob/5ef6ee4c998e542f7a38c1656dd9d51aa598bdef/documentation/proofs/issues/issue-125/runde-3/r3_y_vorschau.png?raw=true)
 
-For the two heavy counters Michael identified, upright four and italic A,
+For the full-size upright four and italic A,
 the reference radius for acute inner joins decreases linearly from its normal
 value at 500 to half at 900. Other counter treatments retain their reviewed
 design. The [first](https://github.com/NamcheAI/namche-fonts/issues/125#issuecomment-7103017258)
 and [second](https://github.com/NamcheAI/namche-fonts/issues/125#issuecomment-7103995878)
 reviews record the glyph and rendering decisions.
+
+The ten superior figure outlines have a 28.89-unit cap. In the clean source,
+the flat-top four spans y=0–710 and its superior spans y=323–710 in every
+design master of both slopes. Its height ratio, 387/710, sets the design
+scale for the small figures. All ten superior sources are unencoded in the
+retained Latin Core. Their unsuffixed Glyphs names therefore took the
+53-unit default cap in the reviewed build `6ab84d8`. Scaling that cap gives
+`min(1.6 × stem, 53 × 387/710)`. Numerators, denominators and inferiors share
+the superior outlines through components. For nine, these three forms rotate
+the six superior by 180°.
+
+The triangular small-four counter also uses the existing acute-corner taper
+in both slopes. In Black, its short flanks limit the fillets even with the
+size cap, so the counter benefits from the additional easing. Its reference
+radius for acute counter corners falls from 28.89 at weight 500 to 14.44 at
+900. [Michael’s small-figure review](https://github.com/NamcheAI/namche-fonts/issues/125#issuecomment-7131913584)
+
+The table gives the remaining area of the triangular counter as a percentage
+of the same unrounded cubic source at each weight. At Regular, the size cap
+accounts for the entire improvement. At Black, the acute taper reopens the
+counter further.
+
+| Small four | Reviewed build | Scaled cap alone | Scaled cap and acute taper |
+| --- | ---: | ---: | ---: |
+| Upright Regular | 78.7% | 93.2% | 93.2% |
+| Upright Black | 76.0% | 85.6% | 92.8% |
+| Italic Regular | 80.7% | 93.8% | 93.8% |
+| Italic Black | 77.6% | 86.0% | 94.1% |
 
 Component rotation, translation and scale are normalized to the Glyphs package
 serializer precision before interpolation. In particular, the historical bullet
@@ -224,6 +252,15 @@ with its original snapshot; pending visual questions are not automatically
 resolved by a successful build.
 
 ## Current review proofs
+
+The small-figure sheets compare all ten numerators, denominators, superiors
+and inferiors in both slopes. At Regular, Bold and Black, the revised
+variable small 4 retains 92.94%, 91.85% and 92.21% of Geist’s counter area
+upright, and 93.87%, 94.82% and 94.71% italic. Each percentage applies to
+all four positions. Feature-enabled text samples show
+fractions, powers and indices at 11–16 px. [Round-five proofs](proofs/issues/issue-125/round-5/README.md) · [Counter measurements](proofs/issues/issue-125/round-5/small-figure-counters.csv)
+
+## Fourth review snapshot (6ab84d8)
 
 The [round-four sheets](proofs/issues/issue-125/round-4/README.md) compare the
 italic y terminal in Regular and Medium and the light upright and italic

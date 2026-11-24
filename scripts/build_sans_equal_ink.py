@@ -26,8 +26,9 @@ from fontTools.misc.bezierTools import curveLineIntersections, lineLineIntersect
 from fontTools.misc.vector import Vector
 from scripts.write_glyphspackage import save_package
 from scripts.equal_ink_corners import (
-    LIGHTER_SPURS, LOCAL_GUARDS, r90_for_stem, resolve_clean_contours, resolve_compatible_clean_contours,
-    round_compatible_contours, round_italic_a_notch, round_upright_a_notch, round_y_junction, spur_floor_at,
+    LIGHTER_SPURS, LOCAL_GUARDS, SMALL_FIGURES, r90_for_stem, resolve_clean_contours,
+    resolve_compatible_clean_contours, round_compatible_contours, round_italic_a_notch,
+    round_upright_a_notch, round_y_junction, spur_floor_at,
 )
 
 BASE = ROOT / 'sources/equal-ink/clean-outlines.json'
@@ -242,15 +243,15 @@ def prepare(output, clean=False, only=None):
                     base = font.glyphs[glyph.name.split('.')[0]]
                     upper = bool(base and any(unicodedata.category(chr(int(cp,16))) in ('Lu','Nd') for cp in base.unicodes))
                 base_name = glyph.name.split('.')[0]
-                # Michael approved the upright A and italic number sign. Reduce
-                # only the two counters identified as too tight in his review.
-                ease_counter = (suffix, base_name) in {('-Italic', 'A'), ('', 'four')}
+                small_figure = SMALL_FIGURES.get(glyph.name)
+                # Small fours share the heavy-counter treatment in both slopes.
+                ease_counter = small_figure == 'four' or (suffix, base_name) in {('-Italic', 'A'), ('', 'four')}
                 weights = [m.axes[0] for m in font.masters] + [
                     float(l.attributes['coordinates'][0]) for l in layers[len(ids):]]
                 counter_scales = ([1.0 - 0.5 * max(0.0, (w - 500) / 400) for w in weights]
                                   if ease_counter else None)
                 try:
-                    radii = [r90_for_stem(s, upper) for s in glyph_stems]
+                    radii = [r90_for_stem(s, upper, small_figure=small_figure is not None) for s in glyph_stems]
                     notch = None
                     if glyph.name == 'a':
                         if suffix:

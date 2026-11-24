@@ -78,18 +78,18 @@
       <point x="302" y="123" identifier="p72"/>
     </contour>
     <contour>
-      <point x="264" y="187" type="qcurve" identifier="p73"/>
-      <point x="254" y="191" identifier="p74"/>
-      <point x="231" y="201" identifier="p75"/>
+      <point x="246" y="197" type="qcurve" identifier="p73"/>
+      <point x="238" y="198" identifier="p74"/>
+      <point x="224" y="203" identifier="p75"/>
       <point x="216" y="207" type="qcurve" identifier="p76"/>
-      <point x="229" y="213" identifier="p77"/>
-      <point x="251" y="224" identifier="p78"/>
-      <point x="261" y="231" type="qcurve" identifier="p79"/>
-      <point x="256" y="226" identifier="p80"/>
-      <point x="252" y="214" identifier="p81"/>
-      <point x="252" y="208" type="qcurve" identifier="p82"/>
-      <point x="253" y="202" identifier="p83"/>
-      <point x="259" y="190" identifier="p84"/>
+      <point x="223" y="212" identifier="p77"/>
+      <point x="237" y="217" identifier="p78"/>
+      <point x="245" y="219" type="qcurve" identifier="p79"/>
+      <point x="242" y="217" identifier="p80"/>
+      <point x="238" y="211" identifier="p81"/>
+      <point x="238" y="208" type="qcurve" identifier="p82"/>
+      <point x="239" y="204" identifier="p83"/>
+      <point x="242" y="199" identifier="p84"/>
     </contour>
   </outline>
   <lib>

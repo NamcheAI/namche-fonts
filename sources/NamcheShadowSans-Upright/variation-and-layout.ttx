@@ -513,7 +513,7 @@
     <!-- Most of this table will be recalculated by the compiler -->
     <tableVersion value="1.0"/>
     <fontRevision value="1.8"/>
-    <checkSumAdjustment value="0x2a2c2e91"/>
+    <checkSumAdjustment value="0x4f4ff6e1"/>
     <magicNumber value="0x5f0f3cf5"/>
     <flags value="00000000 00001111"/>
     <unitsPerEm value="1000"/>

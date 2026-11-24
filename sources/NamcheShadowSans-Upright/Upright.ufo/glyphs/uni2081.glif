@@ -4,13 +4,13 @@
   <outline>
     <contour>
       <point x="116" y="-100" type="line" identifier="p0"/>
-      <point x="116" y="111" type="line" identifier="p1"/>
-      <point x="116" y="119" identifier="p2"/>
-      <point x="109" y="135" identifier="p3"/>
-      <point x="103" y="141" type="qcurve" identifier="p4"/>
-      <point x="97" y="147" identifier="p5"/>
-      <point x="81" y="154" identifier="p6"/>
-      <point x="73" y="154" type="qcurve" identifier="p7"/>
+      <point x="116" y="125" type="line" identifier="p1"/>
+      <point x="116" y="131" identifier="p2"/>
+      <point x="112" y="141" identifier="p3"/>
+      <point x="108" y="145" type="qcurve" identifier="p4"/>
+      <point x="103" y="149" identifier="p5"/>
+      <point x="93" y="154" identifier="p6"/>
+      <point x="87" y="154" type="qcurve" identifier="p7"/>
       <point x="20" y="153" type="line" identifier="p8"/>
       <point x="20" y="203" type="line" identifier="p9"/>
       <point x="44" y="203" type="line" identifier="p10"/>

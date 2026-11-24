@@ -39,6 +39,15 @@ LOCAL_LOSS_TOLERANCE = 0.0001
 MIN_ADDED_AREA = 1.0  # Subunit changes are not stable on the integer TrueType lattice.
 MIN_COMPATIBLE_FILLET_AREA = 1.0  # One square unit: the integer TrueType coordinate lattice.
 LIGHTER_SPURS = frozenset("abdhmnpqru")
+# Flat-top four spans y=0..710, while foursuperior spans 323..710 in
+# every clean design master of both slopes. The ten superior outlines
+# supply the other three small-figure sets through Glyphs components.
+SMALL_FIGURE_SCALE = (710 - 323) / 710
+SMALL_FIGURES = {
+    digit + suffix: digit
+    for digit in "zero one two three four five six seven eight nine".split()
+    for suffix in ("superior", "inferior", ".numr", ".dnom")
+}
 
 
 def spur_floor_at(weight):
@@ -58,11 +67,15 @@ LOCAL_GUARDS = {
 }
 
 
-def r90_for_stem(stem: float, uppercase_or_figure: bool = False) -> float:
-    """Issue #125: c=1.6, capped at 70 for capitals/figures, otherwise 53."""
+def r90_for_stem(stem: float, uppercase_or_figure: bool = False, *, small_figure=False) -> float:
+    """Use the stem radius up to the maximum for this glyph's design size."""
     if not math.isfinite(stem) or stem <= 0:
         raise ValueError("stem must be finite and positive")
-    return min(1.6 * stem, 70.0 if uppercase_or_figure else 53.0)
+    cap = 70.0 if uppercase_or_figure else 53.0
+    if small_figure:
+        # Their superior source outlines used the 53-unit nondecimal cap.
+        cap = 53.0 * SMALL_FIGURE_SCALE
+    return min(1.6 * stem, cap)
 
 
 def _path(contours):

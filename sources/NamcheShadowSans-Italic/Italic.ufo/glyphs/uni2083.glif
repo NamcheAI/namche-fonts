@@ -66,20 +66,20 @@
       <point x="262" y="246" identifier="p60"/>
       <point x="270" y="218" identifier="p61"/>
       <point x="270" y="203" type="qcurve" identifier="p62"/>
-      <point x="270" y="190" identifier="p63"/>
-      <point x="265" y="166" identifier="p64"/>
-      <point x="255" y="146" identifier="p65"/>
-      <point x="240" y="129" identifier="p66"/>
-      <point x="230" y="122" type="qcurve" identifier="p67"/>
-      <point x="225" y="119" identifier="p68"/>
-      <point x="219" y="110" identifier="p69"/>
-      <point x="219" y="104" type="qcurve" identifier="p70"/>
-      <point x="219" y="99" identifier="p71"/>
-      <point x="223" y="88" identifier="p72"/>
-      <point x="227" y="85" type="qcurve" identifier="p73"/>
-      <point x="235" y="78" identifier="p74"/>
-      <point x="246" y="60" identifier="p75"/>
-      <point x="250" y="39" identifier="p76"/>
+      <point x="270" y="188" identifier="p63"/>
+      <point x="264" y="161" identifier="p64"/>
+      <point x="250" y="138" identifier="p65"/>
+      <point x="229" y="121" identifier="p66"/>
+      <point x="215" y="114" type="qcurve" identifier="p67"/>
+      <point x="212" y="113" identifier="p68"/>
+      <point x="208" y="108" identifier="p69"/>
+      <point x="208" y="104" type="qcurve" identifier="p70"/>
+      <point x="208" y="101" identifier="p71"/>
+      <point x="211" y="95" identifier="p72"/>
+      <point x="214" y="94" type="qcurve" identifier="p73"/>
+      <point x="227" y="86" identifier="p74"/>
+      <point x="243" y="66" identifier="p75"/>
+      <point x="250" y="41" identifier="p76"/>
     </contour>
   </outline>
   <lib>
