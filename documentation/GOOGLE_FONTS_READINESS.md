@@ -1,5 +1,36 @@
 # Google Fonts readiness: Namche Shadow Sans
 
+## Language samples after 1.0.0
+
+Production Sans and its Google Fonts candidate use font revision 1.810 and
+share 323 encoded characters. Lowercase eng
+(ŋ), modifier letter apostrophe (ʼ) and combining macron below (U+0331)
+complete seven specimen excerpts. Capital Eng (Ŋ) completes the case pair. The
+HarfBuzz check shapes them at every 25 weight units from 100 to 900 in both
+slopes and verifies the combining macron below attaches and stacks.
+[Language samples and 11–16 px proof](proofs/issues/issue-135-language-samples.png)
+
+The Google Fonts serving definitions omit U+0331 in the samples for
+Amarakaeri, Chickasaw, Mezquital Otomi, Secoya and Siona. The proposed change
+adds the character to the Latin Extended subset. Removing that subset
+declaration would exclude 104 encoded characters from the two Latin subsets.
+Fontspector flags the declaration because coverage is below its 20% threshold.
+
+The repository and designer hyperlinks pass semantic validation. The released
+checker flags both when it splits the HTML at whitespace. The proposed parser
+change reads anchor destinations and still detects a wrong repository.
+
+- [Proposed serving-data change for googlefonts/nam-files](googlefonts-intake/sans-macron-below-subset.patch)
+- [Proposed URL check for fonttools/fontspector](googlefonts-intake/fontspector-description-urls.patch)
+- [Official checker findings](../sources/googlefonts/qa-open-findings.json)
+
+Both affected checks pass on the 323-character package with the proposed upstream
+changes. The unmodified 1.9.0 profile reports six FAIL messages. Compared
+with 1.0.0, the two average-width warnings are resolved and no new warning
+categories appeared. These patches are for upstream review. CI continues to use the released
+checker. Full checklist confirmation remains pending upstream resolution or
+explicit Google Fonts guidance.
+
 ## Production source update, 2026-11-22
 
 Issue [#125](https://github.com/NamcheAI/namche-fonts/issues/125) replaces
@@ -269,7 +300,7 @@ It builds the two Namche Shadow candidate TTFs and their submission package.
 The same script is used by the candidate's upstream.yaml and the reproducibility
 job. See the [upstream layout guide](https://googlefonts.github.io/gf-guide/upstream.html).
 
-The remaining Fontspector findings have three distinct causes:
+The 1.0.0 package had three groups of open Fontspector findings:
 
 - Seven language sample failures require U+0331, U+02BC or U+014B. They are
   outside GF Latin Core. The candidate and production fonts share a cmap.
@@ -280,6 +311,3 @@ The remaining Fontspector findings have three distinct causes:
   reports the repository and designer anchors as mismatches. Both links are
   checked independently as HTML. Fontspector 1.9.1 still uses the same
   [tokenization](https://github.com/fonttools/fontspector/blob/fontspector-v1.9.1/profile-googlefonts/src/checks/googlefonts/metadata/consistent_repo_urls.rs).
-
-The [tracked findings](../sources/googlefonts/qa-open-findings.json) remain
-open. Full compliance requires resolution or guidance from Google Fonts.

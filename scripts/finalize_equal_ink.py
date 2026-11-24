@@ -9,6 +9,12 @@ Normal source-only builds (no old release binaries are read):
 Fixtures retain public naming, attribution, menu identity and glyph-name-based
 layout. Compiled geometry, metrics and variation tables remain new. All hints
 are discarded so no program can refer to the previous point topology.
+
+The 1.810 fixtures include the source-compiled advances and mark anchors for
+Eng, eng, modifier letter apostrophe and combining macron below. Existing GPOS
+records retain their original variation indices. New anchor deltas have their
+own entries in GDEF's variation store. OS/2 average widths use the advances
+of the retained glyph inventory.
 """
 from __future__ import annotations
 
@@ -30,11 +36,11 @@ from fontTools.ttLib.tables.otTraverse import dfs_base_table
 
 try:
     from .equal_ink_tangents import smooth_italic_y
-    from .latin_core import CODEPOINTS
+    from .latin_core import SANS_CODEPOINTS
     from .refresh_sans_italic_outlines import CFF_IDENTITY_KEYS, preserve_cff_identity
 except ImportError:
     from equal_ink_tangents import smooth_italic_y
-    from latin_core import CODEPOINTS
+    from latin_core import SANS_CODEPOINTS
     from refresh_sans_italic_outlines import CFF_IDENTITY_KEYS, preserve_cff_identity
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,8 +68,8 @@ def expected_paths():
 
 def check_core(font, label):
     actual = {cp for table in font['cmap'].tables if table.isUnicode() for cp in table.cmap}
-    if actual != CODEPOINTS:
-        raise ValueError(f'{label}: cmap must contain exactly the {len(CODEPOINTS)} Latin Core characters')
+    if actual != SANS_CODEPOINTS:
+        raise ValueError(f'{label}: cmap must contain exactly the {len(SANS_CODEPOINTS)} maintained Sans characters')
 
 
 def _decompile(font):

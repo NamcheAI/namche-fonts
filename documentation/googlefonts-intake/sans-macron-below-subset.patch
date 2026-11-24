@@ -1,0 +1,20 @@
+--- a/subsets-input/latin-ext_unique-glyphs.nam
++++ b/subsets-input/latin-ext_unique-glyphs.nam
+@@ -37,6 +37,7 @@
+ 0x0309    COMBINING HOOK ABOVE
+ 0x0323    COMBINING DOT BELOW
+ 0x0329    COMBINING VERTICAL LINE BELOW
++0x0331    COMBINING MACRON BELOW
+
+ 0x2020 DAGGER
+ 0x2113  ℓ SCRIPT SMALL L
+--- a/Lib/gfsubsets/data/latin-ext_unique-glyphs.nam
++++ b/Lib/gfsubsets/data/latin-ext_unique-glyphs.nam
+@@ -515,6 +515,7 @@
+ 0x0309 COMBINING HOOK ABOVE
+ 0x0323 COMBINING DOT BELOW
+ 0x0329 COMBINING VERTICAL LINE BELOW
++0x0331 COMBINING MACRON BELOW
+ 0x1D00 LATIN LETTER SMALL CAPITAL A
+ 0x1D01 LATIN LETTER SMALL CAPITAL AE
+ 0x1D02 LATIN SMALL LETTER TURNED AE

@@ -34,6 +34,7 @@
     "Edotaccent.ss08": 616,
     "Egrave": 616,
     "Emacron": 616,
+    "Eng": 741,
     "Eogonek": 616,
     "Eth": 710,
     "Euro": 753,
@@ -235,6 +236,7 @@
     "emacron": 579,
     "emdash": 924,
     "endash": 608,
+    "eng": 593,
     "eogonek": 579,
     "equal": 548,
     "eth": 596,
@@ -438,6 +440,7 @@
     "uni021A": 573,
     "uni021B": 432,
     "uni0237": 297,
+    "uni02BC": 230,
     "uni0302": 0,
     "uni03020300": 0,
     "uni03020301": 0,
@@ -458,6 +461,7 @@
     "uni0326.loclMAH": 0,
     "uni0327": 0,
     "uni0328": 0,
+    "uni0331": 0,
     "uni1E9E": 727,
     "uni2070": 422,
     "uni2074": 350,
@@ -512,7 +516,7 @@
       "FullName": "Namche Shadow Sans SemiBold Italic",
       "Notice": "Copyright 2026 The Namche Shadow Project Authors (https://github.com/NamcheAI/namche-fonts). Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font)",
       "Weight": "Semi-bold",
-      "version": "1.800"
+      "version": "1.810"
     },
     "font_names": [
       "NamcheShadowSans-SemiBoldItalic"

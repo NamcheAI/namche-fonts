@@ -37,6 +37,8 @@ async function readUnicodeRange(file) {
 const latinUnicodeRange = await readUnicodeRange(latinUnicodeFile);
 const coreUnicodeRange = await readUnicodeRange(path.join(repositoryRoot, "sources", "subsets", "latin-core.txt"));
 
+const sansSupplement = await readUnicodeRange(path.join(repositoryRoot, "sources", "subsets", "sans-supplement.txt"));
+
 function parseArguments(arguments_) {
   const options = { cdn: false, check: false };
 
@@ -80,6 +82,7 @@ try {
 const families = [
   {
     key: "sans",
+    unicodeRange: `${coreUnicodeRange}, ${sansSupplement}`,
     packageDirectory: "namche-shadow-sans",
     releaseDirectory: "NamcheShadowSans",
     filenamePrefix: "NamcheShadowSans",
@@ -87,6 +90,7 @@ const families = [
   },
   {
     key: "mono",
+    unicodeRange: coreUnicodeRange,
     packageDirectory: "namche-shadow-mono",
     releaseDirectory: "NamcheShadowMono",
     filenamePrefix: "NamcheShadowMono",
@@ -94,6 +98,7 @@ const families = [
   },
   {
     key: "shape",
+    unicodeRange: coreUnicodeRange,
     packageDirectory: "namche-shape",
     releaseDirectory: "NamcheShape",
     filenamePrefix: "NamcheShape",
@@ -106,6 +111,7 @@ const families = [
   // outline-identical rename of the same binaries.
   {
     key: "geist",
+    unicodeRange: latinUnicodeRange,
     packageDirectory: "geist",
     releaseDirectory: "Geist",
     filenamePrefix: "Geist",
@@ -242,7 +248,7 @@ async function collectFaces(family, directory, urlForFile, subset = null) {
         ...face,
         filename,
         subset,
-        unicodeRange: subset ? (family.key === "geist" ? latinUnicodeRange : coreUnicodeRange) : null,
+        unicodeRange: subset ? family.unicodeRange : null,
       };
     })
     .filter(Boolean);
@@ -307,14 +313,14 @@ async function collectPackageSubsetFaces(subset) {
   return facesByFamily;
 }
 
-function deriveSubsetFaces(faces, subset, urlForFile) {
+function deriveSubsetFaces(family, faces, subset, urlForFile) {
   return faces.map((face) => {
     const filename = subsetFilename(face.filename, subset);
     return {
       ...face,
       filename,
       subset,
-      unicodeRange: face.familyName === "Geist" ? latinUnicodeRange : coreUnicodeRange,
+      unicodeRange: family.unicodeRange,
       url: urlForFile(`subsets/${filename}`),
     };
   });
@@ -341,7 +347,7 @@ async function collectCdnSubsetFaces(tag, subset) {
   return new Map(families.map((family) => [
     family.key,
     deriveSubsetFaces(
-      fullFaces.get(family.key),
+      family, fullFaces.get(family.key),
       subset,
       (filename) => cdnUrl(tag, family, filename),
     ),
@@ -369,7 +375,7 @@ async function collectReleaseSubsetFaces(root, subset) {
   return new Map(families.map((family) => [
     family.key,
     deriveSubsetFaces(
-      fullFaces.get(family.key),
+      family, fullFaces.get(family.key),
       subset,
       (filename) => releaseRelativeUrl(family, filename),
     ),

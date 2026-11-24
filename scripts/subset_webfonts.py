@@ -95,6 +95,8 @@ def subset_webfont(source: Path, destination: Path, codepoints: set[int]) -> Non
 
 def build_subsets(root: Path, layout: str, unicode_file: Path) -> list[Path]:
     codepoints, _ = read_unicode_ranges(unicode_file)
+    core, _ = read_unicode_ranges(CORE_UNICODE_FILE)
+    supplement, _ = read_unicode_ranges(CORE_UNICODE_FILE.with_name("sans-supplement.txt"))
     sources = discover_webfonts(root, layout)
     if not sources:
         raise FileNotFoundError(f"No {layout} WOFF2 files found below {root}")
@@ -107,10 +109,13 @@ def build_subsets(root: Path, layout: str, unicode_file: Path) -> list[Path]:
     outputs: list[Path] = []
     for source in sources:
         destination = subset_path(source)
-        is_namche = source.relative_to(root).parts[0].startswith(('Namche', 'namche-'))
-        selected = read_unicode_ranges(CORE_UNICODE_FILE)[0] if is_namche else codepoints
+        family = source.relative_to(root).parts[0]
+        is_namche = family.startswith(('Namche', 'namche-'))
+        selected = core if is_namche else codepoints
+        if family in ('NamcheShadowSans', 'namche-shadow-sans'):
+            selected = core | supplement
         if is_namche:
-            # The compatibility -latin entry point now carries the same Core
+            # The compatibility -latin entry point now carries the same
             # scope as its unsuffixed Namche counterpart. Geist is unchanged.
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(source, destination)
@@ -119,7 +124,7 @@ def build_subsets(root: Path, layout: str, unicode_file: Path) -> list[Path]:
 
         original = TTFont(source, lazy=True)
         subset = TTFont(destination, lazy=True)
-        expected = unicode_codepoints(original) & selected
+        expected = selected if is_namche else unicode_codepoints(original) & selected
         actual = unicode_codepoints(subset)
         if actual != expected:
             missing = sorted(expected - actual)

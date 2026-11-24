@@ -47,10 +47,10 @@ def import_package(incoming: Path, target: Path) -> None:
                 text = text.replace('{', '{\n'+assignment+'\n', 1)
             (stage/'glyphs'/name).write_text(text)
         import glyphsLib
-        from latin_core import CODEPOINTS
+        from latin_core import SANS_CODEPOINTS
         staged = glyphsLib.GSFont(str(stage))
-        if {int(u, 16) for g in staged.glyphs for u in g.unicodes} != CODEPOINTS:
-            raise ValueError('Imported source does not retain exact Latin Core encoding')
+        if {int(u, 16) for g in staged.glyphs for u in g.unicodes} != SANS_CODEPOINTS:
+            raise ValueError('Imported source does not retain the Sans character set')
         for glyph in staged.glyphs:
             for layer in glyph.layers:
                 for component in layer.components:

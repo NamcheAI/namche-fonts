@@ -61,9 +61,8 @@ Or import only the families they use:
 @import "@namche/namche-shadow/shape.css";
 ```
 
-All Namche fonts contain exactly 319 GF Latin Core characters. Cyrillic,
-box drawing and characters outside that set are no longer included. This is a
-breaking coverage change; bundled upstream Geist remains unchanged.
+All Namche fonts contain the 319 GF Latin Core characters. Sans also contains
+Ŋ and ŋ (U+014A and U+014B), ʼ (U+02BC) and the combining macron below (U+0331).
 The `fonts-latin.css`, `sans-latin.css`, `mono-latin.css` and `shape-latin.css`
 entry points remain available, with the same Namche coverage as unsuffixed files.
 

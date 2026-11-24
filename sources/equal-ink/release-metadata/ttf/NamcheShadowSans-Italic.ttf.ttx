@@ -516,12 +516,16 @@
     <GlyphID id="510" name="ogonek"/>
     <GlyphID id="511" name="dieresis.ss08"/>
     <GlyphID id="512" name="dotaccent.ss08"/>
+    <GlyphID id="513" name="eng"/>
+    <GlyphID id="514" name="uni02BC"/>
+    <GlyphID id="515" name="uni0331"/>
+    <GlyphID id="516" name="Eng"/>
   </GlyphOrder>
 
   <head>
     <!-- Most of this table will be recalculated by the compiler -->
     <tableVersion value="1.0"/>
-    <fontRevision value="1.8"/>
+    <fontRevision value="1.81"/>
     <checkSumAdjustment value="0xf8a866fa"/>
     <magicNumber value="0x5f0f3cf5"/>
     <flags value="00000000 00001111"/>
@@ -563,7 +567,7 @@
     <!-- The fields 'usFirstCharIndex' and 'usLastCharIndex'
          will be recalculated by the compiler -->
     <version value="4"/>
-    <xAvgCharWidth value="577"/>
+    <xAvgCharWidth value="535"/>
     <usWeightClass value="400"/>
     <usWidthClass value="5"/>
     <fsType value="00000000 00000000"/>
@@ -623,13 +627,13 @@
       Italic
     </namerecord>
     <namerecord nameID="3" platformID="3" platEncID="1" langID="0x409">
-      1.800;NMCH;NamcheShadowSans-Italic
+      1.810;NMCH;NamcheShadowSans-Italic
     </namerecord>
     <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
       Namche Shadow Sans Italic
     </namerecord>
     <namerecord nameID="5" platformID="3" platEncID="1" langID="0x409">
-      Version 1.800; ttfautohint (v1.8.4.16-eb64)
+      Version 1.810; ttfautohint (v1.8.4.16-eb64)
     </namerecord>
     <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
       NamcheShadowSans-Italic
@@ -1233,6 +1237,8 @@
       <map code="0x146" name="uni0146"/><!-- LATIN SMALL LETTER N WITH CEDILLA -->
       <map code="0x147" name="Ncaron"/><!-- LATIN CAPITAL LETTER N WITH CARON -->
       <map code="0x148" name="ncaron"/><!-- LATIN SMALL LETTER N WITH CARON -->
+      <map code="0x14a" name="Eng"/><!-- LATIN CAPITAL LETTER ENG -->
+      <map code="0x14b" name="eng"/><!-- LATIN SMALL LETTER ENG -->
       <map code="0x150" name="Ohungarumlaut"/><!-- LATIN CAPITAL LETTER O WITH DOUBLE ACUTE -->
       <map code="0x151" name="ohungarumlaut"/><!-- LATIN SMALL LETTER O WITH DOUBLE ACUTE -->
       <map code="0x152" name="OE"/><!-- LATIN CAPITAL LIGATURE OE -->
@@ -1273,6 +1279,7 @@
       <map code="0x21a" name="uni021A"/><!-- LATIN CAPITAL LETTER T WITH COMMA BELOW -->
       <map code="0x21b" name="uni021B"/><!-- LATIN SMALL LETTER T WITH COMMA BELOW -->
       <map code="0x237" name="uni0237"/><!-- LATIN SMALL LETTER DOTLESS J -->
+      <map code="0x2bc" name="uni02BC"/><!-- MODIFIER LETTER APOSTROPHE -->
       <map code="0x2c6" name="circumflex"/><!-- MODIFIER LETTER CIRCUMFLEX ACCENT -->
       <map code="0x2c7" name="caron"/><!-- CARON -->
       <map code="0x2d8" name="breve"/><!-- BREVE -->
@@ -1295,6 +1302,7 @@
       <map code="0x326" name="uni0326"/><!-- COMBINING COMMA BELOW -->
       <map code="0x327" name="uni0327"/><!-- COMBINING CEDILLA -->
       <map code="0x328" name="uni0328"/><!-- COMBINING OGONEK -->
+      <map code="0x331" name="uni0331"/><!-- COMBINING MACRON BELOW -->
       <map code="0x1e80" name="Wgrave"/><!-- LATIN CAPITAL LETTER W WITH GRAVE -->
       <map code="0x1e81" name="wgrave"/><!-- LATIN SMALL LETTER W WITH GRAVE -->
       <map code="0x1e82" name="Wacute"/><!-- LATIN CAPITAL LETTER W WITH ACUTE -->
@@ -1554,6 +1562,8 @@
       <map code="0x146" name="uni0146"/><!-- LATIN SMALL LETTER N WITH CEDILLA -->
       <map code="0x147" name="Ncaron"/><!-- LATIN CAPITAL LETTER N WITH CARON -->
       <map code="0x148" name="ncaron"/><!-- LATIN SMALL LETTER N WITH CARON -->
+      <map code="0x14a" name="Eng"/><!-- LATIN CAPITAL LETTER ENG -->
+      <map code="0x14b" name="eng"/><!-- LATIN SMALL LETTER ENG -->
       <map code="0x150" name="Ohungarumlaut"/><!-- LATIN CAPITAL LETTER O WITH DOUBLE ACUTE -->
       <map code="0x151" name="ohungarumlaut"/><!-- LATIN SMALL LETTER O WITH DOUBLE ACUTE -->
       <map code="0x152" name="OE"/><!-- LATIN CAPITAL LIGATURE OE -->
@@ -1594,6 +1604,7 @@
       <map code="0x21a" name="uni021A"/><!-- LATIN CAPITAL LETTER T WITH COMMA BELOW -->
       <map code="0x21b" name="uni021B"/><!-- LATIN SMALL LETTER T WITH COMMA BELOW -->
       <map code="0x237" name="uni0237"/><!-- LATIN SMALL LETTER DOTLESS J -->
+      <map code="0x2bc" name="uni02BC"/><!-- MODIFIER LETTER APOSTROPHE -->
       <map code="0x2c6" name="circumflex"/><!-- MODIFIER LETTER CIRCUMFLEX ACCENT -->
       <map code="0x2c7" name="caron"/><!-- CARON -->
       <map code="0x2d8" name="breve"/><!-- BREVE -->
@@ -1616,6 +1627,7 @@
       <map code="0x326" name="uni0326"/><!-- COMBINING COMMA BELOW -->
       <map code="0x327" name="uni0327"/><!-- COMBINING CEDILLA -->
       <map code="0x328" name="uni0328"/><!-- COMBINING OGONEK -->
+      <map code="0x331" name="uni0331"/><!-- COMBINING MACRON BELOW -->
       <map code="0x1e80" name="Wgrave"/><!-- LATIN CAPITAL LETTER W WITH GRAVE -->
       <map code="0x1e81" name="wgrave"/><!-- LATIN SMALL LETTER W WITH GRAVE -->
       <map code="0x1e82" name="Wacute"/><!-- LATIN CAPITAL LETTER W WITH ACUTE -->
@@ -1679,6 +1691,7 @@
       <ClassDef glyph="Edotaccent.ss08" class="1"/>
       <ClassDef glyph="Egrave" class="1"/>
       <ClassDef glyph="Emacron" class="1"/>
+      <ClassDef glyph="Eng" class="1"/>
       <ClassDef glyph="Eogonek" class="1"/>
       <ClassDef glyph="Eth" class="1"/>
       <ClassDef glyph="G" class="1"/>
@@ -1835,6 +1848,7 @@
       <ClassDef glyph="edotaccent.ss08" class="1"/>
       <ClassDef glyph="egrave" class="1"/>
       <ClassDef glyph="emacron" class="1"/>
+      <ClassDef glyph="eng" class="1"/>
       <ClassDef glyph="eogonek" class="1"/>
       <ClassDef glyph="f" class="1"/>
       <ClassDef glyph="f_f.liga" class="2"/>
@@ -1949,6 +1963,7 @@
       <ClassDef glyph="uni0326.loclMAH" class="3"/>
       <ClassDef glyph="uni0327" class="3"/>
       <ClassDef glyph="uni0328" class="3"/>
+      <ClassDef glyph="uni0331" class="3"/>
       <ClassDef glyph="uni1E9E" class="1"/>
       <ClassDef glyph="uni2116" class="1"/>
       <ClassDef glyph="uogonek" class="1"/>
@@ -2042,6 +2057,7 @@
         <Glyph value="uni0326.loclMAH"/>
         <Glyph value="uni0327"/>
         <Glyph value="uni0328"/>
+        <Glyph value="uni0331"/>
       </Coverage>
       <Coverage index="2">
         <Glyph value="uni0308"/>
@@ -3114,6 +3130,8 @@
             <Glyph value="less"/>
             <Glyph value="asciitilde"/>
             <Glyph value="asciicircum"/>
+            <Glyph value="eng"/>
+            <Glyph value="Eng"/>
           </Coverage>
           <ValueFormat1 value="4"/>
           <ValueFormat2 value="0"/>
@@ -3151,6 +3169,7 @@
             <ClassDef glyph="Edotaccent.ss08" class="7"/>
             <ClassDef glyph="Egrave" class="7"/>
             <ClassDef glyph="Emacron" class="7"/>
+            <ClassDef glyph="Eng" class="2"/>
             <ClassDef glyph="Eogonek" class="7"/>
             <ClassDef glyph="Eth" class="32"/>
             <ClassDef glyph="F" class="45"/>
@@ -3302,6 +3321,7 @@
             <ClassDef glyph="ellipsis.ss08" class="22"/>
             <ClassDef glyph="emdash" class="25"/>
             <ClassDef glyph="endash" class="25"/>
+            <ClassDef glyph="eng" class="4"/>
             <ClassDef glyph="equal" class="11"/>
             <ClassDef glyph="f" class="30"/>
             <ClassDef glyph="f_f.liga" class="30"/>
@@ -3478,6 +3498,7 @@
             <ClassDef glyph="Edotaccent.ss08" class="1"/>
             <ClassDef glyph="Egrave" class="1"/>
             <ClassDef glyph="Emacron" class="1"/>
+            <ClassDef glyph="Eng" class="1"/>
             <ClassDef glyph="Eogonek" class="1"/>
             <ClassDef glyph="Eth" class="3"/>
             <ClassDef glyph="F" class="1"/>
@@ -3648,6 +3669,7 @@
             <ClassDef glyph="emacron" class="2"/>
             <ClassDef glyph="emdash" class="24"/>
             <ClassDef glyph="endash" class="24"/>
+            <ClassDef glyph="eng" class="5"/>
             <ClassDef glyph="eogonek" class="2"/>
             <ClassDef glyph="equal" class="10"/>
             <ClassDef glyph="eth" class="2"/>
@@ -16263,6 +16285,7 @@
             <Glyph value="uni0326.loclMAH"/>
             <Glyph value="uni0327"/>
             <Glyph value="uni0328"/>
+            <Glyph value="uni0331"/>
           </MarkCoverage>
           <BaseCoverage>
             <Glyph value="A"/>
@@ -16561,10 +16584,12 @@
             <Glyph value="cent"/>
             <Glyph value="dollar"/>
             <Glyph value="yen"/>
+            <Glyph value="eng"/>
+            <Glyph value="Eng"/>
           </BaseCoverage>
           <!-- ClassCount=1 -->
           <MarkArray>
-            <!-- MarkCount=4 -->
+            <!-- MarkCount=5 -->
             <MarkRecord index="0">
               <Class value="0"/>
               <MarkAnchor Format="1">
@@ -16593,9 +16618,16 @@
                 <YCoordinate value="0"/>
               </MarkAnchor>
             </MarkRecord>
+            <MarkRecord index="4">
+              <Class value="0"/>
+              <MarkAnchor Format="1">
+                <XCoordinate value="32"/>
+                <YCoordinate value="0"/>
+              </MarkAnchor>
+            </MarkRecord>
           </MarkArray>
           <BaseArray>
-            <!-- BaseCount=296 -->
+            <!-- BaseCount=298 -->
             <BaseRecord index="0">
               <BaseAnchor index="0" Format="1">
                 <XCoordinate value="272"/>
@@ -18372,6 +18404,18 @@
                 <YCoordinate value="0"/>
               </BaseAnchor>
             </BaseRecord>
+            <BaseRecord index="296">
+              <BaseAnchor index="0" Format="1">
+                <XCoordinate value="203"/>
+                <YCoordinate value="-150"/>
+              </BaseAnchor>
+            </BaseRecord>
+            <BaseRecord index="297">
+              <BaseAnchor index="0" Format="1">
+                <XCoordinate value="277"/>
+                <YCoordinate value="-150"/>
+              </BaseAnchor>
+            </BaseRecord>
           </BaseArray>
         </MarkBasePos>
       </Lookup>
@@ -19580,6 +19624,8 @@
             <Glyph value="cent"/>
             <Glyph value="dollar"/>
             <Glyph value="yen"/>
+            <Glyph value="eng"/>
+            <Glyph value="Eng"/>
           </BaseCoverage>
           <!-- ClassCount=1 -->
           <MarkArray>
@@ -19719,7 +19765,7 @@
             </MarkRecord>
           </MarkArray>
           <BaseArray>
-            <!-- BaseCount=298 -->
+            <!-- BaseCount=300 -->
             <BaseRecord index="0">
               <BaseAnchor index="0" Format="1">
                 <XCoordinate value="422"/>
@@ -21508,6 +21554,18 @@
                 <YCoordinate value="710"/>
               </BaseAnchor>
             </BaseRecord>
+            <BaseRecord index="298">
+              <BaseAnchor index="0" Format="1">
+                <XCoordinate value="347"/>
+                <YCoordinate value="530"/>
+              </BaseAnchor>
+            </BaseRecord>
+            <BaseRecord index="299">
+              <BaseAnchor index="0" Format="1">
+                <XCoordinate value="459"/>
+                <YCoordinate value="710"/>
+              </BaseAnchor>
+            </BaseRecord>
           </BaseArray>
         </MarkBasePos>
       </Lookup>
@@ -21521,6 +21579,7 @@
             <Glyph value="uni0326.loclMAH"/>
             <Glyph value="uni0327"/>
             <Glyph value="uni0328"/>
+            <Glyph value="uni0331"/>
           </MarkCoverage>
           <LigatureCoverage>
             <Glyph value="A_I.dlig"/>
@@ -21532,7 +21591,7 @@
           </LigatureCoverage>
           <!-- ClassCount=1 -->
           <MarkArray>
-            <!-- MarkCount=4 -->
+            <!-- MarkCount=5 -->
             <MarkRecord index="0">
               <Class value="0"/>
               <MarkAnchor Format="1">
@@ -21558,6 +21617,13 @@
               <Class value="0"/>
               <MarkAnchor Format="1">
                 <XCoordinate value="133"/>
+                <YCoordinate value="0"/>
+              </MarkAnchor>
+            </MarkRecord>
+            <MarkRecord index="4">
+              <Class value="0"/>
+              <MarkAnchor Format="1">
+                <XCoordinate value="32"/>
                 <YCoordinate value="0"/>
               </MarkAnchor>
             </MarkRecord>
@@ -22004,14 +22070,16 @@
             <Glyph value="uni0326.loclMAH"/>
             <Glyph value="uni0327"/>
             <Glyph value="uni0328"/>
+            <Glyph value="uni0331"/>
           </Mark1Coverage>
           <Mark2Coverage>
             <Glyph value="uni0326"/>
             <Glyph value="uni0326.loclMAH"/>
+            <Glyph value="uni0331"/>
           </Mark2Coverage>
           <!-- ClassCount=1 -->
           <Mark1Array>
-            <!-- MarkCount=4 -->
+            <!-- MarkCount=5 -->
             <MarkRecord index="0">
               <Class value="0"/>
               <MarkAnchor Format="1">
@@ -22040,9 +22108,16 @@
                 <YCoordinate value="0"/>
               </MarkAnchor>
             </MarkRecord>
+            <MarkRecord index="4">
+              <Class value="0"/>
+              <MarkAnchor Format="1">
+                <XCoordinate value="32"/>
+                <YCoordinate value="0"/>
+              </MarkAnchor>
+            </MarkRecord>
           </Mark1Array>
           <Mark2Array>
-            <!-- Mark2Count=2 -->
+            <!-- Mark2Count=3 -->
             <Mark2Record index="0">
               <Mark2Anchor index="0" Format="1">
                 <XCoordinate value="6"/>
@@ -22053,6 +22128,12 @@
               <Mark2Anchor index="0" Format="1">
                 <XCoordinate value="6"/>
                 <YCoordinate value="-240"/>
+              </Mark2Anchor>
+            </Mark2Record>
+            <Mark2Record index="2">
+              <Mark2Anchor index="0" Format="1">
+                <XCoordinate value="4"/>
+                <YCoordinate value="-132"/>
               </Mark2Anchor>
             </Mark2Record>
           </Mark2Array>

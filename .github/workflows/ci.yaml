@@ -93,6 +93,7 @@ jobs:
               'scripts/write_glyphspackage.py',
               'scripts/check_equal_ink.py',
               'sources/equal-ink/',
+              'sources/subsets/sans-supplement.txt',
               'scripts/check_sans_counters.py',
               'scripts/check_sans_variable.py',
               'scripts/finalize_glyphs_statics.py',
@@ -395,6 +396,8 @@ jobs:
         run: make check-sans-open PYTHON=python
       - name: Build both reproducible submission archives
         run: make build-googlefonts PYTHON=python
+      - name: Shape Google Fonts language samples in release and candidate VFs
+        run: python scripts/check_sans_language_samples.py fonts/NamcheShadowSans/variable/*.ttf out/googlefonts/ofl/namcheshadow/*.ttf
       - name: Validate actual candidate links and attribution
         run: python scripts/check_googlefonts_links.py out/googlefonts/ofl/namcheshadow --output out/googlefonts/LINKS_STATUS.json
       - uses: fonttools/setup-fontspector@main

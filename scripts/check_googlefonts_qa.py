@@ -12,6 +12,7 @@ import re
 
 BASELINE = Path(__file__).resolve().parent.parent / 'sources/googlefonts/qa-open-findings.json'
 REQUIRED = {
+    'case_mapping': 2,
     'name/family_and_style_max_length': 2,
     'googlefonts/font_names': 2,
     'googlefonts/fvar_instances': 2,

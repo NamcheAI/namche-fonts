@@ -17,12 +17,12 @@ from scripts import finalize_equal_ink as finalize
 
 
 def make_font(path, family, extra=False, advance_delta=0, hints=False, advance_name="u0041"):
-    names = ['.notdef'] + [f'u{cp:04X}' for cp in sorted(finalize.CODEPOINTS)] + ['lig.helper']
+    names = ['.notdef'] + [f'u{cp:04X}' for cp in sorted(finalize.SANS_CODEPOINTS)] + ['lig.helper']
     if extra:
         names = ['.notdef'] + list(reversed(names[1:])) + ['new.helper']
     builder = FontBuilder(1000, isTTF=True)
     builder.setupGlyphOrder(names)
-    builder.setupCharacterMap({cp: f'u{cp:04X}' for cp in finalize.CODEPOINTS})
+    builder.setupCharacterMap({cp: f'u{cp:04X}' for cp in finalize.SANS_CODEPOINTS})
     glyphs = {}
     for name in names:
         pen = TTGlyphPen(None)
@@ -235,7 +235,7 @@ class EqualInkFinalizerTest(unittest.TestCase):
                 self.assertEqual(ligature.LigGlyph, 'u0043')
                 self.assertNotIn('fpgm', result)
                 self.assertFalse(result['glyf']['u0041'].program.getBytecode())
-                self.assertEqual(set(result.getBestCmap()), finalize.CODEPOINTS)
+                self.assertEqual(set(result.getBestCmap()), finalize.SANS_CODEPOINTS)
             self.assertEqual(report['new_unencoded_glyphs'], [])
             self.assertEqual(report['pruned_unreachable_glyphs'], ['new.helper'])
             self.assertIn('fpgm', report['removed_hint_tables'])

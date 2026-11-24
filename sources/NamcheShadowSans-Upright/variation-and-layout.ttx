@@ -507,13 +507,17 @@
     <GlyphID id="501" name="ogonek"/>
     <GlyphID id="502" name="dieresis.ss08"/>
     <GlyphID id="503" name="dotaccent.ss08"/>
+    <GlyphID id="504" name="eng"/>
+    <GlyphID id="505" name="uni02BC"/>
+    <GlyphID id="506" name="uni0331"/>
+    <GlyphID id="507" name="Eng"/>
   </GlyphOrder>
 
   <head>
     <!-- Most of this table will be recalculated by the compiler -->
     <tableVersion value="1.0"/>
-    <fontRevision value="1.8"/>
-    <checkSumAdjustment value="0x4f4ff6e1"/>
+    <fontRevision value="1.81"/>
+    <checkSumAdjustment value="0xac5ee095"/>
     <magicNumber value="0x5f0f3cf5"/>
     <flags value="00000000 00001111"/>
     <unitsPerEm value="1000"/>
@@ -547,13 +551,13 @@
     <reserved2 value="0"/>
     <reserved3 value="0"/>
     <metricDataFormat value="0"/>
-    <numberOfHMetrics value="504"/>
+    <numberOfHMetrics value="508"/>
   </hhea>
 
   <maxp>
     <!-- Most of this table will be recalculated by the compiler -->
     <tableVersion value="0x10000"/>
-    <numGlyphs value="504"/>
+    <numGlyphs value="508"/>
     <maxPoints value="168"/>
     <maxContours value="7"/>
     <maxCompositePoints value="0"/>
@@ -573,7 +577,7 @@
     <!-- The fields 'usFirstCharIndex' and 'usLastCharIndex'
          will be recalculated by the compiler -->
     <version value="4"/>
-    <xAvgCharWidth value="581"/>
+    <xAvgCharWidth value="538"/>
     <usWeightClass value="400"/>
     <usWidthClass value="5"/>
     <fsType value="00000000 00000000"/>
@@ -657,6 +661,7 @@
     <mtx name="Edotaccent.ss08" width="603" lsb="92"/>
     <mtx name="Egrave" width="603" lsb="92"/>
     <mtx name="Emacron" width="603" lsb="92"/>
+    <mtx name="Eng" width="743" lsb="92"/>
     <mtx name="Eogonek" width="603" lsb="92"/>
     <mtx name="Eth" width="694" lsb="20"/>
     <mtx name="Euro" width="727" lsb="55"/>
@@ -858,6 +863,7 @@
     <mtx name="emacron" width="561" lsb="44"/>
     <mtx name="emdash" width="907" lsb="44"/>
     <mtx name="endash" width="591" lsb="44"/>
+    <mtx name="eng" width="581" lsb="80"/>
     <mtx name="eogonek" width="561" lsb="44"/>
     <mtx name="equal" width="540" lsb="40"/>
     <mtx name="eth" width="573" lsb="44"/>
@@ -1061,6 +1067,7 @@
     <mtx name="uni021A" width="552" lsb="12"/>
     <mtx name="uni021B" width="392" lsb="55"/>
     <mtx name="uni0237" width="260" lsb="-5"/>
+    <mtx name="uni02BC" width="206" lsb="51"/>
     <mtx name="uni0302" width="0" lsb="44"/>
     <mtx name="uni03020300" width="0" lsb="44"/>
     <mtx name="uni03020301" width="0" lsb="44"/>
@@ -1081,6 +1088,7 @@
     <mtx name="uni0326.loclMAH" width="0" lsb="44"/>
     <mtx name="uni0327" width="0" lsb="44"/>
     <mtx name="uni0328" width="0" lsb="44"/>
+    <mtx name="uni0331" width="0" lsb="-46"/>
     <mtx name="uni1E9E" width="692" lsb="92"/>
     <mtx name="uni2070" width="392" lsb="40"/>
     <mtx name="uni2074" width="330" lsb="10"/>
@@ -1365,6 +1373,8 @@
       <map code="0x146" name="uni0146"/><!-- LATIN SMALL LETTER N WITH CEDILLA -->
       <map code="0x147" name="Ncaron"/><!-- LATIN CAPITAL LETTER N WITH CARON -->
       <map code="0x148" name="ncaron"/><!-- LATIN SMALL LETTER N WITH CARON -->
+      <map code="0x14a" name="Eng"/><!-- LATIN CAPITAL LETTER ENG -->
+      <map code="0x14b" name="eng"/><!-- LATIN SMALL LETTER ENG -->
       <map code="0x150" name="Ohungarumlaut"/><!-- LATIN CAPITAL LETTER O WITH DOUBLE ACUTE -->
       <map code="0x151" name="ohungarumlaut"/><!-- LATIN SMALL LETTER O WITH DOUBLE ACUTE -->
       <map code="0x152" name="OE"/><!-- LATIN CAPITAL LIGATURE OE -->
@@ -1405,6 +1415,7 @@
       <map code="0x21a" name="uni021A"/><!-- LATIN CAPITAL LETTER T WITH COMMA BELOW -->
       <map code="0x21b" name="uni021B"/><!-- LATIN SMALL LETTER T WITH COMMA BELOW -->
       <map code="0x237" name="uni0237"/><!-- LATIN SMALL LETTER DOTLESS J -->
+      <map code="0x2bc" name="uni02BC"/><!-- MODIFIER LETTER APOSTROPHE -->
       <map code="0x2c6" name="circumflex"/><!-- MODIFIER LETTER CIRCUMFLEX ACCENT -->
       <map code="0x2c7" name="caron"/><!-- CARON -->
       <map code="0x2d8" name="breve"/><!-- BREVE -->
@@ -1427,6 +1438,7 @@
       <map code="0x326" name="uni0326"/><!-- COMBINING COMMA BELOW -->
       <map code="0x327" name="uni0327"/><!-- COMBINING CEDILLA -->
       <map code="0x328" name="uni0328"/><!-- COMBINING OGONEK -->
+      <map code="0x331" name="uni0331"/><!-- COMBINING MACRON BELOW -->
       <map code="0x1e80" name="Wgrave"/><!-- LATIN CAPITAL LETTER W WITH GRAVE -->
       <map code="0x1e81" name="wgrave"/><!-- LATIN SMALL LETTER W WITH GRAVE -->
       <map code="0x1e82" name="Wacute"/><!-- LATIN CAPITAL LETTER W WITH ACUTE -->
@@ -1686,6 +1698,8 @@
       <map code="0x146" name="uni0146"/><!-- LATIN SMALL LETTER N WITH CEDILLA -->
       <map code="0x147" name="Ncaron"/><!-- LATIN CAPITAL LETTER N WITH CARON -->
       <map code="0x148" name="ncaron"/><!-- LATIN SMALL LETTER N WITH CARON -->
+      <map code="0x14a" name="Eng"/><!-- LATIN CAPITAL LETTER ENG -->
+      <map code="0x14b" name="eng"/><!-- LATIN SMALL LETTER ENG -->
       <map code="0x150" name="Ohungarumlaut"/><!-- LATIN CAPITAL LETTER O WITH DOUBLE ACUTE -->
       <map code="0x151" name="ohungarumlaut"/><!-- LATIN SMALL LETTER O WITH DOUBLE ACUTE -->
       <map code="0x152" name="OE"/><!-- LATIN CAPITAL LIGATURE OE -->
@@ -1726,6 +1740,7 @@
       <map code="0x21a" name="uni021A"/><!-- LATIN CAPITAL LETTER T WITH COMMA BELOW -->
       <map code="0x21b" name="uni021B"/><!-- LATIN SMALL LETTER T WITH COMMA BELOW -->
       <map code="0x237" name="uni0237"/><!-- LATIN SMALL LETTER DOTLESS J -->
+      <map code="0x2bc" name="uni02BC"/><!-- MODIFIER LETTER APOSTROPHE -->
       <map code="0x2c6" name="circumflex"/><!-- MODIFIER LETTER CIRCUMFLEX ACCENT -->
       <map code="0x2c7" name="caron"/><!-- CARON -->
       <map code="0x2d8" name="breve"/><!-- BREVE -->
@@ -1748,6 +1763,7 @@
       <map code="0x326" name="uni0326"/><!-- COMBINING COMMA BELOW -->
       <map code="0x327" name="uni0327"/><!-- COMBINING CEDILLA -->
       <map code="0x328" name="uni0328"/><!-- COMBINING OGONEK -->
+      <map code="0x331" name="uni0331"/><!-- COMBINING MACRON BELOW -->
       <map code="0x1e80" name="Wgrave"/><!-- LATIN CAPITAL LETTER W WITH GRAVE -->
       <map code="0x1e81" name="wgrave"/><!-- LATIN SMALL LETTER W WITH GRAVE -->
       <map code="0x1e82" name="Wacute"/><!-- LATIN CAPITAL LETTER W WITH ACUTE -->
@@ -1861,13 +1877,13 @@
       Regular
     </namerecord>
     <namerecord nameID="3" platformID="3" platEncID="1" langID="0x409">
-      1.800;NMCH;NamcheShadowSans-Regular
+      1.810;NMCH;NamcheShadowSans-Regular
     </namerecord>
     <namerecord nameID="4" platformID="3" platEncID="1" langID="0x409">
       Namche Shadow Sans Regular
     </namerecord>
     <namerecord nameID="5" platformID="3" platEncID="1" langID="0x409">
-      Version 1.800; ttfautohint (v1.8.4.16-eb64)
+      Version 1.810; ttfautohint (v1.8.4.16-eb64)
     </namerecord>
     <namerecord nameID="6" platformID="3" platEncID="1" langID="0x409">
       NamcheShadowSans-Regular
@@ -2289,6 +2305,10 @@
       <psName name="uni0307.ss08"/>
       <psName name="dieresis.ss08"/>
       <psName name="dotaccent.ss08"/>
+      <psName name="eng"/>
+      <psName name="uni02BC"/>
+      <psName name="uni0331"/>
+      <psName name="Eng"/>
     </extraNames>
   </post>
 
@@ -2332,6 +2352,7 @@
       <ClassDef glyph="Edotaccent.ss08" class="1"/>
       <ClassDef glyph="Egrave" class="1"/>
       <ClassDef glyph="Emacron" class="1"/>
+      <ClassDef glyph="Eng" class="1"/>
       <ClassDef glyph="Eogonek" class="1"/>
       <ClassDef glyph="Eth" class="1"/>
       <ClassDef glyph="G" class="1"/>
@@ -2488,6 +2509,7 @@
       <ClassDef glyph="edotaccent.ss08" class="1"/>
       <ClassDef glyph="egrave" class="1"/>
       <ClassDef glyph="emacron" class="1"/>
+      <ClassDef glyph="eng" class="1"/>
       <ClassDef glyph="eogonek" class="1"/>
       <ClassDef glyph="f" class="1"/>
       <ClassDef glyph="f_f.liga" class="2"/>
@@ -2602,6 +2624,7 @@
       <ClassDef glyph="uni0326.loclMAH" class="3"/>
       <ClassDef glyph="uni0327" class="3"/>
       <ClassDef glyph="uni0328" class="3"/>
+      <ClassDef glyph="uni0331" class="3"/>
       <ClassDef glyph="uni1E9E" class="1"/>
       <ClassDef glyph="uni2116" class="1"/>
       <ClassDef glyph="uogonek" class="1"/>
@@ -2725,6 +2748,7 @@
         <Glyph value="uni0326.loclMAH"/>
         <Glyph value="uni0327"/>
         <Glyph value="uni0328"/>
+        <Glyph value="uni0331"/>
       </Coverage>
       <Coverage index="2">
         <Glyph value="uni0308"/>
@@ -2752,7 +2776,7 @@
       <Format value="1"/>
       <VarRegionList>
         <!-- RegionAxisCount=1 -->
-        <!-- RegionCount=4 -->
+        <!-- RegionCount=20 -->
         <Region index="0">
           <VarRegionAxis index="0">
             <StartCoord value="-1.0"/>
@@ -2781,8 +2805,120 @@
             <EndCoord value="1.0"/>
           </VarRegionAxis>
         </Region>
+        <Region index="4">
+          <VarRegionAxis index="0">
+            <StartCoord value="-1.0"/>
+            <PeakCoord value="-0.1667"/>
+            <EndCoord value="0.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="5">
+          <VarRegionAxis index="0">
+            <StartCoord value="-1.0"/>
+            <PeakCoord value="-0.3333"/>
+            <EndCoord value="-0.1667"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="6">
+          <VarRegionAxis index="0">
+            <StartCoord value="-1.0"/>
+            <PeakCoord value="-0.5"/>
+            <EndCoord value="-0.3333"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="7">
+          <VarRegionAxis index="0">
+            <StartCoord value="-1.0"/>
+            <PeakCoord value="-0.6667"/>
+            <EndCoord value="-0.5"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="8">
+          <VarRegionAxis index="0">
+            <StartCoord value="-1.0"/>
+            <PeakCoord value="-0.8333"/>
+            <EndCoord value="-0.6667"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="9">
+          <VarRegionAxis index="0">
+            <StartCoord value="-1.0"/>
+            <PeakCoord value="-1.0"/>
+            <EndCoord value="-0.8333"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="10">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.0"/>
+            <PeakCoord value="0.1"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="11">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.1"/>
+            <PeakCoord value="0.2"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="12">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.2"/>
+            <PeakCoord value="0.3"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="13">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.3"/>
+            <PeakCoord value="0.4"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="14">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.4"/>
+            <PeakCoord value="0.5"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="15">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.5"/>
+            <PeakCoord value="0.6"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="16">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.6"/>
+            <PeakCoord value="0.7"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="17">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.7"/>
+            <PeakCoord value="0.8"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="18">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.8"/>
+            <PeakCoord value="0.9"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
+        <Region index="19">
+          <VarRegionAxis index="0">
+            <StartCoord value="0.9"/>
+            <PeakCoord value="1.0"/>
+            <EndCoord value="1.0"/>
+          </VarRegionAxis>
+        </Region>
       </VarRegionList>
-      <!-- VarDataCount=5 -->
+      <!-- VarDataCount=10 -->
       <VarData index="0">
         <!-- ItemCount=13 -->
         <NumShorts value="0"/>
@@ -3120,6 +3256,108 @@
         <VarRegionIndex index="1" value="2"/>
         <VarRegionIndex index="2" value="3"/>
         <Item index="0" value="[-17, 34, 42]"/>
+      </VarData>
+      <VarData index="5">
+        <!-- ItemCount=1 -->
+        <NumShorts value="0"/>
+        <!-- VarRegionCount=16 -->
+        <VarRegionIndex index="0" value="4"/>
+        <VarRegionIndex index="1" value="5"/>
+        <VarRegionIndex index="2" value="6"/>
+        <VarRegionIndex index="3" value="7"/>
+        <VarRegionIndex index="4" value="8"/>
+        <VarRegionIndex index="5" value="9"/>
+        <VarRegionIndex index="6" value="10"/>
+        <VarRegionIndex index="7" value="11"/>
+        <VarRegionIndex index="8" value="12"/>
+        <VarRegionIndex index="9" value="13"/>
+        <VarRegionIndex index="10" value="14"/>
+        <VarRegionIndex index="11" value="15"/>
+        <VarRegionIndex index="12" value="16"/>
+        <VarRegionIndex index="13" value="17"/>
+        <VarRegionIndex index="14" value="18"/>
+        <VarRegionIndex index="15" value="19"/>
+        <Item index="0" value="[-3, -5, -5, -7, -10, -21, 2, 2, 4, 3, 4, 4, 5, 8, 11, 22]"/>
+      </VarData>
+      <VarData index="6">
+        <!-- ItemCount=1 -->
+        <NumShorts value="0"/>
+        <!-- VarRegionCount=16 -->
+        <VarRegionIndex index="0" value="4"/>
+        <VarRegionIndex index="1" value="5"/>
+        <VarRegionIndex index="2" value="6"/>
+        <VarRegionIndex index="3" value="7"/>
+        <VarRegionIndex index="4" value="8"/>
+        <VarRegionIndex index="5" value="9"/>
+        <VarRegionIndex index="6" value="10"/>
+        <VarRegionIndex index="7" value="11"/>
+        <VarRegionIndex index="8" value="12"/>
+        <VarRegionIndex index="9" value="13"/>
+        <VarRegionIndex index="10" value="14"/>
+        <VarRegionIndex index="11" value="15"/>
+        <VarRegionIndex index="12" value="16"/>
+        <VarRegionIndex index="13" value="17"/>
+        <VarRegionIndex index="14" value="18"/>
+        <VarRegionIndex index="15" value="19"/>
+        <Item index="0" value="[-2, -2, -3, -5, -7, -13, 2, 3, 3, 4, 4, 4, 6, 8, 12, 24]"/>
+      </VarData>
+      <VarData index="7">
+        <!-- ItemCount=1 -->
+        <NumShorts value="0"/>
+        <!-- VarRegionCount=10 -->
+        <VarRegionIndex index="0" value="10"/>
+        <VarRegionIndex index="1" value="11"/>
+        <VarRegionIndex index="2" value="12"/>
+        <VarRegionIndex index="3" value="13"/>
+        <VarRegionIndex index="4" value="14"/>
+        <VarRegionIndex index="5" value="15"/>
+        <VarRegionIndex index="6" value="16"/>
+        <VarRegionIndex index="7" value="17"/>
+        <VarRegionIndex index="8" value="18"/>
+        <VarRegionIndex index="9" value="19"/>
+        <Item index="0" value="[1, 1, 1, 1, 2, 2, 2, 3, 5, 10]"/>
+      </VarData>
+      <VarData index="8">
+        <!-- ItemCount=1 -->
+        <NumShorts value="0"/>
+        <!-- VarRegionCount=16 -->
+        <VarRegionIndex index="0" value="4"/>
+        <VarRegionIndex index="1" value="5"/>
+        <VarRegionIndex index="2" value="6"/>
+        <VarRegionIndex index="3" value="7"/>
+        <VarRegionIndex index="4" value="8"/>
+        <VarRegionIndex index="5" value="9"/>
+        <VarRegionIndex index="6" value="10"/>
+        <VarRegionIndex index="7" value="11"/>
+        <VarRegionIndex index="8" value="12"/>
+        <VarRegionIndex index="9" value="13"/>
+        <VarRegionIndex index="10" value="14"/>
+        <VarRegionIndex index="11" value="15"/>
+        <VarRegionIndex index="12" value="16"/>
+        <VarRegionIndex index="13" value="17"/>
+        <VarRegionIndex index="14" value="18"/>
+        <VarRegionIndex index="15" value="19"/>
+        <Item index="0" value="[2, 3, 3, 4, 8, 14, -4, -4, -5, -6, -7, -9, -10, -14, -20, -41]"/>
+      </VarData>
+      <VarData index="9">
+        <!-- ItemCount=1 -->
+        <NumShorts value="0"/>
+        <!-- VarRegionCount=14 -->
+        <VarRegionIndex index="0" value="4"/>
+        <VarRegionIndex index="1" value="5"/>
+        <VarRegionIndex index="2" value="6"/>
+        <VarRegionIndex index="3" value="7"/>
+        <VarRegionIndex index="4" value="8"/>
+        <VarRegionIndex index="5" value="9"/>
+        <VarRegionIndex index="6" value="10"/>
+        <VarRegionIndex index="7" value="12"/>
+        <VarRegionIndex index="8" value="14"/>
+        <VarRegionIndex index="9" value="15"/>
+        <VarRegionIndex index="10" value="16"/>
+        <VarRegionIndex index="11" value="17"/>
+        <VarRegionIndex index="12" value="18"/>
+        <VarRegionIndex index="13" value="19"/>
+        <Item index="0" value="[-3, -3, -4, -6, -8, -16, 1, 1, 1, 2, 1, 2, 3, 6]"/>
       </VarData>
     </VarStore>
   </GDEF>
@@ -5400,6 +5638,8 @@
             <Glyph value="less"/>
             <Glyph value="asciitilde"/>
             <Glyph value="asciicircum"/>
+            <Glyph value="eng"/>
+            <Glyph value="Eng"/>
           </Coverage>
           <ValueFormat1 value="68"/>
           <ValueFormat2 value="0"/>
@@ -5437,6 +5677,7 @@
             <ClassDef glyph="Edotaccent.ss08" class="7"/>
             <ClassDef glyph="Egrave" class="7"/>
             <ClassDef glyph="Emacron" class="7"/>
+            <ClassDef glyph="Eng" class="2"/>
             <ClassDef glyph="Eogonek" class="7"/>
             <ClassDef glyph="Eth" class="31"/>
             <ClassDef glyph="F" class="43"/>
@@ -5585,6 +5826,7 @@
             <ClassDef glyph="eight" class="48"/>
             <ClassDef glyph="ellipsis" class="22"/>
             <ClassDef glyph="ellipsis.ss08" class="22"/>
+            <ClassDef glyph="eng" class="4"/>
             <ClassDef glyph="equal" class="11"/>
             <ClassDef glyph="f" class="29"/>
             <ClassDef glyph="f_f.liga" class="29"/>
@@ -5756,6 +5998,7 @@
             <ClassDef glyph="Edotaccent.ss08" class="1"/>
             <ClassDef glyph="Egrave" class="1"/>
             <ClassDef glyph="Emacron" class="1"/>
+            <ClassDef glyph="Eng" class="1"/>
             <ClassDef glyph="Eogonek" class="1"/>
             <ClassDef glyph="Eth" class="3"/>
             <ClassDef glyph="F" class="1"/>
@@ -5923,6 +6166,7 @@
             <ClassDef glyph="ellipsis" class="17"/>
             <ClassDef glyph="ellipsis.ss08" class="17"/>
             <ClassDef glyph="emacron" class="2"/>
+            <ClassDef glyph="eng" class="5"/>
             <ClassDef glyph="eogonek" class="2"/>
             <ClassDef glyph="equal" class="10"/>
             <ClassDef glyph="eth" class="2"/>
@@ -21725,6 +21969,7 @@
             <Glyph value="uni0326.loclMAH"/>
             <Glyph value="uni0327"/>
             <Glyph value="uni0328"/>
+            <Glyph value="uni0331"/>
           </MarkCoverage>
           <BaseCoverage>
             <Glyph value="A"/>
@@ -22023,10 +22268,12 @@
             <Glyph value="cent"/>
             <Glyph value="dollar"/>
             <Glyph value="yen"/>
+            <Glyph value="eng"/>
+            <Glyph value="Eng"/>
           </BaseCoverage>
           <!-- ClassCount=1 -->
           <MarkArray>
-            <!-- MarkCount=4 -->
+            <!-- MarkCount=5 -->
             <MarkRecord index="0">
               <Class value="0"/>
               <MarkAnchor Format="3">
@@ -22075,9 +22322,21 @@
                 </XDeviceTable>
               </MarkAnchor>
             </MarkRecord>
+            <MarkRecord index="4">
+              <Class value="0"/>
+              <MarkAnchor Format="3">
+                <XCoordinate value="88"/>
+                <YCoordinate value="0"/>
+                <XDeviceTable>
+                  <StartSize value="5"/>
+                  <EndSize value="0"/>
+                  <DeltaFormat value="32768"/>
+                </XDeviceTable>
+              </MarkAnchor>
+            </MarkRecord>
           </MarkArray>
           <BaseArray>
-            <!-- BaseCount=296 -->
+            <!-- BaseCount=298 -->
             <BaseRecord index="0">
               <BaseAnchor index="0" Format="3">
                 <XCoordinate value="334"/>
@@ -25429,6 +25688,28 @@
                 </XDeviceTable>
               </BaseAnchor>
             </BaseRecord>
+            <BaseRecord index="296">
+              <BaseAnchor index="0" Format="3">
+                <XCoordinate value="291"/>
+                <YCoordinate value="-150"/>
+                <XDeviceTable>
+                  <StartSize value="6"/>
+                  <EndSize value="0"/>
+                  <DeltaFormat value="32768"/>
+                </XDeviceTable>
+              </BaseAnchor>
+            </BaseRecord>
+            <BaseRecord index="297">
+              <BaseAnchor index="0" Format="3">
+                <XCoordinate value="372"/>
+                <YCoordinate value="-150"/>
+                <XDeviceTable>
+                  <StartSize value="9"/>
+                  <EndSize value="0"/>
+                  <DeltaFormat value="32768"/>
+                </XDeviceTable>
+              </BaseAnchor>
+            </BaseRecord>
           </BaseArray>
         </MarkBasePos>
       </Lookup>
@@ -27355,6 +27636,8 @@
             <Glyph value="cent"/>
             <Glyph value="dollar"/>
             <Glyph value="yen"/>
+            <Glyph value="eng"/>
+            <Glyph value="Eng"/>
           </BaseCoverage>
           <!-- ClassCount=1 -->
           <MarkArray>
@@ -27684,7 +27967,7 @@
             </MarkRecord>
           </MarkArray>
           <BaseArray>
-            <!-- BaseCount=298 -->
+            <!-- BaseCount=300 -->
             <BaseRecord index="0">
               <BaseAnchor index="0" Format="3">
                 <XCoordinate value="334"/>
@@ -31698,6 +31981,33 @@
                 </XDeviceTable>
               </BaseAnchor>
             </BaseRecord>
+            <BaseRecord index="298">
+              <BaseAnchor index="0" Format="3">
+                <XCoordinate value="291"/>
+                <YCoordinate value="530"/>
+                <XDeviceTable>
+                  <StartSize value="6"/>
+                  <EndSize value="0"/>
+                  <DeltaFormat value="32768"/>
+                </XDeviceTable>
+                <YDeviceTable>
+                  <StartSize value="7"/>
+                  <EndSize value="0"/>
+                  <DeltaFormat value="32768"/>
+                </YDeviceTable>
+              </BaseAnchor>
+            </BaseRecord>
+            <BaseRecord index="299">
+              <BaseAnchor index="0" Format="3">
+                <XCoordinate value="372"/>
+                <YCoordinate value="710"/>
+                <XDeviceTable>
+                  <StartSize value="9"/>
+                  <EndSize value="0"/>
+                  <DeltaFormat value="32768"/>
+                </XDeviceTable>
+              </BaseAnchor>
+            </BaseRecord>
           </BaseArray>
         </MarkBasePos>
       </Lookup>
@@ -31711,6 +32021,7 @@
             <Glyph value="uni0326.loclMAH"/>
             <Glyph value="uni0327"/>
             <Glyph value="uni0328"/>
+            <Glyph value="uni0331"/>
           </MarkCoverage>
           <LigatureCoverage>
             <Glyph value="A_I.dlig"/>
@@ -31722,7 +32033,7 @@
           </LigatureCoverage>
           <!-- ClassCount=1 -->
           <MarkArray>
-            <!-- MarkCount=4 -->
+            <!-- MarkCount=5 -->
             <MarkRecord index="0">
               <Class value="0"/>
               <MarkAnchor Format="3">
@@ -31767,6 +32078,18 @@
                 <XDeviceTable>
                   <StartSize value="2"/>
                   <EndSize value="10"/>
+                  <DeltaFormat value="32768"/>
+                </XDeviceTable>
+              </MarkAnchor>
+            </MarkRecord>
+            <MarkRecord index="4">
+              <Class value="0"/>
+              <MarkAnchor Format="3">
+                <XCoordinate value="88"/>
+                <YCoordinate value="0"/>
+                <XDeviceTable>
+                  <StartSize value="5"/>
+                  <EndSize value="0"/>
                   <DeltaFormat value="32768"/>
                 </XDeviceTable>
               </MarkAnchor>
@@ -32584,14 +32907,16 @@
             <Glyph value="uni0326.loclMAH"/>
             <Glyph value="uni0327"/>
             <Glyph value="uni0328"/>
+            <Glyph value="uni0331"/>
           </Mark1Coverage>
           <Mark2Coverage>
             <Glyph value="uni0326"/>
             <Glyph value="uni0326.loclMAH"/>
+            <Glyph value="uni0331"/>
           </Mark2Coverage>
           <!-- ClassCount=1 -->
           <Mark1Array>
-            <!-- MarkCount=4 -->
+            <!-- MarkCount=5 -->
             <MarkRecord index="0">
               <Class value="0"/>
               <MarkAnchor Format="3">
@@ -32640,9 +32965,21 @@
                 </XDeviceTable>
               </MarkAnchor>
             </MarkRecord>
+            <MarkRecord index="4">
+              <Class value="0"/>
+              <MarkAnchor Format="3">
+                <XCoordinate value="88"/>
+                <YCoordinate value="0"/>
+                <XDeviceTable>
+                  <StartSize value="5"/>
+                  <EndSize value="0"/>
+                  <DeltaFormat value="32768"/>
+                </XDeviceTable>
+              </MarkAnchor>
+            </MarkRecord>
           </Mark1Array>
           <Mark2Array>
-            <!-- Mark2Count=2 -->
+            <!-- Mark2Count=3 -->
             <Mark2Record index="0">
               <Mark2Anchor index="0" Format="3">
                 <XCoordinate value="113"/>
@@ -32671,6 +33008,22 @@
                 <YDeviceTable>
                   <StartSize value="2"/>
                   <EndSize value="251"/>
+                  <DeltaFormat value="32768"/>
+                </YDeviceTable>
+              </Mark2Anchor>
+            </Mark2Record>
+            <Mark2Record index="2">
+              <Mark2Anchor index="0" Format="3">
+                <XCoordinate value="88"/>
+                <YCoordinate value="-132"/>
+                <XDeviceTable>
+                  <StartSize value="5"/>
+                  <EndSize value="0"/>
+                  <DeltaFormat value="32768"/>
+                </XDeviceTable>
+                <YDeviceTable>
+                  <StartSize value="8"/>
+                  <EndSize value="0"/>
                   <DeltaFormat value="32768"/>
                 </YDeviceTable>
               </Mark2Anchor>
@@ -40612,7 +40965,7 @@
         <Item index="4" value="[185, 19, 20, 24, 26, 31, 37, 47, 61, 93]"/>
       </VarData>
       <VarData index="2">
-        <!-- ItemCount=141 -->
+        <!-- ItemCount=142 -->
         <NumShorts value="0"/>
         <!-- VarRegionCount=16 -->
         <VarRegionIndex index="0" value="0"/>
@@ -40661,117 +41014,118 @@
         <Item index="27" value="[-8, -10, -12, -16, -24, -48, 9, 9, 11, 13, 15, 17, 22, 29, 43, 87]"/>
         <Item index="28" value="[-8, -9, -11, -16, -22, -46, 2, 3, 3, 3, 4, 5, 5, 8, 12, 23]"/>
         <Item index="29" value="[-8, -9, -11, -16, -22, -46, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
-        <Item index="30" value="[-7, -9, -11, -14, -23, -44, 6, 7, 8, 9, 10, 12, 15, 22, 31, 62]"/>
-        <Item index="31" value="[-7, -9, -11, -14, -23, -44, 7, 9, 9, 11, 12, 14, 19, 24, 38, 74]"/>
-        <Item index="32" value="[-7, -8, -11, -15, -21, -43, 5, 7, 6, 8, 9, 10, 14, 18, 27, 54]"/>
-        <Item index="33" value="[-7, -8, -11, -14, -21, -42, 4, 4, 4, 6, 6, 8, 10, 12, 19, 38]"/>
-        <Item index="34" value="[-7, -8, -11, -14, -21, -42, 4, 4, 6, 6, 7, 8, 10, 15, 21, 42]"/>
-        <Item index="35" value="[-7, -8, -11, -14, -21, -42, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
-        <Item index="36" value="[-7, -8, -11, -14, -21, -42, 6, 7, 7, 9, 10, 11, 15, 19, 30, 59]"/>
-        <Item index="37" value="[-7, -8, -11, -14, -21, -42, 9, 10, 10, 13, 15, 18, 22, 29, 44, 88]"/>
-        <Item index="38" value="[-7, -8, -10, -14, -20, -41, 7, 9, 9, 10, 13, 14, 18, 24, 37, 73]"/>
-        <Item index="39" value="[-7, -7, -11, -13, -20, -40, 0, -1, 0, -1, -1, 0, -2, -1, -2, -4]"/>
-        <Item index="40" value="[-7, -7, -11, -13, -20, -40, 2, 3, 3, 3, 4, 5, 5, 8, 12, 23]"/>
-        <Item index="41" value="[-7, -7, -11, -13, -20, -40, 4, 4, 5, 6, 7, 8, 10, 13, 20, 40]"/>
-        <Item index="42" value="[-7, -7, -11, -13, -20, -40, 4, 4, 6, 6, 7, 8, 10, 15, 21, 42]"/>
-        <Item index="43" value="[-7, -7, -11, -13, -20, -40, 8, 9, 11, 11, 14, 16, 20, 28, 41, 82]"/>
-        <Item index="44" value="[-7, -7, -11, -13, -20, -40, 9, 10, 10, 13, 15, 18, 22, 29, 44, 88]"/>
-        <Item index="45" value="[-6, -8, -9, -14, -19, -39, 2, 2, 4, 3, 3, 4, 6, 8, 11, 22]"/>
-        <Item index="46" value="[-6, -8, -9, -14, -19, -39, 6, 7, 7, 9, 10, 11, 15, 19, 30, 59]"/>
-        <Item index="47" value="[-6, -8, -9, -13, -19, -38, 5, 6, 7, 7, 9, 10, 13, 18, 26, 52]"/>
-        <Item index="48" value="[-6, -8, -9, -13, -19, -38, 8, 9, 11, 11, 14, 16, 20, 28, 41, 82]"/>
-        <Item index="49" value="[-6, -7, -9, -13, -19, -37, 1, 2, 1, 3, 2, 2, 4, 5, 7, 14]"/>
-        <Item index="50" value="[-6, -7, -9, -13, -19, -37, 9, 9, 11, 12, 15, 16, 22, 28, 43, 85]"/>
-        <Item index="51" value="[-6, -7, -9, -12, -18, -36, 7, 7, 8, 9, 12, 13, 16, 22, 33, 66]"/>
-        <Item index="52" value="[-6, -7, -9, -12, -18, -36, 8, 8, 10, 10, 13, 16, 18, 26, 37, 76]"/>
-        <Item index="53" value="[-6, -7, -8, -12, -17, -35, 3, 4, 4, 6, 5, 6, 9, 11, 18, 34]"/>
-        <Item index="54" value="[-6, -7, -8, -12, -17, -35, 7, 8, 8, 9, 12, 14, 17, 22, 34, 68]"/>
-        <Item index="55" value="[-6, -7, -8, -12, -17, -35, 9, 10, 12, 13, 15, 18, 23, 31, 46, 92]"/>
-        <Item index="56" value="[-6, -6, -9, -12, -16, -34, 4, 5, 6, 6, 7, 9, 11, 15, 22, 44]"/>
-        <Item index="57" value="[-5, -7, -8, -11, -16, -33, 8, 10, 10, 12, 14, 17, 20, 27, 42, 83]"/>
-        <Item index="58" value="[-5, -7, -8, -11, -16, -33, 11, 12, 13, 16, 18, 22, 27, 35, 54, 108]"/>
-        <Item index="59" value="[-5, -7, -8, -10, -17, -32, 1, 1, 2, 2, 2, 2, 3, 4, 6, 12]"/>
-        <Item index="60" value="[-5, -7, -8, -10, -17, -32, 4, 3, 5, 5, 6, 8, 8, 13, 17, 36]"/>
-        <Item index="61" value="[-5, -7, -8, -10, -17, -32, 7, 8, 8, 9, 12, 14, 17, 22, 34, 68]"/>
-        <Item index="62" value="[-5, -7, -8, -10, -17, -32, 9, 10, 12, 13, 15, 18, 23, 31, 46, 92]"/>
-        <Item index="63" value="[-5, -6, -8, -11, -15, -31, -1, -1, -1, -2, -1, -2, -3, -3, -5, -10]"/>
-        <Item index="64" value="[-5, -6, -8, -11, -15, -31, 3, 3, 4, 4, 6, 6, 8, 10, 16, 31]"/>
-        <Item index="65" value="[-5, -6, -8, -11, -15, -31, 4, 4, 4, 6, 6, 8, 10, 12, 19, 38]"/>
-        <Item index="66" value="[-5, -6, -8, -11, -15, -31, 12, 12, 15, 16, 20, 23, 29, 39, 57, 116]"/>
-        <Item index="67" value="[-5, -6, -8, -10, -15, -30, 2, 1, 3, 1, 3, 3, 4, 5, 8, 15]"/>
-        <Item index="68" value="[-5, -6, -8, -10, -15, -30, 2, 3, 3, 4, 4, 4, 7, 7, 13, 24]"/>
-        <Item index="69" value="[-5, -6, -8, -10, -15, -30, 3, 3, 4, 4, 6, 6, 8, 10, 16, 31]"/>
-        <Item index="70" value="[-5, -6, -8, -10, -15, -30, 8, 8, 10, 10, 13, 16, 18, 26, 37, 76]"/>
-        <Item index="71" value="[-5, -6, -8, -10, -15, -30, 12, 13, 15, 17, 20, 23, 30, 40, 59, 119]"/>
-        <Item index="72" value="[-5, -6, -7, -9, -15, -29, 1, 1, 2, 2, 2, 2, 3, 4, 6, 12]"/>
-        <Item index="73" value="[-4, -6, -6, -9, -13, -27, 2, 2, 3, 3, 3, 3, 5, 6, 10, 19]"/>
-        <Item index="74" value="[-4, -6, -6, -9, -13, -27, 2, 3, 3, 4, 4, 4, 7, 7, 13, 24]"/>
-        <Item index="75" value="[-4, -6, -6, -9, -13, -27, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
-        <Item index="76" value="[-4, -6, -6, -9, -13, -27, 5, 6, 7, 7, 9, 10, 13, 18, 26, 52]"/>
-        <Item index="77" value="[-4, -6, -6, -9, -13, -27, 6, 8, 7, 9, 11, 13, 15, 21, 32, 63]"/>
-        <Item index="78" value="[-4, -5, -6, -9, -12, -25, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
-        <Item index="79" value="[-4, -5, -6, -9, -12, -25, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
-        <Item index="80" value="[-4, -5, -6, -9, -12, -25, 6, 7, 7, 9, 11, 12, 15, 21, 30, 61]"/>
-        <Item index="81" value="[-4, -5, -6, -9, -12, -25, 6, 8, 7, 10, 10, 13, 16, 21, 33, 64]"/>
-        <Item index="82" value="[-4, -5, -6, -9, -12, -25, 7, 7, 8, 9, 12, 12, 17, 21, 33, 65]"/>
-        <Item index="83" value="[-4, -5, -6, -9, -12, -25, 8, 9, 10, 11, 15, 16, 20, 27, 41, 81]"/>
-        <Item index="84" value="[-4, -5, -6, -9, -12, -25, 11, 11, 14, 14, 18, 21, 27, 34, 53, 105]"/>
-        <Item index="85" value="[-4, -5, -6, -9, -12, -25, 12, 12, 15, 16, 20, 22, 30, 38, 58, 115]"/>
-        <Item index="86" value="[-4, -5, -6, -8, -12, -24, 6, 8, 7, 10, 10, 13, 16, 21, 33, 64]"/>
-        <Item index="87" value="[-4, -5, -6, -8, -12, -24, 7, 7, 8, 9, 12, 13, 16, 22, 33, 66]"/>
-        <Item index="88" value="[-4, -5, -5, -8, -11, -23, 0, -1, 0, 0, 0, -2, 0, -1, -2, -3]"/>
-        <Item index="89" value="[-4, -5, -5, -8, -11, -23, 1, 0, 1, 1, 2, 1, 2, 3, 3, 7]"/>
-        <Item index="90" value="[-4, -5, -5, -8, -11, -23, 5, 6, 5, 7, 8, 10, 12, 15, 24, 48]"/>
-        <Item index="91" value="[-4, -5, -5, -8, -11, -23, 8, 8, 10, 10, 13, 15, 19, 25, 38, 75]"/>
-        <Item index="92" value="[-4, -4, -6, -7, -11, -22, 4, 3, 5, 5, 6, 8, 8, 13, 17, 36]"/>
-        <Item index="93" value="[-3, -5, -4, -8, -10, -21, 8, 10, 10, 12, 14, 17, 20, 27, 42, 83]"/>
-        <Item index="94" value="[-3, -5, -4, -7, -10, -20, 2, 2, 3, 3, 3, 4, 5, 7, 10, 20]"/>
-        <Item index="95" value="[-3, -5, -4, -7, -10, -20, 4, 4, 5, 6, 7, 8, 10, 13, 20, 40]"/>
-        <Item index="96" value="[-3, -5, -4, -7, -10, -20, 5, 7, 6, 8, 9, 10, 14, 18, 27, 54]"/>
-        <Item index="97" value="[-3, -5, -4, -7, -10, -20, 10, 10, 12, 14, 16, 19, 24, 31, 48, 95]"/>
-        <Item index="98" value="[-3, -4, -4, -7, -10, -19, 3, 4, 4, 5, 6, 6, 8, 11, 17, 33]"/>
-        <Item index="99" value="[-3, -4, -4, -7, -10, -19, 5, 7, 6, 8, 9, 10, 14, 18, 27, 54]"/>
-        <Item index="100" value="[-3, -4, -4, -6, -9, -18, 6, 7, 6, 9, 10, 11, 15, 19, 29, 58]"/>
-        <Item index="101" value="[-3, -4, -3, -6, -8, -17, -1, -1, -1, -2, 0, -2, -2, -3, -5, -9]"/>
-        <Item index="102" value="[-3, -4, -3, -6, -8, -17, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
-        <Item index="103" value="[-3, -4, -3, -6, -8, -17, 7, 8, 9, 10, 11, 13, 17, 23, 35, 69]"/>
-        <Item index="104" value="[-3, -3, -4, -6, -7, -16, 7, 8, 8, 9, 12, 14, 17, 22, 34, 68]"/>
-        <Item index="105" value="[-2, -3, -4, -5, -7, -15, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
-        <Item index="106" value="[-2, -3, -4, -5, -7, -15, 7, 8, 9, 10, 11, 13, 17, 23, 35, 69]"/>
-        <Item index="107" value="[-2, -3, -4, -5, -7, -15, 9, 9, 11, 12, 15, 17, 21, 29, 43, 86]"/>
-        <Item index="108" value="[-2, -3, -4, -4, -8, -14, 3, 2, 4, 3, 5, 5, 6, 9, 13, 26]"/>
-        <Item index="109" value="[-2, -2, -3, -5, -7, -13, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
-        <Item index="110" value="[-2, -2, -3, -5, -7, -13, 8, 8, 10, 10, 13, 15, 19, 25, 38, 75]"/>
-        <Item index="111" value="[-2, -2, -3, -5, -7, -13, 8, 8, 10, 10, 13, 16, 18, 26, 37, 76]"/>
-        <Item index="112" value="[-2, -2, -3, -4, -6, -12, 7, 8, 10, 10, 12, 14, 18, 24, 36, 72]"/>
-        <Item index="113" value="[-2, -2, -3, -4, -6, -12, 8, 10, 10, 12, 14, 17, 20, 27, 42, 83]"/>
-        <Item index="114" value="[-2, -2, -3, -4, -6, -12, 10, 10, 12, 14, 16, 19, 24, 31, 48, 95]"/>
-        <Item index="115" value="[-2, -2, -2, -4, -5, -11, 3, 2, 4, 3, 5, 5, 6, 9, 13, 26]"/>
-        <Item index="116" value="[-2, -2, -2, -4, -5, -11, 5, 7, 6, 7, 10, 10, 13, 17, 27, 53]"/>
-        <Item index="117" value="[-2, -2, -2, -4, -5, -11, 7, 9, 9, 11, 12, 14, 19, 24, 38, 74]"/>
-        <Item index="118" value="[-2, -1, -3, -4, -4, -10, 1, 1, 1, 2, 1, 2, 3, 3, 5, 10]"/>
-        <Item index="119" value="[-2, -1, -3, -4, -4, -10, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
-        <Item index="120" value="[-1, -2, -2, -3, -4, -9, -2, -1, -3, -1, -3, -4, -3, -6, -7, -16]"/>
-        <Item index="121" value="[-1, -2, -2, -2, -5, -8, 3, 3, 3, 4, 5, 6, 7, 9, 14, 28]"/>
-        <Item index="122" value="[-1, -2, -2, -2, -5, -8, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
-        <Item index="123" value="[-1, -2, -2, -2, -5, -8, 8, 8, 10, 10, 13, 16, 18, 26, 37, 76]"/>
-        <Item index="124" value="[-1, -2, -2, -2, -5, -8, 8, 9, 10, 11, 14, 15, 20, 26, 40, 79]"/>
-        <Item index="125" value="[-1, -1, -1, -1, -3, -5, 6, 6, 7, 8, 9, 12, 13, 19, 28, 56]"/>
-        <Item index="126" value="[-1, -1, -1, -1, -3, -5, 6, 7, 8, 9, 10, 12, 15, 22, 31, 62]"/>
-        <Item index="127" value="[-1, -1, -1, -1, -3, -5, 6, 8, 7, 9, 11, 13, 15, 21, 32, 63]"/>
-        <Item index="128" value="[-1, 0, -1, -2, -1, -4, 4, 4, 5, 6, 7, 8, 10, 13, 20, 40]"/>
-        <Item index="129" value="[-1, 0, -1, -2, -1, -4, 6, 7, 7, 9, 11, 12, 15, 21, 30, 61]"/>
-        <Item index="130" value="[-1, 0, -1, -2, -1, -4, 10, 11, 13, 14, 17, 20, 25, 33, 50, 100]"/>
-        <Item index="131" value="[0, -1, 0, 0, -2, -2, 6, 6, 7, 8, 10, 11, 14, 20, 28, 57]"/>
-        <Item index="132" value="[1, 0, 1, 2, 1, 4, 2, 3, 3, 3, 4, 5, 5, 8, 12, 23]"/>
-        <Item index="133" value="[1, 1, 3, 2, 4, 7, 6, 8, 7, 9, 11, 13, 15, 21, 32, 63]"/>
-        <Item index="134" value="[1, 1, 3, 2, 4, 7, 7, 7, 8, 9, 12, 13, 16, 22, 33, 66]"/>
-        <Item index="135" value="[2, 1, 3, 4, 4, 10, -1, -1, -1, -2, -1, -2, -3, -3, -5, -10]"/>
-        <Item index="136" value="[2, 2, 3, 4, 6, 12, -2, -3, -3, -4, -4, -4, -7, -7, -13, -24]"/>
-        <Item index="137" value="[2, 2, 3, 4, 6, 12, -1, -2, -1, -3, -2, -2, -4, -5, -7, -14]"/>
-        <Item index="138" value="[2, 2, 3, 4, 6, 12, 3, 4, 4, 6, 5, 6, 9, 11, 18, 34]"/>
-        <Item index="139" value="[2, 2, 3, 4, 6, 12, 7, 7, 8, 9, 12, 13, 16, 22, 33, 66]"/>
-        <Item index="140" value="[3, 5, 4, 7, 10, 20, 9, 11, 11, 14, 16, 18, 24, 31, 48, 94]"/>
+        <Item index="30" value="[-8, -9, -10, -15, -22, -44, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
+        <Item index="31" value="[-7, -9, -11, -14, -23, -44, 6, 7, 8, 9, 10, 12, 15, 22, 31, 62]"/>
+        <Item index="32" value="[-7, -9, -11, -14, -23, -44, 7, 9, 9, 11, 12, 14, 19, 24, 38, 74]"/>
+        <Item index="33" value="[-7, -8, -11, -15, -21, -43, 5, 7, 6, 8, 9, 10, 14, 18, 27, 54]"/>
+        <Item index="34" value="[-7, -8, -11, -14, -21, -42, 4, 4, 4, 6, 6, 8, 10, 12, 19, 38]"/>
+        <Item index="35" value="[-7, -8, -11, -14, -21, -42, 4, 4, 6, 6, 7, 8, 10, 15, 21, 42]"/>
+        <Item index="36" value="[-7, -8, -11, -14, -21, -42, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
+        <Item index="37" value="[-7, -8, -11, -14, -21, -42, 6, 7, 7, 9, 10, 11, 15, 19, 30, 59]"/>
+        <Item index="38" value="[-7, -8, -11, -14, -21, -42, 9, 10, 10, 13, 15, 18, 22, 29, 44, 88]"/>
+        <Item index="39" value="[-7, -8, -10, -14, -20, -41, 7, 9, 9, 10, 13, 14, 18, 24, 37, 73]"/>
+        <Item index="40" value="[-7, -7, -11, -13, -20, -40, 0, -1, 0, -1, -1, 0, -2, -1, -2, -4]"/>
+        <Item index="41" value="[-7, -7, -11, -13, -20, -40, 2, 3, 3, 3, 4, 5, 5, 8, 12, 23]"/>
+        <Item index="42" value="[-7, -7, -11, -13, -20, -40, 4, 4, 5, 6, 7, 8, 10, 13, 20, 40]"/>
+        <Item index="43" value="[-7, -7, -11, -13, -20, -40, 4, 4, 6, 6, 7, 8, 10, 15, 21, 42]"/>
+        <Item index="44" value="[-7, -7, -11, -13, -20, -40, 8, 9, 11, 11, 14, 16, 20, 28, 41, 82]"/>
+        <Item index="45" value="[-7, -7, -11, -13, -20, -40, 9, 10, 10, 13, 15, 18, 22, 29, 44, 88]"/>
+        <Item index="46" value="[-6, -8, -9, -14, -19, -39, 2, 2, 4, 3, 3, 4, 6, 8, 11, 22]"/>
+        <Item index="47" value="[-6, -8, -9, -14, -19, -39, 6, 7, 7, 9, 10, 11, 15, 19, 30, 59]"/>
+        <Item index="48" value="[-6, -8, -9, -13, -19, -38, 5, 6, 7, 7, 9, 10, 13, 18, 26, 52]"/>
+        <Item index="49" value="[-6, -8, -9, -13, -19, -38, 8, 9, 11, 11, 14, 16, 20, 28, 41, 82]"/>
+        <Item index="50" value="[-6, -7, -9, -13, -19, -37, 1, 2, 1, 3, 2, 2, 4, 5, 7, 14]"/>
+        <Item index="51" value="[-6, -7, -9, -13, -19, -37, 9, 9, 11, 12, 15, 16, 22, 28, 43, 85]"/>
+        <Item index="52" value="[-6, -7, -9, -12, -18, -36, 7, 7, 8, 9, 12, 13, 16, 22, 33, 66]"/>
+        <Item index="53" value="[-6, -7, -9, -12, -18, -36, 8, 8, 10, 10, 13, 16, 18, 26, 37, 76]"/>
+        <Item index="54" value="[-6, -7, -8, -12, -17, -35, 3, 4, 4, 6, 5, 6, 9, 11, 18, 34]"/>
+        <Item index="55" value="[-6, -7, -8, -12, -17, -35, 7, 8, 8, 9, 12, 14, 17, 22, 34, 68]"/>
+        <Item index="56" value="[-6, -7, -8, -12, -17, -35, 9, 10, 12, 13, 15, 18, 23, 31, 46, 92]"/>
+        <Item index="57" value="[-6, -6, -9, -12, -16, -34, 4, 5, 6, 6, 7, 9, 11, 15, 22, 44]"/>
+        <Item index="58" value="[-5, -7, -8, -11, -16, -33, 8, 10, 10, 12, 14, 17, 20, 27, 42, 83]"/>
+        <Item index="59" value="[-5, -7, -8, -11, -16, -33, 11, 12, 13, 16, 18, 22, 27, 35, 54, 108]"/>
+        <Item index="60" value="[-5, -7, -8, -10, -17, -32, 1, 1, 2, 2, 2, 2, 3, 4, 6, 12]"/>
+        <Item index="61" value="[-5, -7, -8, -10, -17, -32, 4, 3, 5, 5, 6, 8, 8, 13, 17, 36]"/>
+        <Item index="62" value="[-5, -7, -8, -10, -17, -32, 7, 8, 8, 9, 12, 14, 17, 22, 34, 68]"/>
+        <Item index="63" value="[-5, -7, -8, -10, -17, -32, 9, 10, 12, 13, 15, 18, 23, 31, 46, 92]"/>
+        <Item index="64" value="[-5, -6, -8, -11, -15, -31, -1, -1, -1, -2, -1, -2, -3, -3, -5, -10]"/>
+        <Item index="65" value="[-5, -6, -8, -11, -15, -31, 3, 3, 4, 4, 6, 6, 8, 10, 16, 31]"/>
+        <Item index="66" value="[-5, -6, -8, -11, -15, -31, 4, 4, 4, 6, 6, 8, 10, 12, 19, 38]"/>
+        <Item index="67" value="[-5, -6, -8, -11, -15, -31, 12, 12, 15, 16, 20, 23, 29, 39, 57, 116]"/>
+        <Item index="68" value="[-5, -6, -8, -10, -15, -30, 2, 1, 3, 1, 3, 3, 4, 5, 8, 15]"/>
+        <Item index="69" value="[-5, -6, -8, -10, -15, -30, 2, 3, 3, 4, 4, 4, 7, 7, 13, 24]"/>
+        <Item index="70" value="[-5, -6, -8, -10, -15, -30, 3, 3, 4, 4, 6, 6, 8, 10, 16, 31]"/>
+        <Item index="71" value="[-5, -6, -8, -10, -15, -30, 8, 8, 10, 10, 13, 16, 18, 26, 37, 76]"/>
+        <Item index="72" value="[-5, -6, -8, -10, -15, -30, 12, 13, 15, 17, 20, 23, 30, 40, 59, 119]"/>
+        <Item index="73" value="[-5, -6, -7, -9, -15, -29, 1, 1, 2, 2, 2, 2, 3, 4, 6, 12]"/>
+        <Item index="74" value="[-4, -6, -6, -9, -13, -27, 2, 2, 3, 3, 3, 3, 5, 6, 10, 19]"/>
+        <Item index="75" value="[-4, -6, -6, -9, -13, -27, 2, 3, 3, 4, 4, 4, 7, 7, 13, 24]"/>
+        <Item index="76" value="[-4, -6, -6, -9, -13, -27, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
+        <Item index="77" value="[-4, -6, -6, -9, -13, -27, 5, 6, 7, 7, 9, 10, 13, 18, 26, 52]"/>
+        <Item index="78" value="[-4, -6, -6, -9, -13, -27, 6, 8, 7, 9, 11, 13, 15, 21, 32, 63]"/>
+        <Item index="79" value="[-4, -5, -6, -9, -12, -25, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
+        <Item index="80" value="[-4, -5, -6, -9, -12, -25, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
+        <Item index="81" value="[-4, -5, -6, -9, -12, -25, 6, 7, 7, 9, 11, 12, 15, 21, 30, 61]"/>
+        <Item index="82" value="[-4, -5, -6, -9, -12, -25, 6, 8, 7, 10, 10, 13, 16, 21, 33, 64]"/>
+        <Item index="83" value="[-4, -5, -6, -9, -12, -25, 7, 7, 8, 9, 12, 12, 17, 21, 33, 65]"/>
+        <Item index="84" value="[-4, -5, -6, -9, -12, -25, 8, 9, 10, 11, 15, 16, 20, 27, 41, 81]"/>
+        <Item index="85" value="[-4, -5, -6, -9, -12, -25, 11, 11, 14, 14, 18, 21, 27, 34, 53, 105]"/>
+        <Item index="86" value="[-4, -5, -6, -9, -12, -25, 12, 12, 15, 16, 20, 22, 30, 38, 58, 115]"/>
+        <Item index="87" value="[-4, -5, -6, -8, -12, -24, 6, 8, 7, 10, 10, 13, 16, 21, 33, 64]"/>
+        <Item index="88" value="[-4, -5, -6, -8, -12, -24, 7, 7, 8, 9, 12, 13, 16, 22, 33, 66]"/>
+        <Item index="89" value="[-4, -5, -5, -8, -11, -23, 0, -1, 0, 0, 0, -2, 0, -1, -2, -3]"/>
+        <Item index="90" value="[-4, -5, -5, -8, -11, -23, 1, 0, 1, 1, 2, 1, 2, 3, 3, 7]"/>
+        <Item index="91" value="[-4, -5, -5, -8, -11, -23, 5, 6, 5, 7, 8, 10, 12, 15, 24, 48]"/>
+        <Item index="92" value="[-4, -5, -5, -8, -11, -23, 8, 8, 10, 10, 13, 15, 19, 25, 38, 75]"/>
+        <Item index="93" value="[-4, -4, -6, -7, -11, -22, 4, 3, 5, 5, 6, 8, 8, 13, 17, 36]"/>
+        <Item index="94" value="[-3, -5, -4, -8, -10, -21, 8, 10, 10, 12, 14, 17, 20, 27, 42, 83]"/>
+        <Item index="95" value="[-3, -5, -4, -7, -10, -20, 2, 2, 3, 3, 3, 4, 5, 7, 10, 20]"/>
+        <Item index="96" value="[-3, -5, -4, -7, -10, -20, 4, 4, 5, 6, 7, 8, 10, 13, 20, 40]"/>
+        <Item index="97" value="[-3, -5, -4, -7, -10, -20, 5, 7, 6, 8, 9, 10, 14, 18, 27, 54]"/>
+        <Item index="98" value="[-3, -5, -4, -7, -10, -20, 10, 10, 12, 14, 16, 19, 24, 31, 48, 95]"/>
+        <Item index="99" value="[-3, -4, -4, -7, -10, -19, 3, 4, 4, 5, 6, 6, 8, 11, 17, 33]"/>
+        <Item index="100" value="[-3, -4, -4, -7, -10, -19, 5, 7, 6, 8, 9, 10, 14, 18, 27, 54]"/>
+        <Item index="101" value="[-3, -4, -4, -6, -9, -18, 6, 7, 6, 9, 10, 11, 15, 19, 29, 58]"/>
+        <Item index="102" value="[-3, -4, -3, -6, -8, -17, -1, -1, -1, -2, 0, -2, -2, -3, -5, -9]"/>
+        <Item index="103" value="[-3, -4, -3, -6, -8, -17, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
+        <Item index="104" value="[-3, -4, -3, -6, -8, -17, 7, 8, 9, 10, 11, 13, 17, 23, 35, 69]"/>
+        <Item index="105" value="[-3, -3, -4, -6, -7, -16, 7, 8, 8, 9, 12, 14, 17, 22, 34, 68]"/>
+        <Item index="106" value="[-2, -3, -4, -5, -7, -15, 5, 6, 6, 7, 8, 10, 13, 16, 25, 50]"/>
+        <Item index="107" value="[-2, -3, -4, -5, -7, -15, 7, 8, 9, 10, 11, 13, 17, 23, 35, 69]"/>
+        <Item index="108" value="[-2, -3, -4, -5, -7, -15, 9, 9, 11, 12, 15, 17, 21, 29, 43, 86]"/>
+        <Item index="109" value="[-2, -3, -4, -4, -8, -14, 3, 2, 4, 3, 5, 5, 6, 9, 13, 26]"/>
+        <Item index="110" value="[-2, -2, -3, -5, -7, -13, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
+        <Item index="111" value="[-2, -2, -3, -5, -7, -13, 8, 8, 10, 10, 13, 15, 19, 25, 38, 75]"/>
+        <Item index="112" value="[-2, -2, -3, -5, -7, -13, 8, 8, 10, 10, 13, 16, 18, 26, 37, 76]"/>
+        <Item index="113" value="[-2, -2, -3, -4, -6, -12, 7, 8, 10, 10, 12, 14, 18, 24, 36, 72]"/>
+        <Item index="114" value="[-2, -2, -3, -4, -6, -12, 8, 10, 10, 12, 14, 17, 20, 27, 42, 83]"/>
+        <Item index="115" value="[-2, -2, -3, -4, -6, -12, 10, 10, 12, 14, 16, 19, 24, 31, 48, 95]"/>
+        <Item index="116" value="[-2, -2, -2, -4, -5, -11, 3, 2, 4, 3, 5, 5, 6, 9, 13, 26]"/>
+        <Item index="117" value="[-2, -2, -2, -4, -5, -11, 5, 7, 6, 7, 10, 10, 13, 17, 27, 53]"/>
+        <Item index="118" value="[-2, -2, -2, -4, -5, -11, 7, 9, 9, 11, 12, 14, 19, 24, 38, 74]"/>
+        <Item index="119" value="[-2, -1, -3, -4, -4, -10, 1, 1, 1, 2, 1, 2, 3, 3, 5, 10]"/>
+        <Item index="120" value="[-2, -1, -3, -4, -4, -10, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
+        <Item index="121" value="[-1, -2, -2, -3, -4, -9, -2, -1, -3, -1, -3, -4, -3, -6, -7, -16]"/>
+        <Item index="122" value="[-1, -2, -2, -2, -5, -8, 3, 3, 3, 4, 5, 6, 7, 9, 14, 28]"/>
+        <Item index="123" value="[-1, -2, -2, -2, -5, -8, 6, 7, 7, 9, 10, 12, 15, 20, 30, 60]"/>
+        <Item index="124" value="[-1, -2, -2, -2, -5, -8, 8, 8, 10, 10, 13, 16, 18, 26, 37, 76]"/>
+        <Item index="125" value="[-1, -2, -2, -2, -5, -8, 8, 9, 10, 11, 14, 15, 20, 26, 40, 79]"/>
+        <Item index="126" value="[-1, -1, -1, -1, -3, -5, 6, 6, 7, 8, 9, 12, 13, 19, 28, 56]"/>
+        <Item index="127" value="[-1, -1, -1, -1, -3, -5, 6, 7, 8, 9, 10, 12, 15, 22, 31, 62]"/>
+        <Item index="128" value="[-1, -1, -1, -1, -3, -5, 6, 8, 7, 9, 11, 13, 15, 21, 32, 63]"/>
+        <Item index="129" value="[-1, 0, -1, -2, -1, -4, 4, 4, 5, 6, 7, 8, 10, 13, 20, 40]"/>
+        <Item index="130" value="[-1, 0, -1, -2, -1, -4, 6, 7, 7, 9, 11, 12, 15, 21, 30, 61]"/>
+        <Item index="131" value="[-1, 0, -1, -2, -1, -4, 10, 11, 13, 14, 17, 20, 25, 33, 50, 100]"/>
+        <Item index="132" value="[0, -1, 0, 0, -2, -2, 6, 6, 7, 8, 10, 11, 14, 20, 28, 57]"/>
+        <Item index="133" value="[1, 0, 1, 2, 1, 4, 2, 3, 3, 3, 4, 5, 5, 8, 12, 23]"/>
+        <Item index="134" value="[1, 1, 3, 2, 4, 7, 6, 8, 7, 9, 11, 13, 15, 21, 32, 63]"/>
+        <Item index="135" value="[1, 1, 3, 2, 4, 7, 7, 7, 8, 9, 12, 13, 16, 22, 33, 66]"/>
+        <Item index="136" value="[2, 1, 3, 4, 4, 10, -1, -1, -1, -2, -1, -2, -3, -3, -5, -10]"/>
+        <Item index="137" value="[2, 2, 3, 4, 6, 12, -2, -3, -3, -4, -4, -4, -7, -7, -13, -24]"/>
+        <Item index="138" value="[2, 2, 3, 4, 6, 12, -1, -2, -1, -3, -2, -2, -4, -5, -7, -14]"/>
+        <Item index="139" value="[2, 2, 3, 4, 6, 12, 3, 4, 4, 6, 5, 6, 9, 11, 18, 34]"/>
+        <Item index="140" value="[2, 2, 3, 4, 6, 12, 7, 7, 8, 9, 12, 13, 16, 22, 33, 66]"/>
+        <Item index="141" value="[3, 5, 4, 7, 10, 20, 9, 11, 11, 14, 16, 18, 24, 31, 48, 94]"/>
       </VarData>
       <VarData index="3">
         <!-- ItemCount=19 -->
@@ -40831,40 +41185,41 @@
       <Map glyph="Aogonek" outer="2" inner="17"/>
       <Map glyph="Aring" outer="2" inner="16"/>
       <Map glyph="Atilde" outer="2" inner="17"/>
-      <Map glyph="B" outer="2" inner="33"/>
-      <Map glyph="C" outer="2" inner="76"/>
-      <Map glyph="Cacute" outer="2" inner="76"/>
-      <Map glyph="Ccaron" outer="2" inner="76"/>
-      <Map glyph="Ccedilla" outer="2" inner="76"/>
-      <Map glyph="Cdotaccent" outer="2" inner="76"/>
-      <Map glyph="Cdotaccent.ss08" outer="2" inner="76"/>
-      <Map glyph="D" outer="2" inner="92"/>
-      <Map glyph="Dcaron" outer="2" inner="92"/>
-      <Map glyph="Dcroat" outer="2" inner="92"/>
-      <Map glyph="E" outer="2" inner="69"/>
-      <Map glyph="Eacute" outer="2" inner="69"/>
-      <Map glyph="Ecaron" outer="2" inner="69"/>
-      <Map glyph="Ecircumflex" outer="2" inner="69"/>
-      <Map glyph="Edieresis" outer="2" inner="69"/>
-      <Map glyph="Edieresis.ss08" outer="2" inner="69"/>
-      <Map glyph="Edotaccent" outer="2" inner="69"/>
-      <Map glyph="Edotaccent.ss08" outer="2" inner="69"/>
-      <Map glyph="Egrave" outer="2" inner="69"/>
-      <Map glyph="Emacron" outer="2" inner="69"/>
-      <Map glyph="Eogonek" outer="2" inner="69"/>
-      <Map glyph="Eth" outer="2" inner="92"/>
-      <Map glyph="Euro" outer="2" inner="133"/>
-      <Map glyph="F" outer="2" inner="68"/>
-      <Map glyph="G" outer="2" inner="81"/>
-      <Map glyph="G.ss06" outer="2" inner="81"/>
-      <Map glyph="Gbreve" outer="2" inner="81"/>
-      <Map glyph="Gbreve.ss06" outer="2" inner="81"/>
-      <Map glyph="Gdotaccent" outer="2" inner="81"/>
-      <Map glyph="Gdotaccent.ss06" outer="2" inner="81"/>
-      <Map glyph="Gdotaccent.ss06.ss08" outer="2" inner="81"/>
-      <Map glyph="Gdotaccent.ss08" outer="2" inner="81"/>
-      <Map glyph="H" outer="2" inner="49"/>
-      <Map glyph="Hbar" outer="2" inner="49"/>
+      <Map glyph="B" outer="2" inner="34"/>
+      <Map glyph="C" outer="2" inner="77"/>
+      <Map glyph="Cacute" outer="2" inner="77"/>
+      <Map glyph="Ccaron" outer="2" inner="77"/>
+      <Map glyph="Ccedilla" outer="2" inner="77"/>
+      <Map glyph="Cdotaccent" outer="2" inner="77"/>
+      <Map glyph="Cdotaccent.ss08" outer="2" inner="77"/>
+      <Map glyph="D" outer="2" inner="93"/>
+      <Map glyph="Dcaron" outer="2" inner="93"/>
+      <Map glyph="Dcroat" outer="2" inner="93"/>
+      <Map glyph="E" outer="2" inner="70"/>
+      <Map glyph="Eacute" outer="2" inner="70"/>
+      <Map glyph="Ecaron" outer="2" inner="70"/>
+      <Map glyph="Ecircumflex" outer="2" inner="70"/>
+      <Map glyph="Edieresis" outer="2" inner="70"/>
+      <Map glyph="Edieresis.ss08" outer="2" inner="70"/>
+      <Map glyph="Edotaccent" outer="2" inner="70"/>
+      <Map glyph="Edotaccent.ss08" outer="2" inner="70"/>
+      <Map glyph="Egrave" outer="2" inner="70"/>
+      <Map glyph="Emacron" outer="2" inner="70"/>
+      <Map glyph="Eng" outer="2" inner="60"/>
+      <Map glyph="Eogonek" outer="2" inner="70"/>
+      <Map glyph="Eth" outer="2" inner="93"/>
+      <Map glyph="Euro" outer="2" inner="134"/>
+      <Map glyph="F" outer="2" inner="69"/>
+      <Map glyph="G" outer="2" inner="82"/>
+      <Map glyph="G.ss06" outer="2" inner="82"/>
+      <Map glyph="Gbreve" outer="2" inner="82"/>
+      <Map glyph="Gbreve.ss06" outer="2" inner="82"/>
+      <Map glyph="Gdotaccent" outer="2" inner="82"/>
+      <Map glyph="Gdotaccent.ss06" outer="2" inner="82"/>
+      <Map glyph="Gdotaccent.ss06.ss08" outer="2" inner="82"/>
+      <Map glyph="Gdotaccent.ss08" outer="2" inner="82"/>
+      <Map glyph="H" outer="2" inner="50"/>
+      <Map glyph="Hbar" outer="2" inner="50"/>
       <Map glyph="I" outer="2" inner="29"/>
       <Map glyph="I.ss05" outer="2" inner="3"/>
       <Map glyph="Iacute" outer="2" inner="29"/>
@@ -40885,376 +41240,378 @@
       <Map glyph="Imacron.ss05" outer="2" inner="3"/>
       <Map glyph="Iogonek" outer="2" inner="29"/>
       <Map glyph="Iogonek.ss05" outer="2" inner="3"/>
-      <Map glyph="J" outer="2" inner="75"/>
-      <Map glyph="K" outer="2" inner="83"/>
-      <Map glyph="L" outer="2" inner="67"/>
-      <Map glyph="Lacute" outer="2" inner="67"/>
-      <Map glyph="Lcaron" outer="2" inner="67"/>
-      <Map glyph="Lslash" outer="2" inner="67"/>
-      <Map glyph="M" outer="2" inner="77"/>
-      <Map glyph="N" outer="2" inner="59"/>
-      <Map glyph="Nacute" outer="2" inner="59"/>
-      <Map glyph="Ncaron" outer="2" inner="59"/>
-      <Map glyph="Ntilde" outer="2" inner="59"/>
-      <Map glyph="O" outer="2" inner="80"/>
-      <Map glyph="OE" outer="2" inner="116"/>
-      <Map glyph="Oacute" outer="2" inner="80"/>
-      <Map glyph="Ocircumflex" outer="2" inner="80"/>
-      <Map glyph="Odieresis" outer="2" inner="80"/>
-      <Map glyph="Odieresis.ss08" outer="2" inner="80"/>
-      <Map glyph="Ograve" outer="2" inner="80"/>
-      <Map glyph="Ohungarumlaut" outer="2" inner="80"/>
-      <Map glyph="Oslash" outer="2" inner="80"/>
-      <Map glyph="Otilde" outer="2" inner="80"/>
-      <Map glyph="P" outer="2" inner="60"/>
-      <Map glyph="Q" outer="2" inner="79"/>
-      <Map glyph="R" outer="2" inner="34"/>
+      <Map glyph="J" outer="2" inner="76"/>
+      <Map glyph="K" outer="2" inner="84"/>
+      <Map glyph="L" outer="2" inner="68"/>
+      <Map glyph="Lacute" outer="2" inner="68"/>
+      <Map glyph="Lcaron" outer="2" inner="68"/>
+      <Map glyph="Lslash" outer="2" inner="68"/>
+      <Map glyph="M" outer="2" inner="78"/>
+      <Map glyph="N" outer="2" inner="60"/>
+      <Map glyph="Nacute" outer="2" inner="60"/>
+      <Map glyph="Ncaron" outer="2" inner="60"/>
+      <Map glyph="Ntilde" outer="2" inner="60"/>
+      <Map glyph="O" outer="2" inner="81"/>
+      <Map glyph="OE" outer="2" inner="117"/>
+      <Map glyph="Oacute" outer="2" inner="81"/>
+      <Map glyph="Ocircumflex" outer="2" inner="81"/>
+      <Map glyph="Odieresis" outer="2" inner="81"/>
+      <Map glyph="Odieresis.ss08" outer="2" inner="81"/>
+      <Map glyph="Ograve" outer="2" inner="81"/>
+      <Map glyph="Ohungarumlaut" outer="2" inner="81"/>
+      <Map glyph="Oslash" outer="2" inner="81"/>
+      <Map glyph="Otilde" outer="2" inner="81"/>
+      <Map glyph="P" outer="2" inner="61"/>
+      <Map glyph="Q" outer="2" inner="80"/>
+      <Map glyph="R" outer="2" inner="35"/>
       <Map glyph="R.ss04" outer="2" inner="21"/>
-      <Map glyph="Racute" outer="2" inner="34"/>
+      <Map glyph="Racute" outer="2" inner="35"/>
       <Map glyph="Racute.ss04" outer="2" inner="21"/>
-      <Map glyph="Rcaron" outer="2" inner="34"/>
+      <Map glyph="Rcaron" outer="2" inner="35"/>
       <Map glyph="Rcaron.ss04" outer="2" inner="21"/>
-      <Map glyph="S" outer="2" inner="103"/>
-      <Map glyph="Sacute" outer="2" inner="103"/>
-      <Map glyph="Scaron" outer="2" inner="103"/>
-      <Map glyph="Scedilla" outer="2" inner="103"/>
-      <Map glyph="T" outer="2" inner="124"/>
-      <Map glyph="Tcaron" outer="2" inner="124"/>
-      <Map glyph="Thorn" outer="2" inner="60"/>
-      <Map glyph="U" outer="2" inner="74"/>
+      <Map glyph="S" outer="2" inner="104"/>
+      <Map glyph="Sacute" outer="2" inner="104"/>
+      <Map glyph="Scaron" outer="2" inner="104"/>
+      <Map glyph="Scedilla" outer="2" inner="104"/>
+      <Map glyph="T" outer="2" inner="125"/>
+      <Map glyph="Tcaron" outer="2" inner="125"/>
+      <Map glyph="Thorn" outer="2" inner="61"/>
+      <Map glyph="U" outer="2" inner="75"/>
       <Map glyph="U_I.dlig" outer="3" inner="1"/>
-      <Map glyph="Uacute" outer="2" inner="74"/>
-      <Map glyph="Ucircumflex" outer="2" inner="74"/>
-      <Map glyph="Udieresis" outer="2" inner="74"/>
-      <Map glyph="Udieresis.ss08" outer="2" inner="74"/>
-      <Map glyph="Ugrave" outer="2" inner="74"/>
-      <Map glyph="Uhungarumlaut" outer="2" inner="74"/>
-      <Map glyph="Umacron" outer="2" inner="74"/>
-      <Map glyph="Uogonek" outer="2" inner="74"/>
-      <Map glyph="Uring" outer="2" inner="74"/>
-      <Map glyph="V" outer="2" inner="84"/>
-      <Map glyph="W" outer="2" inner="66"/>
-      <Map glyph="Wacute" outer="2" inner="66"/>
-      <Map glyph="Wcircumflex" outer="2" inner="66"/>
-      <Map glyph="Wdieresis" outer="2" inner="66"/>
-      <Map glyph="Wdieresis.ss08" outer="2" inner="66"/>
-      <Map glyph="Wgrave" outer="2" inner="66"/>
+      <Map glyph="Uacute" outer="2" inner="75"/>
+      <Map glyph="Ucircumflex" outer="2" inner="75"/>
+      <Map glyph="Udieresis" outer="2" inner="75"/>
+      <Map glyph="Udieresis.ss08" outer="2" inner="75"/>
+      <Map glyph="Ugrave" outer="2" inner="75"/>
+      <Map glyph="Uhungarumlaut" outer="2" inner="75"/>
+      <Map glyph="Umacron" outer="2" inner="75"/>
+      <Map glyph="Uogonek" outer="2" inner="75"/>
+      <Map glyph="Uring" outer="2" inner="75"/>
+      <Map glyph="V" outer="2" inner="85"/>
+      <Map glyph="W" outer="2" inner="67"/>
+      <Map glyph="Wacute" outer="2" inner="67"/>
+      <Map glyph="Wcircumflex" outer="2" inner="67"/>
+      <Map glyph="Wdieresis" outer="2" inner="67"/>
+      <Map glyph="Wdieresis.ss08" outer="2" inner="67"/>
+      <Map glyph="Wgrave" outer="2" inner="67"/>
       <Map glyph="X" outer="3" inner="18"/>
-      <Map glyph="Y" outer="2" inner="55"/>
-      <Map glyph="Yacute" outer="2" inner="55"/>
-      <Map glyph="Ycircumflex" outer="2" inner="55"/>
-      <Map glyph="Ydieresis" outer="2" inner="55"/>
-      <Map glyph="Ydieresis.ss08" outer="2" inner="55"/>
-      <Map glyph="Ygrave" outer="2" inner="55"/>
-      <Map glyph="Z" outer="2" inner="93"/>
-      <Map glyph="Zacute" outer="2" inner="93"/>
-      <Map glyph="Zcaron" outer="2" inner="93"/>
-      <Map glyph="Zdotaccent" outer="2" inner="93"/>
-      <Map glyph="Zdotaccent.ss08" outer="2" inner="93"/>
-      <Map glyph="a" outer="2" inner="112"/>
-      <Map glyph="a.ss01" outer="2" inner="86"/>
-      <Map glyph="a.ss02" outer="2" inner="82"/>
-      <Map glyph="aacute" outer="2" inner="112"/>
-      <Map glyph="aacute.ss01" outer="2" inner="86"/>
-      <Map glyph="aacute.ss02" outer="2" inner="82"/>
-      <Map glyph="abreve" outer="2" inner="112"/>
-      <Map glyph="abreve.ss01" outer="2" inner="86"/>
-      <Map glyph="abreve.ss02" outer="2" inner="82"/>
-      <Map glyph="acircumflex" outer="2" inner="112"/>
-      <Map glyph="acircumflex.ss01" outer="2" inner="86"/>
-      <Map glyph="acircumflex.ss02" outer="2" inner="82"/>
-      <Map glyph="acute" outer="2" inner="35"/>
+      <Map glyph="Y" outer="2" inner="56"/>
+      <Map glyph="Yacute" outer="2" inner="56"/>
+      <Map glyph="Ycircumflex" outer="2" inner="56"/>
+      <Map glyph="Ydieresis" outer="2" inner="56"/>
+      <Map glyph="Ydieresis.ss08" outer="2" inner="56"/>
+      <Map glyph="Ygrave" outer="2" inner="56"/>
+      <Map glyph="Z" outer="2" inner="94"/>
+      <Map glyph="Zacute" outer="2" inner="94"/>
+      <Map glyph="Zcaron" outer="2" inner="94"/>
+      <Map glyph="Zdotaccent" outer="2" inner="94"/>
+      <Map glyph="Zdotaccent.ss08" outer="2" inner="94"/>
+      <Map glyph="a" outer="2" inner="113"/>
+      <Map glyph="a.ss01" outer="2" inner="87"/>
+      <Map glyph="a.ss02" outer="2" inner="83"/>
+      <Map glyph="aacute" outer="2" inner="113"/>
+      <Map glyph="aacute.ss01" outer="2" inner="87"/>
+      <Map glyph="aacute.ss02" outer="2" inner="83"/>
+      <Map glyph="abreve" outer="2" inner="113"/>
+      <Map glyph="abreve.ss01" outer="2" inner="87"/>
+      <Map glyph="abreve.ss02" outer="2" inner="83"/>
+      <Map glyph="acircumflex" outer="2" inner="113"/>
+      <Map glyph="acircumflex.ss01" outer="2" inner="87"/>
+      <Map glyph="acircumflex.ss02" outer="2" inner="83"/>
+      <Map glyph="acute" outer="2" inner="36"/>
       <Map glyph="acutecomb" outer="0" inner="1"/>
-      <Map glyph="adieresis" outer="2" inner="112"/>
-      <Map glyph="adieresis.ss01" outer="2" inner="86"/>
-      <Map glyph="adieresis.ss01.ss08" outer="2" inner="86"/>
-      <Map glyph="adieresis.ss02" outer="2" inner="82"/>
-      <Map glyph="adieresis.ss02.ss08" outer="2" inner="82"/>
-      <Map glyph="adieresis.ss08" outer="2" inner="112"/>
-      <Map glyph="ae" outer="2" inner="134"/>
-      <Map glyph="agrave" outer="2" inner="112"/>
-      <Map glyph="agrave.ss01" outer="2" inner="86"/>
-      <Map glyph="agrave.ss02" outer="2" inner="82"/>
-      <Map glyph="amacron" outer="2" inner="112"/>
-      <Map glyph="amacron.ss01" outer="2" inner="86"/>
-      <Map glyph="amacron.ss02" outer="2" inner="82"/>
+      <Map glyph="adieresis" outer="2" inner="113"/>
+      <Map glyph="adieresis.ss01" outer="2" inner="87"/>
+      <Map glyph="adieresis.ss01.ss08" outer="2" inner="87"/>
+      <Map glyph="adieresis.ss02" outer="2" inner="83"/>
+      <Map glyph="adieresis.ss02.ss08" outer="2" inner="83"/>
+      <Map glyph="adieresis.ss08" outer="2" inner="113"/>
+      <Map glyph="ae" outer="2" inner="135"/>
+      <Map glyph="agrave" outer="2" inner="113"/>
+      <Map glyph="agrave.ss01" outer="2" inner="87"/>
+      <Map glyph="agrave.ss02" outer="2" inner="83"/>
+      <Map glyph="amacron" outer="2" inner="113"/>
+      <Map glyph="amacron.ss01" outer="2" inner="87"/>
+      <Map glyph="amacron.ss02" outer="2" inner="83"/>
       <Map glyph="ampersand" outer="3" inner="14"/>
-      <Map glyph="aogonek" outer="2" inner="112"/>
-      <Map glyph="aogonek.ss01" outer="2" inner="86"/>
-      <Map glyph="aogonek.ss02" outer="2" inner="82"/>
-      <Map glyph="aring" outer="2" inner="112"/>
-      <Map glyph="aring.ss01" outer="2" inner="86"/>
-      <Map glyph="aring.ss02" outer="2" inner="82"/>
+      <Map glyph="aogonek" outer="2" inner="113"/>
+      <Map glyph="aogonek.ss01" outer="2" inner="87"/>
+      <Map glyph="aogonek.ss02" outer="2" inner="83"/>
+      <Map glyph="aring" outer="2" inner="113"/>
+      <Map glyph="aring.ss01" outer="2" inner="87"/>
+      <Map glyph="aring.ss02" outer="2" inner="83"/>
       <Map glyph="asciicircum" outer="2" inner="14"/>
       <Map glyph="asciitilde" outer="0" inner="0"/>
-      <Map glyph="asterisk" outer="2" inner="137"/>
-      <Map glyph="at" outer="2" inner="140"/>
-      <Map glyph="atilde" outer="2" inner="112"/>
-      <Map glyph="atilde.ss01" outer="2" inner="86"/>
-      <Map glyph="atilde.ss02" outer="2" inner="82"/>
-      <Map glyph="b" outer="2" inner="82"/>
-      <Map glyph="backslash" outer="2" inner="123"/>
-      <Map glyph="bar" outer="2" inner="35"/>
-      <Map glyph="braceleft" outer="2" inner="64"/>
-      <Map glyph="braceleft.alt" outer="2" inner="120"/>
-      <Map glyph="braceleft.alt.white" outer="2" inner="136"/>
-      <Map glyph="braceright" outer="2" inner="64"/>
-      <Map glyph="braceright.alt" outer="2" inner="120"/>
-      <Map glyph="braceright.alt.white" outer="2" inner="136"/>
+      <Map glyph="asterisk" outer="2" inner="138"/>
+      <Map glyph="at" outer="2" inner="141"/>
+      <Map glyph="atilde" outer="2" inner="113"/>
+      <Map glyph="atilde.ss01" outer="2" inner="87"/>
+      <Map glyph="atilde.ss02" outer="2" inner="83"/>
+      <Map glyph="b" outer="2" inner="83"/>
+      <Map glyph="backslash" outer="2" inner="124"/>
+      <Map glyph="bar" outer="2" inner="36"/>
+      <Map glyph="braceleft" outer="2" inner="65"/>
+      <Map glyph="braceleft.alt" outer="2" inner="121"/>
+      <Map glyph="braceleft.alt.white" outer="2" inner="137"/>
+      <Map glyph="braceright" outer="2" inner="65"/>
+      <Map glyph="braceright.alt" outer="2" inner="121"/>
+      <Map glyph="braceright.alt.white" outer="2" inner="137"/>
       <Map glyph="bracketleft" outer="2" inner="13"/>
-      <Map glyph="bracketleft.alt" outer="2" inner="101"/>
-      <Map glyph="bracketleft.alt.white" outer="2" inner="138"/>
+      <Map glyph="bracketleft.alt" outer="2" inner="102"/>
+      <Map glyph="bracketleft.alt.white" outer="2" inner="139"/>
       <Map glyph="bracketright" outer="2" inner="13"/>
-      <Map glyph="bracketright.alt" outer="2" inner="101"/>
-      <Map glyph="bracketright.alt.white" outer="2" inner="138"/>
-      <Map glyph="breve" outer="2" inner="98"/>
+      <Map glyph="bracketright.alt" outer="2" inner="102"/>
+      <Map glyph="bracketright.alt.white" outer="2" inner="139"/>
+      <Map glyph="breve" outer="2" inner="99"/>
       <Map glyph="bullet" outer="2" inner="4"/>
-      <Map glyph="c" outer="2" inner="107"/>
-      <Map glyph="cacute" outer="2" inner="107"/>
+      <Map glyph="c" outer="2" inner="108"/>
+      <Map glyph="cacute" outer="2" inner="108"/>
       <Map glyph="caron" outer="2" inner="12"/>
-      <Map glyph="ccaron" outer="2" inner="107"/>
-      <Map glyph="ccedilla" outer="2" inner="107"/>
-      <Map glyph="cdotaccent" outer="2" inner="107"/>
-      <Map glyph="cdotaccent.ss08" outer="2" inner="107"/>
-      <Map glyph="cedilla" outer="2" inner="73"/>
-      <Map glyph="cent" outer="2" inner="107"/>
+      <Map glyph="ccaron" outer="2" inner="108"/>
+      <Map glyph="ccedilla" outer="2" inner="108"/>
+      <Map glyph="cdotaccent" outer="2" inner="108"/>
+      <Map glyph="cdotaccent.ss08" outer="2" inner="108"/>
+      <Map glyph="cedilla" outer="2" inner="74"/>
+      <Map glyph="cent" outer="2" inner="108"/>
       <Map glyph="circumflex" outer="2" inner="12"/>
       <Map glyph="colon" outer="2" inner="28"/>
       <Map glyph="colon.ss08" outer="2" inner="19"/>
-      <Map glyph="comma" outer="2" inner="46"/>
-      <Map glyph="copyright" outer="2" inner="135"/>
-      <Map glyph="d" outer="2" inner="82"/>
+      <Map glyph="comma" outer="2" inner="47"/>
+      <Map glyph="copyright" outer="2" inner="136"/>
+      <Map glyph="d" outer="2" inner="83"/>
       <Map glyph="dcaron" outer="3" inner="12"/>
-      <Map glyph="dcroat" outer="2" inner="82"/>
-      <Map glyph="degree" outer="2" inner="41"/>
+      <Map glyph="dcroat" outer="2" inner="83"/>
+      <Map glyph="degree" outer="2" inner="42"/>
       <Map glyph="dieresis" outer="3" inner="5"/>
       <Map glyph="dieresis.ss08" outer="2" inner="20"/>
-      <Map glyph="divide" outer="2" inner="95"/>
-      <Map glyph="dollar" outer="2" inner="104"/>
-      <Map glyph="dotaccent" outer="2" inner="37"/>
-      <Map glyph="dotaccent.ss08" outer="2" inner="61"/>
-      <Map glyph="dotlessi" outer="2" inner="30"/>
-      <Map glyph="e" outer="2" inner="117"/>
-      <Map glyph="eacute" outer="2" inner="117"/>
-      <Map glyph="ecaron" outer="2" inner="117"/>
-      <Map glyph="ecircumflex" outer="2" inner="117"/>
-      <Map glyph="edieresis" outer="2" inner="117"/>
-      <Map glyph="edieresis.ss08" outer="2" inner="117"/>
-      <Map glyph="edotaccent" outer="2" inner="117"/>
-      <Map glyph="edotaccent.ss08" outer="2" inner="117"/>
-      <Map glyph="egrave" outer="2" inner="117"/>
-      <Map glyph="eight" outer="2" inner="130"/>
-      <Map glyph="eight.dnom" outer="2" inner="122"/>
-      <Map glyph="eight.numr" outer="2" inner="122"/>
+      <Map glyph="divide" outer="2" inner="96"/>
+      <Map glyph="dollar" outer="2" inner="105"/>
+      <Map glyph="dotaccent" outer="2" inner="38"/>
+      <Map glyph="dotaccent.ss08" outer="2" inner="62"/>
+      <Map glyph="dotlessi" outer="2" inner="31"/>
+      <Map glyph="e" outer="2" inner="118"/>
+      <Map glyph="eacute" outer="2" inner="118"/>
+      <Map glyph="ecaron" outer="2" inner="118"/>
+      <Map glyph="ecircumflex" outer="2" inner="118"/>
+      <Map glyph="edieresis" outer="2" inner="118"/>
+      <Map glyph="edieresis.ss08" outer="2" inner="118"/>
+      <Map glyph="edotaccent" outer="2" inner="118"/>
+      <Map glyph="edotaccent.ss08" outer="2" inner="118"/>
+      <Map glyph="egrave" outer="2" inner="118"/>
+      <Map glyph="eight" outer="2" inner="131"/>
+      <Map glyph="eight.dnom" outer="2" inner="123"/>
+      <Map glyph="eight.numr" outer="2" inner="123"/>
       <Map glyph="eight.tf" outer="1" inner="3"/>
       <Map glyph="ellipsis" outer="3" inner="11"/>
       <Map glyph="ellipsis.ss08" outer="3" inner="9"/>
-      <Map glyph="emacron" outer="2" inner="117"/>
-      <Map glyph="emdash" outer="2" inner="89"/>
-      <Map glyph="endash" outer="2" inner="89"/>
-      <Map glyph="eogonek" outer="2" inner="117"/>
-      <Map glyph="equal" outer="2" inner="94"/>
-      <Map glyph="eth" outer="2" inner="91"/>
-      <Map glyph="exclam" outer="2" inner="31"/>
+      <Map glyph="emacron" outer="2" inner="118"/>
+      <Map glyph="emdash" outer="2" inner="90"/>
+      <Map glyph="endash" outer="2" inner="90"/>
+      <Map glyph="eng" outer="2" inner="79"/>
+      <Map glyph="eogonek" outer="2" inner="118"/>
+      <Map glyph="equal" outer="2" inner="95"/>
+      <Map glyph="eth" outer="2" inner="92"/>
+      <Map glyph="exclam" outer="2" inner="32"/>
       <Map glyph="exclam.ss08" outer="2" inner="25"/>
-      <Map glyph="exclamdown" outer="2" inner="31"/>
+      <Map glyph="exclamdown" outer="2" inner="32"/>
       <Map glyph="exclamdown.ss08" outer="2" inner="25"/>
       <Map glyph="f" outer="3" inner="17"/>
       <Map glyph="f_f.liga" outer="3" inner="6"/>
       <Map glyph="fi" outer="3" inner="10"/>
-      <Map glyph="five" outer="2" inner="110"/>
-      <Map glyph="five.dnom" outer="2" inner="119"/>
-      <Map glyph="five.numr" outer="2" inner="119"/>
+      <Map glyph="five" outer="2" inner="111"/>
+      <Map glyph="five.dnom" outer="2" inner="120"/>
+      <Map glyph="five.numr" outer="2" inner="120"/>
       <Map glyph="five.tf" outer="1" inner="3"/>
       <Map glyph="fl" outer="3" inner="8"/>
-      <Map glyph="four" outer="2" inner="106"/>
-      <Map glyph="four.dnom" outer="2" inner="102"/>
-      <Map glyph="four.numr" outer="2" inner="102"/>
+      <Map glyph="four" outer="2" inner="107"/>
+      <Map glyph="four.dnom" outer="2" inner="103"/>
+      <Map glyph="four.numr" outer="2" inner="103"/>
       <Map glyph="four.tf" outer="1" inner="3"/>
-      <Map glyph="fraction" outer="2" inner="63"/>
-      <Map glyph="g" outer="2" inner="87"/>
-      <Map glyph="gbreve" outer="2" inner="87"/>
-      <Map glyph="gdotaccent" outer="2" inner="87"/>
-      <Map glyph="gdotaccent.ss08" outer="2" inner="87"/>
-      <Map glyph="germandbls" outer="2" inner="85"/>
-      <Map glyph="grave" outer="2" inner="35"/>
+      <Map glyph="fraction" outer="2" inner="64"/>
+      <Map glyph="g" outer="2" inner="88"/>
+      <Map glyph="gbreve" outer="2" inner="88"/>
+      <Map glyph="gdotaccent" outer="2" inner="88"/>
+      <Map glyph="gdotaccent.ss08" outer="2" inner="88"/>
+      <Map glyph="germandbls" outer="2" inner="86"/>
+      <Map glyph="grave" outer="2" inner="36"/>
       <Map glyph="gravecomb" outer="0" inner="1"/>
-      <Map glyph="greater" outer="2" inner="118"/>
-      <Map glyph="greater.alt" outer="2" inner="54"/>
+      <Map glyph="greater" outer="2" inner="119"/>
+      <Map glyph="greater.alt" outer="2" inner="55"/>
       <Map glyph="guillemotleft" outer="3" inner="16"/>
       <Map glyph="guillemotleft.alt" outer="3" inner="15"/>
       <Map glyph="guillemotright" outer="3" inner="13"/>
       <Map glyph="guillemotright.alt" outer="3" inner="15"/>
-      <Map glyph="guilsinglleft" outer="2" inner="57"/>
-      <Map glyph="guilsinglright" outer="2" inner="57"/>
-      <Map glyph="h" outer="2" inner="78"/>
-      <Map glyph="hbar" outer="2" inner="78"/>
+      <Map glyph="guilsinglleft" outer="2" inner="58"/>
+      <Map glyph="guilsinglright" outer="2" inner="58"/>
+      <Map glyph="h" outer="2" inner="79"/>
+      <Map glyph="hbar" outer="2" inner="79"/>
       <Map glyph="hungarumlaut" outer="2" inner="8"/>
-      <Map glyph="hyphen" outer="2" inner="88"/>
+      <Map glyph="hyphen" outer="2" inner="89"/>
       <Map glyph="hyphen_greater.liga" outer="0" inner="1"/>
       <Map glyph="hyphen_hyphen_greater.liga" outer="0" inner="1"/>
       <Map glyph="hyphen_hyphen_hyphen_greater.liga" outer="0" inner="1"/>
-      <Map glyph="i" outer="2" inner="30"/>
-      <Map glyph="i.loclTRK" outer="2" inner="30"/>
-      <Map glyph="i.loclTRK.ss08" outer="2" inner="30"/>
-      <Map glyph="i.ss08" outer="2" inner="30"/>
-      <Map glyph="iacute" outer="2" inner="30"/>
-      <Map glyph="icircumflex" outer="2" inner="30"/>
-      <Map glyph="idieresis" outer="2" inner="30"/>
-      <Map glyph="idieresis.ss08" outer="2" inner="30"/>
-      <Map glyph="igrave" outer="2" inner="30"/>
-      <Map glyph="imacron" outer="2" inner="30"/>
-      <Map glyph="iogonek" outer="2" inner="30"/>
-      <Map glyph="iogonek.ss08" outer="2" inner="30"/>
-      <Map glyph="j" outer="2" inner="71"/>
-      <Map glyph="j.ss08" outer="2" inner="71"/>
-      <Map glyph="k" outer="2" inner="97"/>
-      <Map glyph="l" outer="2" inner="70"/>
+      <Map glyph="i" outer="2" inner="31"/>
+      <Map glyph="i.loclTRK" outer="2" inner="31"/>
+      <Map glyph="i.loclTRK.ss08" outer="2" inner="31"/>
+      <Map glyph="i.ss08" outer="2" inner="31"/>
+      <Map glyph="iacute" outer="2" inner="31"/>
+      <Map glyph="icircumflex" outer="2" inner="31"/>
+      <Map glyph="idieresis" outer="2" inner="31"/>
+      <Map glyph="idieresis.ss08" outer="2" inner="31"/>
+      <Map glyph="igrave" outer="2" inner="31"/>
+      <Map glyph="imacron" outer="2" inner="31"/>
+      <Map glyph="iogonek" outer="2" inner="31"/>
+      <Map glyph="iogonek.ss08" outer="2" inner="31"/>
+      <Map glyph="j" outer="2" inner="72"/>
+      <Map glyph="j.ss08" outer="2" inner="72"/>
+      <Map glyph="k" outer="2" inner="98"/>
+      <Map glyph="l" outer="2" inner="71"/>
       <Map glyph="l.ss03" outer="2" inner="29"/>
-      <Map glyph="lacute" outer="2" inner="70"/>
+      <Map glyph="lacute" outer="2" inner="71"/>
       <Map glyph="lacute.ss03" outer="2" inner="29"/>
       <Map glyph="lcaron" outer="2" inner="10"/>
       <Map glyph="lcaron.ss03" outer="2" inner="15"/>
-      <Map glyph="less" outer="2" inner="118"/>
-      <Map glyph="less.alt" outer="2" inner="54"/>
+      <Map glyph="less" outer="2" inner="119"/>
+      <Map glyph="less.alt" outer="2" inner="55"/>
       <Map glyph="less_hyphen.liga" outer="0" inner="1"/>
       <Map glyph="less_hyphen_greater.liga" outer="0" inner="1"/>
       <Map glyph="less_hyphen_hyphen.liga" outer="0" inner="1"/>
       <Map glyph="less_hyphen_hyphen_hyphen.liga" outer="0" inner="1"/>
-      <Map glyph="lslash" outer="2" inner="70"/>
+      <Map glyph="lslash" outer="2" inner="71"/>
       <Map glyph="lslash.ss03" outer="2" inner="29"/>
-      <Map glyph="m" outer="2" inner="65"/>
-      <Map glyph="macron" outer="2" inner="121"/>
+      <Map glyph="m" outer="2" inner="66"/>
+      <Map glyph="macron" outer="2" inner="122"/>
       <Map glyph="minus" outer="1" inner="2"/>
       <Map glyph="multiply" outer="2" inner="22"/>
-      <Map glyph="n" outer="2" inner="78"/>
-      <Map glyph="nacute" outer="2" inner="78"/>
-      <Map glyph="ncaron" outer="2" inner="78"/>
-      <Map glyph="nine" outer="2" inner="127"/>
-      <Map glyph="nine.dnom" outer="2" inner="96"/>
-      <Map glyph="nine.numr" outer="2" inner="96"/>
+      <Map glyph="n" outer="2" inner="79"/>
+      <Map glyph="nacute" outer="2" inner="79"/>
+      <Map glyph="ncaron" outer="2" inner="79"/>
+      <Map glyph="nine" outer="2" inner="128"/>
+      <Map glyph="nine.dnom" outer="2" inner="97"/>
+      <Map glyph="nine.numr" outer="2" inner="97"/>
       <Map glyph="nine.tf" outer="1" inner="3"/>
-      <Map glyph="ntilde" outer="2" inner="78"/>
+      <Map glyph="ntilde" outer="2" inner="79"/>
       <Map glyph="numbersign" outer="1" inner="4"/>
-      <Map glyph="o" outer="2" inner="91"/>
-      <Map glyph="oacute" outer="2" inner="91"/>
-      <Map glyph="ocircumflex" outer="2" inner="91"/>
-      <Map glyph="odieresis" outer="2" inner="91"/>
-      <Map glyph="odieresis.ss08" outer="2" inner="91"/>
-      <Map glyph="oe" outer="2" inner="139"/>
-      <Map glyph="ogonek" outer="2" inner="56"/>
-      <Map glyph="ograve" outer="2" inner="91"/>
-      <Map glyph="ohungarumlaut" outer="2" inner="91"/>
-      <Map glyph="one" outer="2" inner="58"/>
-      <Map glyph="one.dnom" outer="2" inner="51"/>
-      <Map glyph="one.numr" outer="2" inner="51"/>
+      <Map glyph="o" outer="2" inner="92"/>
+      <Map glyph="oacute" outer="2" inner="92"/>
+      <Map glyph="ocircumflex" outer="2" inner="92"/>
+      <Map glyph="odieresis" outer="2" inner="92"/>
+      <Map glyph="odieresis.ss08" outer="2" inner="92"/>
+      <Map glyph="oe" outer="2" inner="140"/>
+      <Map glyph="ogonek" outer="2" inner="57"/>
+      <Map glyph="ograve" outer="2" inner="92"/>
+      <Map glyph="ohungarumlaut" outer="2" inner="92"/>
+      <Map glyph="one" outer="2" inner="59"/>
+      <Map glyph="one.dnom" outer="2" inner="52"/>
+      <Map glyph="one.numr" outer="2" inner="52"/>
       <Map glyph="one.ss09" outer="3" inner="7"/>
       <Map glyph="one.tf" outer="1" inner="3"/>
-      <Map glyph="ordfeminine" outer="2" inner="47"/>
+      <Map glyph="ordfeminine" outer="2" inner="48"/>
       <Map glyph="ordmasculine" outer="2" inner="24"/>
-      <Map glyph="oslash" outer="2" inner="91"/>
-      <Map glyph="otilde" outer="2" inner="91"/>
-      <Map glyph="p" outer="2" inner="82"/>
+      <Map glyph="oslash" outer="2" inner="92"/>
+      <Map glyph="otilde" outer="2" inner="92"/>
+      <Map glyph="p" outer="2" inner="83"/>
       <Map glyph="paragraph" outer="2" inner="5"/>
       <Map glyph="parenleft" outer="2" inner="11"/>
-      <Map glyph="parenleft.alt" outer="2" inner="39"/>
+      <Map glyph="parenleft.alt" outer="2" inner="40"/>
       <Map glyph="parenright" outer="2" inner="11"/>
-      <Map glyph="parenright.alt" outer="2" inner="39"/>
+      <Map glyph="parenright.alt" outer="2" inner="40"/>
       <Map glyph="percent" outer="2" inner="0"/>
-      <Map glyph="period" outer="2" inner="36"/>
+      <Map glyph="period" outer="2" inner="37"/>
       <Map glyph="period.ss08" outer="2" inner="25"/>
-      <Map glyph="periodcentered" outer="2" inner="36"/>
+      <Map glyph="periodcentered" outer="2" inner="37"/>
       <Map glyph="periodcentered.loclCAT" outer="2" inner="27"/>
       <Map glyph="periodcentered.loclCAT.case" outer="2" inner="1"/>
       <Map glyph="periodcentered.loclCAT.case.ss08" outer="2" inner="2"/>
-      <Map glyph="periodcentered.loclCAT.ss08" outer="2" inner="62"/>
+      <Map glyph="periodcentered.loclCAT.ss08" outer="2" inner="63"/>
       <Map glyph="periodcentered.ss08" outer="2" inner="25"/>
       <Map glyph="plus" outer="1" inner="1"/>
-      <Map glyph="q" outer="2" inner="82"/>
-      <Map glyph="question" outer="2" inner="32"/>
-      <Map glyph="question.ss08" outer="2" inner="32"/>
-      <Map glyph="questiondown" outer="2" inner="32"/>
-      <Map glyph="questiondown.ss08" outer="2" inner="32"/>
+      <Map glyph="q" outer="2" inner="83"/>
+      <Map glyph="question" outer="2" inner="33"/>
+      <Map glyph="question.ss08" outer="2" inner="33"/>
+      <Map glyph="questiondown" outer="2" inner="33"/>
+      <Map glyph="questiondown.ss08" outer="2" inner="33"/>
       <Map glyph="quotedbl" outer="2" inner="6"/>
       <Map glyph="quotedblbase" outer="3" inner="3"/>
       <Map glyph="quotedblleft" outer="3" inner="2"/>
       <Map glyph="quotedblright" outer="3" inner="2"/>
-      <Map glyph="quoteleft" outer="2" inner="38"/>
-      <Map glyph="quoteright" outer="2" inner="38"/>
-      <Map glyph="quotesinglbase" outer="2" inner="46"/>
-      <Map glyph="quotesingle" outer="2" inner="42"/>
-      <Map glyph="r" outer="2" inner="52"/>
-      <Map glyph="racute" outer="2" inner="52"/>
-      <Map glyph="rcaron" outer="2" inner="52"/>
-      <Map glyph="registered" outer="2" inner="132"/>
-      <Map glyph="ring" outer="2" inner="72"/>
-      <Map glyph="s" outer="2" inner="113"/>
-      <Map glyph="sacute" outer="2" inner="113"/>
-      <Map glyph="scaron" outer="2" inner="113"/>
-      <Map glyph="scedilla" outer="2" inner="113"/>
-      <Map glyph="section" outer="2" inner="114"/>
-      <Map glyph="semicolon" outer="2" inner="40"/>
+      <Map glyph="quoteleft" outer="2" inner="39"/>
+      <Map glyph="quoteright" outer="2" inner="39"/>
+      <Map glyph="quotesinglbase" outer="2" inner="47"/>
+      <Map glyph="quotesingle" outer="2" inner="43"/>
+      <Map glyph="r" outer="2" inner="53"/>
+      <Map glyph="racute" outer="2" inner="53"/>
+      <Map glyph="rcaron" outer="2" inner="53"/>
+      <Map glyph="registered" outer="2" inner="133"/>
+      <Map glyph="ring" outer="2" inner="73"/>
+      <Map glyph="s" outer="2" inner="114"/>
+      <Map glyph="sacute" outer="2" inner="114"/>
+      <Map glyph="scaron" outer="2" inner="114"/>
+      <Map glyph="scedilla" outer="2" inner="114"/>
+      <Map glyph="section" outer="2" inner="115"/>
+      <Map glyph="semicolon" outer="2" inner="41"/>
       <Map glyph="semicolon.ss08" outer="2" inner="19"/>
-      <Map glyph="seven" outer="2" inner="53"/>
-      <Map glyph="seven.dnom" outer="2" inner="108"/>
-      <Map glyph="seven.numr" outer="2" inner="108"/>
+      <Map glyph="seven" outer="2" inner="54"/>
+      <Map glyph="seven.dnom" outer="2" inner="109"/>
+      <Map glyph="seven.numr" outer="2" inner="109"/>
       <Map glyph="seven.tf" outer="1" inner="3"/>
-      <Map glyph="six" outer="2" inner="125"/>
-      <Map glyph="six.dnom" outer="2" inner="96"/>
-      <Map glyph="six.numr" outer="2" inner="96"/>
+      <Map glyph="six" outer="2" inner="126"/>
+      <Map glyph="six.dnom" outer="2" inner="97"/>
+      <Map glyph="six.numr" outer="2" inner="97"/>
       <Map glyph="six.tf" outer="1" inner="3"/>
       <Map glyph="slash" outer="2" inner="26"/>
       <Map glyph="space" outer="1" inner="0"/>
-      <Map glyph="sterling" outer="2" inner="109"/>
-      <Map glyph="t" outer="2" inner="44"/>
+      <Map glyph="sterling" outer="2" inner="110"/>
+      <Map glyph="t" outer="2" inner="45"/>
       <Map glyph="t_t.liga" outer="3" inner="4"/>
-      <Map glyph="tcaron" outer="2" inner="50"/>
-      <Map glyph="thorn" outer="2" inner="90"/>
-      <Map glyph="three" outer="2" inner="129"/>
-      <Map glyph="three.dnom" outer="2" inner="126"/>
-      <Map glyph="three.numr" outer="2" inner="126"/>
+      <Map glyph="tcaron" outer="2" inner="51"/>
+      <Map glyph="thorn" outer="2" inner="91"/>
+      <Map glyph="three" outer="2" inner="130"/>
+      <Map glyph="three.dnom" outer="2" inner="127"/>
+      <Map glyph="three.numr" outer="2" inner="127"/>
       <Map glyph="three.tf" outer="1" inner="3"/>
-      <Map glyph="tilde" outer="2" inner="45"/>
+      <Map glyph="tilde" outer="2" inner="46"/>
       <Map glyph="tildecomb" outer="0" inner="1"/>
-      <Map glyph="trademark" outer="2" inner="115"/>
-      <Map glyph="two" outer="2" inner="131"/>
-      <Map glyph="two.dnom" outer="2" inner="128"/>
-      <Map glyph="two.numr" outer="2" inner="128"/>
+      <Map glyph="trademark" outer="2" inner="116"/>
+      <Map glyph="two" outer="2" inner="132"/>
+      <Map glyph="two.dnom" outer="2" inner="129"/>
+      <Map glyph="two.numr" outer="2" inner="129"/>
       <Map glyph="two.tf" outer="1" inner="3"/>
-      <Map glyph="u" outer="2" inner="99"/>
-      <Map glyph="uacute" outer="2" inner="99"/>
-      <Map glyph="ucircumflex" outer="2" inner="99"/>
-      <Map glyph="udieresis" outer="2" inner="99"/>
-      <Map glyph="udieresis.ss08" outer="2" inner="99"/>
-      <Map glyph="ugrave" outer="2" inner="99"/>
-      <Map glyph="uhungarumlaut" outer="2" inner="99"/>
-      <Map glyph="umacron" outer="2" inner="99"/>
-      <Map glyph="underscore" outer="2" inner="89"/>
-      <Map glyph="uni004A0301" outer="2" inner="75"/>
-      <Map glyph="uni006A0301" outer="2" inner="71"/>
+      <Map glyph="u" outer="2" inner="100"/>
+      <Map glyph="uacute" outer="2" inner="100"/>
+      <Map glyph="ucircumflex" outer="2" inner="100"/>
+      <Map glyph="udieresis" outer="2" inner="100"/>
+      <Map glyph="udieresis.ss08" outer="2" inner="100"/>
+      <Map glyph="ugrave" outer="2" inner="100"/>
+      <Map glyph="uhungarumlaut" outer="2" inner="100"/>
+      <Map glyph="umacron" outer="2" inner="100"/>
+      <Map glyph="underscore" outer="2" inner="90"/>
+      <Map glyph="uni004A0301" outer="2" inner="76"/>
+      <Map glyph="uni006A0301" outer="2" inner="72"/>
       <Map glyph="uni00A0" outer="1" inner="0"/>
-      <Map glyph="uni00B2" outer="2" inner="128"/>
-      <Map glyph="uni00B3" outer="2" inner="126"/>
-      <Map glyph="uni00B9" outer="2" inner="51"/>
-      <Map glyph="uni0122" outer="2" inner="81"/>
-      <Map glyph="uni0122.ss06" outer="2" inner="81"/>
-      <Map glyph="uni0123" outer="2" inner="87"/>
-      <Map glyph="uni0136" outer="2" inner="83"/>
-      <Map glyph="uni0137" outer="2" inner="97"/>
-      <Map glyph="uni013B" outer="2" inner="67"/>
-      <Map glyph="uni013B.loclMAH" outer="2" inner="67"/>
-      <Map glyph="uni013C" outer="2" inner="70"/>
-      <Map glyph="uni013C.loclMAH" outer="2" inner="70"/>
+      <Map glyph="uni00B2" outer="2" inner="129"/>
+      <Map glyph="uni00B3" outer="2" inner="127"/>
+      <Map glyph="uni00B9" outer="2" inner="52"/>
+      <Map glyph="uni0122" outer="2" inner="82"/>
+      <Map glyph="uni0122.ss06" outer="2" inner="82"/>
+      <Map glyph="uni0123" outer="2" inner="88"/>
+      <Map glyph="uni0136" outer="2" inner="84"/>
+      <Map glyph="uni0137" outer="2" inner="98"/>
+      <Map glyph="uni013B" outer="2" inner="68"/>
+      <Map glyph="uni013B.loclMAH" outer="2" inner="68"/>
+      <Map glyph="uni013C" outer="2" inner="71"/>
+      <Map glyph="uni013C.loclMAH" outer="2" inner="71"/>
       <Map glyph="uni013C.ss03" outer="2" inner="29"/>
-      <Map glyph="uni0145" outer="2" inner="59"/>
-      <Map glyph="uni0145.loclMAH" outer="2" inner="59"/>
-      <Map glyph="uni0146" outer="2" inner="78"/>
-      <Map glyph="uni0146.loclMAH" outer="2" inner="78"/>
-      <Map glyph="uni0218" outer="2" inner="103"/>
-      <Map glyph="uni0219" outer="2" inner="113"/>
-      <Map glyph="uni021A" outer="2" inner="124"/>
-      <Map glyph="uni021B" outer="2" inner="44"/>
-      <Map glyph="uni0237" outer="2" inner="71"/>
+      <Map glyph="uni0145" outer="2" inner="60"/>
+      <Map glyph="uni0145.loclMAH" outer="2" inner="60"/>
+      <Map glyph="uni0146" outer="2" inner="79"/>
+      <Map glyph="uni0146.loclMAH" outer="2" inner="79"/>
+      <Map glyph="uni0218" outer="2" inner="104"/>
+      <Map glyph="uni0219" outer="2" inner="114"/>
+      <Map glyph="uni021A" outer="2" inner="125"/>
+      <Map glyph="uni021B" outer="2" inner="45"/>
+      <Map glyph="uni0237" outer="2" inner="72"/>
+      <Map glyph="uni02BC" outer="2" inner="30"/>
       <Map glyph="uni0302" outer="0" inner="1"/>
       <Map glyph="uni03020300" outer="0" inner="1"/>
       <Map glyph="uni03020301" outer="0" inner="1"/>
@@ -41275,51 +41632,52 @@
       <Map glyph="uni0326.loclMAH" outer="0" inner="1"/>
       <Map glyph="uni0327" outer="0" inner="1"/>
       <Map glyph="uni0328" outer="0" inner="1"/>
-      <Map glyph="uni1E9E" outer="2" inner="48"/>
-      <Map glyph="uni2070" outer="2" inner="100"/>
-      <Map glyph="uni2074" outer="2" inner="102"/>
-      <Map glyph="uni2075" outer="2" inner="119"/>
-      <Map glyph="uni2076" outer="2" inner="96"/>
-      <Map glyph="uni2077" outer="2" inner="108"/>
-      <Map glyph="uni2078" outer="2" inner="122"/>
-      <Map glyph="uni2079" outer="2" inner="96"/>
-      <Map glyph="uni2080" outer="2" inner="100"/>
-      <Map glyph="uni2081" outer="2" inner="51"/>
-      <Map glyph="uni2082" outer="2" inner="128"/>
-      <Map glyph="uni2083" outer="2" inner="126"/>
-      <Map glyph="uni2084" outer="2" inner="102"/>
-      <Map glyph="uni2085" outer="2" inner="119"/>
-      <Map glyph="uni2086" outer="2" inner="96"/>
-      <Map glyph="uni2087" outer="2" inner="108"/>
-      <Map glyph="uni2088" outer="2" inner="122"/>
-      <Map glyph="uni2089" outer="2" inner="96"/>
+      <Map glyph="uni0331" outer="0" inner="1"/>
+      <Map glyph="uni1E9E" outer="2" inner="49"/>
+      <Map glyph="uni2070" outer="2" inner="101"/>
+      <Map glyph="uni2074" outer="2" inner="103"/>
+      <Map glyph="uni2075" outer="2" inner="120"/>
+      <Map glyph="uni2076" outer="2" inner="97"/>
+      <Map glyph="uni2077" outer="2" inner="109"/>
+      <Map glyph="uni2078" outer="2" inner="123"/>
+      <Map glyph="uni2079" outer="2" inner="97"/>
+      <Map glyph="uni2080" outer="2" inner="101"/>
+      <Map glyph="uni2081" outer="2" inner="52"/>
+      <Map glyph="uni2082" outer="2" inner="129"/>
+      <Map glyph="uni2083" outer="2" inner="127"/>
+      <Map glyph="uni2084" outer="2" inner="103"/>
+      <Map glyph="uni2085" outer="2" inner="120"/>
+      <Map glyph="uni2086" outer="2" inner="97"/>
+      <Map glyph="uni2087" outer="2" inner="109"/>
+      <Map glyph="uni2088" outer="2" inner="123"/>
+      <Map glyph="uni2089" outer="2" inner="97"/>
       <Map glyph="uni2116" outer="2" inner="9"/>
-      <Map glyph="uogonek" outer="2" inner="99"/>
-      <Map glyph="uring" outer="2" inner="99"/>
+      <Map glyph="uogonek" outer="2" inner="100"/>
+      <Map glyph="uring" outer="2" inner="100"/>
       <Map glyph="v" outer="2" inner="18"/>
-      <Map glyph="w" outer="2" inner="35"/>
-      <Map glyph="wacute" outer="2" inner="35"/>
-      <Map glyph="wcircumflex" outer="2" inner="35"/>
-      <Map glyph="wdieresis" outer="2" inner="35"/>
-      <Map glyph="wdieresis.ss08" outer="2" inner="35"/>
-      <Map glyph="wgrave" outer="2" inner="35"/>
+      <Map glyph="w" outer="2" inner="36"/>
+      <Map glyph="wacute" outer="2" inner="36"/>
+      <Map glyph="wcircumflex" outer="2" inner="36"/>
+      <Map glyph="wdieresis" outer="2" inner="36"/>
+      <Map glyph="wdieresis.ss08" outer="2" inner="36"/>
+      <Map glyph="wgrave" outer="2" inner="36"/>
       <Map glyph="x" outer="2" inner="23"/>
-      <Map glyph="y" outer="2" inner="43"/>
-      <Map glyph="yacute" outer="2" inner="43"/>
-      <Map glyph="ycircumflex" outer="2" inner="43"/>
-      <Map glyph="ydieresis" outer="2" inner="43"/>
-      <Map glyph="ydieresis.ss08" outer="2" inner="43"/>
-      <Map glyph="yen" outer="2" inner="55"/>
-      <Map glyph="ygrave" outer="2" inner="43"/>
-      <Map glyph="z" outer="2" inner="111"/>
-      <Map glyph="zacute" outer="2" inner="111"/>
-      <Map glyph="zcaron" outer="2" inner="111"/>
-      <Map glyph="zdotaccent" outer="2" inner="111"/>
-      <Map glyph="zdotaccent.ss08" outer="2" inner="111"/>
-      <Map glyph="zero" outer="2" inner="105"/>
-      <Map glyph="zero.dnom" outer="2" inner="100"/>
-      <Map glyph="zero.numr" outer="2" inner="100"/>
-      <Map glyph="zero.ss09" outer="2" inner="105"/>
+      <Map glyph="y" outer="2" inner="44"/>
+      <Map glyph="yacute" outer="2" inner="44"/>
+      <Map glyph="ycircumflex" outer="2" inner="44"/>
+      <Map glyph="ydieresis" outer="2" inner="44"/>
+      <Map glyph="ydieresis.ss08" outer="2" inner="44"/>
+      <Map glyph="yen" outer="2" inner="56"/>
+      <Map glyph="ygrave" outer="2" inner="44"/>
+      <Map glyph="z" outer="2" inner="112"/>
+      <Map glyph="zacute" outer="2" inner="112"/>
+      <Map glyph="zcaron" outer="2" inner="112"/>
+      <Map glyph="zdotaccent" outer="2" inner="112"/>
+      <Map glyph="zdotaccent.ss08" outer="2" inner="112"/>
+      <Map glyph="zero" outer="2" inner="106"/>
+      <Map glyph="zero.dnom" outer="2" inner="101"/>
+      <Map glyph="zero.numr" outer="2" inner="101"/>
+      <Map glyph="zero.ss09" outer="2" inner="106"/>
       <Map glyph="zero.tf" outer="1" inner="3"/>
     </AdvWidthMap>
   </HVAR>
@@ -41699,6 +42057,7 @@
       <Map glyph="Edotaccent.ss08" outer="0" inner="0"/>
       <Map glyph="Egrave" outer="0" inner="0"/>
       <Map glyph="Emacron" outer="0" inner="0"/>
+      <Map glyph="Eng" outer="0" inner="0"/>
       <Map glyph="Eogonek" outer="0" inner="0"/>
       <Map glyph="Eth" outer="0" inner="0"/>
       <Map glyph="Euro" outer="0" inner="0"/>
@@ -41900,6 +42259,7 @@
       <Map glyph="emacron" outer="0" inner="0"/>
       <Map glyph="emdash" outer="0" inner="0"/>
       <Map glyph="endash" outer="0" inner="0"/>
+      <Map glyph="eng" outer="0" inner="0"/>
       <Map glyph="eogonek" outer="0" inner="0"/>
       <Map glyph="equal" outer="0" inner="0"/>
       <Map glyph="eth" outer="0" inner="0"/>
@@ -42103,6 +42463,7 @@
       <Map glyph="uni021A" outer="0" inner="0"/>
       <Map glyph="uni021B" outer="0" inner="0"/>
       <Map glyph="uni0237" outer="0" inner="0"/>
+      <Map glyph="uni02BC" outer="0" inner="0"/>
       <Map glyph="uni0302" outer="0" inner="0"/>
       <Map glyph="uni03020300" outer="0" inner="0"/>
       <Map glyph="uni03020301" outer="0" inner="0"/>
@@ -42123,6 +42484,7 @@
       <Map glyph="uni0326.loclMAH" outer="0" inner="0"/>
       <Map glyph="uni0327" outer="0" inner="0"/>
       <Map glyph="uni0328" outer="0" inner="0"/>
+      <Map glyph="uni0331" outer="0" inner="0"/>
       <Map glyph="uni1E9E" outer="0" inner="0"/>
       <Map glyph="uni2070" outer="0" inner="0"/>
       <Map glyph="uni2074" outer="0" inner="0"/>
@@ -42303,6 +42665,7 @@
     <mtx name="Edotaccent.ss08" height="1300" tsb="115"/>
     <mtx name="Egrave" height="1300" tsb="99"/>
     <mtx name="Emacron" height="1300" tsb="128"/>
+    <mtx name="Eng" height="1300" tsb="295"/>
     <mtx name="Eogonek" height="1300" tsb="295"/>
     <mtx name="Eth" height="1300" tsb="295"/>
     <mtx name="Euro" height="1300" tsb="279"/>
@@ -42504,6 +42867,7 @@
     <mtx name="emacron" height="1300" tsb="310"/>
     <mtx name="emdash" height="1300" tsb="674"/>
     <mtx name="endash" height="1300" tsb="674"/>
+    <mtx name="eng" height="1300" tsb="463"/>
     <mtx name="eogonek" height="1300" tsb="463"/>
     <mtx name="equal" height="1300" tsb="564"/>
     <mtx name="eth" height="1300" tsb="283"/>
@@ -42707,6 +43071,7 @@
     <mtx name="uni021A" height="1300" tsb="295"/>
     <mtx name="uni021B" height="1300" tsb="351"/>
     <mtx name="uni0237" height="1300" tsb="475"/>
+    <mtx name="uni02BC" height="1300" tsb="295"/>
     <mtx name="uni0302" height="1300" tsb="274"/>
     <mtx name="uni03020300" height="1300" tsb="187"/>
     <mtx name="uni03020301" height="1300" tsb="187"/>
@@ -42727,6 +43092,7 @@
     <mtx name="uni0326.loclMAH" height="1300" tsb="1058"/>
     <mtx name="uni0327" height="1300" tsb="995"/>
     <mtx name="uni0328" height="1300" tsb="987"/>
+    <mtx name="uni0331" height="1300" tsb="1065"/>
     <mtx name="uni1E9E" height="1300" tsb="295"/>
     <mtx name="uni2070" height="1300" tsb="287"/>
     <mtx name="uni2074" height="1300" tsb="295"/>

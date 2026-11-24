@@ -4,10 +4,27 @@ import tempfile
 import unittest
 from fontTools.ttLib import TTFont
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'scripts'))
-from latin_core import ROOT, CODEPOINTS, check_file
+from latin_core import ROOT, CODEPOINTS, SANS_CODEPOINTS, font_codepoints, check_file
 from latin_core import normalize_info
 
 class CoreScopeTest(unittest.TestCase):
+    def test_only_sans_and_its_candidate_require_the_three_sample_characters(self):
+        self.assertEqual(SANS_CODEPOINTS - CODEPOINTS, {0x014A, 0x014B, 0x02BC, 0x0331})
+        families = {
+            'Namche Shadow Sans': SANS_CODEPOINTS,
+            'Namche Shadow': SANS_CODEPOINTS,
+            'Namche Shadow Mono': CODEPOINTS,
+            'Namche Shape': CODEPOINTS,
+        }
+        source = ROOT / 'fonts/NamcheShadowSans/ttf/NamcheShadowSans-Regular.ttf'
+        with TTFont(source) as font:
+            for family, expected in families.items():
+                with self.subTest(family=family):
+                    for record in font['name'].names:
+                        if record.nameID in (1, 16):
+                            record.string = family.encode(record.getEncoding())
+                    self.assertEqual(font_codepoints(font), expected)
+
     def test_extra_unicode_is_rejected(self):
         source=ROOT/'fonts/NamcheShadowSans/ttf/NamcheShadowSans-Regular.ttf'
         with TTFont(source) as font, tempfile.TemporaryDirectory() as directory:
