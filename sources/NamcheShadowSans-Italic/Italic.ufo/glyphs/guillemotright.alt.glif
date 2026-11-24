@@ -3,26 +3,40 @@
   <advance width="618"/>
   <outline>
     <contour>
-      <point identifier="p0" x="410" y="-114" type="line"/>
-      <point identifier="p1" x="329" y="-114" type="line"/>
-      <point identifier="p2" x="512" y="354" type="line"/>
-      <point identifier="p3" x="329" y="821" type="line"/>
-      <point identifier="p4" x="410" y="821" type="line"/>
-      <point identifier="p5" x="593" y="354" type="line"/>
+      <point x="410" y="-114" type="line" identifier="p0"/>
+      <point x="329" y="-114" type="line" identifier="p1"/>
+      <point x="504" y="335" type="line" identifier="p2"/>
+      <point x="508" y="344" identifier="p3"/>
+      <point x="508" y="354" type="qcurve" identifier="p4"/>
+      <point x="508" y="364" identifier="p5"/>
+      <point x="504" y="373" type="qcurve" identifier="p6"/>
+      <point x="329" y="821" type="line" identifier="p7"/>
+      <point x="410" y="821" type="line" identifier="p8"/>
+      <point x="593" y="354" type="line" identifier="p9"/>
     </contour>
     <contour>
-      <point identifier="p6" x="243" y="-114" type="line"/>
-      <point identifier="p7" x="162" y="-114" type="line"/>
-      <point identifier="p8" x="345" y="354" type="line"/>
-      <point identifier="p9" x="162" y="821" type="line"/>
-      <point identifier="p10" x="243" y="821" type="line"/>
-      <point identifier="p11" x="426" y="354" type="line"/>
+      <point x="243" y="-114" type="line" identifier="p10"/>
+      <point x="162" y="-114" type="line" identifier="p11"/>
+      <point x="337" y="335" type="line" identifier="p12"/>
+      <point x="341" y="344" identifier="p13"/>
+      <point x="341" y="354" type="qcurve" identifier="p14"/>
+      <point x="341" y="364" identifier="p15"/>
+      <point x="337" y="373" type="qcurve" identifier="p16"/>
+      <point x="162" y="821" type="line" identifier="p17"/>
+      <point x="243" y="821" type="line" identifier="p18"/>
+      <point x="426" y="354" type="line" identifier="p19"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
+        <integer>1</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
@@ -30,7 +44,9 @@
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
+        <integer>0</integer>
         <integer>1</integer>
+        <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

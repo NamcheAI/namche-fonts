@@ -51,7 +51,7 @@ class MonoHorizontalMetricTest(unittest.TestCase):
             for location in locations:
                 self.assertEqual(
                     exceptional_advances(font, order, location),
-                    EXPECTED_EXCEPTIONAL_ADVANCES,
+                    {name: width for name, width in EXPECTED_EXCEPTIONAL_ADVANCES.items() if name in order},
                 )
         finally:
             font.close()

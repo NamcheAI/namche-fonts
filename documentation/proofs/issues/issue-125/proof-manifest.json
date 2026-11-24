@@ -1,0 +1,169 @@
+{
+  "description": "Before/after visual evidence; no automatic approval",
+  "inputs": {
+    "before": {
+      "Thin": {
+        "sha256": "707a68b73d5477d5e166a2cad461968f320c2ecfe34587b89e0b497445ef92de"
+      },
+      "ThinItalic": {
+        "sha256": "426a75f0d4420fa30426cedc388646e6b199dde6d33ca2cd5a52ef24f356e41b"
+      },
+      "ExtraLight": {
+        "sha256": "651bdd2b52278effe04ee695534ed88310240aa19c57ba7458176d41a9f8622b"
+      },
+      "ExtraLightItalic": {
+        "sha256": "69250cf8fa57fbab9e410eb78d7d8503584a75ccab512a5d31fc840fb0668b58"
+      },
+      "Light": {
+        "sha256": "3235b914a81925da4b268d8da04e3b52a5e1d551632a2473110961e647885ab0"
+      },
+      "LightItalic": {
+        "sha256": "58279c4a227542d4c933719f1c276dde4f5eb5977fec4c7b4a53f274516a0ffa"
+      },
+      "Regular": {
+        "sha256": "4198f38d668861e66dbb0bc09055cb97dc6e00d50a478ad72fe4f8b8ac31f92b"
+      },
+      "Italic": {
+        "sha256": "50ae046f11863880e5fed4b33055896c35c1020c91ec0fa40c119a8005434ec9"
+      },
+      "Medium": {
+        "sha256": "e4a7db3c371e9fb4e0be476671b7abf8de202b1aaabe2035ce4154d0aa7e53fa"
+      },
+      "MediumItalic": {
+        "sha256": "bd62eae28702b6ee734e6741bfd736675d8f13d49e866b38f15c55423e764f74"
+      },
+      "SemiBold": {
+        "sha256": "205a92fe4fb1451bc0e131b352399c1cc13c17bd05fd7abea959602c24a162ec"
+      },
+      "SemiBoldItalic": {
+        "sha256": "e1198b90ccd9e71b84a5cf4865267f94c3eed71ea0e49f5b395aa414b5e32b51"
+      },
+      "Bold": {
+        "sha256": "143563d2ff6434aae26c49bea9e9b452c43e4622cafba13e31ef116a7ade625d"
+      },
+      "BoldItalic": {
+        "sha256": "02064e975f42954bfd0c24ce72e8523c200e7dc2b42776895137654e2873e4ca"
+      },
+      "ExtraBold": {
+        "sha256": "5664e8ffc18c9b294ed859deafa1361ed795287622efbb8ef3186125436f861d"
+      },
+      "ExtraBoldItalic": {
+        "sha256": "7a68b73e12c6f19b48bd9c6ebe8401e4febfcb73e2a9e5a516e9cc7ed80746d7"
+      },
+      "Black": {
+        "sha256": "7283eae2a5d8deef403b18c5583d8bd2e5150178661c2d28b6631c56fef26738"
+      },
+      "BlackItalic": {
+        "sha256": "aeb52bc38d74fb545add2e22b7046ba5a58c2481ba425e272c086a65901e23f6"
+      }
+    },
+    "after": {
+      "Thin": {
+        "sha256": "352552d00b9c142e6a451d2695aded9fb88523fc7622d8f621a0996092e45fbc"
+      },
+      "ThinItalic": {
+        "sha256": "391accbfd67e5f4e76b583fa1eff02a51faec530e7e8ac52c7e768f8df450480"
+      },
+      "ExtraLight": {
+        "sha256": "8bce9a30fda62c8bdf6e26198e18fc48e972c0f392d2f7d0f686031f7526b716"
+      },
+      "ExtraLightItalic": {
+        "sha256": "be090c230c13ec7d82ea8c0ad3354ed6794a11a467a4e485e3d9a6d0599f3f47"
+      },
+      "Light": {
+        "sha256": "2fa3c6a1fd53ed9c147cf1d7ccacb07781e654b84d70e5084370ad33b0775a71"
+      },
+      "LightItalic": {
+        "sha256": "78b914bd6cfa9a33b2593dbd31994ea702f04c588d41a9716d44f0b03ca6c503"
+      },
+      "Regular": {
+        "sha256": "74b617e23d97568db8086f3e61fe104ffecbf20d9340d525fd84444134419820"
+      },
+      "Italic": {
+        "sha256": "52d2e42984873b8f8f1113cbbff53b2777abce50218d9d36cb409631e6bfcba0"
+      },
+      "Medium": {
+        "sha256": "f04e1a3087a943ed459e089b456df321719b3b8ee53bdd7eb1c6a0b041ed4e20"
+      },
+      "MediumItalic": {
+        "sha256": "d39a9396616a284023c7c71ed40f07f27fdc8a1c12c4d6a31529923dfd61003a"
+      },
+      "SemiBold": {
+        "sha256": "f3e6354c73091a0a420f71cff06b2a1c8b7dbfe818b2ebb6e462dc78a6f4706f"
+      },
+      "SemiBoldItalic": {
+        "sha256": "7bf91ee1d997a2fb3580592a9d9fb19a5ce376f981f76b9d8e8b258ac453ff49"
+      },
+      "Bold": {
+        "sha256": "706ed728eb40be06d8baedcc6f67fb1df892097c0902a8db30ded82eba24cfb3"
+      },
+      "BoldItalic": {
+        "sha256": "57a7ff00f253900aa64fc2d04c6a3377f69893c7709380230286cedd7d49a477"
+      },
+      "ExtraBold": {
+        "sha256": "1851bf78784effbe01d21e1b2dc4880a1673233bf9e809f2b0ef707ec0d238aa"
+      },
+      "ExtraBoldItalic": {
+        "sha256": "41c4c7469ed8363f0f044b21bf255a73f3d51ecf1c9b2e72cb0bd9ccaea3b01f"
+      },
+      "Black": {
+        "sha256": "aae677c35873b5ca65f2b5fc0e274b95c33f6ea6752a9e78b79b34e3bdbd9be8"
+      },
+      "BlackItalic": {
+        "sha256": "1aebd870d40328cfea66286854cece0d6c7b7d53f55b7e55a9e0ad855d17da05"
+      }
+    }
+  },
+  "overviews": [],
+  "details": {
+    "file": "00-targeted.png",
+    "styles": [
+      "Thin",
+      "Regular",
+      "Black",
+      "ThinItalic",
+      "Italic",
+      "BlackItalic"
+    ],
+    "sample_pixels": 78,
+    "characters": [
+      "H",
+      "E",
+      "a",
+      "K",
+      "n",
+      "A",
+      "y",
+      "&",
+      "#",
+      "$",
+      "\u20ac",
+      "4",
+      "\u00a9",
+      "\u00ae",
+      ".notdef"
+    ],
+    "width": 1404,
+    "height": 3560
+  },
+  "intermediates": {
+    "file": "19-intermediate-vfs.png",
+    "weights": [
+      150,
+      250,
+      350,
+      450,
+      550,
+      650,
+      750,
+      850
+    ],
+    "sample_pixels": 105,
+    "candidate_variable_sha256": {
+      "NamcheShadowSans[wght].ttf": "ef15e6b0e18500b3a59e711a4350c506f1fde213120946e8ec22a50ff4d22613",
+      "NamcheShadowSans-Italic[wght].ttf": "c5b7a830cc12d29e2e1e50ab6544685f6e2747ece45060bb367050551e71954b"
+    }
+  },
+  "before_commit": "6d76177860dc7d3f4e80bc517bd74ae5a9109d9c",
+  "note": "Selected paired static and intermediate variable proofs. All 18 complete 319-character overview pages were rendered for the visual audit."
+}

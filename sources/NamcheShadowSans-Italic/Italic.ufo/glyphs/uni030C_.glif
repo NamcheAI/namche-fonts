@@ -3,23 +3,35 @@
   <unicode hex="030C"/>
   <outline>
     <contour>
-      <point identifier="p0" x="205" y="598" type="line"/>
-      <point identifier="p1" x="143" y="731" type="line"/>
-      <point identifier="p2" x="211" y="731" type="line"/>
-      <point identifier="p3" x="259" y="642" type="line"/>
-      <point identifier="p4" x="345" y="731" type="line"/>
-      <point identifier="p5" x="417" y="731" type="line"/>
-      <point identifier="p6" x="299" y="598" type="line"/>
+      <point x="299" y="598" type="line" identifier="p0"/>
+      <point x="205" y="598" type="line" identifier="p1"/>
+      <point x="143" y="731" type="line" identifier="p2"/>
+      <point x="211" y="731" type="line" identifier="p3"/>
+      <point x="238" y="682" type="line" identifier="p4"/>
+      <point x="241" y="675" identifier="p5"/>
+      <point x="254" y="666" identifier="p6"/>
+      <point x="262" y="665" type="qcurve" identifier="p7"/>
+      <point x="270" y="664" identifier="p8"/>
+      <point x="285" y="669" identifier="p9"/>
+      <point x="291" y="675" type="qcurve" identifier="p10"/>
+      <point x="345" y="731" type="line" identifier="p11"/>
+      <point x="417" y="731" type="line" identifier="p12"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

@@ -61,10 +61,11 @@ Or import only the families they use:
 @import "@namche/namche-shadow/shape.css";
 ```
 
-The self-hosted Latin equivalents are `fonts-latin.css`, `sans-latin.css`,
-`mono-latin.css`, and `shape-latin.css`. Use the unsuffixed entry points for
-user-generated or multilingual text and for Mono content that needs box
-drawing or technical symbols.
+All Namche fonts contain exactly 319 GF Latin Core characters. Cyrillic,
+box drawing and characters outside that set are no longer included. This is a
+breaking coverage change; bundled upstream Geist remains unchanged.
+The `fonts-latin.css`, `sans-latin.css`, `mono-latin.css` and `shape-latin.css`
+entry points remain available, with the same Namche coverage as unsuffixed files.
 
 This path includes the WOFF2 files in the application build and works offline
 or in air-gapped environments.
@@ -99,9 +100,10 @@ assembly; full desktop and webfont files remain available unchanged.
 The default export and `font/sans` use the rounded Namche Shadow Sans
 variable fonts — upright and italic — with static fallbacks, and
 `font/sans-latin` serves the two variable Latin subsets.
-`font/sans-non-variable` keeps the static upright and italic files. The Thin
-through Black statics remain Michael's approved multi-tier RoundCorner
-references. The Mono exports currently provide upright styles.
+`font/sans-non-variable` keeps the static upright and italic files. Sans
+statics and variable fonts are generated with the compatible source-built
+equal-ink recipe; see the [production and validation notes](../../documentation/EQUAL_INK.md).
+The Mono exports currently provide upright styles.
 
 Namche Shape styles are exported from `@namche/namche-shadow/font/shape`:
 

@@ -1,35 +1,35 @@
-# Learnings & findings (Namche RoundCorner)
+# Historical learnings & findings (Namche RoundCorner)
 
-Operational notes from shipping **Namche-Shadow** (multi-tier) and **Namche-Shadow-Simple** (−40/−25) via Glyphs RoundCorner. Recipe details live in [`scripts/NAMCHE_SHADOW.md`](scripts/NAMCHE_SHADOW.md). Research on CLI / RoboFont / interactive apps: [`scripts/ROUNDCORNER_OUTSIDE_GLYPHS.md`](scripts/ROUNDCORNER_OUTSIDE_GLYPHS.md).
+This file records the earlier Glyphs RoundCorner production path and its
+debugging history. Those instructions do not describe the current Sans build.
+For the compatible source-built equal-ink recipe, run `make build-sans` and
+follow [`documentation/EQUAL_INK.md`](documentation/EQUAL_INK.md). The recipe
+and validation notes do not by themselves establish final release approval.
 
-## Reproducible upright variable release
+## Earlier open variable build
 
-The published upright now rebuilds from recovered quadratic UFO/TTX sources.
-Run `make build-sans-variable` and `make check-sans-open`. The historical
-compatible Glyphs exports were not committed and are not interchangeable with
-the release static OTFs. See [open-build provenance](documentation/OPEN_BUILD.md).
+The earlier upright VF production path rebuilt from recovered quadratic
+UFO/TTX sources. The compatible native Glyphs exports used at that time were
+not committed and were not interchangeable with the release static OTFs. See
+[open-build provenance](documentation/OPEN_BUILD.md) for that path's history.
 
-## Historical production path
+## Historical Glyphs production path
 
-- **Ship with Glyphs RoundCorner export filters**, not the experimental Python inner-fillet engine (`scripts/round_inner_corners.py`).
-- Filters are the production mechanism for **static instances** and for the
-  post-rounding OTF masters used by the upright VF builder. Glyphs' own VF
-  export is still unsuitable because it skips those filters. Use the
-  `compatible` filter option, then `scripts/build_sans_variable.py` to align
-  the remaining rounded segmentation and build the VF.
+- The prior upright statics used Glyphs RoundCorner export filters. That
+  workflow was replaced by issue #125 and is not the current build instruction.
+- At that time Glyphs' own VF export skipped the filters; compatible OTF
+  masters were used by the upright VF builder to retain the rounded outlines.
 - Upstream/`originals/geist/` stays **Geist** and immutable. Delivery family names (`Namche-Shadow`, `Namche-Shadow-Simple`) are set at export / name-table rewrite.
 
-## The italics are the exception: baked, not filtered
+## Historical italic bake and counter repair
 
-The Sans **italic** package carries **no** RoundCorner instance filters. Its Shadow
-treatment was baked straight into the three masters by `scripts/round_inner_corners.py`
-at `--radius 40` (issue #4, 2026-08-13). Two consequences that are easy to get wrong:
+The earlier Sans **italic** package carried **no** RoundCorner instance filters.
+Its Shadow treatment was baked into the three masters by
+`scripts/round_inner_corners.py` at `--radius 40` (issue #4, 2026-08-13).
+Issue #125 replaces that production treatment. Historical consequences were:
 
-- `gftools builder sources/config-NamcheShadowSans-Italic.yaml` reproduces the
-  committed italic outlines **exactly** — unlike the uprights, which need a Glyphs
-  GUI export. An italic source correction can therefore be merged into the
-  committed release with `make refresh-sans-italic-outlines`, which replaces only
-  the glyph outlines that changed and leaves metadata, layout and hinting alone.
+- The old `gftools builder sources/config-NamcheShadowSans-Italic.yaml` path
+  reproduced the committed italic outlines; it was not the upright static path.
 - The filter has been retuned since that bake (acute-angle radius reduction, mouth
   cap, Black scale), so today's defaults do **not** reproduce the italics. Pass
   `--italic-recipe` to get the profile that did: plain circular fillet, master
@@ -71,7 +71,7 @@ venv/bin/python scripts/round_inner_corners.py \
 
 The temporary name **Namche-Darth** for the multi-tier stack is **retired**. Older docs/commits may still mention it.
 
-## `glyphs-cli` / Cursor cannot replace Glyphs GUI export
+## Historical `glyphs-cli` / Glyphs GUI export findings
 
 Automated export with [`glyphs-cli`](https://pypi.org/project/glyphs-cli/) (`glyphs export --app 4 --plugins …`) **does not reliably apply RoundCorner instance filters**.
 
@@ -83,7 +83,9 @@ Automated export with [`glyphs-cli`](https://pypi.org/project/glyphs-cli/) (`gly
 
 Also: bad CLI Regular OTFs were ~71 KB vs ~92 KB for correctly rounded GUI exports.
 
-**Rule:** For shipping binaries, use **File → Export… in Glyphs.app** (or a Glyphs Macro that calls `font.export`). After any automated export, proof an inner-corner glyph (`H`, `E`, `a`).
+For that historical workflow, Glyphs GUI exports applied RoundCorner filters
+more reliably than the tested CLI path. This is not guidance for the current
+source-built release; see `documentation/EQUAL_INK.md`.
 
 Filter **string format** still matters for packages that open correctly in Glyphs:
 
@@ -118,7 +120,8 @@ Glyphs often exports as `Geist.glyphspackage` / `Geist-*.otf` regardless of inte
 | `glyphs_export_namche_shadow.py` | Glyphs Macro → export OTFs into `exports/Namche-Shadow/otf/` |
 | `inner_round_app.py` | Local specimen (`PREVIEW_FAMILIES`) |
 
-Multi-tier is maintained in Glyphs / the paste file; the two-radius Python helper is not a substitute for that stack.
+The old multi-tier stack was maintained in Glyphs / the paste file; the
+two-radius Python helper was not a substitute for that historical stack.
 
 ## Local delivery layout
 

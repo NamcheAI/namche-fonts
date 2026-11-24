@@ -491,3 +491,6 @@ zopfli==0.4.0
 # The following packages are considered to be unsafe in a requirements file:
 # pip
 # setuptools
+
+# Independent double-precision geometry checks for compiled Sans outlines.
+shapely==2.1.2

@@ -1,7 +1,10 @@
 {
-  "recovered_from": "fonts/NamcheShadowSans/variable/NamcheShadowSans-Italic[wght].ttf",
-  "sha256": "a79f21b2c31ead8e6296be8a12b46c870d0e394840df2cb7eed3d0773e69c439",
-  "method": "Lossless recovery of approved italic quadratic contours, variation deltas, layout and metadata as editable UFO/TTX production sources. The separate cubic Glyphs design source remains available; it is not automatically synchronized with this production source.",
+  "recovered_from": "issue-125 compatible cubic source build: NamcheShadowSans-Italic[wght].ttf",
+  "sha256": "db3a00602327226669099af6881160a40b7137e9426f5a21d752882bedead3e0",
+  "repository_commit": "bbdc0fd6f436316347e40bc15c243df3fd957a6d",
+  "ufo": "Italic.ufo",
+  "harfbuzz_repacker": false,
+  "method": "Quadratic production snapshot generated from the equal-ink cubic recipe; editable clean design inputs are sources/equal-ink/clean-outlines.json.",
   "table_order": [
     "head",
     "hhea",
@@ -17,18 +20,19 @@
     "GDEF",
     "GPOS",
     "GSUB",
-    "meta",
     "HVAR",
     "MVAR",
     "STAT",
+    "VVAR",
     "fvar",
-    "gvar"
+    "gvar",
+    "meta",
+    "vhea",
+    "vmtx"
   ],
-  "ufo": "Italic.ufo",
-  "repository_commit": "039e0efdd5c404df38491ef4d676af5331e02da9",
   "outputs": {
-    "variable/NamcheShadowSans-Italic[wght].ttf": "a79f21b2c31ead8e6296be8a12b46c870d0e394840df2cb7eed3d0773e69c439",
-    "webfonts/NamcheShadowSans-Italic[wght].woff2": "8400debbacde1fa7b8228cd4d9d085bb3eb188340a2301107871fe8391ce8d9a"
+    "variable/NamcheShadowSans-Italic[wght].ttf": "db3a00602327226669099af6881160a40b7137e9426f5a21d752882bedead3e0",
+    "webfonts/NamcheShadowSans-Italic[wght].woff2": "34432d59f4f6b17b83ec8373e6f2fa2b5e9ff9f8f23224e5f97e09d8f9b00b01"
   },
-  "harfbuzz_repacker": false
+  "clean_source_sha256": "fdedd7f945fae78fd791547c0595117a26ad66214ba36e8bd84c50e7b9fedbc6"
 }

@@ -13,10 +13,11 @@ SOFT_DOTTED_CHECK = "soft_dotted"
 AUXILIARY_MISSING_PREFIX = (
     "The following auxiliary characters are missing from the font:"
 )
+# Explicit auxiliary characters outside the pinned GF Latin Core scope (#118).
+# Missing Core characters and actual shaping failures remain blocking.
 ALLOWED_AUXILIARY_OMISSIONS = frozenset(
-    "Ǿ ǿ Ĕ ĕ Ĭ ĭ Ŀ ŀ Ŏ ŏ Ĳ ĳ Ȟ ȟ Ʒ ʒ Ǯ ǯ Ǔ ǔ ſ ʻ".split()
+    "Ǿ ǿ Ĕ ĕ Ĭ ĭ Ŀ ŀ Ŏ ŏ Ĳ ĳ Ȟ ȟ Ʒ ʒ Ǯ ǯ Ǔ ǔ ſ ʻ Ĩ ĩ Ŋ ŋ Ō ō Ŗ ŗ Ŝ ŝ Ţ ţ Ŧ ŧ Ũ ũ Ŭ ŭ Ǎ ǎ Ǥ ǥ Ǧ ǧ Ǩ ǩ Ẽ ẽ".split()
 )
-SANS_VARIABLE_ONLY_OMISSIONS = frozenset({"ѫ"})
 SHAPE_WARNING_CODE = "warning-language-shaping"
 
 
@@ -136,8 +137,6 @@ def validate_report(path: Path) -> tuple[set[Path], list[str]]:
             reported_auxiliary.update(omissions)
             errors.extend(f"{font_path}: {error}" for error in message_errors)
         allowed_auxiliary = ALLOWED_AUXILIARY_OMISSIONS
-        if "NamcheShadowSans/variable/" in font_path:
-            allowed_auxiliary |= SANS_VARIABLE_ONLY_OMISSIONS
         unexpected_auxiliary = sorted(reported_auxiliary - allowed_auxiliary)
         if unexpected_auxiliary:
             errors.append(

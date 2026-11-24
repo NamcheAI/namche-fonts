@@ -1,0 +1,15 @@
+style,weight,format,scanlines,previous_rms_fu,candidate_rms_fu,previous_max_fu,candidate_max_fu
+upright,100,variable,76,0.431,0.421,1.063,1.001
+upright,100,static,76,0.431,0.431,1.063,1.063
+upright,400,variable,76,2.257,0.381,5.099,0.845
+upright,400,static,76,2.257,0.381,5.099,0.845
+upright,700,variable,77,6.919,0.828,14.196,1.580
+upright,700,static,77,6.819,0.591,14.205,1.202
+upright,900,variable,58,13.406,0.338,33.334,0.897
+upright,900,static,58,13.406,0.338,33.334,0.897
+italic,400,variable,76,1.078,0.472,2.592,1.051
+italic,400,static,76,1.078,0.453,2.592,0.855
+italic,700,variable,77,6.422,0.323,13.606,0.707
+italic,700,static,77,6.449,0.449,13.414,0.901
+italic,900,variable,58,16.898,0.347,41.470,0.743
+italic,900,static,58,16.898,0.347,41.470,0.743

@@ -1,0 +1,26 @@
+slope,glyph,weight,format,before_max_turn_degrees,after_max_turn_degrees
+upright,b,150,frozen VF,9.1888,0.0
+upright,u,150,frozen VF,7.7652,0.0
+upright,b,200,frozen VF,4.0496,0.0
+upright,u,200,frozen VF,10.4915,0.0
+upright,b,250,frozen VF,9.5931,0.0
+upright,u,250,frozen VF,3.3665,0.0
+upright,b,300,frozen VF,5.1944,0.0
+upright,u,300,frozen VF,8.1301,0.0
+italic,b,150,frozen VF,15.0685,0.0
+italic,n,150,frozen VF,4.7636,0.0
+italic,p,150,frozen VF,1.3322,0.0
+italic,b,200,frozen VF,14.9558,0.0
+italic,n,200,frozen VF,4.7636,0.0
+italic,p,200,frozen VF,9.2026,0.0
+italic,b,250,frozen VF,9.1623,0.0
+italic,n,250,frozen VF,9.1623,0.0
+italic,p,250,frozen VF,7.125,0.0
+italic,b,300,frozen VF,1.9415,0.0
+italic,n,300,frozen VF,9.1623,0.0
+italic,p,300,frozen VF,7.125,0.0
+italic,y,400,static TTF,6.009,0.0
+italic,y,400,frozen VF,13.134,0.0
+italic,y,450,frozen VF,7.125,0.0
+italic,y,500,static TTF,10.6197,0.0
+italic,y,500,frozen VF,29.0546,0.0

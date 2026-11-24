@@ -5,6 +5,15 @@ This repository is the source, build, review, and release home for
 but Namche-specific source and release decisions take precedence over upstream
 conventions.
 
+## Character scope
+
+All Namche families, working sources, generated releases, npm assets and the
+Google Fonts candidate encode exactly the 319 characters in
+`sources/charsets/GF_Latin_Core.nam`. Keep necessary unencoded components,
+ligatures and alternates. Run `scripts/check_latin_core.py` after source imports
+and builds. Historical evidence is not an active coverage declaration.
+`originals/geist/` and the bundled upstream `fonts/Geist/` remain unchanged.
+
 ## Sources and ownership
 
 - `sources/` contains the working Glyphs packages and builder configuration.
@@ -35,74 +44,70 @@ conventions.
 
 ## Namche Shadow Sans production rules
 
-- The corrected `Namche-Shadow-Edited.glyphspackage` received from Michael on
-  2026-08-13 is the visual source of truth for upright statics.
-- Import a replacement package with
-  `python3 scripts/import_edited_sans.py /path/to/package`. The importer keeps
-  repository naming and attribution; do not copy an incoming `fontinfo.plist`
-  over the maintained one by hand.
-- Ship static Thin through Black instances. RoundCorner filters must run in
-  Glyphs 4 during export; `glyphs-cli` and a plain variable-font build do not
-  reproduce this treatment reliably.
-- Finalize the native Glyphs OTF/TTF exports with
-  `make finalize-sans-statics GLYPHS_SANS_EXPORT=/path/to/export`: it keeps
-  Glyphs' rounded outlines while preserving the current release's OpenType
-  layout and metadata, flattens nested TrueType components, produces WOFF2,
-  and refreshes the npm font directory. The export path must contain `otf/`
-  and `ttf/` subdirectories.
-- Keep the complete ordered seven-filter stack. The final tier is
-  `RoundCorner;-10;include:Yusbig-cy,yusbig-cy,mu,baht,peso` (Glyphs may
-  serialize spaces after commas).
-- `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` must export in every
-  static. Do not add `Remove Glyphs` to static instances.
-- Build both variable fonts with `make build-sans-variable` from the recovered
-  quadratic UFO and indexed variation/layout XML in
-  `sources/NamcheShadowSans-Upright/` and `sources/NamcheShadowSans-Italic/`.
-  `make build-sans-italic-variable` rebuilds only italic. Neither command needs
-  compiled font inputs or Glyphs. `make check-sans-open` builds each twice and
-  requires exact equality to the approved hashes and committed TTF/WOFF2.
-  Point-count/order edits require matching variation-delta changes. Update
-  manifests and binaries together only for intentional reviewed changes.
-  See `documentation/OPEN_BUILD.md` for provenance and maintenance.
-- Glyphs design sources and recovered production sources are not automatically
-  synchronized. After an intentional italic outline refresh, migrate the open
-  production source and its manifest too. The historical upright compatible
-  Glyphs exports were not committed; ordinary upright static OTFs are not
-  equivalent VF inputs. Do not use them to rebuild the upright VF.
+- Michael's corrected upright package received on 2026-08-13 remains design
+  provenance and supplies maintained identity, metrics, components, anchors,
+  and layout. The geometric inputs are pinned in
+  `sources/equal-ink/clean-outlines.json`. Issue #125 replaces the historical
+  seven-tier RoundCorner export with the compatible equal-ink recipe in
+  `scripts/equal_ink_corners.py`.
+- `sources/equal-ink/clean-outlines.json` pins unrounded upright foregrounds
+  and Geist italic foregrounds, with the approved option-B edit to the default
+  y in both styles. Historical italic backgrounds are
+  not trustworthy design inputs: some contain upright forms. Never derive a
+  clean input by reversing or repeatedly rounding the baked output.
+- `make build-sans` bakes compatible cubic Glyphs masters and builds all 18
+  statics plus both VFs with open tools. The rule uses the measured stem with
+  c=1.6 and caps of 70 for capitals and full-size decimal figures or 53 for
+  other glyphs. The ten superior figure outlines use a cap of
+  `53 × 387/710` (28.89 units), shared by numerators, denominators and
+  inferiors through components. Reviewed
+  exterior spurs in a b d h m n p q r u use a radius floor that rises
+  linearly from 40% in Thin to 60% in Regular and holds through Black.
+  A fillet may use 90% of a free flank. After removing the step in the
+  default y, round its arm against the full descender, including the flat
+  terminal when the tangent reaches it. Other joins retain their existing limits. Ease
+  the acute counter corners of heavy italic A, full-size upright 4 and the
+  small 4 in both slopes. Preserve sparse
+  brace layers and matched topology.
+- The maintained Glyphs packages carry the generated rounded foregrounds plus
+  repository metadata, components, anchors and layout. Commit these packages,
+  clean inputs, the recipe, recovered production snapshots and regenerated
+  binaries together after an intentional design change. Do not reintroduce
+  native RoundCorner filters or use the historical italic recipe for releases.
+- `sources/equal-ink/release-metadata/` is the text-only identity/layout contract.
+  Finalization preserves names, attribution, shaping and static advance widths,
+  removes obsolete point hint programs and reports any one-unit normalization
+  of unencoded static ligatures. Encoded or variable metric changes are refused.
+- `make check-sans-equal-ink` rebuilds the full recipe and compares every binary
+  with the committed release. `make check-sans-open` independently builds both
+  quadratic UFO/TTX production snapshots twice and checks their pinned hashes.
+  `make build-sans-variable` can rebuild just those snapshots. Point topology
+  changes require synchronized variation deltas, point-order maps and hashes.
+  See `documentation/EQUAL_INK.md` and `documentation/OPEN_BUILD.md`.
+- Source imports must preserve repository naming and credits. Reconcile a new
+  clean source explicitly with `clean-outlines.json`; the historical importer
+  alone is not a complete equal-ink migration.
 - `make build-googlefonts` creates a separate **Namche Shadow** candidate family
   with complete STAT-matching style names, all within 32 characters. Existing
   release/npm names remain **Namche Shadow Sans**. Package renaming may change
   only the name table and checksum adjustment; preserve every other table.
-  A separate candidate-only recipe in `scripts/googlefonts_marks.py` adds
-  U+0331 with below-mark attachment and stacking. Preserve every existing
-  glyph's outline, variations and metrics and verify existing text shaping.
-  This candidate addition does not change the approved production VFs or statics.
-- Keep `Yusbig-cy`, `yusbig-cy`, `mu`, `baht`, and `peso` parked from the
-  variable build until their rounded masters match. They must remain in every
-  static.
-- The italic package is the one Sans exception to the Glyphs-export rule: it
-  carries no RoundCorner filters, so its Shadow treatment lives in the masters
-  and `gftools builder sources/config-NamcheShadowSans-Italic.yaml` reproduces
-  the committed italic outlines exactly. Land an italic source correction with
-  `make refresh-sans-italic-outlines`; `scripts/refresh_sans_italic_outlines.py`
-  replaces only the glyph outlines that changed, refuses a metric change, and
-  leaves metadata, layout, and hinting byte-identical. Never rebuild the italic
-  release wholesale — that also rewrites metadata the release already carries.
-- `scripts/round_inner_corners.py` bakes those italic masters. Its defaults have
-  since been retuned for upright work; pass `--italic-recipe` to reproduce the
-  profile the shipped italics were baked with. `make check-sans-counters` blocks
-  the boolean-topology regression that collapsed the italic `A` counter (#78).
-- Namche Shadow Mono remains an outline-identical renamed Geist derivative.
+  The candidate has the same exact GF Latin Core encoding as the release.
+  Do not add candidate-only characters outside the pinned scope.
+- Validate the compiled 319-character set in upright and italic at named and
+  intermediate weights with `scripts/check_equal_ink.py`, and run the existing
+  counter, metadata, shaping and Fontspector checks. Local source checks alone
+  do not prove that quantized/interpolated binaries preserve the design.
+- Namche Shadow Mono preserves upstream outlines for its retained Latin Core glyphs.
 
 ## Namche Shape production rules
 
 - Namche Shape (Metaball, Origin, Skeleton; designed by Michael Marte for
   Ruhm etc.) replaced Namche Shadow Pixel on 2026-09-29. Its grid source is
-  `sources/NamcheShape.glyphspackage`, the Geist Pixel package with the
-  reviewed U+20B9 **₹** and U+25CC **◌** additions. Every base glyph there is
-  a set of 38-unit `pixel` components; the grid may change only through a
-  focused issue and reviewed design proof, and `make check-source-copies`
-  keeps it byte-identical to `originals/geist/` apart from those additions.
+  `sources/NamcheShape.glyphspackage`, restricted to GF Latin Core with
+  unencoded component and layout dependencies. Every base glyph is a set of
+  38-unit `pixel` components. Grid edits need a focused issue and design proof;
+  `make check-source-copies` checks retained geometry against the immutable
+  upstream archive, with the recorded scope migration in `sources/charsets/`.
 - `scripts/namche_shape.py` turns the grid into outlines and
   `scripts/build_namche_shape.py` (`make build-shape`) compiles OTF, TTF, and
   WOFF2 with ufo2ft, keeping the source's metrics, kerning, anchors, carets,
@@ -125,12 +130,9 @@ conventions.
   (`ORIGIN_MODE = "structure"`, inspired by Nigel Cottier's *Letterform
   Variations*); Metaball melts along strokes more often than across them.
 - `make check-namche-shape` blocks regressions across release and npm
-  binaries: glyph set, Unicode map, and widths match the source; U+2028/U+2029
-  stay inkless at 600 units; the zero-width soft hyphen stays; all source
-  `caret_*` positions (including `fi` and `fl`) survive; ₹ and ◌ carry ink;
-  every combining mark attaches to ◌; and į + a top mark shapes to dotless i +
-  ogonek + mark. `make check-namche-shape-reproducible` rebuilds and requires
-  every committed outline to equal the generator output.
+  binaries: exact GF Latin Core cmap, source widths, retained ligature carets,
+  combining-mark attachment and dotless-i behavior. Run
+  `make check-namche-shape-reproducible` to compare every generated outline.
 
 ## Metadata and layout (all families)
 
@@ -179,8 +181,9 @@ conventions.
   rebuild, so a source-build failure cannot be bypassed by the fast path.
 - Pull requests rebuild Mono or Namche Shape only when that family's source or
   a shared build input changes. A Namche Shape change must not pay for a Mono
-  rebuild, and vice versa. Sans statics remain native Glyphs exports. Both VFs and Google Fonts candidate packages are rebuilt from
-  open sources on Linux on every PR. Byte equality, package reproducibility and
+  rebuild, and vice versa. Sans statics and VFs are rebuilt with the equal-ink recipe when Sans inputs
+  change. Both VF production snapshots and Google Fonts candidate packages are
+  rebuilt from open sources on Linux on every PR. Byte equality, package reproducibility and
   the candidate QA regression gate are mandatory. Known open submission findings
   remain visible in QA_STATUS.json; a green candidate build is not GF acceptance.
 - Fontspector runs only for families affected by the PR. Full proofs, release
@@ -214,8 +217,7 @@ cd packages/next && npm pack --dry-run
 Additionally, inspect representative inner corners (`H`, `E`, `a`, diagonals,
 and figures) in every changed weight. Confirm the family names and credits in
 the built name tables, verify that the Sans statics contain no `fvar` table,
-and verify that the five temporarily parked variable glyphs are present in all
-Sans statics.
+and run `venv/bin/python scripts/check_latin_core.py`.
 
 Do not dismiss Fontspector output merely because CI currently marks the step as
 non-blocking. Summarize new warnings in the PR, distinguish upstream/pre-existing

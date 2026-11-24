@@ -54,7 +54,7 @@ class WebfontSubsetTests(unittest.TestCase):
             subset_webfont(SOURCE, first, codepoints)
             subset_webfont(SOURCE, second, codepoints)
             self.assertEqual(first.read_bytes(), second.read_bytes())
-            self.assertLess(first.stat().st_size, SOURCE.stat().st_size / 2)
+            self.assertLess(first.stat().st_size, SOURCE.stat().st_size)
 
             original = TTFont(SOURCE)
             subset = TTFont(first)

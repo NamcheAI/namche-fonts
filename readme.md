@@ -41,9 +41,9 @@ The current Fontspector baseline and triage guidance are documented in
 The supported-script contract and intentional auxiliary omissions are listed in
 [`documentation/LANGUAGE_SUPPORT.md`](documentation/LANGUAGE_SUPPORT.md).
 
-The Namche Shadow Sans RoundCorner workflow still requires Glyphs for final design
-exports. See [`scripts/NAMCHE_SHADOW.md`](scripts/NAMCHE_SHADOW.md) and
-[`LEARNINGS.md`](LEARNINGS.md) before producing a release.
+Namche Shadow Sans uses a compatible equal-ink corner recipe for upright and
+italic statics and variable fonts. `make build-sans` builds from open sources
+without Glyphs. See [the recipe and its limits](documentation/EQUAL_INK.md).
 
 ## Repository layout
 
@@ -112,20 +112,15 @@ Import only the families an app uses to avoid loading unnecessary faces:
 @import "@namche/namche-shadow/shape.css";
 ```
 
-Namche-controlled properties that only render the maintained Latin web set can
-use the smaller opt-in entry points:
+All Namche families encode exactly the 319 characters in
+[GF Latin Core](sources/charsets/GF_Latin_Core.nam), including its accents and
+combining marks. Cyrillic, box drawing and other characters outside that set
+are no longer included. This is a breaking coverage change. Bundled upstream
+Geist keeps its original character set.
 
-```css
-@import "@namche/namche-shadow/sans-latin.css";
-@import "@namche/namche-shadow/mono-latin.css";
-```
-
-CDN-backed equivalents end in `-latin.cdn.css`; direct releases expose
-`fonts-latin.css` and the corresponding family-only stylesheets. Keep the
-unsuffixed full entry points for user-generated text, multilingual content,
-font specimens, or Mono interfaces that need Cyrillic, box drawing, and
-technical symbols. Every Latin `@font-face` has a matching `unicode-range`,
-and its WOFF2 file is also physically subsetted.
+The existing `sans-latin.css`, `mono-latin.css`, `shape-latin.css` and CDN
+counterparts remain compatible entry points. For Namche they now serve the
+same Latin Core fonts as the unsuffixed entries, with matching `unicode-range`.
 
 This fully self-hosted path bundles the required WOFF2 files, works offline or
 in an air-gapped deployment, and makes the downstream origin responsible for
@@ -173,11 +168,9 @@ import { NamcheShadowSans } from "@namche/namche-shadow/font/sans-latin";
 import { NamcheShadowMono } from "@namche/namche-shadow/font/mono-latin";
 ```
 
-The complete desktop OTF/TTF files and existing full WOFF2 entry points remain
-unchanged. GitHub Actions generates the Latin WOFF2 files deterministically
-from those approved full webfonts for npm, release ZIP, and CDN artifacts; the
-subset binaries are build outputs rather than committed sources. The shared
-codepoint contract is [`sources/subsets/latin.txt`](sources/subsets/latin.txt).
+Desktop OTF/TTF, variable fonts and WOFF2 share the exact Latin Core scope.
+The canonical list and its pinned upstream provenance are in `sources/charsets/`;
+`scripts/check_latin_core.py` enforces the contract across sources and artifacts.
 
 Published releases are mirrored to `https://cdn.namche.ai` through the
 infrastructure repository. A versioned URL is immutable and safe to cache
@@ -197,11 +190,14 @@ font repository never holds origin or SSH credentials.
 ### Static and variable fonts
 
 Namche Shadow Sans ships static Thin through Black weights plus a `wght`
-variable font pair, upright and italic. The approved static exports remain
-the visual source of truth. The default and `font/sans` npm entry points use
-both rounded VFs with static fallbacks; `font/sans-non-variable` uses statics
-throughout. Five glyphs whose rounded masters still differ are parked only
-from the VFs and remain present in every static.
+variable font pair, upright and italic. All Sans statics and VFs are generated
+from the compatible source-built equal-ink recipe. The clean master contours
+are pinned in `sources/equal-ink/clean-outlines.json`; maintained Glyphs
+packages supply identity, metrics, components, anchors, and layout. See the
+[production and validation notes](documentation/EQUAL_INK.md). The default and
+`font/sans` npm entry points use both rounded VFs with static fallbacks;
+`font/sans-non-variable` uses statics throughout. Statics and VFs encode the
+same Latin Core characters.
 
 Namche Shadow Mono retains its upstream-derived variable build. Namche Shape
 ships three static styles (Metaball, Origin, and Skeleton) and has no variable
@@ -210,8 +206,7 @@ font.
 ### Namche Shape
 
 Namche Shape is generated from the pixel grid of the Geist Pixel source, kept
-as `sources/NamcheShape.glyphspackage` (which still carries the reviewed
-**₹** and **◌** additions), by `scripts/namche_shape.py` and
+as `sources/NamcheShape.glyphspackage` (restricted to GF Latin Core), by `scripts/namche_shape.py` and
 `scripts/build_namche_shape.py` (`make build-shape`). It keeps Geist Pixel's
 metrics, spacing, kerning, and OpenType features.
 
@@ -260,12 +255,15 @@ The fonts, sources, and derivative font work are licensed under the
 [SIL Open Font License 1.1](OFL.txt). Original Geist copyright notices and
 author credits are retained in the sources and binary font metadata.
 
-### Reproducible Sans variable builds
+### Sans source builds
 
-`make build-sans-variable` compiles the approved upright and italic TTF/WOFF2 pairs from
-open UFO/TTX production sources without Glyphs. `make check-sans-open` enforces
-byte-identical repeated builds and published files in CI. See
-[provenance and source maintenance](documentation/OPEN_BUILD.md).
+`make build-sans` builds the current Sans release: all 18 statics and both VFs
+from the compatible equal-ink sources. `make check-sans-equal-ink` verifies the
+complete generated release. `make build-sans-variable` builds only the
+supplemental upright and italic VF snapshots from open UFO/TTX sources;
+`make check-sans-open` verifies those repeated builds and pinned outputs. See
+[the current recipe](documentation/EQUAL_INK.md) and
+[VF snapshot provenance](documentation/OPEN_BUILD.md).
 
 `make build-googlefonts` produces reproducible production and Google Fonts
 candidate ZIPs in `out/googlefonts/`. The separate candidate family is named

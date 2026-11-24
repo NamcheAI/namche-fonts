@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Explicit, one-time recovery of an approved VF as editable production sources.
+"""Create indexed quadratic production sources from a flat, unhinted VF.
 
-Not a build dependency. Review changes to sources and approved output hashes
-before use. Design masters are maintained separately from this exact snapshot.
+The equal-ink build uses recover() to synchronize freshly compiled variable
+fonts with their open production snapshots. Standalone recovery remains an
+explicit migration operation; review source and output-hash changes before
+promotion. Clean design inputs are maintained separately from this snapshot.
 """
 import argparse
 from hashlib import sha256

@@ -1,15 +1,24 @@
-# Namche families (RoundCorner)
+# Historical Glyphs-era Namche family notes (RoundCorner)
 
-Production path: **Glyphs RoundCorner export filters** on Geist Sans upright sources.
+> **Historical reference only.** Every recipe, filter list, path, and command in
+> this document describes the earlier Glyphs-era workflow; do not use it to
+> build or update current release fonts. Issue #125 replaced that production
+> path with the compatible source-built equal-ink recipe. Start at
+> [EQUAL_INK.md](../documentation/EQUAL_INK.md) for current inputs and commands.
+
+The following sections preserve the old Glyphs RoundCorner process and its
+local experiments as historical context.
 
 Operational findings (CLI failure, naming collisions, verification): [`LEARNINGS.md`](../../LEARNINGS.md). Outside Glyphs / interactive app options: [`ROUNDCORNER_OUTSIDE_GLYPHS.md`](ROUNDCORNER_OUTSIDE_GLYPHS.md).
 
-**Both families ship** in the local specimen (`PREVIEW_FAMILIES`) and under `~/Library/Fonts/Namche-Shadow{,-Simple}/`.
+At the time these notes were written, both experimental families appeared in
+the local specimen (`PREVIEW_FAMILIES`) and under
+`~/Library/Fonts/Namche-Shadow{,-Simple}/`.
 
 | Family | Status | Recipe | Paste file |
 |--------|--------|--------|------------|
-| **Namche-Shadow** | Shipping (primary) | Multi-tier stack (2026-08-11d) — see below | `roundcorner_shadow_filters.txt` |
-| **Namche-Shadow-Simple** | Shipping | Mild `−25` exclude + strong `−40` include (caps/figures set) | `roundcorner_caps_figs_filters.txt` |
+| **Namche-Shadow** | Historical primary | Multi-tier stack (2026-08-11d) — see below | `roundcorner_shadow_filters.txt` |
+| **Namche-Shadow-Simple** | Historical experiment | Mild `−25` exclude + strong `−40` include (caps/figures set) | `roundcorner_caps_figs_filters.txt` |
 
 > Naming note (2026-08-11): multi-tier was briefly called **Namche-Darth**; that name is retired. The old two-radius (−40/−25) family is **Namche-Shadow-Simple**.
 
@@ -28,7 +37,7 @@ On every **static** instance (Thin → Black) — **2026-08-11d**:
 The five glyphs in tier 7 export in every static instance; `Remove Glyphs`
 must not be present on statics.
 
-**Upright variable font:** `make build-sans-variable` rebuilds the approved VF
+**Historical upright variable build:** `make build-sans-variable` rebuilt the VF
 from `sources/NamcheShadowSans-Upright/`, the recovered quadratic UFO and indexed
 TTX production sources. It does not consume Glyphs exports. The historical
 compatible OTF masters are missing; the checked-in static OTFs are not equivalent.
@@ -50,7 +59,7 @@ Two-radius pair on statics: `−25` exclude + `−40` include (caps/figures set)
 | `../exports/Namche-Shadow/` | Primary Shadow delivery + `Namche-Shadow.glyphspackage` + `_received` |
 | `../exports/Namche-Shadow-Simple/` | Simple (−40/−25) delivery + package + `_received` |
 
-## Apply filters
+## Historical filter commands
 
 ```bash
 cd .
@@ -64,7 +73,7 @@ python3 scripts/apply_roundcorner_filters.py --strong -40 --mild -25
 
 **Never edit files under `originals/geist/`.**
 
-## Export from Glyphs
+## Historical Glyphs export workflow
 
 1. Open the family package (`exports/Namche-Shadow/Namche-Shadow.glyphspackage` or Simple package / `sources/…`).
 2. Confirm the seven static RoundCorner filters and verify the five tier-7
@@ -75,10 +84,14 @@ python3 scripts/apply_roundcorner_filters.py --strong -40 --mild -25
 4. For Namche Shadow Sans, finalize the native OTF/TTF outputs against the
    maintained release tables and generate WOFF2/npm assets:
 
+   Historical command example (the `finalize-sans-statics` target has been
+   removed; do not use this for current release builds):
+
    ```sh
    make finalize-sans-statics GLYPHS_SANS_EXPORT=/path/to/NamcheShadowSans
    ```
-5. Rebuild both unchanged approved VFs from their open production sources:
+5. Historical supplemental VF command (the current complete build is
+   `make build-sans`; see `documentation/EQUAL_INK.md`):
 
    ```sh
    make build-sans-variable

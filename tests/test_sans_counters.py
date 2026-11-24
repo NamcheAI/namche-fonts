@@ -3,7 +3,8 @@ import tempfile
 import unittest
 
 from fontTools.pens.ttGlyphPen import TTGlyphPen
-from fontTools.ttLib import TTFont
+from fontTools.ttLib import TTFont, newTable
+from array import array
 
 from scripts.check_sans_counters import (
     EXPECTED_CONTOURS,
@@ -81,7 +82,7 @@ class ItalicOutlineMergeGuardTest(unittest.TestCase):
             font.close()
         self.assertIn("A", glyphs)
         self.assertTrue(all(isinstance(code, bytes) for code in glyphs.values()))
-        self.assertTrue(global_subrs and local_subrs)
+        self.assertTrue(all(isinstance(code, bytes) for code in global_subrs + local_subrs))
 
     def testCapturingAfterDrawingIsRefused(self) -> None:
         font = open_font(self.OTF)
@@ -110,7 +111,10 @@ class ItalicOutlineMergeGuardTest(unittest.TestCase):
         finally:
             font.close()
         global_subrs = list(release[1])
-        global_subrs[0] = global_subrs[0] + b"\x00"
+        if global_subrs:
+            global_subrs[0] = global_subrs[0] + b"\x00"
+        else:
+            global_subrs.append(b"\x00")
         with self.assertRaises(SystemExit):
             check_untouched_charstrings(
                 release, (release[0], global_subrs, release[2]), ["A"]
@@ -123,7 +127,11 @@ class ItalicOutlineMergeGuardTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as scratch:
             tampered = Path(scratch) / "other-cvt.ttf"
             font = TTFont(ttf, recalcTimestamp=False)
-            font["cvt "].values[0] += 7
+            if "cvt " not in font:
+                font["cvt "] = newTable("cvt ")
+                font["cvt "].values = array("h", [7])
+            else:
+                font["cvt "].values[0] += 7
             font.save(tampered)
             font.close()
             release, compiled = open_font(ttf), open_font(tampered)

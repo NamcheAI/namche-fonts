@@ -4,19 +4,31 @@
   <unicode hex="005E"/>
   <outline>
     <contour>
-      <point identifier="p0" x="65" y="383" type="line"/>
-      <point identifier="p1" x="247" y="673" type="line"/>
-      <point identifier="p2" x="353" y="673" type="line"/>
-      <point identifier="p3" x="411" y="383" type="line"/>
-      <point identifier="p4" x="331" y="383" type="line"/>
-      <point identifier="p5" x="286" y="598" type="line"/>
-      <point identifier="p6" x="149" y="383" type="line"/>
+      <point x="297" y="546" type="line" identifier="p0"/>
+      <point x="296" y="552" identifier="p1"/>
+      <point x="286" y="561" identifier="p2"/>
+      <point x="280" y="562" type="qcurve" identifier="p3"/>
+      <point x="273" y="564" identifier="p4"/>
+      <point x="261" y="558" identifier="p5"/>
+      <point x="257" y="553" type="qcurve" identifier="p6"/>
+      <point x="149" y="383" type="line" identifier="p7"/>
+      <point x="65" y="383" type="line" identifier="p8"/>
+      <point x="247" y="673" type="line" identifier="p9"/>
+      <point x="353" y="673" type="line" identifier="p10"/>
+      <point x="411" y="383" type="line" identifier="p11"/>
+      <point x="331" y="383" type="line" identifier="p12"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>

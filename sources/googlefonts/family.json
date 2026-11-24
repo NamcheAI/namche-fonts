@@ -3,6 +3,6 @@
   "designer": "Michael Marte, Ruhm etc., Andrés Briganti, Mateo Zaragoza, Basement Studio",
   "category": "SANS_SERIF",
   "date_added": "2026-10-22",
-  "subsets": ["cyrillic", "cyrillic-ext", "latin", "latin-ext", "menu", "vietnamese"],
+  "subsets": ["latin", "latin-ext", "menu"],
   "primary_script": "Latn"
 }

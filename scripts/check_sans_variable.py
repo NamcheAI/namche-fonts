@@ -11,7 +11,8 @@ from struct import pack
 import numpy as np
 from fontPens.flattenPen import FlattenPen
 from fontTools.pens.areaPen import AreaPen
-from fontTools.pens.recordingPen import DecomposingRecordingPen, RecordingPen
+from fontTools.pens.recordingPen import RecordingPen
+from check_equal_ink import _filled_path
 from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont
 
@@ -26,13 +27,7 @@ from build_sans_variable import (
 
 
 
-INTERPOLATION_REVIEW_GLYPHS = (
-    "uni0163",
-    "ordfeminine",
-    "uni0472",
-    "uni04E9",
-    "ampersand",
-)
+INTERPOLATION_REVIEW_GLYPHS = ("ordfeminine", "ampersand")
 REPRESENTATIVE_GLYPHS = (
     "H",
     "E",
@@ -51,26 +46,8 @@ REPRESENTATIVE_GLYPHS = (
 )
 OUTLINE_SAMPLE_LENGTH = 4
 STATIC_OUTLINE_TOLERANCE = 7
-INTERMEDIATE_OUTLINE_DIGESTS = {
-    150: "158bfe31f4ded1b8585d9453223dbda3468428af886455c41d44b9e84a6c2d66",
-    250: "fe61899d9e46d201b010655deb1d4f5c51bbf04520f5605e44de2ed0e5a2fc78",
-    350: "068258cb28e1db0c7bc63848090bd2870a30e67ff87f1bc927a19bd934e8dc4c",
-    450: "816f2942427fee10256ad222ba915e42635a0ee210fdd38d0be09a2bef2b18f6",
-    550: "d30a74651bb77777b97edd774fcc3cbf1a21d64bf1278d9c641c450100ee59ff",
-    650: "9db82c5dc2e95a36e012b66d9ae1576c258df5415559c5a9827715ab938920ec",
-    750: "5ed9e91d3e243b4d3c7644fc5c2b7adbbd3b2ecbfeeed9a883ce9579cd7535c6",
-    850: "d5690b1d3906d9be354f1ad14c1ee000e1db8919f62d7bf42dfcfdf64853618e",
-}
-ITALIC_INTERMEDIATE_OUTLINE_DIGESTS = {
-    150: "c095880c313270af04fd593ebb838017cdfaa28ced310ec3a4f81ea22f8578a0",
-    250: "2373622b8c9e88b560bc26087412afeaa224f3f2a9681f670e12b75c3966104d",
-    350: "da96b5a335657c9308efe9a4961feaee8b59715251a926c4564338f16052939c",
-    450: "05722529b9e558494db11b92bf6075b56b6041dc91dcface3caa49a5e59754b7",
-    550: "0d81a736d5db3cd78a45cd54d38be65b2dfc801388b66dc07af6a2c15e2fc750",
-    650: "de74cbce1d069785735ce5cc3595a1e5a108ecb13d839bf0949a99e8bde42190",
-    750: "dce939878d43a2629cffa3f24ac4ae744e39cfdbfd7b9e4c234acc6ba5592704",
-    850: "d473f6ea96ba11018db1e2c5f4c2ff909c65cf8a28990ea159c4cf34c237f4c3",
-}
+INTERMEDIATE_OUTLINE_DIGESTS = {150: '584dde494583c43dceb173352d6e50213b1ff794850ffbc2aacbe198198ddd1a', 250: 'c72255f7dddea714c079e5751fa30456317bddfe7bd78f7dd94053d3cbbe20bd', 350: '0413e4c5580775366f48c0b2daf866ab0137f1916caf916bfa4f39716ffc9ded', 450: '265029d9c7348090065f649460aba3b708f842dc29a45d7ea3f93efd900f2b22', 550: 'c72e729aeebf0e46912cde758d4a27780c45440d7f9d0b87698574f3facaf108', 650: '578623fd34ba1327d3482a78a6f396dd574e743596a92d987e990d3b6e18a45c', 750: '97197a245b5b6edfad000eb40dc34daf246a14e45f107a9180b74412ca7423d5', 850: '508f853004616f713dcf4e54a188ff3485b27972af531c2282bc0f6157d9aea5'}
+ITALIC_INTERMEDIATE_OUTLINE_DIGESTS = {150: '1dd626124c5295e3b31ccd8cac997d8ece3f427800b285e238c5620ef5bc2c48', 250: '7606c4c23395c64ea81b583684a76af89f2861c89993620bcc04e5a7b4ee948b', 350: '3c9ffc19a0a5a239e0af025899580f569e69e58d4302151623b33c6f55adccff', 450: '1beb1bced93c6d2040f5711ef6e8bd7bf14bf8f26b91fa867dd973ab04c19def', 550: '00b1cdd5c2248fa342d94c19991fcff39e75e458df955d819543dc844485d036', 650: '10027d6e77e988c605da4d20330885ddc7bea3ca81a96a0c9c87396d91f8c085', 750: '7dac6179f7ce7b8f4566857361fdec561bd6fdecedab918c1f939e026dd33c87', 850: 'fe86ec88aae0c77dbe0e0bbebd7e3ed7c7ef6d91ca05e965988b6440f9e393fa'}
 NPM_ENTRYPOINTS = ("font.js", "sans.js")
 NPM_UPRIGHT_STYLES = (
     "Thin",
@@ -96,17 +73,16 @@ def _outline_points(font: TTFont, glyph_name: str) -> np.ndarray:
     """Flatten an outline so visually equivalent, differently segmented curves compare."""
 
     glyph_set = font.getGlyphSet()
-    # FlattenPen drops components, so decompose composite glyphs before
-    # sampling.
-    decomposed = DecomposingRecordingPen(glyph_set)
-    glyph_set[glyph_name].draw(decomposed)
+    # Compare visible boundaries after decomposing components and resolving
+    # any overlaps at the handful of variable-font corner guards.
+    filled = _filled_path(glyph_set, glyph_name)
     recording = RecordingPen()
     flattening = FlattenPen(
         recording,
         approximateSegmentLength=OUTLINE_SAMPLE_LENGTH,
         segmentLines=True,
     )
-    decomposed.replay(flattening)
+    filled.draw(flattening)
     return np.asarray(
         [
             arguments[0]
@@ -204,15 +180,13 @@ def check_variable(root: Path, italic: bool, digests: dict[int, str]) -> tuple[P
     for base, weight in WEIGHTS:
         style = file_style(base, italic)
         static = TTFont(root / "ttf" / f"NamcheShadowSans-{style}.ttf", recalcTimestamp=False)
-        # The italic TTF statics keep overlapping composites; sampling them
-        # directly would measure overlap depth instead of shape difference,
-        # so outline distances compare against the union'd OTF statics.
+        # Compare the visible VF boundary with independently compiled CFF
+        # statics, including glyphs with local interpolation guards.
         otf_static = TTFont(root / "otf" / f"NamcheShadowSans-{style}.otf", recalcTimestamp=False)
         if "fvar" in static:
             raise ValueError(f"static unexpectedly contains fvar: {style}")
-        missing = PARKED_GLYPHS - set(static.getGlyphOrder())
-        if missing:
-            raise ValueError(f"{style} static is missing parked VF glyphs: {sorted(missing)}")
+        if PARKED_GLYPHS & set(static.getGlyphOrder()):
+            raise ValueError(f"{style} static contains out-of-scope parked glyphs")
         instance = instantiateVariableFont(variable, {"wght": weight}, inplace=False, optimize=False)
         if previous_instance is not None:
             assert_contour_correspondence(

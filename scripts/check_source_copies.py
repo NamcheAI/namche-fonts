@@ -4,6 +4,9 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
+import re
+import openstep_plist
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -74,7 +77,15 @@ def check_pair(original: Path, maintained: Path, anchor_only: set[str]) -> list[
     original_files = relative_files(original)
     maintained_files = relative_files(maintained)
     approved_extra = APPROVED_EXTRA_FILES.get(maintained.name, set())
-    if original_files != maintained_files - approved_extra:
+    migration = json.loads((ROOT / 'sources/charsets/source-migration.json').read_text())[maintained.name]
+    removed_names = set(migration['removed'])
+    removed_files = set()
+    for relative in original_files:
+        if relative.endswith('.glyph'):
+            name = openstep_plist.loads((original / relative).read_text())['glyphname']
+            if name in removed_names:
+                removed_files.add(relative)
+    if original_files - removed_files != maintained_files - approved_extra:
         missing = sorted(original_files - maintained_files)
         extra = sorted(maintained_files - original_files - approved_extra)
         errors.append(f"{maintained.name}: source tree differs; missing={missing}, extra={extra}")
@@ -82,17 +93,23 @@ def check_pair(original: Path, maintained: Path, anchor_only: set[str]) -> list[
     for relative in sorted(original_files & maintained_files):
         original_text = (original / relative).read_text()
         maintained_text = (maintained / relative).read_text()
-        if maintained.name == PIXEL_PACKAGE and relative == "order.plist":
-            maintained_text = maintained_text.replace(
-                "rightWaveArrow,\ndottedCircle,\nlozenge", "rightWaveArrow,\nlozenge"
-            )
-            maintained_text = maintained_text.replace(
-                "pixel.triangle,\nrupeeIndian\n)", "pixel.triangle\n)"
-            ).removesuffix("\n")
+        if relative == 'order.plist':
+            expected = [n for n in openstep_plist.loads(original_text) if n not in removed_names]
+            if openstep_plist.loads(maintained_text) != expected:
+                errors.append(f"{maintained.name}: retained glyph order differs from upstream")
+            continue
         if relative in anchor_only:
             original_text = strip_anchor_blocks(original_text)
             maintained_text = strip_anchor_blocks(maintained_text)
-        if original_text != maintained_text:
+        if relative.endswith('.glyph'):
+            before = openstep_plist.loads(original_text)
+            after = openstep_plist.loads(maintained_text)
+            before.pop('unicode', None)
+            after.pop('unicode', None)
+            equal = before == after
+        else:
+            equal = original_text == maintained_text
+        if not equal:
             errors.append(f"{maintained.name}/{relative}: differs from immutable Geist copy")
     return errors
 
@@ -108,7 +125,7 @@ def main() -> int:
         return 1
     print(
         "Verified Mono and Namche Shape grid source copies; approved differences are "
-        "Mono anchors and the reviewed rupee/dotted-circle additions"
+        "Mono anchors and the recorded GF Latin Core scope migration"
     )
     return 0
 

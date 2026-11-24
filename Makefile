@@ -2,6 +2,7 @@ SOURCES=$(shell python3 scripts/read-config.py --sources )
 SHAPE_SOURCES=$(shell find sources/NamcheShape.glyphspackage sources/NamcheShape -type f 2>/dev/null) scripts/namche_shape.py scripts/build_namche_shape.py
 FAMILY=$(shell python3 scripts/read-config.py --family )
 OPEN_SANS_SOURCES=$(shell find sources/NamcheShadowSans-Upright sources/NamcheShadowSans-Italic -type f) scripts/build_sans_open.py
+EQUAL_INK_SOURCES=$(shell find sources/equal-ink -type f) scripts/equal_ink_corners.py scripts/equal_ink_tangents.py scripts/lowercase_fillet_tangents.py scripts/build_sans_equal_ink.py scripts/fontmake_deterministic.py scripts/finalize_equal_ink.py scripts/write_glyphspackage.py scripts/round_inner_corners.py scripts/recover_sans_production_source.py scripts/refresh_sans_italic_outlines.py scripts/latin_core.py
 PYTHON?=venv/bin/python
 SHAPING_REPORTS=out/fontspector/NamcheShadowSansVF-fontspector-report.json out/fontspector/NamcheShadowSans-fontspector-report.json out/fontspector/NamcheShadowMonoVF-fontspector-report.json out/fontspector/NamcheShadowMono-fontspector-report.json
 SHAPING_FONT_DIRS=fonts/NamcheShadowSans/variable fonts/NamcheShadowSans/ttf fonts/NamcheShadowMono/variable fonts/NamcheShadowMono/ttf
@@ -12,10 +13,10 @@ help:
 	@echo "###"
 	@echo
 	@echo "  make build:  Builds the fonts and places them in the fonts/ directory"
-	@echo "  make finalize-sans-statics GLYPHS_SANS_EXPORT=/path: merge native Glyphs OTF/TTF exports into the release files"
+	@echo "  make build-sans: rebuild Sans statics and VFs from the compatible equal-ink sources"
+	@echo "  make check-sans-equal-ink: verify every Sans binary against the full recipe"
 	@echo "  make build-sans-variable: rebuild both byte-identical Sans VFs from open sources"
 	@echo "  make build-sans-italic-variable: rebuild the byte-identical italic Sans VF from open sources"
-	@echo "  make refresh-sans-italic-outlines: merge an italic source correction into the committed release binaries"
 	@echo "  make refresh-sans-shaping COMPILED_SANS_BUILD=/path: refresh layout without changing approved outlines"
 	@echo "  make build-shape: regenerate the Namche Shape statics from the pixel grid source"
 	@echo "  make subset-webfonts: generate Latin WOFF2 subsets from the full release webfonts"
@@ -33,21 +34,13 @@ customize: venv
 	. venv/bin/activate; python3 scripts/customize.py
 
 build.stamp: venv sources/config-NamcheShadowSans.yaml \
-	$(SHAPE_SOURCES) $(SOURCES) $(OPEN_SANS_SOURCES) \
-	$(wildcard sources/googlefonts/*) scripts/build_googlefonts.py scripts/googlefonts_marks.py OFL.txt
+	$(SHAPE_SOURCES) $(SOURCES) $(OPEN_SANS_SOURCES) $(EQUAL_INK_SOURCES) \
+	$(wildcard sources/googlefonts/*) scripts/build_googlefonts.py scripts/latin_core.py sources/charsets/GF_Latin_Core.nam OFL.txt
 	$(MAKE) check-source-copies
 	rm -rf fonts namche-fonts namche-fonts.zip
 	$(MAKE) build-mono
 	$(MAKE) build-shape
-	# Namche Shadow Sans statics are native Glyphs exports: gftools does not run
-	# the seven RoundCorner instance filters. A Linux build restores and validates
-	# the committed approved release instead of replacing its outlines.
-	@echo "Using committed native Glyphs exports for Namche Shadow Sans"
-	# Sans statics are native Glyphs exports committed to the repository.
-	# Restore them after the clean build so release and npm artifacts use the
-	# approved outlines.
-	git checkout -- fonts/NamcheShadowSans/otf fonts/NamcheShadowSans/ttf fonts/NamcheShadowSans/webfonts fonts/NamcheShadowSans/variable
-	$(PYTHON) scripts/build_sans_open.py
+	$(MAKE) build-sans
 	$(MAKE) check-sans-open
 	# fonts/Geist is a committed byte-faithful copy of the upstream Vercel
 	# binaries (scripts/vendor_geist.py); restore it after the clean build.
@@ -67,6 +60,7 @@ build-mono: venv sources/config-NamcheShadowMono.yaml \
 	rm -rf fonts/NamcheShadowMono
 	. venv/bin/activate; gftools builder sources/config-NamcheShadowMono.yaml
 	. venv/bin/activate; python3 scripts/rename_font_metadata.py fonts/NamcheShadowMono
+	$(PYTHON) scripts/latin_core.py fonts/NamcheShadowMono
 
 # Namche Shape is generated from the pixel grid of its Glyphs source; the
 # random choices are seeded, so this rebuild is reproducible byte-for-outline.
@@ -78,34 +72,23 @@ build-shape: venv $(SHAPE_SOURCES)
 check-source-copies:
 	# Mono remains outline-identical; the Namche Shape grid permits reviewed source additions.
 	# The checker also permits only reviewed Mono anchor metadata.
-	python3 scripts/check_source_copies.py
+	$(PYTHON) scripts/check_source_copies.py
 
 check-sans-variable: venv
 	. venv/bin/activate; python3 scripts/check_sans_variable.py
 
-finalize-sans-statics: venv
-	test -n "$(GLYPHS_SANS_EXPORT)" || (echo "Set GLYPHS_SANS_EXPORT to a directory containing otf/ and ttf/." && exit 1)
-	. venv/bin/activate; python3 scripts/finalize_glyphs_statics.py --gftools fonts/NamcheShadowSans --glyphs "$(GLYPHS_SANS_EXPORT)" --output fonts/NamcheShadowSans
-	. venv/bin/activate; python3 scripts/rename_font_metadata.py --check fonts/NamcheShadowSans
-	$(MAKE) copy-npm-fonts
+# The complete recipe is open and consumes pinned clean contours and text
+# identity/layout fixtures. Generated sources must be reviewed and committed
+# with a design change; the full build synchronizes both source representations.
+.PHONY: build-sans check-sans-equal-ink
+build-sans: venv $(EQUAL_INK_SOURCES)
+	rm -rf out/equal-ink
+	$(PYTHON) scripts/build_sans_equal_ink.py --output out/equal-ink --finalize --promote
+	$(PYTHON) scripts/rename_font_metadata.py --check fonts/NamcheShadowSans
 
-# The italic package carries no RoundCorner instance filters — its Shadow
-# treatment is baked into the masters — so gftools reproduces the committed
-# italic outlines exactly. That makes an italic source correction mergeable
-# without a Glyphs re-export: build here, then merge only the changed outlines.
-build-sans-italic: venv sources/config-NamcheShadowSans-Italic.yaml \
-	sources/NamcheShadowSans-Italic.glyphspackage
-	rm -rf out/sans-italic
-	. venv/bin/activate; PATH="$(CURDIR)/venv/bin:$$PATH" gftools builder sources/config-NamcheShadowSans-Italic.yaml
-
-refresh-sans-italic-outlines: build-sans-italic
-	. venv/bin/activate; python3 scripts/refresh_sans_italic_outlines.py --compiled out/sans-italic
-	. venv/bin/activate; python3 scripts/rename_font_metadata.py --check fonts/NamcheShadowSans
-	$(MAKE) check-sans-counters
-	$(MAKE) copy-npm-fonts
-
-check-sans-italic-outlines: build-sans-italic
-	. venv/bin/activate; python3 scripts/refresh_sans_italic_outlines.py --compiled out/sans-italic --check
+check-sans-equal-ink:
+	rm -rf out/equal-ink-check
+	$(PYTHON) scripts/build_sans_equal_ink.py --output out/equal-ink-check --check
 
 build-sans-variable: venv
 	$(PYTHON) scripts/build_sans_open.py

@@ -36,3 +36,9 @@ be retained in the current tree solely as an archive.
 
 The canonical README banners live in `.docs/img/` and are regenerated with
 `make images`.
+
+## Current character scope
+
+All Namche families now use exactly GF Latin Core (319 characters). Bundled
+upstream Geist is unchanged. See [migration and character review](LATIN_CORE_REVIEW.md)
+for every-character proofs, compatibility impact and current QA findings.

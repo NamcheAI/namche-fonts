@@ -3,22 +3,34 @@
   <advance width="406"/>
   <outline>
     <contour>
-      <point identifier="p0" x="284" y="488" type="line"/>
-      <point identifier="p1" x="284" y="-103" type="line"/>
-      <point identifier="p2" x="-18" y="-103" type="line"/>
-      <point identifier="p3" x="-18" y="-25" type="line"/>
-      <point identifier="p4" x="204" y="-25" type="line"/>
-      <point identifier="p5" x="204" y="488" type="line"/>
+      <point x="284" y="488" type="line" identifier="p0"/>
+      <point x="284" y="-103" type="line" identifier="p1"/>
+      <point x="-18" y="-103" type="line" identifier="p2"/>
+      <point x="-18" y="-25" type="line" identifier="p3"/>
+      <point x="151" y="-25" type="line" identifier="p4"/>
+      <point x="162" y="-25" identifier="p5"/>
+      <point x="181" y="-17" identifier="p6"/>
+      <point x="188" y="-9" type="qcurve" identifier="p7"/>
+      <point x="196" y="-2" identifier="p8"/>
+      <point x="204" y="17" identifier="p9"/>
+      <point x="204" y="28" type="qcurve" identifier="p10"/>
+      <point x="204" y="488" type="line" identifier="p11"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
+        <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>1</integer>
         <integer>1</integer>
       </array>

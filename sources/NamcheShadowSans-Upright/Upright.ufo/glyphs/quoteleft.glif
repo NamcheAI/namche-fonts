@@ -4,23 +4,29 @@
   <unicode hex="2018"/>
   <outline>
     <contour>
-      <point identifier="p0" x="155" y="726" type="line"/>
-      <point identifier="p1" x="128" y="638" type="line"/>
-      <point identifier="p2" x="118" y="607"/>
-      <point identifier="p3" x="135" y="570"/>
-      <point identifier="p4" x="158" y="570" type="qcurve"/>
-      <point identifier="p5" x="158" y="570" type="line"/>
-      <point identifier="p6" x="158" y="457" type="line"/>
-      <point identifier="p7" x="45" y="457" type="line"/>
-      <point identifier="p8" x="45" y="556" type="line"/>
-      <point identifier="p9" x="105" y="726" type="line"/>
+      <point x="155" y="726" type="line" identifier="p0"/>
+      <point x="114" y="592" type="line" identifier="p1"/>
+      <point x="113" y="588" identifier="p2"/>
+      <point x="114" y="580" identifier="p3"/>
+      <point x="116" y="577" type="qcurve" identifier="p4"/>
+      <point x="119" y="574" identifier="p5"/>
+      <point x="126" y="570" identifier="p6"/>
+      <point x="130" y="570" type="qcurve" identifier="p7"/>
+      <point x="158" y="570" type="line" identifier="p8"/>
+      <point x="158" y="457" type="line" identifier="p9"/>
+      <point x="45" y="457" type="line" identifier="p10"/>
+      <point x="45" y="556" type="line" identifier="p11"/>
+      <point x="105" y="726" type="line" identifier="p12"/>
     </contour>
   </outline>
   <lib>
     <dict>
       <key>org.namche.originalFlags</key>
       <array>
+        <integer>65</integer>
         <integer>1</integer>
+        <integer>0</integer>
+        <integer>0</integer>
         <integer>1</integer>
         <integer>0</integer>
         <integer>0</integer>
