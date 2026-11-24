@@ -261,3 +261,25 @@ explicitly. Raw transient reports belong in `out/`.
 - [Public upstream source requirements](https://googlefonts.github.io/gf-guide/upstream.html)
 - [Issue before submission PR](https://googlefonts.github.io/gf-guide/making-pr.html)
 - [Registered vendor IDs](https://learn.microsoft.com/en-us/typography/vendors/)
+
+## 1.0.0 intake checklist follow-up
+
+The preferred upstream entry point is `./sources/build.sh` (Python 3.11).
+It builds the two Namche Shadow candidate TTFs and their submission package.
+The same script is used by the candidate's upstream.yaml and the reproducibility
+job. See the [upstream layout guide](https://googlefonts.github.io/gf-guide/upstream.html).
+
+The remaining Fontspector findings have three distinct causes:
+
+- Seven language sample failures require U+0331, U+02BC or U+014B. They are
+  outside GF Latin Core. The candidate and production fonts share a cmap.
+- The Latin Extended serving-subset warning is a coverage heuristic. Removing
+  that declaration would leave some supported Latin Core characters outside
+  the declared serving subsets.
+- The repository URL check splits the HTML description at whitespace. It
+  reports the repository and designer anchors as mismatches. Both links are
+  checked independently as HTML. Fontspector 1.9.1 still uses the same
+  [tokenization](https://github.com/fonttools/fontspector/blob/fontspector-v1.9.1/profile-googlefonts/src/checks/googlefonts/metadata/consistent_repo_urls.rs).
+
+The [tracked findings](../sources/googlefonts/qa-open-findings.json) remain
+open. Full compliance requires resolution or guidance from Google Fonts.

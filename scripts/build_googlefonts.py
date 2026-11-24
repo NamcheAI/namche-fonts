@@ -117,10 +117,10 @@ def build_package(output: Path, commit: str, config_dir: Path = CONFIG) -> None:
         metadata.append('}')
         (dest / 'METADATA.pb').write_text('\n'.join(metadata) + '\n')
         upstream = dict(repository_url=REPOSITORY, branch='main', files=mappings,
-                        build='python3 -m venv /tmp/namche-gf-venv && /tmp/namche-gf-venv/bin/pip install -r requirements-open-build.txt && /tmp/namche-gf-venv/bin/python scripts/build_googlefonts.py')
+                        build='sources/build.sh')
         # JSON is a strict YAML subset, accepted by gftools' YAML reader.
         (dest / 'upstream.yaml').write_text(json.dumps(upstream, indent=2) + '\n')
-        inputs = [ROOT / 'requirements-open-build.txt', ROOT / 'OFL.txt',
+        inputs = [ROOT / 'sources/build.sh', ROOT / 'requirements-open-build.txt', ROOT / 'OFL.txt',
                   Path(__file__), ROOT / 'scripts/build_sans_open.py', ROOT / 'scripts/latin_core.py', ROOT / 'sources/charsets/GF_Latin_Core.nam']
         inputs += [p for directory in (SOURCE, ITALIC_SOURCE, config_dir)
                    for p in directory.rglob('*') if p.is_file()]
